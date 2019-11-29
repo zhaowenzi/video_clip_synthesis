@@ -1,0 +1,61 @@
+﻿<Window x:Name="Window" x:Class="素材合成.ScreenWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          xmlns:VlcWinform="clr-namespace:Vlc.DotNet.Forms;assembly=Vlc.DotNet.Forms"
+        xmlns:WindowsFormsHost="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="False"
+        Title="PayWindows" Height="450" Width="700">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Base.xaml" />
+                <ResourceDictionary Source="/Styles/CommonStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Border  CornerRadius="6" Background="Transparent" BorderBrush="#C1C1C1" BorderThickness="0.5" >
+        <Grid  Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--Header-->
+            <Border CornerRadius="6,6,0,0" Height="40" MouseLeftButtonDown="Header_MouseLeftButtonDown" BorderThickness="0">
+                <Border.Background>
+                    <RadialGradientBrush GradientOrigin="0.5,0.5" RadiusX="1" RadiusY="1">
+                        <GradientStop Color="#111" Offset="0" />
+                        <GradientStop Color="#333" Offset="0.5" />
+                        <GradientStop Color="#111" Offset="0" />
+                    </RadialGradientBrush>
+                </Border.Background>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*" />
+                        <ColumnDefinition Width="60*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Regular" Foreground="White" Margin="10,0,0,0">分屏</TextBlock>
+                    <Image Grid.Column="1" Source="/img/ic_关闭_白.png" Width="16" Height="16"
+                           Cursor="Hand"
+                           HorizontalAlignment="Right" Margin="0,0,10,0" MouseDown="HideWindow" />
+                </Grid>
+            </Border>
+            <!--Boday-->
+            <Border BorderBrush="#CBCBCB" BorderThickness="0" CornerRadius="0,0,6,6" Background="White" Grid.Row="1" >
+                <Grid Background="Transparent">
+                    <WindowsFormsHost:WindowsFormsHost x:Name="winformhost" Margin="5">
+                        <VlcWinform:VlcControl  x:Name="VlcPlayer"  Dock="Fill" VlcLibDirectoryNeeded="VlcPlayer_VlcLibDirectoryNeeded"   ></VlcWinform:VlcControl>
+                    </WindowsFormsHost:WindowsFormsHost>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</Window>

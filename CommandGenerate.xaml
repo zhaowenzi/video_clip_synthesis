@@ -1,0 +1,364 @@
+﻿<dmskin:DMSkinWindow x:Class="素材合成.CommandGenerate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+         xmlns:attached="clr-namespace:DMSkin.Attached;assembly=DMSkin"
+        xmlns:dmskin="clr-namespace:DMSkin;assembly=DMSkin"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+                     WindowState="Normal"
+        WindowStyle="None"
+                     BorderBrush="Transparent"
+                     AllowsTransparency="True"
+                     attached:Corner.Value="6"
+        ResizeMode="CanResizeWithGrip"
+        Title="MainWindow"  Height="880" Width="1100">
+    <Window.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Base.xaml" />
+                <ResourceDictionary Source="/Styles/CommonStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <!--<converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />-->
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="White"></Setter>
+
+                <Setter Property="FontSize" Value="25"></Setter>
+                <Setter Property="FontFamily" Value="微软雅黑"></Setter>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            </Style>
+            <Style TargetType="ListBoxItem" x:Key="ListBoxItemEmptyTemplate1234">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListBoxItem">
+                            <Border x:Name="BorderBackground"  BorderBrush="Transparent" CornerRadius="10" BorderThickness="1" Background="Transparent" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="true">
+                                    <Setter Property="Background" TargetName="BorderBackground"  Value="Transparent" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsFocused" Value="true">
+                        <Setter Property="Background" Value="Transparent"></Setter>
+                        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                    </Trigger>
+                    <Trigger Property="IsSelected" Value="true">
+                        <Setter Property="Background" Value="Transparent"></Setter>
+                        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <DataTemplate x:Key="Page2ImageTemplate"   >
+                <Border  BorderThickness="1" CornerRadius="5" BorderBrush="White" Margin="5,0" VerticalAlignment="Center" Width="200">
+                    <CheckBox FontSize="25" Foreground="White" IsChecked="{Binding IsChecked, Mode=TwoWay}" Content="{Binding Content}"  VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" ></CheckBox>
+                </Border>
+               
+            </DataTemplate>
+
+            <DataTemplate x:Key="Page2ImageTemplate1"   >
+                <Border Height="20"  BorderThickness="1" BorderBrush="White" CornerRadius="2">
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding T时间}" Foreground="White"></TextBlock>
+                        <TextBlock Grid.Column="1" TextWrapping="WrapWithOverflow" Text="{Binding Cmd灯光}"  FontSize="10" VerticalAlignment="Center" Foreground="White"></TextBlock>
+                    </Grid>
+                </Border>
+           
+                   
+            </DataTemplate>
+
+            <Style x:Key="AduGroupBox" TargetType="{x:Type GroupBox}">
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="SnapsToDevicePixels" Value="True"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="BorderThickness" Value="3"/>
+                <Setter Property="BorderBrush" Value="#60ffffff"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type GroupBox}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  Height="40"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="0" Padding="10,4" VerticalAlignment="Center"
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                                    <TextBlock FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" Text="{TemplateBinding Header}" />
+                                </Border>
+                                <Border Grid.Row="1" Padding="0">
+                                    <ContentPresenter Grid.Row="1" Margin="{TemplateBinding Padding}"/>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <DataTemplate x:Key="PlayListNode"   >
+                <Border x:Name="border" BorderThickness="0" BorderBrush="#EDEDED" Margin="0,0"  >
+                    <Grid  Margin="3,0" Width="auto"  Height="auto" Background="Transparent">
+                        <Grid.ColumnDefinitions  >
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition  />
+                        </Grid.ColumnDefinitions>
+                        <Button    Command="{Binding btnDeletePlayListNode}" CommandParameter="{Binding ElementName=txtDeleteInfo}"
+                                       Style="{StaticResource btnBaseDelete}" Width="15" Height="15"
+                                   ></Button>
+                        <TextBlock Grid.Column="1" Text="{Binding VideoPath}" x:Name="txtDeleteInfo" Foreground="White"></TextBlock>
+                    </Grid>
+                </Border>
+                <DataTemplate.Triggers>
+                    <DataTrigger   Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}},Path=IsSelected}" Value="true">
+                        <Setter TargetName="border" Property="BorderBrush" Value="#FF4493" />
+                        <Setter TargetName="border" Property="BorderThickness" Value="2,0,0,0" />
+                    </DataTrigger>
+                </DataTemplate.Triggers>
+
+            </DataTemplate>
+
+        </ResourceDictionary>
+
+    </Window.Resources>
+
+
+    <Border  CornerRadius="6" Background="Transparent" BorderBrush="#CBCBCB" BorderThickness="0.5">
+        <Grid  Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--+++++++++++++++++++++++++++++++++++++头部++++++++++++++++++++++++++++++++++++++++-->
+            <Border CornerRadius="6,6,0,0" Height="40">
+                <Border.Background>
+                    <RadialGradientBrush GradientOrigin="0.5,0.5" RadiusX="1" RadiusY="1">
+                        <GradientStop Color="#000" Offset="0" />
+                        <GradientStop Color="#333" Offset="0.5" />
+                        <GradientStop Color="#000" Offset="0" />
+                    </RadialGradientBrush>
+                </Border.Background>
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="180"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid HorizontalAlignment="Left"  Margin="20,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="160" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock  FontSize="20"  Foreground="Red" FontWeight="Bold">DaHe</TextBlock>
+                        <TextBlock Grid.Column="1" Text="串口测试"  Foreground="White" FontSize="16" FontWeight="Bold"  VerticalAlignment="Center"  Margin="8,0,0,0"/>
+                        <Label Grid.Column="2"  x:Name="SoftWareBit"  Foreground="White" FontSize="13"  VerticalAlignment="Center"  Margin="0"/>
+                    </Grid>
+
+                    <Grid HorizontalAlignment="Right"  Grid.Column="1"   Background="Transparent" 
+                  WindowChrome.IsHitTestVisibleInChrome="True"  
+                  >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="10" />
+                        </Grid.ColumnDefinitions>
+                        <Grid  HorizontalAlignment="Right"  Grid.Column="0"   Background="Transparent" 
+                  WindowChrome.IsHitTestVisibleInChrome="True"  
+  >
+                            <Button x:Name="BtnPopup"  HorizontalAlignment="Center"   Visibility="Collapsed"
+                        VerticalAlignment="Center" IsTabStop="False"  WindowChrome.IsHitTestVisibleInChrome="True" 
+                            Cursor="Hand" >
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Border Name="PART_Background" BorderBrush="White" Background="#C74E86" 
+                                                BorderThickness="1.5" Width="20" Height="20" CornerRadius="15"  Cursor="Hand">
+                                            <TextBlock  x:Name="BtnInfo" FontWeight="Bold" 
+                                                Text="!" FontSize="15" Foreground="White" 
+                                                VerticalAlignment="Center" HorizontalAlignment="Center"  >
+                                            </TextBlock>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="BorderBrush" TargetName="PART_Background" Value="#FFF"></Setter>
+                                                <Setter Property="Foreground" TargetName="BtnInfo" Value="#FFF"></Setter>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+
+                                </Button.Template>
+                            </Button>
+                            <Popup x:Name="MenuPopup"  Width="120"  
+                           PopupAnimation="None" 
+                           PlacementTarget="{Binding ElementName=BtnPop}"  Placement="Center"  VerticalOffset="100" 
+                           AllowsTransparency="True" StaysOpen="True" IsOpen="False">
+                                <Border    Background="Transparent"  >
+                                </Border>
+                            </Popup>
+                        </Grid>
+
+                        <Button
+                            Click="ButtonMin_Click"
+                                       Grid.Column="1"
+                                        x:Name="Min"
+                                        Style="{StaticResource btnMin}" />
+                        <Button
+                                                 Grid.Column="2"
+                             Click="ButtonMin_Click"
+                                        x:Name="Max"
+                                        Style="{StaticResource btnMax}" />
+                        <Button
+                                                 Grid.Column="2"
+                                        x:Name="Full"
+                                         Click="ButtonMin_Click"
+                                        Cursor="Hand" Visibility="Collapsed"
+                                        Style="{StaticResource btnFull}" />
+                        <Button
+                               Click="ButtonMin_Click"
+                                                 Grid.Column="3"
+                                        x:Name="Close"
+                                        Command="SystemCommands.CloseWindowCommand"
+                                       Foreground="White"
+                                        IsTabStop="False"
+                                        Style="{StaticResource btnClose }" />
+
+                    </Grid>
+
+                </Grid>
+            </Border>
+            <!--+++++++++++++++++++++++++++++++++++++头部++++++++++++++++++++++++++++++++++++++++-->
+            
+            
+            <Border CornerRadius="0,0,6,6" Grid.Row="1" >
+                <Grid Background="#2D2D30">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"></RowDefinition>
+                        <RowDefinition Height="60"></RowDefinition>
+                        <RowDefinition Height="300"></RowDefinition>
+                        <RowDefinition Height="60"></RowDefinition>
+                        <RowDefinition Height="150"></RowDefinition>
+                        <RowDefinition Height="160"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                      
+
+                    </Grid.RowDefinitions>
+                    <!--<Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock> 串口:</TextBlock>
+                        <ComboBox Grid.Column="1"  Name="cmbSerial" VerticalContentAlignment="Center" Margin="10"></ComboBox>
+                        <Button Style="{StaticResource btnBaseCancel}" Grid.Column="2"  FontSize="20" 
+                                Name="btnOpen" Height="40" IsEnabled="False"
+                                Width="120" Click="串口连接_Click">连接</Button>
+                    </Grid>-->
+
+                    <Grid  Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition ></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock> 地址:</TextBlock>
+                        <ComboBox Grid.Column="1" VerticalContentAlignment="Center" Margin="10"  FontSize="20"  SelectedIndex="0" Name="cmbAddress">
+                        </ComboBox>
+                        <Grid Grid.Column="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{StaticResource btnBaseCancel}" Grid.Column="0"  FontSize="20"  Height="40"
+                                Width="120" Click="选中全部_Click">选中全部</Button>
+                            <Button Style="{StaticResource btnBaseCancel}" Grid.Column="1"  FontSize="20"  Height="40"
+                                Width="120" Click="取消选中_Click">取消选中</Button>
+                        </Grid>
+                        
+                    </Grid>
+
+                    <ListBox Grid.Row="2"   HorizontalAlignment="Center" HorizontalContentAlignment="Center"    ItemContainerStyle="{StaticResource ListBoxItemEmptyTemplate1234}"
+                           ItemTemplate="{StaticResource Page2ImageTemplate}" ItemsSource="{Binding Page2ImagemModelList }" Name="lbSelectNode" >
+                        <ListBox.Template>
+                            <ControlTemplate TargetType="{x:Type ListBox}">
+
+                                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"  Style="{StaticResource AduScrollViewer}">
+                                    <WrapPanel Orientation="Horizontal" IsItemsHost="True" ScrollViewer.CanContentScroll="True"  ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                                </ScrollViewer>
+                            </ControlTemplate>
+                        </ListBox.Template>
+                    </ListBox>
+
+                    <Grid  Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{StaticResource btnBaseCancel}" Height="40"  Width="180"  FontSize="20"   Click="输出_Click">32路输出</Button>
+                        <Button Style="{StaticResource btnBaseCancel}" Height="40"  Width="180"  FontSize="20"   Click="输出_Click" Grid.Column="1">16进16出</Button>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" Grid.Row="4">
+                        <TextBox Width="400" Margin="20"  Name="tbResult"  FontSize="20"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
+                        <StackPanel Width="180" Orientation="Vertical" VerticalAlignment="Center">
+                            <Button  Style="{StaticResource btnBaseCancel}" Height="40"  Width="180"  FontSize="20"  Click="复制_Click" VerticalAlignment="Center" Margin="0,10">复制</Button>
+                            <Button  Style="{StaticResource btnBaseCancel}" Height="40"  Width="180"  FontSize="20"  Click="发送_Click" VerticalAlignment="Center">发送</Button>
+                        </StackPanel>
+          
+                        <ListBox Width="400" Margin="20"  Name="lbRecvive"></ListBox>
+
+                    </StackPanel>
+                    <Grid Grid.Row="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                          <ListBox  Grid.Column="0"   ItemContainerStyle="{StaticResource ListBoxItemEmptyTemplate}"  SelectionChanged="xuanzhe_Changed"
+                           ItemTemplate="{StaticResource Page2ImageTemplate1}" ItemsSource="{Binding CommandList }"  >
+                            <ListBox.Template>
+                                <ControlTemplate TargetType="{x:Type ListBox}">
+
+                                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"  Style="{StaticResource AduScrollViewer}">
+                                        <WrapPanel Orientation="Horizontal" IsItemsHost="True" ScrollViewer.CanContentScroll="True"  ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                                    </ScrollViewer>
+                                </ControlTemplate>
+                            </ListBox.Template>
+                        </ListBox>
+                        
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Button  Style="{StaticResource btnBaseCancel}" Height="40"  Width="180"  FontSize="20"  Name="btnUpdate" IsEnabled="False" Click="修改并保存_Click" VerticalAlignment="Center">修改并保存</Button>
+                            <Button  Grid.Row="1" Style="{StaticResource btnBaseCancel}" Height="40"  Width="180"  FontSize="20"  Click="新增并保存_Click" VerticalAlignment="Center">新增并保存</Button>
+                        </Grid>
+                    </Grid>
+                    <TextBox Grid.Row="6" VerticalAlignment="Center" Height="40" Name="tbCommander"
+                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="20,0">
+                        Instructions   时间="00:00:10"  灯光指令="55 AA  01  09 02  09  00 00 78 01  00 03 FF  FF  FF  71" 继电器指令="55 01 33 FF FF FF FF 85" 网络指令="setr000000X1"  其他信息=""/Instructions 
+                    </TextBox>
+                </Grid>
+
+            
+            </Border>
+
+
+        </Grid>
+    </Border>
+
+
+</dmskin:DMSkinWindow>

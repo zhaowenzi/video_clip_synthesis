@@ -1,0 +1,965 @@
+﻿<dmskin:DMSkinWindow x:Class="素材合成.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:VlcWinform="clr-namespace:Vlc.DotNet.Forms;assembly=Vlc.DotNet.Forms"
+           xmlns:colorPicker="clr-namespace:ColorPickerLib.Controls;assembly=ColorPickerLib"
+        xmlns:WindowsFormsHost="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+       xmlns:WinformControl="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        mc:Ignorable="d"
+                     xmlns:Loading="clr-namespace:素材合成"
+        xmlns:VLCPLAYER="clr-namespace:Vlc.DotNet.Wpf;assembly=Vlc.DotNet.Wpf"
+        xmlns:MyPopup="clr-namespace:Helper"
+         xmlns:attached="clr-namespace:DMSkin.Attached;assembly=DMSkin"
+        xmlns:dmskin="clr-namespace:DMSkin;assembly=DMSkin"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        WindowStyle="None"
+        BorderBrush="Transparent"
+        AllowsTransparency="false"
+        attached:Corner.Value="6"
+                     Name="DahePlayer"
+        ResizeMode="NoResize"
+        Title="MainWindow"  Height="768" Width="1366">
+    <Window.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Base.xaml" />
+                <ResourceDictionary Source="/Styles/CommonStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <!--<converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />-->
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="Black"></Setter>
+
+                <Setter Property="FontSize" Value="16"></Setter>
+                <Setter Property="FontFamily" Value="微软雅黑"></Setter>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            </Style>
+
+            <Style x:Key="AduGroupBox" TargetType="{x:Type GroupBox}">
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="SnapsToDevicePixels" Value="True"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="BorderThickness" Value="3"/>
+                <Setter Property="BorderBrush" Value="#60ffffff"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type GroupBox}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  Height="40"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="0" Padding="10,4" VerticalAlignment="Center"
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                                    <TextBlock FontSize="{TemplateBinding FontSize}" FontWeight="{TemplateBinding FontWeight}" Text="{TemplateBinding Header}" />
+                                </Border>
+                                <Border Grid.Row="1" Padding="0">
+                                    <ContentPresenter Grid.Row="1" Margin="{TemplateBinding Padding}"/>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <DataTemplate x:Key="PlayListNode"   >
+                <Border x:Name="border" BorderThickness="0" BorderBrush="#EDEDED" Margin="0,0"  >
+                    <Grid  Margin="3,0" Width="auto"  Height="auto" Background="Transparent">
+                        <Grid.ColumnDefinitions  >
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition  />
+                        </Grid.ColumnDefinitions>
+                        <Button    Command="{Binding btnDeletePlayListNode}" CommandParameter="{Binding ElementName=txtDeleteInfo}"
+                                       Style="{StaticResource btnBaseDelete}" Width="15" Height="15"
+                                   ></Button>
+                        <TextBlock Grid.Column="1" Text="{Binding VideoPath}" x:Name="txtDeleteInfo" Foreground="White"></TextBlock>
+                    </Grid>
+                </Border>
+                <DataTemplate.Triggers>
+                    <DataTrigger   Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}},Path=IsSelected}" Value="true">
+                        <Setter TargetName="border" Property="BorderBrush" Value="#FF4493" />
+                        <Setter TargetName="border" Property="BorderThickness" Value="2,0,0,0" />
+                    </DataTrigger>
+                </DataTemplate.Triggers>
+
+            </DataTemplate>
+
+            <DataTemplate x:Key="FindListTemplate"   >
+                <Grid >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                    <Image  Stretch="Fill" Source="{Binding VideoImg}" Width="20" Height="20"></Image>
+                    <TextBlock Grid.Column="1" TextWrapping="Wrap"  Foreground="White" FontSize="14" Text="{Binding VideoName}"></TextBlock>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate  x:Key="OutputDataTemplate">
+                <Border  CornerRadius="4" Width="280" BorderThickness="1" BorderBrush="Green" VerticalAlignment="Center" Height="120" Background="Black"  Margin="5,5,5,5" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="160"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Foreground="White" FontSize="16" VerticalAlignment="Center">屏幕名称</TextBlock>
+                            <TextBlock Grid.Column="1" Text="{Binding ScreenName}" Foreground="White" FontSize="16" VerticalAlignment="Center" ></TextBlock>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="160"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Foreground="White" FontSize="16" VerticalAlignment="Center">选择视频:</TextBlock>
+                            <ComboBox Grid.Column="1" VerticalContentAlignment="Center" SelectedValue="{Binding  VideoPath}" ItemsSource="{Binding PathList}"></ComboBox>
+                        </Grid>
+                        <Button Grid.Row="2" Height="30" Width="140"  Style="{StaticResource btnBase}" Click="Button_Click">输出所选视频</Button>
+                    </Grid>
+                </Border>
+            </DataTemplate>
+
+            <Style TargetType="ListBoxItem" x:Key="ListBoxItemEmptyTemplate1234">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListBoxItem">
+                            <Border x:Name="BorderBackground"  BorderBrush="Transparent" CornerRadius="10" BorderThickness="1" Background="Transparent" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="true">
+                                    <Setter Property="Background" TargetName="BorderBackground"  Value="Transparent" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsFocused" Value="true">
+                        <Setter Property="Background" Value="Transparent"></Setter>
+                        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                    </Trigger>
+                    <Trigger Property="IsSelected" Value="true">
+                        <Setter Property="Background" Value="Transparent"></Setter>
+                        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <DataTemplate x:Key="Page2ImageTemplate"   >
+                <Grid Height="30" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock VerticalAlignment="Center" Text="{Binding T时间}" Foreground="White"></TextBlock>
+                    <TextBlock Grid.Column="1" TextWrapping="WrapWithOverflow" Text="{Binding Cmd灯光}"  FontSize="10" VerticalAlignment="Center" Foreground="White"></TextBlock>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="PlayList"   >
+                <Border x:Name="border" BorderThickness="0" BorderBrush="#EDEDED" Margin="0,0"  >
+                    <Grid  Margin="0,5"  Width="290" Height="60" HorizontalAlignment="Center" Background="Transparent">
+                        <Grid.ColumnDefinitions  >
+                            <ColumnDefinition Width="20" />
+                            <ColumnDefinition Width="20" />
+
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition  Width="*" />
+                            <ColumnDefinition Width="40" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.ColumnSpan="2" Foreground="Black" FontSize="16" Height="35" Margin="2,5" HorizontalContentAlignment="Center"
+                                 VerticalAlignment="Center" VerticalContentAlignment="Center" Background="White" BorderThickness="1" Text="{Binding ID,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                        <Image Grid.Column="2" Stretch="Fill"  Source="{Binding VideoImg}"  Width="40" Height="40"></Image>
+                        <TextBlock Grid.Column="3" Text="{Binding VideoPath}" x:Name="txtDeleteInfo" Foreground="White" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"  Width="160"  MaxHeight="60"></TextBlock>
+                        <Image Cursor="Hand" Grid.Column="4" Stretch="Fill"  Source="img/Enter delete-2.png"  Width="40" Height="40" PreviewMouseLeftButtonUp="Image_PreviewMouseLeftButtonUp"></Image>
+                    </Grid>
+                </Border>
+                <DataTemplate.Triggers>
+                    <DataTrigger   Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}},Path=IsSelected}" Value="true">
+                        <Setter TargetName="border" Property="BorderBrush" Value="#FF4493" />
+                        <Setter TargetName="border" Property="BorderThickness" Value="2,0,0,0" />
+                    </DataTrigger>
+                </DataTemplate.Triggers>
+            </DataTemplate>
+
+            <DataTemplate x:Key="Group"   >
+                <Border x:Name="border" BorderThickness="0"  CornerRadius="5" Width="133" Height="80" Margin="5,5,0,0"  >
+                    <Border.Background>
+                        <ImageBrush ImageSource="{Binding VideoImg}"></ImageBrush>
+                    </Border.Background>
+                </Border>
+            </DataTemplate>
+
+            <DataTemplate x:Key="VideoGroupNode"   >
+                <Border x:Name="border" BorderThickness="0" BorderBrush="#EDEDED"  CornerRadius="5" Background="Transparent" Width="{Binding Width}" >
+                    <Grid  >
+                        <Grid.ColumnDefinitions  >
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition  Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Height="30" Width="45" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,25,0,0">
+                            <Border.Background>
+                                <ImageBrush ImageSource="img/矩形备份 10@2x.png"></ImageBrush>
+                            </Border.Background>
+                            <TextBlock VerticalAlignment="Center" Text="{Binding ID}" HorizontalAlignment="Center" FontSize="20" Foreground="White"></TextBlock>
+                        </Border>
+
+                        <StackPanel Grid.Column="1" Background="#F4F4F4" VerticalAlignment="Top" Margin="0,20,0,0" Cursor="Hand" PreviewMouseLeftButtonUp="Image_PreviewMouseLeftButtonUp_上移">
+                            <Image Grid.Column="1"  Stretch="Fill"  Source="img/形状@2x(1).png"  Width="24" Height="16" Margin="0,5"  ></Image>
+                            <TextBlock  FontSize="13"  HorizontalAlignment="Center" Margin="0,0,5,0">上移</TextBlock>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Background="#F4F4F4"  VerticalAlignment="Top" Margin="0,20,0,0" Cursor="Hand"  PreviewMouseLeftButtonUp="Image_PreviewMouseLeftButtonUp_下移">
+                            <Image Grid.Column="2"  Stretch="Fill"  Source="img/形状@2x(2).png"  Width="24" Height="16" Margin="0,5"  ></Image>
+                            <TextBlock  FontSize="13" HorizontalAlignment="Center" Margin="0,0,5,0">下移</TextBlock>
+                        </StackPanel>
+                        <StackPanel Grid.Column="3" Background="#F4F4F4"  VerticalAlignment="Top" Margin="0,20,0,0" Cursor="Hand"  PreviewMouseLeftButtonUp="Image_PreviewMouseLeftButtonUp_删除">
+                            <Image Grid.Column="3"  Stretch="Fill"  Source="img/形状@2x(3).png"  Width="15" Height="16" Margin="0,5"  ></Image>
+                            <TextBlock FontSize="13"  HorizontalAlignment="Center">删除</TextBlock>
+                        </StackPanel>
+
+
+                        <ListBox VerticalAlignment="Center"  Grid.Column="4"   ScrollViewer.CanContentScroll="True"  WindowChrome.IsHitTestVisibleInChrome="True"
+                                 ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 ItemContainerStyle="{StaticResource ListBoxItemEmptyTemplate1234}" SelectionChanged="ListBox_SelectionChanged"
+                           ItemTemplate="{StaticResource Group}" ItemsSource="{Binding VideoNode }"  >
+                            <ListBox.Template>
+                                <ControlTemplate TargetType="{x:Type ListBox}">
+                                    <WrapPanel Orientation="Horizontal" IsItemsHost="True" ScrollViewer.CanContentScroll="True" 
+                                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"  ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                                </ControlTemplate>
+                            </ListBox.Template>
+                        </ListBox>
+                    </Grid>
+                </Border>
+
+            </DataTemplate>
+
+            <ControlTemplate x:Key="ChannelRadioButtonTemplate" TargetType="RadioButton">
+                <Grid  HorizontalAlignment="Left" Margin="0">
+                    <Grid Width="25" Height="25" x:Name="RadioButtonGrid"  HorizontalAlignment="Left">
+                        <Ellipse x:Name="RadioButtonCircular"  Stroke="#000" StrokeThickness="2" Fill="Transparent"
+                                 Width="{Binding ElementName=RadioButtonGrid,Path=Width}" 
+                                 Height="{Binding ElementName=RadioButtonGrid,Path=Height}"/>
+                        <Ellipse x:Name="RadioButtonPoint" 
+                                 HorizontalAlignment="Stretch"  Fill="White"
+                                 VerticalAlignment="Stretch"  Margin="4"/>
+                    </Grid>
+                    <Label x:Name="RadioLabel" FontWeight="Regular" Foreground="Black" FontSize="20"  Content="{TemplateBinding Content}" Margin="35,0,0,0" VerticalAlignment="Center"/>
+                </Grid>
+                <ControlTemplate.Triggers>
+                    <Trigger  Property="IsChecked" Value="True">
+                        <Setter TargetName="RadioLabel" Property="Foreground" Value="Black"></Setter>
+                        <Setter  TargetName="RadioButtonPoint" Property="Fill" Value="#0478FF"/>
+                        <Setter TargetName="RadioButtonCircular" Property="Stroke" Value="#0478FF"></Setter>
+                    </Trigger>
+                    <Trigger  Property="IsChecked" Value="False">
+                        <Setter TargetName="RadioButtonPoint" Property="Fill" Value="White"/>
+                        <Setter TargetName="RadioLabel" Property="Foreground" Value="#999999"></Setter>
+                        <Setter TargetName="RadioButtonCircular" Property="Stroke" Value="#BBB"></Setter>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </ResourceDictionary>
+
+    </Window.Resources>
+
+
+    <Border  CornerRadius="6" Background="Transparent" BorderBrush="#CBCBCB" BorderThickness="0.5">
+        <Grid  Background="Transparent" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--+++++++++++++++++++++++++++++++++++++头部++++++++++++++++++++++++++++++++++++++++-->
+            <Border CornerRadius="6,6,0,0" Height="40">
+                <Border.Background>
+                    <RadialGradientBrush GradientOrigin="0.5,0.5" RadiusX="1" RadiusY="1">
+                        <GradientStop Color="#FFF" Offset="0" />
+                        <GradientStop Color="#FFF" Offset="0.5" />
+                        <GradientStop Color="#FFF" Offset="0" />
+                    </RadialGradientBrush>
+                </Border.Background>
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="180"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid HorizontalAlignment="Left"  Margin="20,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="160" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontSize="25" Foreground="Red"  FontWeight="Bold" ></TextBlock>
+                        <TextBlock Grid.Column="1" Text=""  Foreground="White" FontSize="16" FontWeight="Bold"  VerticalAlignment="Center"  Margin="8,0,0,0"/>
+                        <Label Grid.Column="2"  x:Name="SoftWareBit"  Foreground="White" FontSize="13"  VerticalAlignment="Center"  Margin="0"/>
+                    </Grid>
+
+                    <Grid HorizontalAlignment="Right"  Grid.Column="1"   Background="Transparent" 
+                  WindowChrome.IsHitTestVisibleInChrome="True"  
+                  >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="10" />
+                        </Grid.ColumnDefinitions>
+                        <Grid  HorizontalAlignment="Right"  Grid.Column="0"   Background="Transparent" 
+                  WindowChrome.IsHitTestVisibleInChrome="True"  
+  >
+                            <Button x:Name="BtnPopup"  HorizontalAlignment="Center"   Visibility="Collapsed"
+                        VerticalAlignment="Center" IsTabStop="False"  WindowChrome.IsHitTestVisibleInChrome="True" 
+                            Cursor="Hand" >
+                                <Button.Template>
+                                    <ControlTemplate>
+                                        <Border Name="PART_Background" BorderBrush="White" Background="#C74E86" 
+                                                BorderThickness="1.5" Width="20" Height="20" CornerRadius="15"  Cursor="Hand">
+                                            <TextBlock  x:Name="BtnInfo" FontWeight="Bold" 
+                                                Text="!" FontSize="15" Foreground="White" 
+                                                VerticalAlignment="Center" HorizontalAlignment="Center"  >
+                                            </TextBlock>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="BorderBrush" TargetName="PART_Background" Value="#FFF"></Setter>
+                                                <Setter Property="Foreground" TargetName="BtnInfo" Value="#FFF"></Setter>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+
+                                </Button.Template>
+                            </Button>
+                            <Popup x:Name="MenuPopup"  Width="120"  
+                           PopupAnimation="None" 
+                           PlacementTarget="{Binding ElementName=BtnPop}"  Placement="Center"  VerticalOffset="100" 
+                           AllowsTransparency="True" StaysOpen="True" IsOpen="False">
+                                <Border    Background="Transparent"  >
+                                </Border>
+                            </Popup>
+                        </Grid>
+
+                        <Button
+                            Click="ButtonMin_Click"
+                                       Grid.Column="2"
+                                        x:Name="Min"
+                                        Style="{StaticResource btnMin}" />
+                        <!--<Button
+                                                 Grid.Column="2"
+                             Click="ButtonMin_Click"
+                                        x:Name="Max"
+                                        Style="{StaticResource btnMax}" />
+                        <Button
+                                                 Grid.Column="2"
+                                        x:Name="Full"
+                                         Click="ButtonMin_Click"
+                                        Cursor="Hand" Visibility="Collapsed"
+                                        Style="{StaticResource btnFull}" />-->
+                        <Button
+                               Click="ButtonMin_Click"
+                                                 Grid.Column="3"
+                                        x:Name="Close"
+                                       Foreground="White"
+                                        IsTabStop="False"
+                                        Style="{StaticResource btnClose }" />
+
+                    </Grid>
+
+                </Grid>
+            </Border>
+            <!--+++++++++++++++++++++++++++++++++++++头部++++++++++++++++++++++++++++++++++++++++-->
+
+            <!--+++++++++++++++++++++++++++++++++++++Body++++++++++++++++++++++++++++++++++++++++-->
+            <Border BorderBrush="#CBCBCB" BorderThickness="0" CornerRadius="0,0,6,6" Background="White" Grid.Row="1" >
+                <Grid>
+                    <Grid Background="Transparent"  Visibility="Visible" Name="GridStepOne">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="90"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="90"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" ></ColumnDefinition>
+
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition Width="300"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Name="btnAdd"  Grid.Column="1" Style="{StaticResource btnBaseCancel}" Height="60" Width="180" Foreground="White" FontSize="25" Click="添加素材_Click" HorizontalAlignment="Left" Margin="0,0,0,10">导入素材</Button>
+
+                        <!--素材组 列表-->
+                        <Border Grid.Row="1" Grid.ColumnSpan="2"   Grid.Column="1" Background="#F4F4F4" Margin="0,0,30,0"  CornerRadius="6">
+                            <ListBox  ItemContainerStyle="{StaticResource ListBoxItemEmptyTemplate}" SelectionChanged="ListBox_SelectionChanged"
+                           ItemTemplate="{StaticResource VideoGroupNode}" ItemsSource="{Binding VideoGroupNodeList }"  >
+                                <ListBox.Template>
+                                    <ControlTemplate TargetType="{x:Type ListBox}">
+                                        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"  Style="{StaticResource AduScrollViewer}">
+                                            <WrapPanel Orientation="Vertical" IsItemsHost="True" ScrollViewer.CanContentScroll="True"  ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+                                        </ScrollViewer>
+                                    </ControlTemplate>
+                                </ListBox.Template>
+                            </ListBox>
+                        </Border>
+                        <!--播放器-->
+                        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Visibility="Collapsed">
+                            <WindowsFormsHost:WindowsFormsHost x:Name="winformhost" Background="Transparent"  Panel.ZIndex="0">
+                                <VlcWinform:VlcControl  x:Name="VlcPlayer"  Dock="Fill" VlcLibDirectoryNeeded="VlcPlayer_VlcLibDirectoryNeeded"   ></VlcWinform:VlcControl>
+                            </WindowsFormsHost:WindowsFormsHost>
+                        </Grid>
+                        <!--列表-->
+                        <ListBox Grid.RowSpan="6"   Grid.Column="1"   Visibility="Collapsed"
+                             ItemContainerStyle="{StaticResource ListBoxItemEmptyTemplate}" SelectionChanged="ListBox_SelectionChanged"
+                           ItemTemplate="{StaticResource PlayList}" ItemsSource="{Binding PlayList }"  >
+                            <ListBox.Template>
+                                <ControlTemplate TargetType="{x:Type ListBox}">
+
+                                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"  Style="{StaticResource AduScrollViewer}">
+                                        <WrapPanel Orientation="Horizontal" IsItemsHost="True" ScrollViewer.CanContentScroll="True"  ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+                                    </ScrollViewer>
+                                </ControlTemplate>
+                            </ListBox.Template>
+                        </ListBox>
+                        <!--播放 暂停 时间-->
+                        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Background="Transparent" Visibility="Collapsed">
+                            <Border BorderBrush="#CBCBCB" BorderThickness="0" CornerRadius="0,0,6,6" Background="Black">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"></ColumnDefinition>
+                                        <ColumnDefinition Width="80"></ColumnDefinition>
+
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="20"></ColumnDefinition>
+                                        <ColumnDefinition Width="60"></ColumnDefinition>
+                                        <ColumnDefinition Width="190"></ColumnDefinition>
+
+                                        <ColumnDefinition Width="60"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="/img/播放.png" Height="50" Width="50"  Name="imgPlay"   Cursor="Hand"
+                                       PreviewMouseDown="PlayOrPause" Visibility="Visible" VerticalAlignment="Center"></Image>
+                                    <Image Source="/img/暂停.png" Height="50" Width="50" Name="imgPause"   Cursor="Hand"
+                                       PreviewMouseDown="PlayOrPause" VerticalAlignment="Center" Visibility="Collapsed"></Image>
+                                    <Grid Grid.Column="2" Grid.ColumnSpan="3" VerticalAlignment="Center" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="15"></RowDefinition>
+                                            <RowDefinition Height="10"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="120"></ColumnDefinition>
+                                            <ColumnDefinition  Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="120"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Slider Name="playSilder" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Maximum="100" Minimum="0"
+                                        VerticalAlignment="Center" Value="{Binding Progress ,Mode=TwoWay}"
+                                        Style="{StaticResource mySliderStyle }"
+                                        PreviewMouseDown="PlaySilder_PreviewMouseDown"></Slider>
+                                        <!---->
+                                    <!---->
+                                        <TextBlock Grid.Column="0" Grid.Row="2" Foreground="White" FontSize="16"   Text="{Binding CurrentPos  ,Mode=TwoWay}"
+                                           HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                                        <!---->
+                                    <TextBlock Grid.Column="2" Grid.Row="2" Foreground="White" FontSize="16"   Text="{Binding MaxPos  ,Mode=TwoWay}"
+                                           HorizontalAlignment="Right" VerticalAlignment="Center"  ></TextBlock>
+                                </Grid>
+                            <StackPanel Grid.Column="5" Orientation="Horizontal" Margin="10,0,0,0">
+                                        <TextBox Width="70" Height="30" VerticalContentAlignment="Center" Name="tbTime"></TextBox>
+                                        <Button Style="{StaticResource btnBaseCancel}" Height="35" Margin="10,0,0,0" Width="90" Click="跳转指定秒_Click">转到指定秒</Button>
+                                    </StackPanel>
+                                <Image Grid.Column="6" Stretch="Fill" Name="imgPop"   Cursor="Hand"
+                                       Source="/img/volume.png" Height="20" Width="20" PreviewMouseDown="Image_PreviewMouseDown"></Image>
+                                <Popup x:Name="VolPopup"  Width="50"   Height="120" Grid.Column="4"  MouseLeave="MenuPopup_MouseLeave"
+                           PopupAnimation="None"  HorizontalAlignment="Center" MyPopup:PopopHelper.PopupPlacementTarget="{Binding ElementName=DahePlayer}" 
+                           PlacementTarget="{Binding ElementName=imgPop}"  Placement="Center"  VerticalOffset="-70"  HorizontalOffset="0"
+                           AllowsTransparency="True" StaysOpen="True" IsOpen="False">
+                                    <Border    Background="Black" Opacity="0.8"  CornerRadius="3" Margin="0">
+                                        <Slider  Cursor="Hand" Value="100"  Orientation="Vertical" HorizontalAlignment="Center" Margin="5" Maximum="100" Minimum="0" 
+                                              Style="{StaticResource mySliderStyle}" ValueChanged="Slider_ValueChanged"
+                                                 >
+                                        </Slider>
+                                    </Border>
+                                </Popup>
+                             
+                        <Popup x:Name="VideoQualityPopup"  Width="180"  Height="600"  Grid.Column="5"  MouseLeave="VideoQualityPopup_MouseLeave"
+                           PopupAnimation="None"  HorizontalAlignment="Center" MouseEnter="VideoQualityPopup_MouseEnter"
+                           PlacementTarget="{Binding ElementName=bPop}"  Placement="Top"  VerticalOffset="10"  HorizontalOffset="0"
+                           AllowsTransparency="True" StaysOpen="True" IsOpen="False">
+                            <Border    Background="Black" Opacity="0.8"  CornerRadius="3" >
+                                <ListBox  Name="lbPlayList"
+                          HorizontalAlignment="Center" HorizontalContentAlignment="Center"  
+                          ItemContainerStyle="{StaticResource ListBoxItemEmptyTemplate}" Margin="5,20"
+                           ItemTemplate="{StaticResource FindListTemplate}" ItemsSource="{Binding PlayList }">
+                                    <ListBox.Template>
+                                        <ControlTemplate TargetType="{x:Type ListBox}">
+                                            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"  Style="{StaticResource AduScrollViewer}">
+                                                <WrapPanel Orientation="Vertical" IsItemsHost="True" ScrollViewer.CanContentScroll="True"/>
+                                            </ScrollViewer>
+                                        </ControlTemplate>
+                                    </ListBox.Template>
+                                </ListBox>
+                            </Border>
+                        </Popup>
+                    </Grid>
+            </Border>
+        </Grid>
+                    <!--帧数-->
+                                        <Grid Grid.Row="3"  Visibility="Collapsed">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="140"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                                <ColumnDefinition Width="190"></ColumnDefinition>
+                                                <ColumnDefinition Width="60"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid  Grid.Column="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="15"></RowDefinition>
+                                                    <RowDefinition Height="10"></RowDefinition>
+                                                    <RowDefinition Height="*"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition MinWidth="120"></ColumnDefinition>
+                                                    <ColumnDefinition  Width="*"></ColumnDefinition>
+                                                    <ColumnDefinition MinWidth="120"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Text="{Binding CurrentFrame,StringFormat={}当前帧:{0}}"></TextBlock>
+                                                <Slider Name="playSilderFPS" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Maximum="{Binding AllFrame}" Minimum="0"
+                                        VerticalAlignment="Center" Value="{Binding CurrentFrame ,Mode=TwoWay}"
+                                        Style="{StaticResource mySliderStyle }"
+                                        PreviewMouseDown="PlaySilder帧_PreviewMouseDown"></Slider>
+                                                <TextBlock Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right"  Text="{Binding AllFrame,StringFormat={}视频总帧数:{0}}"></TextBlock>
+                                            </Grid>
+
+                                            <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="10,0,0,0">
+                                                <TextBox Width="70" Height="30" VerticalContentAlignment="Center" Name="tbFrame">123</TextBox>
+                                                <Button Style="{StaticResource btnBaseCancel}" Height="35" Margin="10,0,0,0" Width="90" Click="跳转指定帧_Click">转到指定帧</Button>
+                                            </StackPanel>
+                                        </Grid>
+                                        <!--合成-->
+                                        <Grid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="120"></ColumnDefinition>
+                                                <ColumnDefinition Width="520"></ColumnDefinition>
+                                                <ColumnDefinition Width="0"></ColumnDefinition>
+                                                <ColumnDefinition Width="120"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Grid   Grid.Column="3" Grid.ColumnSpan="2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition ></ColumnDefinition>
+                                                    <ColumnDefinition Width="210"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,30,0">
+                                                    <TextBlock FontSize="25">总计 <Run Foreground="#0478FF" Text="{Binding TotalCount}"></Run> 种</TextBlock>
+                                                    <TextBlock FontSize="25" Margin="20,0,0,0">生成</TextBlock>
+                                                    <Border  Width="60" Height="35" CornerRadius="5" Background="#F4F4F4" Margin="5,0" >
+                                                        <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Name="tbOutPutCount">0</TextBox>
+                                                    </Border>
+                                                    <TextBlock FontSize="25" Margin="20,0,0,0">种</TextBlock>
+
+                                                </StackPanel>
+                                                <Button Name="btnOut" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource btnBaseCancel}" Height="60" Width="180" Foreground="White"
+                                                    FontSize="25" Click="合成视频_Click" Margin="0,5,30,0">开始导出</Button>
+                                            </Grid>
+
+                                        </Grid>
+                                        <TextBlock  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" FontSize="23"  Grid.RowSpan="3" VerticalAlignment="Bottom" Margin="0,0,0,15">进度:<Run Text="{Binding CurrentIndex}" Foreground="Green"></Run>/<Run Foreground="#0478FF" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
+                                        <ProgressBar Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="5" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="15" Margin="180,5,30,0"></ProgressBar>
+
+                                    </Grid>
+                                    <Grid Background="Transparent"  Visibility="Collapsed" Name="GridStepTwo">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="80"></RowDefinition>
+                                            <RowDefinition Height="438"></RowDefinition>
+                                            <RowDefinition Height="80"></RowDefinition>
+                                            <RowDefinition Height="90"></RowDefinition>
+                                            <RowDefinition Height="40"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition MinWidth="200" ></ColumnDefinition>
+
+                                            <ColumnDefinition ></ColumnDefinition>
+                                            <ColumnDefinition MinWidth="200"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+
+
+
+
+                                        <Canvas Grid.Row="0"   Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3" >
+                                            <Canvas.Background>
+                                                <ImageBrush  ImageSource="{Binding BackgroundImage}" Stretch="Uniform"></ImageBrush>
+                                            </Canvas.Background>
+
+                                        </Canvas>
+                                        <Grid Grid.Row="0" Grid.ColumnSpan="3">
+                                            <Border Name="borderTop"  Background="{Binding FillBrush}" Opacity="0.3">
+                                            </Border>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent"  Margin="0,5,0,0">
+                                                <TextBlock FontSize="20" >裁剪像素:</TextBlock>
+                                                <TextBox  Background="Transparent" BorderThickness="1"  Text="{Binding CutPixel_1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                          BorderBrush="#0478FF" MinWidth="40" VerticalAlignment="Center" 
+                                                          HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="Transparent"   Margin="0,0,0,5">
+                                                <TextBlock FontSize="20" >偏移范围:</TextBlock>
+                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF" 
+                                                           Text="{Binding offsetMin_1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                            </StackPanel>
+                                        </Grid>
+
+                                        <Grid Grid.Row="1" Grid.Column="3">
+                                            <Border Name="borderRight"  Background="{Binding FillBrush}"  Opacity="0.3">
+                                            </Border>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="Transparent" 
+                                                       
+                                                        VerticalAlignment="Center" Margin="0,-45,0,0">
+                                                <TextBlock FontSize="20" >裁剪像素:</TextBlock>
+                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF" 
+                                                           Text="{Binding CutPixel_2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent"   Margin="0,0,0,-45">
+                                                <TextBlock FontSize="20" >偏移范围:</TextBlock>
+                                                <TextBox  Background="Transparent" BorderThickness="1" 
+                                                            Text="{Binding offsetMin_2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                          BorderBrush="#0478FF" MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid Grid.Row="2" Grid.ColumnSpan="3">
+                                            <Border Name="borderBottom"  Background="{Binding FillBrush}" Opacity="0.3">
+                                            </Border>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent"  Margin="0,5,0,0">
+                                                <TextBlock FontSize="20" >裁剪像素:</TextBlock>
+                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF" 
+                                                           Text="{Binding CutPixel_3,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="Transparent"   Margin="0,0,0,5">
+                                                <TextBlock FontSize="20" >偏移范围:</TextBlock>
+                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF" 
+                                                           Text="{Binding offsetMin_3,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                            </StackPanel>
+                                        </Grid>
+
+                                        <Grid Grid.Row="1" Grid.Column="0">
+                                            <Border Name="borderLeft"  Background="{Binding FillBrush}"  Opacity="0.3">
+                                            </Border>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" Margin="0,-45,0,0">
+                                                <TextBlock FontSize="20" >裁剪像素:</TextBlock>
+                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF"
+                                                           Text="{Binding CutPixel_4,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent"   Margin="0,0,0,-45">
+                                                <TextBlock FontSize="20" >偏移范围:</TextBlock>
+                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF"
+                                                            Text="{Binding offsetMin_4,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid  Grid.Row="3" Grid.ColumnSpan="3">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="140"></ColumnDefinition>
+
+                                                <ColumnDefinition Width="500"></ColumnDefinition>
+                                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                                <ColumnDefinition Width="300"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock FontSize="25" Margin="30,0,0,0">导出路径:</TextBlock>
+                                            <Border Background="#F4F4F4" Grid.Column="1"  Width="400" Height="60" CornerRadius="8" >
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition Width="80"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBox Grid.Column="0"   Background="Transparent" BorderThickness="0"  Margin="10"
+                                                     FontSize="18" Height="40" TextWrapping="NoWrap"  Foreground="#0478FF"
+                                                     VerticalContentAlignment="Center" Name="tbOutPut"></TextBox>
+                                                    <Grid Grid.Column="1" PreviewMouseLeftButtonUp="选择导出路径_Click">
+                                                        <Image Cursor="Hand"  Source="img/形状@2x.png"  Height="40" Width="40" HorizontalAlignment="Right" Margin="10"></Image>
+                                                    </Grid>
+
+                                                </Grid>
+
+                                            </Border>
+
+                                            <Grid Grid.Column="3" Grid.Row="3">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock  FontSize="20">设置填充颜色:</TextBlock>
+                                                    <colorPicker:ColorPicker ColorMode="ColorPalette" Width="160"   
+                                            SelectedColor="{Binding FillColor,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left"></colorPicker:ColorPicker>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                                                    <TextBlock  FontSize="20">是否采用同一颜色:</TextBlock>
+                                                    <CheckBox Style="{StaticResource chkPassWord}" IsChecked="{Binding IsSame,Mode=TwoWay}"></CheckBox>
+                                                </StackPanel>
+                                            </Grid>
+
+                                            <Button Name="btnCut" Grid.Column="4" Grid.Row="3" Style="{StaticResource btnBaseCancel}" Height="60" Width="180"  Click="剪切视频_Click"
+                                                    Foreground="White" FontSize="25"  HorizontalAlignment="Right" Margin="0,0,30,10">剪切素材</Button>
+
+                                        </Grid>
+                                        <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" FontSize="23"  Grid.RowSpan="3" VerticalAlignment="Bottom" Margin="30,0,0,15">进度:<Run Text="{Binding CurrentIndex}" Foreground="Green"></Run>/<Run Foreground="#0478FF" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
+                                        <ProgressBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="3" VerticalAlignment="Bottom" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="15" Margin="190,0,30,20"></ProgressBar>
+                                    </Grid>
+                                    <Grid Background="Transparent"  Visibility="Collapsed" Name="GridStepThree">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="80"></RowDefinition>
+                                            <RowDefinition Height="438"></RowDefinition>
+                                            <RowDefinition Height="80"></RowDefinition>
+                                            <RowDefinition Height="90"></RowDefinition>
+                                            <RowDefinition Height="40"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <StackPanel>
+ 
+                                        </StackPanel>
+
+                                        <Grid  Grid.Row="3" Grid.ColumnSpan="3">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="30"></ColumnDefinition>
+                                                <ColumnDefinition Width="200"></ColumnDefinition>
+                                                <ColumnDefinition Width="900"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="1" FontSize="25">模糊程度(0~∞):</TextBlock>
+                                            <TextBox Name="tbLuma_power" Background="Transparent" BorderThickness="1"  Text="{Binding LumaPower, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2"
+                                                          BorderBrush="#0478FF" MinWidth="80" VerticalAlignment="Center" Height="60"
+                                                          HorizontalAlignment="Left" Foreground="#0478FF" FontSize="25"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                            <Button Grid.Column="5" Name="btnVeritalToHorizontal"  Style="{StaticResource btnBaseCancel}" Height="60" Width="180"  Click="竖版转横版_Click"
+                                                Foreground="White" FontSize="25"  HorizontalAlignment="Right" Margin="0,0,30,10">竖版转横版</Button>
+
+                                        </Grid>
+
+
+                                        <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" FontSize="23"  Grid.RowSpan="3" VerticalAlignment="Bottom" Margin="30,0,0,15">进度:<Run Text="{Binding CurrentIndex}" Foreground="Green"></Run>/<Run Foreground="#0478FF" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
+                                        <ProgressBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="3" VerticalAlignment="Bottom" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="15" Margin="190,0,30,20"></ProgressBar>
+                                    </Grid>
+                                    <Grid Background="Transparent"  Visibility="Collapsed" Name="GridStepFour">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="80"></RowDefinition>
+                                            <RowDefinition Height="438"></RowDefinition>
+                                            <RowDefinition Height="80"></RowDefinition>
+                                            <RowDefinition Height="90"></RowDefinition>
+                                            <RowDefinition Height="40"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition MinWidth="100" ></ColumnDefinition>
+
+                                            <ColumnDefinition  Width="*"></ColumnDefinition>
+                                            <ColumnDefinition MinWidth="100"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Canvas Grid.Row="0"   Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3" >
+                                            <Canvas.Background>
+                                                <ImageBrush  ImageSource="{Binding BackgroundImage}" Stretch="Uniform"></ImageBrush>
+                                            </Canvas.Background>
+
+                                        </Canvas>
+
+
+                                        <Grid Grid.Row="0" Grid.RowSpan="3"  Grid.Column="3">
+                                            <Border Background="{Binding FillBrush}"  Opacity="0.3">
+                                            </Border>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="Transparent" 
+                                                       
+                                                        VerticalAlignment="Center" Margin="0,-45,0,0">
+                                                <TextBlock FontSize="20" >裁剪像素:</TextBlock>
+                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF" 
+                                                           Text="{Binding CutPixel_2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent"   Margin="0,0,0,-45">
+                                                <TextBlock FontSize="20" >偏移范围:</TextBlock>
+                                                <TextBox  Background="Transparent" BorderThickness="1" 
+                                                            Text="{Binding offsetMin_2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                          BorderBrush="#0478FF" MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                            </StackPanel>
+                                        </Grid>
+
+                                        <Grid Grid.Row="0" Grid.RowSpan="3" Grid.Column="0">
+                                            <Border   Background="{Binding FillBrush}"  Opacity="0.3">
+                                            </Border>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" Margin="0,-45,0,0">
+                                                <TextBlock FontSize="20" >裁剪像素:</TextBlock>
+                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF"
+                                                           Text="{Binding CutPixel_4,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent"   Margin="0,0,0,-45">
+                                                <TextBlock FontSize="20" >偏移范围:</TextBlock>
+                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF"
+                                                            Text="{Binding offsetMin_4,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Grid  Grid.Row="3" Grid.ColumnSpan="3">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="150"></ColumnDefinition>
+
+                                                <ColumnDefinition Width="250"></ColumnDefinition>
+                                                <ColumnDefinition Width="150"></ColumnDefinition>
+                                                <ColumnDefinition Width="600"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid Grid.ColumnSpan="2" Grid.RowSpan="2" VerticalAlignment="Center">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" FontSize="25" Margin="30,0,0,0">填充高度Y:</TextBlock>
+                                                <TextBox Name="tbPaddHeight"  Background="Transparent" BorderThickness="1"   Text="{Binding PadHeight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"
+                                                          BorderBrush="#0478FF" MinWidth="80" VerticalAlignment="Center" Height="40"
+                                                          HorizontalAlignment="Left" Foreground="#0478FF" FontSize="20"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                            </Grid>
+
+                                            <Grid Grid.Column="2" Grid.Row="3" >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <RadioButton Grid.Row="1" Margin="0"  
+                                                             VerticalAlignment="Center" HorizontalAlignment="Left"  Foreground="Black"
+                                                             Content="颜色填充" PreviewMouseLeftButtonDown="SwitchChannel_MouseLeftButtonDown" 
+                                                             Cursor="Hand" FontWeight="Regular" FontFamily="微软雅黑" FontSize="25" Template="{DynamicResource ChannelRadioButtonTemplate}"
+                                                         GroupName="Padd"
+                                                         />
+                                                <RadioButton Grid.Row="0" Margin="0"  
+                                                             VerticalAlignment="Center" HorizontalAlignment="Left"  Foreground="Black"
+                                                             Content="图片填充" PreviewMouseLeftButtonDown="SwitchChannel_MouseLeftButtonDown" 
+                                                             Cursor="Hand" FontWeight="Regular" FontFamily="微软雅黑" FontSize="25" Template="{DynamicResource ChannelRadioButtonTemplate}"
+                                                         GroupName="Padd"
+                                                         />
+                                            </Grid>
+                                            <Grid Grid.Column="3" Grid.Row="3" Name="gridColorPad" Visibility="Collapsed">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock  FontSize="20">设置填充颜色:</TextBlock>
+                                                    <colorPicker:ColorPicker ColorMode="ColorPalette" Width="160"   
+                                            SelectedColor="{Binding FillColor,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left"></colorPicker:ColorPicker>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                                                    <TextBlock  FontSize="20">是否采用同一颜色:</TextBlock>
+                                                    <CheckBox Style="{StaticResource chkPassWord}" IsChecked="{Binding IsSame,Mode=TwoWay}"></CheckBox>
+                                                </StackPanel>
+                                            </Grid>
+                                            <Grid Grid.Column="3" Grid.Row="3" Name="gridImagePad" Visibility="Collapsed">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="250"></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition Width="160"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock  FontSize="15">选择填充图片上:</TextBlock>
+                                                    <Grid Grid.Column="1" PreviewMouseLeftButtonUp="选择导图片路径上_Click">
+                                                        <Image Cursor="Hand"  Source="img/形状@2x.png"  Height="30" Width="30" HorizontalAlignment="Right" Margin="10"></Image>
+                                                    </Grid>
+                                                    <Image Source="{Binding FillImageTop}" Height="30" Width="60" Stretch="Uniform"></Image>
+                                                    
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                                                    <TextBlock  FontSize="15">选择填充图片下:</TextBlock>
+                                                    <Grid Grid.Column="1" PreviewMouseLeftButtonUp="选择图片路径下_Click">
+                                                        <Image Cursor="Hand"  Source="img/形状@2x.png"  Height="30" Width="30" HorizontalAlignment="Right" Margin="10"></Image>
+                                                    </Grid>
+                                                    <Image Source="{Binding FillImageBottom}" Height="30" Width="60"  Stretch="Uniform"></Image>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Column="1" >
+                                                    <TextBlock FontSize="15">模糊程度(0~∞):</TextBlock>
+                                                    <TextBox  Background="Transparent" BorderThickness="1"  Text="{Binding LumaPowerTop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2"
+                                                          BorderBrush="#0478FF" MinWidth="60" VerticalAlignment="Center" Height="30"
+                                                          HorizontalAlignment="Left" Foreground="#0478FF" FontSize="15" 
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1" >
+                                                    <TextBlock FontSize="15">模糊程度(0~∞):</TextBlock>
+                                                    <TextBox  Background="Transparent" BorderThickness="1"  Text="{Binding LumaPowerBottom, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2"
+                                                          BorderBrush="#0478FF" MinWidth="60" VerticalAlignment="Center" Height="30"
+                                                          HorizontalAlignment="Left" Foreground="#0478FF" FontSize="15" 
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                                </StackPanel>
+
+                                                <Button Grid.Row="0"  Grid.Column="2" HorizontalAlignment="Left" Grid.RowSpan="2" Style="{StaticResource btnBaseCancel}" Height="40" 
+                                                        Foreground="White" Width="120" Margin="0,0,0,0" Click="随机从图库选择图片_Click_1">随机图库图片</Button>
+                                            </Grid>
+                                            <Button Grid.Column="5" Name="btnHorizontalToVertical"  Style="{StaticResource btnBaseCancel}" Height="60" Width="180"  Click="横版转竖版_Click"
+                                                Foreground="White" FontSize="25"  HorizontalAlignment="Right" Margin="0,0,30,10">横版转竖版</Button>
+
+                                        </Grid>
+                                        <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" FontSize="23"  Grid.RowSpan="3" VerticalAlignment="Bottom" Margin="30,0,0,15">进度:<Run Text="{Binding CurrentIndex}" Foreground="Green"></Run>/<Run Foreground="#0478FF" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
+                                        <ProgressBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="3" VerticalAlignment="Bottom" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="15" Margin="190,0,30,20"></ProgressBar>
+                                    </Grid>
+                                </Grid>
+
+                            </Border>
+                            <!--+++++++++++++++++++++++++++++++++++++Body++++++++++++++++++++++++++++++++++++++++-->
+                            <Border Background="White"  Grid.Row="1" Opacity="0.2" Visibility="{Binding IsVisibility}" Margin="0,0,0,40">
+                                
+                            </Border>
+                            <Loading:UserControl1 Height="100" Width="100"    Grid.Column="1" Grid.Row="1"  Visibility="{Binding IsVisibility}"
+                                                                        VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                                                        Background="Transparent" RenderTransformOrigin="0.5,0.5">
+                                <Loading:UserControl1.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="0.8" ScaleY="0.8"/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Loading:UserControl1.RenderTransform>
+                            </Loading:UserControl1>
+                        </Grid>
+            </Border>
+
+
+</dmskin:DMSkinWindow>
