@@ -15,17 +15,18 @@ namespace 素材合成.Helper
 
         static public void AppandLog(string Info, string Level = "Error")
         {
-            FileInfo fileInfo = new FileInfo("log.txt");
-            if(fileInfo.Length>100*1024*1024)
-            {
-                fileInfo.Delete();
-            }
+            
+         
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"######{Level}-{System.DateTime.Now.ToString("F")}######");
             sb.AppendLine(Info);
             sb.AppendLine();
             SaveFile_Append("log.txt", sb.ToString());
-           
+            FileInfo fileInfo = new FileInfo("log.txt");
+            if (fileInfo.Length > 100 * 1024 * 1024)
+            {
+                fileInfo.Delete();
+            }
         }
 
         /// <summary>

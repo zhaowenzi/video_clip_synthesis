@@ -180,7 +180,7 @@
                         <Grid  HorizontalAlignment="Right"  Grid.Column="0"   Background="Transparent" 
                   WindowChrome.IsHitTestVisibleInChrome="True"  
   >
-                            <Button x:Name="BtnPopup"  HorizontalAlignment="Center"   Visibility="Collapsed"
+                            <Button x:Name="BtnPopup"     Visibility="Collapsed"
                         VerticalAlignment="Center" IsTabStop="False"  WindowChrome.IsHitTestVisibleInChrome="True" 
                             Cursor="Hand" >
                                 <Button.Template>
@@ -189,7 +189,7 @@
                                                 BorderThickness="1.5" Width="20" Height="20" CornerRadius="15"  Cursor="Hand">
                                             <TextBlock  x:Name="BtnInfo" FontWeight="Bold" 
                                                 Text="!" FontSize="15" Foreground="White" 
-                                                VerticalAlignment="Center" HorizontalAlignment="Center"  >
+                                                VerticalAlignment="Center"   >
                                             </TextBlock>
                                         </Border>
                                         <ControlTemplate.Triggers>
@@ -262,7 +262,7 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock> 串口:</TextBlock>
+                        <TextBlock> 串口</TextBlock>
                         <ComboBox Grid.Column="1"  Name="cmbSerial" VerticalContentAlignment="Center" Margin="10"></ComboBox>
                         <Button Style="{StaticResource btnBaseCancel}" Grid.Column="2"  FontSize="20" 
                                 Name="btnOpen" Height="40" IsEnabled="False"
@@ -275,7 +275,7 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition ></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock> 地址:</TextBlock>
+                        <TextBlock> 地址</TextBlock>
                         <ComboBox Grid.Column="1" VerticalContentAlignment="Center" Margin="10"  FontSize="20"  SelectedIndex="0" Name="cmbAddress">
                         </ComboBox>
                         <Grid Grid.Column="2">
@@ -291,7 +291,7 @@
                         
                     </Grid>
 
-                    <ListBox Grid.Row="2"   HorizontalAlignment="Center" HorizontalContentAlignment="Center"    ItemContainerStyle="{StaticResource ListBoxItemEmptyTemplate1234}"
+                    <ListBox Grid.Row="2"    HorizontalContentAlignment="Center"    ItemContainerStyle="{StaticResource ListBoxItemEmptyTemplate1234}"
                            ItemTemplate="{StaticResource Page2ImageTemplate}" ItemsSource="{Binding Page2ImagemModelList }" Name="lbSelectNode" >
                         <ListBox.Template>
                             <ControlTemplate TargetType="{x:Type ListBox}">

@@ -23,7 +23,7 @@
                                     <GradientStop Color="#66CCFF" Offset="0.0" />
                                 </LinearGradientBrush>
                             </Border.Background>
-                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}"  VerticalAlignment="Center" />
 
                         </Border>
                         <Rectangle x:Name="DisabledVisualElement" Fill="#C0C0C0" IsHitTestVisible="false" Opacity="0" RadiusY="5" RadiusX="5"  />
@@ -70,7 +70,7 @@
                                     <GradientStop Color="#CCCCCC" Offset="0.0" />
                                 </LinearGradientBrush>
                             </Border.Background>
-                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}"  VerticalAlignment="Center" />
 
                         </Border>
                         <Rectangle x:Name="DisabledVisualElement" Fill="#C0C0C0" IsHitTestVisible="false" Opacity="0" RadiusY="5" RadiusX="5"  />
@@ -97,7 +97,7 @@
     <Style x:Key="btnDelete" TargetType="{x:Type Button}">
         <Setter Property="FontSize" Value="20"></Setter>
         <Setter Property="FontWeight" Value="Normal"></Setter>
-        <Setter Property="FontFamily" Value="黑体"></Setter>
+        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="Background" Value="#6699FF"></Setter>
@@ -116,7 +116,7 @@
                                     <GradientStop Color="#CC3333" Offset="0.0" />
                                 </LinearGradientBrush>
                             </Border.Background>
-                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}"  VerticalAlignment="Center" />
 
                         </Border>
                         <Rectangle x:Name="DisabledVisualElement" Fill="#C0C0C0" IsHitTestVisible="false" Opacity="0" RadiusY="5" RadiusX="5"  />
@@ -143,7 +143,7 @@
     <Style x:Key="btnUpdate" TargetType="{x:Type Button}">
         <Setter Property="FontSize" Value="20"></Setter>
         <Setter Property="FontWeight" Value="Normal"></Setter>
-        <Setter Property="FontFamily" Value="黑体"></Setter>
+        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="Foreground" Value="#000000"></Setter>
@@ -161,7 +161,7 @@
                                     <GradientStop Color="#FF9999" Offset="0.0" />
                                 </LinearGradientBrush>
                             </Border.Background>
-                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}"  VerticalAlignment="Center" />
 
                         </Border>
                         <Rectangle x:Name="DisabledVisualElement" Fill="#C0C0C0" IsHitTestVisible="false" Opacity="0" RadiusY="5" RadiusX="5"  />
@@ -188,7 +188,7 @@
     <Style x:Key="btnSave" TargetType="{x:Type Button}">
         <Setter Property="FontSize" Value="20"></Setter>
         <Setter Property="FontWeight" Value="Bold"></Setter>
-        <Setter Property="FontFamily" Value="黑体"></Setter>
+        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="Foreground" Value="#000000"></Setter>
@@ -206,7 +206,7 @@
                                     <GradientStop Color="#CCCCCC" Offset="0.0" />
                                 </LinearGradientBrush>
                             </Border.Background>
-                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}"  VerticalAlignment="Center" />
 
                         </Border>
                         <Rectangle x:Name="DisabledVisualElement" Fill="#C0C0C0" IsHitTestVisible="false" Opacity="0" RadiusY="5" RadiusX="5"  />
@@ -233,7 +233,7 @@
     <Style x:Key="btnSearch" TargetType="{x:Type Button}">
         <Setter Property="FontSize" Value="20"></Setter>
         <Setter Property="FontWeight" Value="Bold"></Setter>
-        <Setter Property="FontFamily" Value="黑体"></Setter>
+        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="Foreground" Value="#000000"></Setter>
@@ -251,7 +251,7 @@
                                     <GradientStop Color="#99CCFF" Offset="0.0" />
                                 </LinearGradientBrush>
                             </Border.Background>
-                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}"  VerticalAlignment="Center" />
 
                         </Border>
                         <Rectangle x:Name="DisabledVisualElement" Fill="#C0C0C0" IsHitTestVisible="false" Opacity="0" RadiusY="5" RadiusX="5"  />
@@ -330,7 +330,7 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <ContentPresenter RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{TemplateBinding Tag}" VerticalAlignment="Center" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" IsEnabled="{TemplateBinding IsEnabled}" Cursor="Hand" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock x:Name="textBlock"  TextWrapping="Wrap" Text="{TemplateBinding Tag}" VerticalAlignment="Center" FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" IsEnabled="{TemplateBinding IsEnabled}" Cursor="Hand" RenderTransformOrigin="0.5,0.5">
                             <TextBlock.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>

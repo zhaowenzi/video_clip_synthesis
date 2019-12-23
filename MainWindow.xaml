@@ -21,7 +21,7 @@
         attached:Corner.Value="6"
                      Name="DahePlayer"
         ResizeMode="NoResize"
-        Title="MainWindow"  Height="768" Width="1366">
+        Title="MainWindow"  Height="670" Width="1020">
     <Window.Resources>
 
         <ResourceDictionary>
@@ -30,12 +30,52 @@
                 <ResourceDictionary Source="/Styles/CommonStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <!--<converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />-->
-            <Style TargetType="TextBlock">
-                <Setter Property="Foreground" Value="Black"></Setter>
+            <Style TargetType="TextBlock" x:Key="myText13">
+                <Setter Property="Foreground" Value="#666"></Setter>
 
-                <Setter Property="FontSize" Value="16"></Setter>
+                <Setter Property="FontSize" Value="13"></Setter>
                 <Setter Property="FontFamily" Value="微软雅黑"></Setter>
                 <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            </Style>
+            <Style TargetType="TextBlock" x:Key="myText18">
+                <Setter Property="Foreground" Value="#666"></Setter>
+
+                <Setter Property="FontSize" Value="18"></Setter>
+                <Setter Property="FontFamily" Value="微软雅黑"></Setter>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            </Style>
+
+            <Style TargetType="ProgressBar" x:Key="SimpleProgressBar">
+                <Setter Property="Background" Value="Gray" />
+                <Setter Property="Maximum" Value="1" />
+                <Setter Property="Value" Value="0" />
+                <Setter Property="Height" Value="8" />
+                <Setter Property="IsTabStop" Value="False" />
+                <Setter Property="Foreground" Value="{StaticResource niceBlack}" />
+                <Setter Property="SnapsToDevicePixels" Value="True" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ProgressBar">
+                            <Grid x:Name="Root" >
+                                <Border x:Name="PART_Track" BorderThickness="1"  Background="{StaticResource niceGray}"
+                                CornerRadius="5"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                <Border  x:Name="PART_Indicator" HorizontalAlignment="Left" Background="{TemplateBinding Foreground}" 
+                                CornerRadius="5"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="Orientation" Value="Vertical">
+                                    <Setter Property="LayoutTransform" TargetName="Root" >
+                                        <Setter.Value>
+                                            <RotateTransform Angle="-90" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
 
             <Style x:Key="AduGroupBox" TargetType="{x:Type GroupBox}">
@@ -65,6 +105,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            
             <DataTemplate x:Key="PlayListNode"   >
                 <Border x:Name="border" BorderThickness="0" BorderBrush="#EDEDED" Margin="0,0"  >
                     <Grid  Margin="3,0" Width="auto"  Height="auto" Background="Transparent">
@@ -100,7 +141,7 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate  x:Key="OutputDataTemplate">
-                <Border  CornerRadius="4" Width="280" BorderThickness="1" BorderBrush="Green" VerticalAlignment="Center" Height="120" Background="Black"  Margin="5,5,5,5" >
+                <Border  CornerRadius="5" Width="280" BorderThickness="1" BorderBrush="Green" VerticalAlignment="Center" Height="120" Background="Black"  Margin="5,5,5,5" >
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
@@ -120,7 +161,7 @@
                                 <ColumnDefinition Width="120"/>
                                 <ColumnDefinition Width="160"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Foreground="White" FontSize="16" VerticalAlignment="Center">选择视频:</TextBlock>
+                            <TextBlock Foreground="White" FontSize="16" VerticalAlignment="Center">选择视频</TextBlock>
                             <ComboBox Grid.Column="1" VerticalContentAlignment="Center" SelectedValue="{Binding  VideoPath}" ItemsSource="{Binding PathList}"></ComboBox>
                         </Grid>
                         <Button Grid.Row="2" Height="30" Width="140"  Style="{StaticResource btnBase}" Click="Button_Click">输出所选视频</Button>
@@ -132,7 +173,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="ListBoxItem">
-                            <Border x:Name="BorderBackground"  BorderBrush="Transparent" CornerRadius="10" BorderThickness="1" Background="Transparent" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                            <Border x:Name="BorderBackground"  BorderBrush="Transparent"  BorderThickness="0" Background="Transparent" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
                                 <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </Border>
                             <ControlTemplate.Triggers>
@@ -169,7 +210,7 @@
 
             <DataTemplate x:Key="PlayList"   >
                 <Border x:Name="border" BorderThickness="0" BorderBrush="#EDEDED" Margin="0,0"  >
-                    <Grid  Margin="0,5"  Width="290" Height="60" HorizontalAlignment="Center" Background="Transparent">
+                    <Grid  Margin="0,5"  Width="290" Height="60"  Background="Transparent">
                         <Grid.ColumnDefinitions  >
                             <ColumnDefinition Width="20" />
                             <ColumnDefinition Width="20" />
@@ -194,7 +235,7 @@
             </DataTemplate>
 
             <DataTemplate x:Key="Group"   >
-                <Border x:Name="border" BorderThickness="0"  CornerRadius="5" Width="133" Height="80" Margin="5,5,0,0"  >
+                <Border x:Name="border" BorderThickness="1" VerticalAlignment="Center"   CornerRadius="4" Width="149" Height="90"  >
                     <Border.Background>
                         <ImageBrush ImageSource="{Binding VideoImg}"></ImageBrush>
                     </Border.Background>
@@ -202,43 +243,122 @@
             </DataTemplate>
 
             <DataTemplate x:Key="VideoGroupNode"   >
-                <Border x:Name="border" BorderThickness="0" BorderBrush="#EDEDED"  CornerRadius="5" Background="Transparent" Width="{Binding Width}" >
+                <Border x:Name="border" BorderThickness="1,1,0,0" Width="1000" BorderBrush="#E6E7EA"  CornerRadius="0" Background="Transparent"  Margin="0">
                     <Grid  >
                         <Grid.ColumnDefinitions  >
-                            <ColumnDefinition Width="80" />
-                            <ColumnDefinition Width="50" />
-                            <ColumnDefinition Width="50" />
-                            <ColumnDefinition Width="50" />
-                            <ColumnDefinition  Width="*" />
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Border Height="30" Width="45" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,25,0,0">
-                            <Border.Background>
-                                <ImageBrush ImageSource="img/矩形备份 10@2x.png"></ImageBrush>
-                            </Border.Background>
-                            <TextBlock VerticalAlignment="Center" Text="{Binding ID}" HorizontalAlignment="Center" FontSize="20" Foreground="White"></TextBlock>
+                        <Border  BorderThickness="0"  BorderBrush="#E6E7EA"  VerticalAlignment="Top">
+                            <Grid Height="30" Width="200">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid Background="{StaticResource niceBlack}"></Grid>
+                                <Button  Click="上移_Click"  Cursor="Hand" Grid.Column="1">
+                                    <Button.Template>
+                                        <ControlTemplate  TargetType="{x:Type Button}">
+                                            <Grid Background="{StaticResource niceGray}" x:Name="PART_Background">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Image Grid.Column="1" Source="img/切片1.png" Height="16" Width="16" VerticalAlignment="Center" ></Image>
+                                                <TextBlock Grid.Column="2" FontSize="13" Foreground="#333" VerticalAlignment="Center">上移</TextBlock>
+                                            </Grid>
+
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" TargetName="PART_Background" Value="{StaticResource niceHover}"></Setter>
+                                                </Trigger>
+
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter Property="Background" TargetName="PART_Background" Value="{StaticResource niceHover}"></Setter>
+                                                    <Setter Property="Foreground" Value="Gold"></Setter>
+                                                </Trigger>
+
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+
+                                <Button  Click="下移_Click"  Cursor="Hand" Grid.Column="2">
+                                    <Button.Template>
+                                        <ControlTemplate  TargetType="{x:Type Button}">
+                                            <Grid Background="{StaticResource niceGray}" x:Name="PART_Background">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1"></ColumnDefinition>
+
+                                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid Background="{StaticResource niceBlackEnable}"></Grid>
+                                                <Image Grid.Column="2" Source="img/切片2.png" Height="16" Width="16" ></Image>
+                                                <TextBlock Grid.Column="3" FontSize="13" Foreground="#333" VerticalAlignment="Center">下移</TextBlock>
+                                            </Grid>
+
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" TargetName="PART_Background" Value="{StaticResource niceHover}"></Setter>
+                                                </Trigger>
+
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter Property="Background" TargetName="PART_Background" Value="{StaticResource niceHover}"></Setter>
+                                                    <Setter Property="Foreground" Value="Gold"></Setter>
+                                                </Trigger>
+
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Button  Click="删除_Click"  Cursor="Hand" Grid.Column="3">
+                                    <Button.Template>
+                                        <ControlTemplate  TargetType="{x:Type Button}">
+                                            <Grid Background="{StaticResource niceGray}" x:Name="PART_Background">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1"></ColumnDefinition>
+
+                                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid Background="{StaticResource niceBlackEnable}"></Grid>
+                                                <Image Grid.Column="2" Source="img/切片3.png" Height="15" Width="15" ></Image>
+                                                <TextBlock Grid.Column="3" FontSize="13" Foreground="#333" VerticalAlignment="Center">删除</TextBlock>
+                                            </Grid>
+
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" TargetName="PART_Background" Value="{StaticResource niceHover}"></Setter>
+                                                </Trigger>
+
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter Property="Background" TargetName="PART_Background" Value="{StaticResource niceHover}"></Setter>
+                                                    <Setter Property="Foreground" Value="Gold"></Setter>
+                                                </Trigger>
+
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </Grid>
                         </Border>
 
-                        <StackPanel Grid.Column="1" Background="#F4F4F4" VerticalAlignment="Top" Margin="0,20,0,0" Cursor="Hand" PreviewMouseLeftButtonUp="Image_PreviewMouseLeftButtonUp_上移">
-                            <Image Grid.Column="1"  Stretch="Fill"  Source="img/形状@2x(1).png"  Width="24" Height="16" Margin="0,5"  ></Image>
-                            <TextBlock  FontSize="13"  HorizontalAlignment="Center" Margin="0,0,5,0">上移</TextBlock>
-                        </StackPanel>
-                        <StackPanel Grid.Column="2" Background="#F4F4F4"  VerticalAlignment="Top" Margin="0,20,0,0" Cursor="Hand"  PreviewMouseLeftButtonUp="Image_PreviewMouseLeftButtonUp_下移">
-                            <Image Grid.Column="2"  Stretch="Fill"  Source="img/形状@2x(2).png"  Width="24" Height="16" Margin="0,5"  ></Image>
-                            <TextBlock  FontSize="13" HorizontalAlignment="Center" Margin="0,0,5,0">下移</TextBlock>
-                        </StackPanel>
-                        <StackPanel Grid.Column="3" Background="#F4F4F4"  VerticalAlignment="Top" Margin="0,20,0,0" Cursor="Hand"  PreviewMouseLeftButtonUp="Image_PreviewMouseLeftButtonUp_删除">
-                            <Image Grid.Column="3"  Stretch="Fill"  Source="img/形状@2x(3).png"  Width="15" Height="16" Margin="0,5"  ></Image>
-                            <TextBlock FontSize="13"  HorizontalAlignment="Center">删除</TextBlock>
-                        </StackPanel>
-
-
-                        <ListBox VerticalAlignment="Center"  Grid.Column="4"   ScrollViewer.CanContentScroll="True"  WindowChrome.IsHitTestVisibleInChrome="True"
-                                 ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        <ListBox   Grid.Column="4"   ScrollViewer.CanContentScroll="True"  WindowChrome.IsHitTestVisibleInChrome="True" Margin="13,5,0,5" 
+                                 ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  
                                  ItemContainerStyle="{StaticResource ListBoxItemEmptyTemplate1234}" SelectionChanged="ListBox_SelectionChanged"
-                           ItemTemplate="{StaticResource Group}" ItemsSource="{Binding VideoNode }"  >
+                           ItemTemplate="{StaticResource Group}" ItemsSource="{Binding VideoNode }" HorizontalAlignment="Left" >
                             <ListBox.Template>
                                 <ControlTemplate TargetType="{x:Type ListBox}">
-                                    <WrapPanel Orientation="Horizontal" IsItemsHost="True" ScrollViewer.CanContentScroll="True" 
+                                    <WrapPanel Orientation="Horizontal" IsItemsHost="True" ScrollViewer.CanContentScroll="True"   
                                                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"  ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
                                 </ControlTemplate>
                             </ListBox.Template>
@@ -250,25 +370,25 @@
 
             <ControlTemplate x:Key="ChannelRadioButtonTemplate" TargetType="RadioButton">
                 <Grid  HorizontalAlignment="Left" Margin="0">
-                    <Grid Width="25" Height="25" x:Name="RadioButtonGrid"  HorizontalAlignment="Left">
-                        <Ellipse x:Name="RadioButtonCircular"  Stroke="#000" StrokeThickness="2" Fill="Transparent"
+                    <Grid Width="16" Height="16" x:Name="RadioButtonGrid"  HorizontalAlignment="Left">
+                        <Ellipse x:Name="RadioButtonCircular"  Stroke="#000" StrokeThickness="1" Fill="Transparent"
                                  Width="{Binding ElementName=RadioButtonGrid,Path=Width}" 
                                  Height="{Binding ElementName=RadioButtonGrid,Path=Height}"/>
                         <Ellipse x:Name="RadioButtonPoint" 
                                  HorizontalAlignment="Stretch"  Fill="White"
                                  VerticalAlignment="Stretch"  Margin="4"/>
                     </Grid>
-                    <Label x:Name="RadioLabel" FontWeight="Regular" Foreground="Black" FontSize="20"  Content="{TemplateBinding Content}" Margin="35,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="RadioLabel" FontWeight="Regular" FontFamily="微软雅黑" Foreground="Black" FontSize="13"  Text="{TemplateBinding Content}" Margin="25,0,0,0" VerticalAlignment="Center"/>
                 </Grid>
                 <ControlTemplate.Triggers>
                     <Trigger  Property="IsChecked" Value="True">
                         <Setter TargetName="RadioLabel" Property="Foreground" Value="Black"></Setter>
-                        <Setter  TargetName="RadioButtonPoint" Property="Fill" Value="#0478FF"/>
-                        <Setter TargetName="RadioButtonCircular" Property="Stroke" Value="#0478FF"></Setter>
+                        <Setter  TargetName="RadioButtonPoint" Property="Fill" Value="{StaticResource niceBlackEnable}"/>
+                        <Setter TargetName="RadioButtonCircular" Property="Stroke" Value="{StaticResource niceBlackEnable}"></Setter>
                     </Trigger>
                     <Trigger  Property="IsChecked" Value="False">
-                        <Setter TargetName="RadioButtonPoint" Property="Fill" Value="White"/>
-                        <Setter TargetName="RadioLabel" Property="Foreground" Value="#999999"></Setter>
+                        <Setter TargetName="RadioButtonPoint" Property="Fill" Value="Transparent"/>
+                        <Setter TargetName="RadioLabel" Property="Foreground" Value="#666"></Setter>
                         <Setter TargetName="RadioButtonCircular" Property="Stroke" Value="#BBB"></Setter>
                     </Trigger>
                 </ControlTemplate.Triggers>
@@ -281,18 +401,11 @@
     <Border  CornerRadius="6" Background="Transparent" BorderBrush="#CBCBCB" BorderThickness="0.5">
         <Grid  Background="Transparent" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <!--+++++++++++++++++++++++++++++++++++++头部++++++++++++++++++++++++++++++++++++++++-->
-            <Border CornerRadius="6,6,0,0" Height="40">
-                <Border.Background>
-                    <RadialGradientBrush GradientOrigin="0.5,0.5" RadiusX="1" RadiusY="1">
-                        <GradientStop Color="#FFF" Offset="0" />
-                        <GradientStop Color="#FFF" Offset="0.5" />
-                        <GradientStop Color="#FFF" Offset="0" />
-                    </RadialGradientBrush>
-                </Border.Background>
+            <Border CornerRadius="0,0,0,0" Height="50" Background="{StaticResource niceBlackEnable}">
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
@@ -321,39 +434,7 @@
                             <ColumnDefinition Width="30" />
                             <ColumnDefinition Width="10" />
                         </Grid.ColumnDefinitions>
-                        <Grid  HorizontalAlignment="Right"  Grid.Column="0"   Background="Transparent" 
-                  WindowChrome.IsHitTestVisibleInChrome="True"  
-  >
-                            <Button x:Name="BtnPopup"  HorizontalAlignment="Center"   Visibility="Collapsed"
-                        VerticalAlignment="Center" IsTabStop="False"  WindowChrome.IsHitTestVisibleInChrome="True" 
-                            Cursor="Hand" >
-                                <Button.Template>
-                                    <ControlTemplate>
-                                        <Border Name="PART_Background" BorderBrush="White" Background="#C74E86" 
-                                                BorderThickness="1.5" Width="20" Height="20" CornerRadius="15"  Cursor="Hand">
-                                            <TextBlock  x:Name="BtnInfo" FontWeight="Bold" 
-                                                Text="!" FontSize="15" Foreground="White" 
-                                                VerticalAlignment="Center" HorizontalAlignment="Center"  >
-                                            </TextBlock>
-                                        </Border>
-                                        <ControlTemplate.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="BorderBrush" TargetName="PART_Background" Value="#FFF"></Setter>
-                                                <Setter Property="Foreground" TargetName="BtnInfo" Value="#FFF"></Setter>
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-
-                                </Button.Template>
-                            </Button>
-                            <Popup x:Name="MenuPopup"  Width="120"  
-                           PopupAnimation="None" 
-                           PlacementTarget="{Binding ElementName=BtnPop}"  Placement="Center"  VerticalOffset="100" 
-                           AllowsTransparency="True" StaysOpen="True" IsOpen="False">
-                                <Border    Background="Transparent"  >
-                                </Border>
-                            </Popup>
-                        </Grid>
+                        <Border Grid.Column="1" Background="Transparent" BorderThickness="1,0,0,0" BorderBrush="Black" Margin="10,15"></Border>
 
                         <Button
                             Click="ButtonMin_Click"
@@ -385,30 +466,33 @@
             </Border>
             <!--+++++++++++++++++++++++++++++++++++++头部++++++++++++++++++++++++++++++++++++++++-->
 
+
+
+
             <!--+++++++++++++++++++++++++++++++++++++Body++++++++++++++++++++++++++++++++++++++++-->
-            <Border BorderBrush="#CBCBCB" BorderThickness="0" CornerRadius="0,0,6,6" Background="White" Grid.Row="1" >
+            <Border BorderBrush="#CBCBCB" BorderThickness="1"  Background="Transparent" Grid.Row="1" >
                 <Grid>
-                    <Grid Background="Transparent"  Visibility="Visible" Name="GridStepOne">
+
+                    <Grid Background="#F6F6F8"  Visibility="Collapsed" Name="GridStepOne">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="90"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="20"></RowDefinition>
-                            <RowDefinition Height="90"></RowDefinition>
-                            <RowDefinition Height="20"></RowDefinition>
-                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="60"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30" ></ColumnDefinition>
+                            <ColumnDefinition Width="200" ></ColumnDefinition>
 
                             <ColumnDefinition ></ColumnDefinition>
                             <ColumnDefinition Width="300"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button Name="btnAdd"  Grid.Column="1" Style="{StaticResource btnBaseCancel}" Height="60" Width="180" Foreground="White" FontSize="25" Click="添加素材_Click" HorizontalAlignment="Left" Margin="0,0,0,10">导入素材</Button>
+                        <TextBlock FontSize="18"  FontWeight="Bold"  Foreground="{StaticResource niceBlack}" FontFamily="微软雅黑" Margin="10,10,0,0">素材列表</TextBlock>
+                        <Button Name="btnAdd"  Grid.Column="1" Style="{StaticResource btnBaseCancel}"
+                                Height="30" Width="150" Foreground="White" FontSize="13" Click="添加素材_Click" HorizontalAlignment="Left" Margin="15,10">导入素材</Button>
 
                         <!--素材组 列表-->
-                        <Border Grid.Row="1" Grid.ColumnSpan="2"   Grid.Column="1" Background="#F4F4F4" Margin="0,0,30,0"  CornerRadius="6">
-                            <ListBox  ItemContainerStyle="{StaticResource ListBoxItemEmptyTemplate}" SelectionChanged="ListBox_SelectionChanged"
-                           ItemTemplate="{StaticResource VideoGroupNode}" ItemsSource="{Binding VideoGroupNodeList }"  >
+                        <Grid Grid.Row="1" Grid.ColumnSpan="3"   Grid.Column="0" >
+                            <ListBox  ItemContainerStyle="{StaticResource ListBoxItemEmptyTemplate}" SelectionChanged="ListBox_SelectionChanged" 
+                           ItemTemplate="{StaticResource VideoGroupNode}" ItemsSource="{Binding VideoGroupNodeList }"  Margin="0" >
                                 <ListBox.Template>
                                     <ControlTemplate TargetType="{x:Type ListBox}">
                                         <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"  Style="{StaticResource AduScrollViewer}">
@@ -417,14 +501,756 @@
                                     </ControlTemplate>
                                 </ListBox.Template>
                             </ListBox>
+                        </Grid>
+
+                        <!--合成-->
+
+                            <Grid Grid.Row="2"   Grid.Column="1" Grid.ColumnSpan="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition Width="180"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="180"></ColumnDefinition>
+                                        <ColumnDefinition Width="30"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                <TextBlock FontSize="13"  VerticalAlignment="Center"  HorizontalAlignment="Right">最多生成 <Run Foreground="{StaticResource niceBlackEnable}" Text="{Binding TotalCount}"></Run> 种</TextBlock>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" >
+
+                                    <TextBlock FontSize="13" Margin="20,0,0,0"  VerticalAlignment="Center" >生成</TextBlock>
+                                        <Border  Width="50" Height="20" CornerRadius="5" Background="{StaticResource niceGray}" Margin="15,0" >
+                                            <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"   Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Name="tbOutPutCount">0</TextBox>
+                                        </Border>
+                                        <TextBlock FontSize="13" VerticalAlignment="Center" Margin="5,0,0,0">种</TextBlock>
+
+                                    </StackPanel>
+                                </Grid>
+
+                                <Button Name="btnOut" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource btnBaseCancel}" Height="30" Width="150" Foreground="White"
+                                                    FontSize="13" Click="合成视频_Click" >下一步</Button>
+                            </Grid>
+
+
+                    </Grid>
+                    
+                    <Grid Background="#F6F6F8"  Visibility="Collapsed" Name="GridStepTwo">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="{Binding RowHeight}"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="{Binding RowHeight}"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{Binding ColumnWidth}" ></ColumnDefinition>
+
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition Width="{Binding ColumnWidth}"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+
+
+
+
+                        <Border Grid.Row="1"   Grid.Column="1" BorderThickness="2" CornerRadius="5" >
+                            <Border.BorderBrush>
+                                <DrawingBrush Viewport="0,0,20,20" ViewportUnits="Absolute" TileMode="Tile">
+                                    <DrawingBrush.Drawing>
+                                        <DrawingGroup>
+                                            <GeometryDrawing Brush="Black">
+                                                <GeometryDrawing.Geometry>
+                                                    <GeometryGroup>
+                                                        <RectangleGeometry Rect="0,0,50,50" />
+                                                        <RectangleGeometry Rect="50,50,50,50" />
+                                                    </GeometryGroup>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingGroup>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Border.BorderBrush>
+                            <Border.Background>
+                                <ImageBrush  ImageSource="{Binding BackgroundImage}" Stretch="Fill"></ImageBrush>
+                            </Border.Background>
+
                         </Border>
+                        <Grid Grid.Row="0" Grid.ColumnSpan="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="180"></ColumnDefinition>
+                                <ColumnDefinition Width="180"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal"  VerticalAlignment="Center" Background="Transparent"  >
+                                <TextBlock  Style="{StaticResource myText13}">裁剪像素</TextBlock>
+                                <Border  Width="50" Height="20" CornerRadius="5" Background="{StaticResource niceGray}" Margin="15,0" >
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                              Text="{Binding CutPixel_1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Orientation="Horizontal"  VerticalAlignment="Center" Background="Transparent"   >
+                                <TextBlock Style="{StaticResource myText13}" >偏移范围</TextBlock>
+                                <Border  Width="50" Height="20" CornerRadius="5" Background="{StaticResource niceGray}" Margin="15,0" >
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                             Text="{Binding offsetMin_1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Grid.Column="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center"  VerticalAlignment="Center" Background="Transparent"   >
+                                <TextBlock Style="{StaticResource myText13}" >剪裁像素</TextBlock>
+                                <Border  Width="50" Height="20" CornerRadius="5" Background="{StaticResource niceGray}" Margin="15,0" >
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                             Text="{Binding CutPixel_2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel  Grid.Row="2"  Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent"   >
+                                <TextBlock Style="{StaticResource myText13}" >偏移范围</TextBlock>
+                                <Border  Width="50" Height="20" CornerRadius="5" Background="{StaticResource niceGray}" Margin="15,0" >
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                                    Text="{Binding offsetMin_2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                </Border>
+                            </StackPanel>
+                        
+                        </Grid>
+                        <Grid Grid.Row="2" Grid.ColumnSpan="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="180"></ColumnDefinition>
+                                <ColumnDefinition Width="180"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal"  VerticalAlignment="Center" Background="Transparent"  >
+                                <TextBlock  Style="{StaticResource myText13}">裁剪像素 </TextBlock>
+                                <Border  Width="50" Height="20" CornerRadius="5" Background="{StaticResource niceGray}" Margin="15,0" >
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                           Text="{Binding CutPixel_3,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                             Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2" Orientation="Horizontal"  VerticalAlignment="Center" Background="Transparent"   >
+                                <TextBlock Style="{StaticResource myText13}" >偏移范围</TextBlock>
+                                <Border  Width="50" Height="20" CornerRadius="5" Background="{StaticResource niceGray}" Margin="15,0" >
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                           Text="{Binding offsetMin_3,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                </Border>
+                            </StackPanel>
+
+                        </Grid>
+
+                        <Grid Grid.Row="1" Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center"   VerticalAlignment="Center" Background="Transparent"   >
+                                <TextBlock Style="{StaticResource myText13}" >剪裁像素</TextBlock>
+                                <Border  Width="50" Height="20" CornerRadius="5" Background="{StaticResource niceGray}" Margin="15,0" >
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                             Text="{Binding CutPixel_4,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel  Grid.Row="2"  Orientation="Horizontal" HorizontalAlignment="Center"   VerticalAlignment="Center" Background="Transparent"   >
+                                <TextBlock Style="{StaticResource myText13}" >偏移范围</TextBlock>
+                                <Border  Width="50" Height="20" CornerRadius="5" Background="{StaticResource niceGray}" Margin="15,0" >
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                            Text="{Binding offsetMin_4,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                </Border>
+                            </StackPanel>
+
+                        </Grid>
+                        
+                        <Grid  Grid.Row="4" Grid.ColumnSpan="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="93"></ColumnDefinition>
+
+                                <ColumnDefinition Width="370"></ColumnDefinition>
+                                <ColumnDefinition Width="20"></ColumnDefinition>
+                                <ColumnDefinition Width="280"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Style="{StaticResource myText13}" Margin="30,0,0,0">导出路径</TextBlock>
+                            <Grid  Grid.Column="1"   Height="40"  Width="360"  HorizontalAlignment="Left">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="40"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Border   Height="20" CornerRadius="5" Background="{StaticResource niceGray}" Margin="15,0" >
+                                        <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                           Text="{Binding SavePath,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                             Foreground="{StaticResource niceBlack}" FontSize="13" Name="tbOutPut"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                    </Border>
+                                    <Border Height="30" Grid.Column="1" PreviewMouseLeftButtonUp="选择导出路径_Click"  CornerRadius="4" Background="{StaticResource niceBlack}">
+                                        <Image Cursor="Hand"  Source="img/切片4.png"  Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>
+                                    </Border>
+
+                                </Grid>
+
+                            </Grid>
+
+                            <Grid Grid.Column="3" Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock  Style="{StaticResource myText13}">设置填充颜色</TextBlock>
+                                    <colorPicker:ColorPicker ColorMode="ColorPalette" Width="40"    Height="20"
+                                            SelectedColor="{Binding FillColor,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left"></colorPicker:ColorPicker>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                                    <TextBlock Style="{StaticResource myText13}">是否采用同一颜色</TextBlock>
+                                    <CheckBox Style="{StaticResource chkPassWord}" Margin="5,0,0,0" IsChecked="{Binding IsSame, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Column="4" Margin="0,0,30,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Button  Grid.Column="0" 
+                                    Style="{StaticResource btnBaseCancel}" Height="30" Width="80"  Tag="剪切" Click="跳过_Click"
+                                                    Foreground="White" HorizontalContentAlignment="Center" FontSize="13" 
+                                        HorizontalAlignment="Center"  Content="跳过"></Button>
+                                <Button Name="btnCut" Grid.Column="1" 
+                                    Style="{StaticResource btnBaseCancel}" Height="30" Width="120"  Click="剪切视频_Click"
+                                                    Foreground="White" HorizontalContentAlignment="Center" FontSize="13"  
+                                        HorizontalAlignment="Center"  Content="裁剪预览"></Button>
+
+
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="3" Grid.ColumnSpan="3" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="93"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.ColumnSpan="2" BorderThickness="0,1,0,1" BorderBrush="{StaticResource niceHover}"></Border>
+                            <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"  Style="{StaticResource myText13}" Margin="30,0">进度 <Run Text="{Binding CurrentIndex}" Foreground="{StaticResource niceBlack}"></Run>/<Run Foreground="#666" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
+                            <ProgressBar Margin="0,0,30,0" Style="{StaticResource  SimpleProgressBar}" Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="8" ></ProgressBar>
+                        </Grid>
+                    </Grid>
+                    
+                    <Grid Background="#f6f6f8"  Visibility="Collapsed" Name="GridStepThree">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="80"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="100"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+
+                        <Grid  Grid.Row="4" Grid.ColumnSpan="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"></ColumnDefinition>
+                                <ColumnDefinition Width="93"></ColumnDefinition>
+                                <ColumnDefinition Width="70"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+
+                                <ColumnDefinition Width="180"></ColumnDefinition>
+                                <ColumnDefinition Width="30"></ColumnDefinition>
+
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Style="{StaticResource myText13}"  Grid.Column="1">模糊程度(0~∞)</TextBlock>
+
+                            <Border Grid.Column="2"  BorderThickness="1" CornerRadius="4" BorderBrush="#666" Width="50" Height="30" Margin="10,0,0,0">
+                                <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                      Text="{Binding LumaPower, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center"  ></TextBox>
+                            </Border>
+                            <Button Grid.Column="4"  Style="{StaticResource btnBaseCancel}" Height="30" Width="80"  Tag="竖转横" Click="跳过_Click"
+                                                Foreground="White" FontSize="13"  HorizontalAlignment="Right"  >跳过</Button>
+                            <Button Grid.Column="5" Name="btnVeritalToHorizontal"  Style="{StaticResource btnBaseCancel}" Height="30" Width="150"  Click="竖版转横版_Click"
+                                                Foreground="White" FontSize="13"   >竖转横预览</Button>
+
+                        </Grid>
+
+                        <Grid Grid.Row="3" Grid.ColumnSpan="3" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="93"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.ColumnSpan="2" BorderThickness="0,1,0,1" BorderBrush="{StaticResource niceHover}"></Border>
+                            <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"  Style="{StaticResource myText13}" Margin="30,0">进度 <Run Text="{Binding CurrentIndex}" Foreground="{StaticResource niceBlack}"></Run>/<Run Foreground="#666" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
+                            <ProgressBar Margin="0,0,30,0" Style="{StaticResource  SimpleProgressBar}" Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="8" ></ProgressBar>
+                        </Grid>
+                    </Grid>
+                    
+                    <Grid Background="#f6f6f8"  Visibility="Collapsed" Name="GridStepFour">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="{Binding RowHeight}"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="{Binding RowHeight}"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="100"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{Binding ColumnWidth}" ></ColumnDefinition>
+
+                            <ColumnDefinition  Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="{Binding ColumnWidth}"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Row="1"   Grid.Column="1"  BorderThickness="2"  CornerRadius="5" >
+                            <Border.BorderBrush>
+                                <DrawingBrush Viewport="0,0,20,20" ViewportUnits="Absolute" TileMode="Tile">
+                                    <DrawingBrush.Drawing>
+                                        <DrawingGroup>
+                                            <GeometryDrawing Brush="Black">
+                                                <GeometryDrawing.Geometry>
+                                                    <GeometryGroup>
+                                                        <RectangleGeometry Rect="0,0,50,50" />
+                                                        <RectangleGeometry Rect="50,50,50,50" />
+                                                    </GeometryGroup>
+                                                </GeometryDrawing.Geometry>
+                                            </GeometryDrawing>
+                                        </DrawingGroup>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Border.BorderBrush>
+                            <Border.Background>
+                                <ImageBrush  ImageSource="{Binding BackgroundImage}" Stretch="Uniform"></ImageBrush>
+                            </Border.Background>
+
+                        </Border>
+
+
+                        <Grid Grid.Row="0" Grid.RowSpan="3"  Grid.Column="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center"  VerticalAlignment="Center" Background="Transparent"   >
+                                <TextBlock Style="{StaticResource myText13}" >剪裁像素</TextBlock>
+                                <Border  Width="50" Height="20" CornerRadius="5" Background="{StaticResource niceGray}" Margin="15,0" >
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                       Text="{Binding CutPixel_横版右,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel  Grid.Row="2"  Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent"   >
+                                <TextBlock Style="{StaticResource myText13}" >偏移范围</TextBlock>
+                                <Border  Width="50" Height="20" CornerRadius="5" Background="{StaticResource niceGray}" Margin="15,0" >
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                     Text="{Binding offset_横版右,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="0" Grid.RowSpan="3" Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition Height="50"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center"  VerticalAlignment="Center" Background="Transparent"   >
+                                <TextBlock Style="{StaticResource myText13}" >剪裁像素</TextBlock>
+                                <Border  Width="50" Height="20" CornerRadius="5" Background="{StaticResource niceGray}" Margin="15,0" >
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                   Text="{Binding CutPixel_横版左,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel  Grid.Row="2"  Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent"   >
+                                <TextBlock Style="{StaticResource myText13}" >偏移范围</TextBlock>
+                                <Border  Width="50" Height="20" CornerRadius="5" Background="{StaticResource niceGray}" Margin="15,0" >
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                                    Text="{Binding offset_横版左,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+                        <Grid  Grid.Row="4" Grid.ColumnSpan="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"></ColumnDefinition>
+
+                                <ColumnDefinition Width="93"></ColumnDefinition>
+
+                                <ColumnDefinition Width="550"></ColumnDefinition>
+                                <ColumnDefinition Width="50"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="30"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="4">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="170"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition ></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0"  Style="{StaticResource myText13}">填充高度Y</TextBlock>
+                                    <Border Grid.Column="1"  BorderThickness="1" CornerRadius="4" BorderBrush="#666" Width="50" Height="30" Margin="10,0,0,0">
+                                        <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                     Text="{Binding PadHeight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center"  ></TextBox>
+                                    </Border>
+                                </Grid>
+                                <Button Grid.Column="0" Grid.Row="1" Style="{StaticResource btnBaseCancel}" Height="30" Width="80"  Tag="横转竖" Click="跳过_Click"
+                                                Foreground="White" FontSize="13"  HorizontalAlignment="Center" >跳过</Button>
+                                <Button Grid.Column="1" Grid.Row="1" Name="btnHorizontalToVertical"  Style="{StaticResource btnBaseCancel}" Height="30" Width="150"  Click="横版转竖版_Click"
+                                                Foreground="White" FontSize="13"  HorizontalAlignment="Center" >横转竖预览</Button>
+
+                            </Grid>
+
+                            <Grid Grid.Column="1" Grid.Row="3" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Border BorderBrush="{StaticResource niceGray}" BorderThickness="0,0,2,0" Grid.RowSpan="2" Margin="0,10">
+                                    
+                                </Border>
+                                <RadioButton Grid.Row="1" Margin="0"  
+                                                             VerticalAlignment="Center" HorizontalAlignment="Left"  Foreground="Black"
+                                                             Content="颜色填充" PreviewMouseLeftButtonDown="SwitchChannel_MouseLeftButtonDown" 
+                                                             Cursor="Hand" FontWeight="Regular" FontFamily="微软雅黑" FontSize="13" Template="{DynamicResource ChannelRadioButtonTemplate}"
+                                                         GroupName="Padd"
+                                                         />
+                                <RadioButton Grid.Row="0" Margin="0"   IsChecked="True"
+                                                             VerticalAlignment="Center" HorizontalAlignment="Left"  Foreground="Black"
+                                                             Content="图片填充" PreviewMouseLeftButtonDown="SwitchChannel_MouseLeftButtonDown" 
+                                                             Cursor="Hand" FontWeight="Regular" FontFamily="微软雅黑" FontSize="13" Template="{DynamicResource ChannelRadioButtonTemplate}"
+                                                         GroupName="Padd"
+                                                         />
+                            </Grid>
+                            <Grid Grid.Column="2" Grid.Row="3" Name="gridColorPad" Visibility="Collapsed">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="20,0,0,0">
+                                    <TextBlock  Style="{StaticResource myText13}">设置填充颜色</TextBlock>
+                                    <colorPicker:ColorPicker ColorMode="ColorPalette" Width="40"    Height="20" VerticalAlignment="Center" Margin="15,0,0,0"
+                                            SelectedColor="{Binding FillColor横转竖,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left"></colorPicker:ColorPicker>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="20,0,0,0">
+                                        <TextBlock  Style="{StaticResource myText13}">是否采用同一颜色</TextBlock>
+                                        <CheckBox Margin="20,0,0,0" Style="{StaticResource chkPassWord}" IsChecked="{Binding IsSame横转竖,Mode=TwoWay}"></CheckBox>
+                                    </StackPanel>
+                                </StackPanel>
+                     
+                            </Grid>
+                            <Grid Grid.Column="2" Grid.Row="3" Name="gridImagePad" Visibility="Visible" Margin="20,0,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="140"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock  Style="{StaticResource myText13}">选择填充图片上</TextBlock>
+                                    <Border Margin="10,0,0,0" Height="30" Width="40" Grid.Column="1" PreviewMouseLeftButtonUp="选择导图片路径上_Click"  CornerRadius="4" Background="{StaticResource niceBlack}">
+                                        <Image Cursor="Hand"  Source="img/切片4.png"  Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>
+                                    </Border>
+                                    <Image Margin="10,0,0,0" Source="{Binding FillImageTop}" Height="20" Width="40" Stretch="Uniform"></Image>
+
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                                    <TextBlock Style="{StaticResource myText13}">选择填充图片下</TextBlock>
+                                    <Border Margin="10,0,0,0" Height="30" Width="40" Grid.Column="1" PreviewMouseLeftButtonUp="选择图片路径下_Click"  CornerRadius="4" Background="{StaticResource niceBlack}">
+                                        <Image Cursor="Hand"  Source="img/切片4.png"  Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>
+                                    </Border>
+                                    <Image Margin="10,0,0,0" Source="{Binding FillImageBottom}" Height="20" Width="40" Stretch="Uniform"></Image>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Grid.Column="1" >
+                                    <TextBlock Style="{StaticResource myText13}">模糊程度(0~∞)</TextBlock>
+                                    <Border  BorderThickness="1" CornerRadius="4" BorderBrush="#666" Width="50" Height="30" Margin="10,0,0,0">
+                                        <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                      Text="{Binding LumaPowerTop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center"  ></TextBox>
+                                    </Border>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1" >
+                                    <TextBlock Style="{StaticResource myText13}">模糊程度(0~∞)</TextBlock>
+                                    <Border  BorderThickness="1" CornerRadius="4" BorderBrush="#666" Width="50" Height="30" Margin="10,0,0,0">
+                                        <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                        Text="{Binding LumaPowerBottom,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center"  ></TextBox>
+                                    </Border>
+                                   
+                                </StackPanel>
+
+                                <Button Grid.Row="0"  Grid.Column="2" HorizontalAlignment="Left" Grid.RowSpan="2" Style="{StaticResource btnBaseCancel}" Height="30" 
+                                                        Foreground="White" Width="120" Margin="0,0,0,0" Click="随机从图库选择图片_Click_1">随机图库图片</Button>
+                            </Grid>
+                
+
+                        </Grid>
+                        <Grid Grid.Row="3" Grid.ColumnSpan="3" Margin="0,0,30,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="93"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"  Style="{StaticResource myText13}" Margin="30,0">进度 <Run Text="{Binding CurrentIndex}" Foreground="{StaticResource niceBlack}"></Run>/<Run Foreground="#666" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
+                            <ProgressBar Style="{StaticResource  SimpleProgressBar}" Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="8" ></ProgressBar>
+                        </Grid>
+                    </Grid>
+                    
+                    <Grid Background="#f6f6f8"  Visibility="Collapsed" Name="GridStepFive">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="100"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel>
+
+                        </StackPanel>
+
+                        <Grid  Grid.Row="3" Grid.ColumnSpan="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"></ColumnDefinition>
+                                <ColumnDefinition Width="150" ></ColumnDefinition>
+                                <ColumnDefinition ></ColumnDefinition>
+                                <ColumnDefinition ></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                                <TextBlock Grid.Column="1" Style="{StaticResource myText13}">字体大小</TextBlock>
+                                <Border Grid.Column="2"  BorderThickness="1" CornerRadius="4" BorderBrush="#666" Width="50" Height="30" Margin="10,0,0,0">
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                    Text="{Binding FontSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center"  ></TextBox>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
+                                <TextBlock Grid.Column="1"  Style="{StaticResource myText13}">字体颜色</TextBlock>
+                                <colorPicker:ColorPicker ColorMode="ColorPalette" Width="150"   Height="40" Margin="15,0"
+                                            SelectedColor="{Binding FontColor,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left"></colorPicker:ColorPicker>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Grid.Column="3" Orientation="Horizontal">
+                                <TextBlock Grid.Column="1"  Style="{StaticResource myText13}">字体样式</TextBlock>
+                                <Border Grid.Column="2"  BorderThickness="1" CornerRadius="4" BorderBrush="#666" Width="150" Height="30" Margin="15,0,0,0">
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                         Text="{Binding FontStyle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center"  ></TextBox>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                                <TextBlock Grid.Column="1"  Style="{StaticResource myText13}">底部距离</TextBlock>
+                                <Border Grid.Column="2"  BorderThickness="1" CornerRadius="4" BorderBrush="#666" Width="50" Height="30" Margin="10,0,0,0">
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                     Text="{Binding TextHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center"  ></TextBox>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal">
+                                <TextBlock Grid.Column="1"  Style="{StaticResource myText13}">描边宽度</TextBlock>
+                                <ComboBox  Margin="15,0"  
+                                              ItemsSource="{Binding ComBox集合}"
+                                           SelectedItem="{Binding TextWidth ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                           Style="{StaticResource comboxBase}"  Width="150" Height="30" >
+                                </ComboBox>
+                            </StackPanel>
+
+
+                            <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal">
+                                <TextBlock Grid.Column="1"  Style="{StaticResource myText13}">阴影深度</TextBlock>
+                                <ComboBox  Margin="15,0"    ItemsSource="{Binding ComBox集合123}"
+                                           SelectedItem="{Binding TextDeepth ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
+                                           Style="{StaticResource comboxBase}" Width="150" Height="30"  >
+                                </ComboBox>
+                            </StackPanel>
+                            <Grid Grid.Row="1" Grid.Column="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Button   Style="{StaticResource btnBaseCancel}" Height="30" Width="50"  
+                                               Tag="字幕" Click="跳过_Click"
+                                                Foreground="White" FontSize="13"  HorizontalAlignment="Right"  >跳过</Button>
+                               
+                                <Button  Grid.Column="1"   Style="{StaticResource btnBaseCancel}" Height="30" Width="150"  Name="btn合成字幕"
+                                                    Click="合成字幕_Click"
+                                                Foreground="White" FontSize="13"  HorizontalAlignment="Right"  Margin="30,0">字幕预览</Button>
+                            </Grid>
+                          
+
+                        </Grid>
+
+
+                        <Grid Grid.Row="2" Grid.ColumnSpan="3" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="93"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.ColumnSpan="2" BorderThickness="0,1,0,1" BorderBrush="{StaticResource niceHover}"></Border>
+                            <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"  Style="{StaticResource myText13}" Margin="30,0">进度 <Run Text="{Binding CurrentIndex}" Foreground="{StaticResource niceBlack}"></Run>/<Run Foreground="#666" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
+                            <ProgressBar Margin="0,0,30,0" Style="{StaticResource  SimpleProgressBar}" Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="8" ></ProgressBar>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Background="#f6f6f8"  Visibility="Collapsed" Name="GridStepSix">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel>
+
+                        </StackPanel>
+
+                        <Grid  Grid.Row="3" Grid.ColumnSpan="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"></ColumnDefinition>
+                                <ColumnDefinition Width="150" ></ColumnDefinition>
+                                <ColumnDefinition Width="10" ></ColumnDefinition>
+                                <ColumnDefinition  Width="150"></ColumnDefinition>
+                                <ColumnDefinition Width="10" ></ColumnDefinition>
+
+                                <ColumnDefinition ></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+ 
+                            <Grid Grid.Row="0" Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition ></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0"  Style="{StaticResource myText13}">水印位置X</TextBlock>
+                                <Border Grid.Column="2"  BorderThickness="1" CornerRadius="4" BorderBrush="#666" Width="50" Height="30" Margin="10,0,0,0">
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                Text="{Binding 水印坐标X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center"  ></TextBox>
+                                </Border>
+                            </Grid>
+                            <Grid Grid.Row="1" Grid.Column="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Style="{StaticResource myText13}">水印坐标Y</TextBlock>
+                                <Border Grid.Column="2"  BorderThickness="1" CornerRadius="4" BorderBrush="#666" Width="50" Height="30" Margin="10,0,0,0">
+                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                Text="{Binding 水印坐标Y, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center"  ></TextBox>
+                                </Border>
+                             
+                            </Grid>
+
+
+                            <StackPanel Grid.Column="5"  Orientation="Horizontal">
+                                <TextBlock  Style="{StaticResource myText13}">选择水印</TextBlock>
+                                <Border Margin="10,0,0,0" Height="30" Width="40" Grid.Column="1" PreviewMouseLeftButtonUp="选择水印图片_Click"  CornerRadius="4" Background="{StaticResource niceBlack}">
+                                    <Image Cursor="Hand"  Source="img/切片4.png"  Height="20" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>
+                                </Border>
+
+                                <Image Source="{Binding 水印预览}" Height="40" Width="60" Stretch="Uniform"></Image>
+
+                            </StackPanel>
+                            <Grid Grid.RowSpan="2" Grid.Column="6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="210"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Button    Style="{StaticResource btnBaseCancel}" Height="30" Width="50"  
+                                                    Click="跳过_Click" Tag="水印" 
+                                                Foreground="White" FontSize="13"  HorizontalAlignment="Right" >跳过</Button>
+                                <Button Grid.Column="1"   Style="{StaticResource btnBaseCancel}" Height="30" Width="150"  Name="btn添加水印"
+                                                    Click="添加水印_Click"
+                                                Foreground="White" FontSize="13"  HorizontalAlignment="Right" Margin="30,0">水印预览</Button>
+                            </Grid>
+                    
+
+                        </Grid>
+
+
+                        <Grid Grid.Row="2" Grid.ColumnSpan="3" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="93"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.ColumnSpan="2" BorderThickness="0,1,0,1" BorderBrush="{StaticResource niceHover}"></Border>
+                            <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"  Style="{StaticResource myText13}" Margin="30,0">进度 <Run Text="{Binding CurrentIndex}" Foreground="{StaticResource niceBlack}"></Run>/<Run Foreground="#666" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
+                            <ProgressBar Margin="0,0,30,0" Style="{StaticResource  SimpleProgressBar}" Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="8" ></ProgressBar>
+                        </Grid>
+                    </Grid>
+                    <!--Visibility="{Binding PreViewVisibility ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+                    <Grid Name="grid预览页"  Visibility="{Binding PreViewVisibility ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="#F6F6F8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="60"></RowDefinition>
+                            <RowDefinition Height="60"></RowDefinition>
+                            <RowDefinition Height="0"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="30"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
                         <!--播放器-->
-                        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Visibility="Collapsed">
+                        <Grid Grid.Row="0" Grid.Column="1" Visibility="Visible" Background="#F6F6F8">
                             <WindowsFormsHost:WindowsFormsHost x:Name="winformhost" Background="Transparent"  Panel.ZIndex="0">
                                 <VlcWinform:VlcControl  x:Name="VlcPlayer"  Dock="Fill" VlcLibDirectoryNeeded="VlcPlayer_VlcLibDirectoryNeeded"   ></VlcWinform:VlcControl>
                             </WindowsFormsHost:WindowsFormsHost>
                         </Grid>
-                        <!--列表-->
+                        <!--列表-->  
                         <ListBox Grid.RowSpan="6"   Grid.Column="1"   Visibility="Collapsed"
                              ItemContainerStyle="{StaticResource ListBoxItemEmptyTemplate}" SelectionChanged="ListBox_SelectionChanged"
                            ItemTemplate="{StaticResource PlayList}" ItemsSource="{Binding PlayList }"  >
@@ -437,26 +1263,29 @@
                                 </ControlTemplate>
                             </ListBox.Template>
                         </ListBox>
+
                         <!--播放 暂停 时间-->
-                        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Background="Transparent" Visibility="Collapsed">
-                            <Border BorderBrush="#CBCBCB" BorderThickness="0" CornerRadius="0,0,6,6" Background="Black">
+                        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="Transparent" Visibility="Visible">
+                            <Border BorderBrush="#CBCBCB" BorderThickness="0" Background="#7B7B7B">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="60"></ColumnDefinition>
-                                        <ColumnDefinition Width="80"></ColumnDefinition>
+                                        <ColumnDefinition Width="30"></ColumnDefinition>
+
+                                        <ColumnDefinition Width="50"></ColumnDefinition>
+                                        <ColumnDefinition Width="1"></ColumnDefinition>
 
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition Width="20"></ColumnDefinition>
+                                        <ColumnDefinition Width="240"></ColumnDefinition>
                                         <ColumnDefinition Width="60"></ColumnDefinition>
-                                        <ColumnDefinition Width="190"></ColumnDefinition>
 
-                                        <ColumnDefinition Width="60"></ColumnDefinition>
+                                        <ColumnDefinition Width="30"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Image Source="/img/播放.png" Height="50" Width="50"  Name="imgPlay"   Cursor="Hand"
-                                       PreviewMouseDown="PlayOrPause" Visibility="Visible" VerticalAlignment="Center"></Image>
-                                    <Image Source="/img/暂停.png" Height="50" Width="50" Name="imgPause"   Cursor="Hand"
+                                    <Image Source="/img/播放.png" Height="30" Width="30" Grid.Column="1"  Name="imgPlay"   Cursor="Hand"
+                                       PreviewMouseDown="PlayOrPause" Visibility="Visible"     VerticalAlignment="Center"></Image>
+                                    <Image Source="/img/暂停.png" Height="30" Width="30" Grid.Column="1" Name="imgPause"   Cursor="Hand"
                                        PreviewMouseDown="PlayOrPause" VerticalAlignment="Center" Visibility="Collapsed"></Image>
-                                    <Grid Grid.Column="2" Grid.ColumnSpan="3" VerticalAlignment="Center" >
+                                    <Grid Grid.Column="2" Grid.ColumnSpan="4" VerticalAlignment="Center" >
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="15"></RowDefinition>
                                             <RowDefinition Height="10"></RowDefinition>
@@ -471,26 +1300,32 @@
                                         VerticalAlignment="Center" Value="{Binding Progress ,Mode=TwoWay}"
                                         Style="{StaticResource mySliderStyle }"
                                         PreviewMouseDown="PlaySilder_PreviewMouseDown"></Slider>
-                                        <!---->
-                                    <!---->
+                                        
+                                    
                                         <TextBlock Grid.Column="0" Grid.Row="2" Foreground="White" FontSize="16"   Text="{Binding CurrentPos  ,Mode=TwoWay}"
                                            HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
-                                        <!---->
+                                        
                                     <TextBlock Grid.Column="2" Grid.Row="2" Foreground="White" FontSize="16"   Text="{Binding MaxPos  ,Mode=TwoWay}"
                                            HorizontalAlignment="Right" VerticalAlignment="Center"  ></TextBlock>
                                 </Grid>
-                            <StackPanel Grid.Column="5" Orientation="Horizontal" Margin="10,0,0,0">
-                                        <TextBox Width="70" Height="30" VerticalContentAlignment="Center" Name="tbTime"></TextBox>
-                                        <Button Style="{StaticResource btnBaseCancel}" Height="35" Margin="10,0,0,0" Width="90" Click="跳转指定秒_Click">转到指定秒</Button>
-                                    </StackPanel>
-                                <Image Grid.Column="6" Stretch="Fill" Name="imgPop"   Cursor="Hand"
+                            <!--<StackPanel Grid.Column="5" Orientation="Horizontal" Margin="10,0,0,0">
+                                        <Border  Background="#F6F6F8" CornerRadius="5" Height="30" Width=" 50">
+                                            <TextBox Background="Transparent" BorderThickness="0" TextAlignment="Center" Height="30" VerticalContentAlignment="Center" Name="tbTime">12</TextBox>
+                                        </Border>
+                                       
+                                        --><!--<Button Style="{StaticResource btnBaseCancel}" Height="30" Margin="20,0,0,0" FontSize="13" Width="150" Click="跳转指定秒_Click">转到指定秒</Button>--><!--
+                                    </StackPanel>-->
+                                    <Border Grid.Column="6" Height="30" Width="30" CornerRadius="15" Background="#4A4A4A" BorderThickness="2" BorderBrush="#f6f6f8">
+                                        <Image  Stretch="Fill" Name="imgPop"   Cursor="Hand"
                                        Source="/img/volume.png" Height="20" Width="20" PreviewMouseDown="Image_PreviewMouseDown"></Image>
+                                    </Border>
+                            
                                 <Popup x:Name="VolPopup"  Width="50"   Height="120" Grid.Column="4"  MouseLeave="MenuPopup_MouseLeave"
-                           PopupAnimation="None"  HorizontalAlignment="Center" MyPopup:PopopHelper.PopupPlacementTarget="{Binding ElementName=DahePlayer}" 
+                           PopupAnimation="None"   MyPopup:PopopHelper.PopupPlacementTarget="{Binding ElementName=DahePlayer}" 
                            PlacementTarget="{Binding ElementName=imgPop}"  Placement="Center"  VerticalOffset="-70"  HorizontalOffset="0"
                            AllowsTransparency="True" StaysOpen="True" IsOpen="False">
                                     <Border    Background="Black" Opacity="0.8"  CornerRadius="3" Margin="0">
-                                        <Slider  Cursor="Hand" Value="100"  Orientation="Vertical" HorizontalAlignment="Center" Margin="5" Maximum="100" Minimum="0" 
+                                        <Slider  Cursor="Hand" Value="100"  Orientation="Vertical"  Margin="5" Maximum="100" Minimum="0" 
                                               Style="{StaticResource mySliderStyle}" ValueChanged="Slider_ValueChanged"
                                                  >
                                         </Slider>
@@ -498,12 +1333,12 @@
                                 </Popup>
                              
                         <Popup x:Name="VideoQualityPopup"  Width="180"  Height="600"  Grid.Column="5"  MouseLeave="VideoQualityPopup_MouseLeave"
-                           PopupAnimation="None"  HorizontalAlignment="Center" MouseEnter="VideoQualityPopup_MouseEnter"
+                           PopupAnimation="None"   MouseEnter="VideoQualityPopup_MouseEnter"
                            PlacementTarget="{Binding ElementName=bPop}"  Placement="Top"  VerticalOffset="10"  HorizontalOffset="0"
                            AllowsTransparency="True" StaysOpen="True" IsOpen="False">
                             <Border    Background="Black" Opacity="0.8"  CornerRadius="3" >
                                 <ListBox  Name="lbPlayList"
-                          HorizontalAlignment="Center" HorizontalContentAlignment="Center"  
+                           HorizontalContentAlignment="Center"  
                           ItemContainerStyle="{StaticResource ListBoxItemEmptyTemplate}" Margin="5,20"
                            ItemTemplate="{StaticResource FindListTemplate}" ItemsSource="{Binding PlayList }">
                                     <ListBox.Template>
@@ -519,7 +1354,7 @@
                     </Grid>
             </Border>
         </Grid>
-                    <!--帧数-->
+
                                         <Grid Grid.Row="3"  Visibility="Collapsed">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="140"></ColumnDefinition>
@@ -551,403 +1386,32 @@
                                                 <Button Style="{StaticResource btnBaseCancel}" Height="35" Margin="10,0,0,0" Width="90" Click="跳转指定帧_Click">转到指定帧</Button>
                                             </StackPanel>
                                         </Grid>
-                                        <!--合成-->
-                                        <Grid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" >
+
+                                        <Grid Grid.Row="2" Grid.Column="1">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="120"></ColumnDefinition>
-                                                <ColumnDefinition Width="520"></ColumnDefinition>
-                                                <ColumnDefinition Width="0"></ColumnDefinition>
-                                                <ColumnDefinition Width="120"></ColumnDefinition>
-                                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                            </Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="60"></ColumnDefinition>
+                                                <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="150"></ColumnDefinition>
 
-                                            <Grid   Grid.Column="3" Grid.ColumnSpan="2">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition ></ColumnDefinition>
-                                                    <ColumnDefinition Width="210"></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,30,0">
-                                                    <TextBlock FontSize="25">总计 <Run Foreground="#0478FF" Text="{Binding TotalCount}"></Run> 种</TextBlock>
-                                                    <TextBlock FontSize="25" Margin="20,0,0,0">生成</TextBlock>
-                                                    <Border  Width="60" Height="35" CornerRadius="5" Background="#F4F4F4" Margin="5,0" >
-                                                        <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Name="tbOutPutCount">0</TextBox>
-                                                    </Border>
-                                                    <TextBlock FontSize="25" Margin="20,0,0,0">种</TextBlock>
-
-                                                </StackPanel>
-                                                <Button Name="btnOut" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource btnBaseCancel}" Height="60" Width="180" Foreground="White"
-                                                    FontSize="25" Click="合成视频_Click" Margin="0,5,30,0">开始导出</Button>
-                                            </Grid>
-
-                                        </Grid>
-                                        <TextBlock  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" FontSize="23"  Grid.RowSpan="3" VerticalAlignment="Bottom" Margin="0,0,0,15">进度:<Run Text="{Binding CurrentIndex}" Foreground="Green"></Run>/<Run Foreground="#0478FF" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
-                                        <ProgressBar Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="5" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="15" Margin="180,5,30,0"></ProgressBar>
-
-                                    </Grid>
-                                    <Grid Background="Transparent"  Visibility="Collapsed" Name="GridStepTwo">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="80"></RowDefinition>
-                                            <RowDefinition Height="438"></RowDefinition>
-                                            <RowDefinition Height="80"></RowDefinition>
-                                            <RowDefinition Height="90"></RowDefinition>
-                                            <RowDefinition Height="40"></RowDefinition>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition MinWidth="200" ></ColumnDefinition>
-
-                                            <ColumnDefinition ></ColumnDefinition>
-                                            <ColumnDefinition MinWidth="200"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-
-
-
-
-
-                                        <Canvas Grid.Row="0"   Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3" >
-                                            <Canvas.Background>
-                                                <ImageBrush  ImageSource="{Binding BackgroundImage}" Stretch="Uniform"></ImageBrush>
-                                            </Canvas.Background>
-
-                                        </Canvas>
-                                        <Grid Grid.Row="0" Grid.ColumnSpan="3">
-                                            <Border Name="borderTop"  Background="{Binding FillBrush}" Opacity="0.3">
-                                            </Border>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent"  Margin="0,5,0,0">
-                                                <TextBlock FontSize="20" >裁剪像素:</TextBlock>
-                                                <TextBox  Background="Transparent" BorderThickness="1"  Text="{Binding CutPixel_1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                                          BorderBrush="#0478FF" MinWidth="40" VerticalAlignment="Center" 
-                                                          HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="Transparent"   Margin="0,0,0,5">
-                                                <TextBlock FontSize="20" >偏移范围:</TextBlock>
-                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF" 
-                                                           Text="{Binding offsetMin_1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
-                                            </StackPanel>
+                                            <Button Style="{StaticResource btnBaseCancel}" Height="30" Width="50" Click="返回_Click">返回</Button>
+                            <Button Grid.Column="3" Style="{StaticResource btnBaseCancel}" Height="30" Width="150" Click="开始处理_Click">下一步</Button>
+                                            <Button Grid.Column="2" Style="{StaticResource btnBaseCancel}" Height="30" Width="50" Click="跳过_Click"  Tag="预览">跳过</Button>
                                         </Grid>
-
-                                        <Grid Grid.Row="1" Grid.Column="3">
-                                            <Border Name="borderRight"  Background="{Binding FillBrush}"  Opacity="0.3">
-                                            </Border>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="Transparent" 
-                                                       
-                                                        VerticalAlignment="Center" Margin="0,-45,0,0">
-                                                <TextBlock FontSize="20" >裁剪像素:</TextBlock>
-                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF" 
-                                                           Text="{Binding CutPixel_2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent"   Margin="0,0,0,-45">
-                                                <TextBlock FontSize="20" >偏移范围:</TextBlock>
-                                                <TextBox  Background="Transparent" BorderThickness="1" 
-                                                            Text="{Binding offsetMin_2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                                          BorderBrush="#0478FF" MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
-                                            </StackPanel>
-                                        </Grid>
-                                        <Grid Grid.Row="2" Grid.ColumnSpan="3">
-                                            <Border Name="borderBottom"  Background="{Binding FillBrush}" Opacity="0.3">
-                                            </Border>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent"  Margin="0,5,0,0">
-                                                <TextBlock FontSize="20" >裁剪像素:</TextBlock>
-                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF" 
-                                                           Text="{Binding CutPixel_3,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="Transparent"   Margin="0,0,0,5">
-                                                <TextBlock FontSize="20" >偏移范围:</TextBlock>
-                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF" 
-                                                           Text="{Binding offsetMin_3,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
-                                            </StackPanel>
-                                        </Grid>
-
-                                        <Grid Grid.Row="1" Grid.Column="0">
-                                            <Border Name="borderLeft"  Background="{Binding FillBrush}"  Opacity="0.3">
-                                            </Border>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" Margin="0,-45,0,0">
-                                                <TextBlock FontSize="20" >裁剪像素:</TextBlock>
-                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF"
-                                                           Text="{Binding CutPixel_4,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent"   Margin="0,0,0,-45">
-                                                <TextBlock FontSize="20" >偏移范围:</TextBlock>
-                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF"
-                                                            Text="{Binding offsetMin_4,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
-                                            </StackPanel>
-                                        </Grid>
-                                        <Grid  Grid.Row="3" Grid.ColumnSpan="3">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="140"></ColumnDefinition>
-
-                                                <ColumnDefinition Width="500"></ColumnDefinition>
-                                                <ColumnDefinition Width="100"></ColumnDefinition>
-                                                <ColumnDefinition Width="300"></ColumnDefinition>
-                                                <ColumnDefinition></ColumnDefinition>
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock FontSize="25" Margin="30,0,0,0">导出路径:</TextBlock>
-                                            <Border Background="#F4F4F4" Grid.Column="1"  Width="400" Height="60" CornerRadius="8" >
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition></ColumnDefinition>
-                                                        <ColumnDefinition Width="80"></ColumnDefinition>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBox Grid.Column="0"   Background="Transparent" BorderThickness="0"  Margin="10"
-                                                     FontSize="18" Height="40" TextWrapping="NoWrap"  Foreground="#0478FF"
-                                                     VerticalContentAlignment="Center" Name="tbOutPut"></TextBox>
-                                                    <Grid Grid.Column="1" PreviewMouseLeftButtonUp="选择导出路径_Click">
-                                                        <Image Cursor="Hand"  Source="img/形状@2x.png"  Height="40" Width="40" HorizontalAlignment="Right" Margin="10"></Image>
-                                                    </Grid>
-
-                                                </Grid>
-
-                                            </Border>
-
-                                            <Grid Grid.Column="3" Grid.Row="3">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition></RowDefinition>
-                                                    <RowDefinition></RowDefinition>
-                                                </Grid.RowDefinitions>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock  FontSize="20">设置填充颜色:</TextBlock>
-                                                    <colorPicker:ColorPicker ColorMode="ColorPalette" Width="160"   
-                                            SelectedColor="{Binding FillColor,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left"></colorPicker:ColorPicker>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
-                                                    <TextBlock  FontSize="20">是否采用同一颜色:</TextBlock>
-                                                    <CheckBox Style="{StaticResource chkPassWord}" IsChecked="{Binding IsSame,Mode=TwoWay}"></CheckBox>
-                                                </StackPanel>
-                                            </Grid>
-
-                                            <Button Name="btnCut" Grid.Column="4" Grid.Row="3" Style="{StaticResource btnBaseCancel}" Height="60" Width="180"  Click="剪切视频_Click"
-                                                    Foreground="White" FontSize="25"  HorizontalAlignment="Right" Margin="0,0,30,10">剪切素材</Button>
-
-                                        </Grid>
-                                        <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" FontSize="23"  Grid.RowSpan="3" VerticalAlignment="Bottom" Margin="30,0,0,15">进度:<Run Text="{Binding CurrentIndex}" Foreground="Green"></Run>/<Run Foreground="#0478FF" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
-                                        <ProgressBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="3" VerticalAlignment="Bottom" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="15" Margin="190,0,30,20"></ProgressBar>
                                     </Grid>
-                                    <Grid Background="Transparent"  Visibility="Collapsed" Name="GridStepThree">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="80"></RowDefinition>
-                                            <RowDefinition Height="438"></RowDefinition>
-                                            <RowDefinition Height="80"></RowDefinition>
-                                            <RowDefinition Height="90"></RowDefinition>
-                                            <RowDefinition Height="40"></RowDefinition>
-                                        </Grid.RowDefinitions>
-                                        <StackPanel>
- 
-                                        </StackPanel>
-
-                                        <Grid  Grid.Row="3" Grid.ColumnSpan="3">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="30"></ColumnDefinition>
-                                                <ColumnDefinition Width="200"></ColumnDefinition>
-                                                <ColumnDefinition Width="900"></ColumnDefinition>
-                                                <ColumnDefinition></ColumnDefinition>
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="1" FontSize="25">模糊程度(0~∞):</TextBlock>
-                                            <TextBox Name="tbLuma_power" Background="Transparent" BorderThickness="1"  Text="{Binding LumaPower, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2"
-                                                          BorderBrush="#0478FF" MinWidth="80" VerticalAlignment="Center" Height="60"
-                                                          HorizontalAlignment="Left" Foreground="#0478FF" FontSize="25"
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
-                                            <Button Grid.Column="5" Name="btnVeritalToHorizontal"  Style="{StaticResource btnBaseCancel}" Height="60" Width="180"  Click="竖版转横版_Click"
-                                                Foreground="White" FontSize="25"  HorizontalAlignment="Right" Margin="0,0,30,10">竖版转横版</Button>
-
-                                        </Grid>
 
 
-                                        <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" FontSize="23"  Grid.RowSpan="3" VerticalAlignment="Bottom" Margin="30,0,0,15">进度:<Run Text="{Binding CurrentIndex}" Foreground="Green"></Run>/<Run Foreground="#0478FF" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
-                                        <ProgressBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="3" VerticalAlignment="Bottom" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="15" Margin="190,0,30,20"></ProgressBar>
-                                    </Grid>
-                                    <Grid Background="Transparent"  Visibility="Collapsed" Name="GridStepFour">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="80"></RowDefinition>
-                                            <RowDefinition Height="438"></RowDefinition>
-                                            <RowDefinition Height="80"></RowDefinition>
-                                            <RowDefinition Height="90"></RowDefinition>
-                                            <RowDefinition Height="40"></RowDefinition>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition MinWidth="100" ></ColumnDefinition>
 
-                                            <ColumnDefinition  Width="*"></ColumnDefinition>
-                                            <ColumnDefinition MinWidth="100"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-
-                                        <Canvas Grid.Row="0"   Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3" >
-                                            <Canvas.Background>
-                                                <ImageBrush  ImageSource="{Binding BackgroundImage}" Stretch="Uniform"></ImageBrush>
-                                            </Canvas.Background>
-
-                                        </Canvas>
-
-
-                                        <Grid Grid.Row="0" Grid.RowSpan="3"  Grid.Column="3">
-                                            <Border Background="{Binding FillBrush}"  Opacity="0.3">
-                                            </Border>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="Transparent" 
-                                                       
-                                                        VerticalAlignment="Center" Margin="0,-45,0,0">
-                                                <TextBlock FontSize="20" >裁剪像素:</TextBlock>
-                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF" 
-                                                           Text="{Binding CutPixel_2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent"   Margin="0,0,0,-45">
-                                                <TextBlock FontSize="20" >偏移范围:</TextBlock>
-                                                <TextBox  Background="Transparent" BorderThickness="1" 
-                                                            Text="{Binding offsetMin_2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                                          BorderBrush="#0478FF" MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
-                                            </StackPanel>
-                                        </Grid>
-
-                                        <Grid Grid.Row="0" Grid.RowSpan="3" Grid.Column="0">
-                                            <Border   Background="{Binding FillBrush}"  Opacity="0.3">
-                                            </Border>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" Margin="0,-45,0,0">
-                                                <TextBlock FontSize="20" >裁剪像素:</TextBlock>
-                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF"
-                                                           Text="{Binding CutPixel_4,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
-                                            </StackPanel>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent"   Margin="0,0,0,-45">
-                                                <TextBlock FontSize="20" >偏移范围:</TextBlock>
-                                                <TextBox  Background="Transparent" BorderThickness="1" BorderBrush="#0478FF"
-                                                            Text="{Binding offsetMin_4,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                                          MinWidth="40" VerticalAlignment="Center"  HorizontalAlignment="Center" Foreground="#0478FF" FontSize="25"
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
-                                            </StackPanel>
-                                        </Grid>
-                                        <Grid  Grid.Row="3" Grid.ColumnSpan="3">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="150"></ColumnDefinition>
-
-                                                <ColumnDefinition Width="250"></ColumnDefinition>
-                                                <ColumnDefinition Width="150"></ColumnDefinition>
-                                                <ColumnDefinition Width="600"></ColumnDefinition>
-                                                <ColumnDefinition></ColumnDefinition>
-                                            </Grid.ColumnDefinitions>
-                                            <Grid Grid.ColumnSpan="2" Grid.RowSpan="2" VerticalAlignment="Center">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition></RowDefinition>
-                                                    <RowDefinition></RowDefinition>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition></ColumnDefinition>
-                                                    <ColumnDefinition></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-                                                <TextBlock Grid.Column="0" FontSize="25" Margin="30,0,0,0">填充高度Y:</TextBlock>
-                                                <TextBox Name="tbPaddHeight"  Background="Transparent" BorderThickness="1"   Text="{Binding PadHeight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"
-                                                          BorderBrush="#0478FF" MinWidth="80" VerticalAlignment="Center" Height="40"
-                                                          HorizontalAlignment="Left" Foreground="#0478FF" FontSize="20"
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
-                                            </Grid>
-
-                                            <Grid Grid.Column="2" Grid.Row="3" >
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition></RowDefinition>
-                                                    <RowDefinition></RowDefinition>
-                                                </Grid.RowDefinitions>
-                                                <RadioButton Grid.Row="1" Margin="0"  
-                                                             VerticalAlignment="Center" HorizontalAlignment="Left"  Foreground="Black"
-                                                             Content="颜色填充" PreviewMouseLeftButtonDown="SwitchChannel_MouseLeftButtonDown" 
-                                                             Cursor="Hand" FontWeight="Regular" FontFamily="微软雅黑" FontSize="25" Template="{DynamicResource ChannelRadioButtonTemplate}"
-                                                         GroupName="Padd"
-                                                         />
-                                                <RadioButton Grid.Row="0" Margin="0"  
-                                                             VerticalAlignment="Center" HorizontalAlignment="Left"  Foreground="Black"
-                                                             Content="图片填充" PreviewMouseLeftButtonDown="SwitchChannel_MouseLeftButtonDown" 
-                                                             Cursor="Hand" FontWeight="Regular" FontFamily="微软雅黑" FontSize="25" Template="{DynamicResource ChannelRadioButtonTemplate}"
-                                                         GroupName="Padd"
-                                                         />
-                                            </Grid>
-                                            <Grid Grid.Column="3" Grid.Row="3" Name="gridColorPad" Visibility="Collapsed">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition></RowDefinition>
-                                                    <RowDefinition></RowDefinition>
-                                                </Grid.RowDefinitions>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock  FontSize="20">设置填充颜色:</TextBlock>
-                                                    <colorPicker:ColorPicker ColorMode="ColorPalette" Width="160"   
-                                            SelectedColor="{Binding FillColor,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left"></colorPicker:ColorPicker>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
-                                                    <TextBlock  FontSize="20">是否采用同一颜色:</TextBlock>
-                                                    <CheckBox Style="{StaticResource chkPassWord}" IsChecked="{Binding IsSame,Mode=TwoWay}"></CheckBox>
-                                                </StackPanel>
-                                            </Grid>
-                                            <Grid Grid.Column="3" Grid.Row="3" Name="gridImagePad" Visibility="Collapsed">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition></RowDefinition>
-                                                    <RowDefinition></RowDefinition>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="250"></ColumnDefinition>
-                                                    <ColumnDefinition></ColumnDefinition>
-                                                    <ColumnDefinition Width="160"></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock  FontSize="15">选择填充图片上:</TextBlock>
-                                                    <Grid Grid.Column="1" PreviewMouseLeftButtonUp="选择导图片路径上_Click">
-                                                        <Image Cursor="Hand"  Source="img/形状@2x.png"  Height="30" Width="30" HorizontalAlignment="Right" Margin="10"></Image>
-                                                    </Grid>
-                                                    <Image Source="{Binding FillImageTop}" Height="30" Width="60" Stretch="Uniform"></Image>
-                                                    
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal" Grid.Row="1">
-                                                    <TextBlock  FontSize="15">选择填充图片下:</TextBlock>
-                                                    <Grid Grid.Column="1" PreviewMouseLeftButtonUp="选择图片路径下_Click">
-                                                        <Image Cursor="Hand"  Source="img/形状@2x.png"  Height="30" Width="30" HorizontalAlignment="Right" Margin="10"></Image>
-                                                    </Grid>
-                                                    <Image Source="{Binding FillImageBottom}" Height="30" Width="60"  Stretch="Uniform"></Image>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal" Grid.Column="1" >
-                                                    <TextBlock FontSize="15">模糊程度(0~∞):</TextBlock>
-                                                    <TextBox  Background="Transparent" BorderThickness="1"  Text="{Binding LumaPowerTop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2"
-                                                          BorderBrush="#0478FF" MinWidth="60" VerticalAlignment="Center" Height="30"
-                                                          HorizontalAlignment="Left" Foreground="#0478FF" FontSize="15" 
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1" >
-                                                    <TextBlock FontSize="15">模糊程度(0~∞):</TextBlock>
-                                                    <TextBox  Background="Transparent" BorderThickness="1"  Text="{Binding LumaPowerBottom, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2"
-                                                          BorderBrush="#0478FF" MinWidth="60" VerticalAlignment="Center" Height="30"
-                                                          HorizontalAlignment="Left" Foreground="#0478FF" FontSize="15" 
-                                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ></TextBox>
-                                                </StackPanel>
-
-                                                <Button Grid.Row="0"  Grid.Column="2" HorizontalAlignment="Left" Grid.RowSpan="2" Style="{StaticResource btnBaseCancel}" Height="40" 
-                                                        Foreground="White" Width="120" Margin="0,0,0,0" Click="随机从图库选择图片_Click_1">随机图库图片</Button>
-                                            </Grid>
-                                            <Button Grid.Column="5" Name="btnHorizontalToVertical"  Style="{StaticResource btnBaseCancel}" Height="60" Width="180"  Click="横版转竖版_Click"
-                                                Foreground="White" FontSize="25"  HorizontalAlignment="Right" Margin="0,0,30,10">横版转竖版</Button>
-
-                                        </Grid>
-                                        <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" FontSize="23"  Grid.RowSpan="3" VerticalAlignment="Bottom" Margin="30,0,0,15">进度:<Run Text="{Binding CurrentIndex}" Foreground="Green"></Run>/<Run Foreground="#0478FF" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
-                                        <ProgressBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="3" VerticalAlignment="Bottom" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="15" Margin="190,0,30,20"></ProgressBar>
-                                    </Grid>
                                 </Grid>
 
                             </Border>
-                            <!--+++++++++++++++++++++++++++++++++++++Body++++++++++++++++++++++++++++++++++++++++-->
-                            <Border Background="White"  Grid.Row="1" Opacity="0.2" Visibility="{Binding IsVisibility}" Margin="0,0,0,40">
-                                
-                            </Border>
-                            <Loading:UserControl1 Height="100" Width="100"    Grid.Column="1" Grid.Row="1"  Visibility="{Binding IsVisibility}"
-                                                                        VerticalAlignment="Center" HorizontalAlignment="Center" 
+                            <!--+++++++++++++++++++++++++++++++++++++加载动画++++++++++++++++++++++++++++++++++++++++-->
+            <Border Name="borCannotControl" Background="White"  Grid.Row="1" Opacity="0.2" Visibility="{Binding IsVisibility,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,0">
+
+            </Border>
+            <Loading:UserControl1 Height="100" Width="100"    Grid.Column="1" Grid.Row="1"  Visibility="{Binding IsVisibility,UpdateSourceTrigger=PropertyChanged}"
+                                                                        VerticalAlignment="Center"  
                                                                         Background="Transparent" RenderTransformOrigin="0.5,0.5">
                                 <Loading:UserControl1.RenderTransform>
                                     <TransformGroup>
@@ -957,7 +1421,7 @@
                                         <TranslateTransform/>
                                     </TransformGroup>
                                 </Loading:UserControl1.RenderTransform>
-                            </Loading:UserControl1>
+             </Loading:UserControl1>
                         </Grid>
             </Border>
 

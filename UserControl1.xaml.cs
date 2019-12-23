@@ -27,8 +27,25 @@ namespace 素材合成
         {
             InitializeComponent();
         }
+
         #endregion
 
+        long count = 1;
+        private void Canvas_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
 
+            System.Windows.Media.Animation.Storyboard storyboard = myCanvas.Resources["myStoryboard"] as System.Windows.Media.Animation.Storyboard;
+            if (count % 2 == 0)
+            {
+                storyboard.Pause(myCanvas);
+            }
+            else
+            {
+                storyboard.Begin(myCanvas, true);
+            }
+            count++;
+            // Console.WriteLine("ssss:" + count);
+
+        }
     }
 }

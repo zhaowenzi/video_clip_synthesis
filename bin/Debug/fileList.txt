@@ -1,2 +1,2 @@
-file 'C:\Users\admin\Desktop\横\A\横A_3.mp4'
-file 'C:\Users\admin\Desktop\横\B\横B_2.mp4'
+file 'C:\Users\admin\Desktop\横\B\横B_1.mp4'
+file 'C:\Users\admin\Desktop\横\C\横C_1.mp4'

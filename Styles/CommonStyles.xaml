@@ -4,11 +4,19 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Base.xaml" />
     </ResourceDictionary.MergedDictionaries>
+
+    <SolidColorBrush x:Key="niceBlack" Color="#021A31"></SolidColorBrush>
+    <SolidColorBrush x:Key="niceBlackEnable" Color="#485368"></SolidColorBrush>
+    <SolidColorBrush x:Key="niceTextColor" Color="#666666"></SolidColorBrush>
+    <SolidColorBrush x:Key="niceBackground" Color="#F6F6F8"></SolidColorBrush>
+    <SolidColorBrush x:Key="niceGray" Color="#E6E7EA"></SolidColorBrush>
+    <SolidColorBrush x:Key="niceHover" Color="#ADADB4"></SolidColorBrush>
+   
     <!--几种按钮-->
     <Style x:Key="btnBase" TargetType="{x:Type Button}">
         <Setter Property="FontSize" Value="15"></Setter>
         <Setter Property="FontWeight" Value="Normal"></Setter>
-        <Setter Property="FontFamily" Value="黑体"></Setter>
+        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="Foreground" Value="{StaticResource ButtonForeground}"></Setter>
@@ -18,12 +26,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
-                        <Border BorderBrush="#0478FF" BorderThickness="0" CornerRadius="4" Name="PART_Background">
+                        <Border BorderBrush="#0478FF" BorderThickness="0" CornerRadius="5" Name="PART_Background">
                             <Border.Background>
                                 <SolidColorBrush Color="#0478FF">
                                 </SolidColorBrush>
                             </Border.Background>
-                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}"  VerticalAlignment="Center" />
 
                         </Border>
                         <Rectangle x:Name="DisabledVisualElement" Fill="#C0C0C0" IsHitTestVisible="false" Opacity="0" RadiusY="5" RadiusX="5"  />
@@ -51,7 +59,7 @@
     <Style x:Key="btnBasePlay" TargetType="{x:Type Button}">
         <Setter Property="FontSize" Value="15"></Setter>
         <Setter Property="FontWeight" Value="Normal"></Setter>
-        <Setter Property="FontFamily" Value="黑体"></Setter>
+        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -61,7 +69,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
-                        <Border BorderBrush="Transparent" BorderThickness="0" CornerRadius="4" Name="PART_Background">
+                        <Border BorderBrush="Transparent" BorderThickness="0" CornerRadius="5" Name="PART_Background">
                             <Border.Background>
                                 <SolidColorBrush Color="Transparent">
                                 </SolidColorBrush>
@@ -92,7 +100,7 @@
         <Setter Property="Cursor" Value="Hand"></Setter>
         <Setter Property="FontSize" Value="15"></Setter>
         <Setter Property="FontWeight" Value="Normal"></Setter>
-        <Setter Property="FontFamily" Value="黑体"></Setter>
+        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="Foreground" Value="{StaticResource ButtonForeground}"></Setter>
@@ -102,7 +110,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
-                        <Border BorderBrush="Transparent" BorderThickness="0" CornerRadius="4" Name="PART_Background">
+                        <Border BorderBrush="Transparent" BorderThickness="0" CornerRadius="5" Name="PART_Background">
                             <Border.Background>
                                 <SolidColorBrush Color="Transparent">
                                 </SolidColorBrush>
@@ -133,7 +141,7 @@
         <Setter Property="Cursor" Value="Hand"></Setter>
         <Setter Property="FontSize" Value="15"></Setter>
         <Setter Property="FontWeight" Value="Normal"></Setter>
-        <Setter Property="FontFamily" Value="黑体"></Setter>
+        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="Foreground" Value="{StaticResource ButtonForeground}"></Setter>
@@ -143,7 +151,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
-                        <Border BorderBrush="Transparent" BorderThickness="0" CornerRadius="4" Name="PART_Background">
+                        <Border BorderBrush="Transparent" BorderThickness="0" CornerRadius="5" Name="PART_Background">
                             <Border.Background>
                                 <SolidColorBrush Color="Transparent">
                                 </SolidColorBrush>
@@ -174,7 +182,7 @@
         <Setter Property="Cursor" Value="Hand"></Setter>
         <Setter Property="FontSize" Value="15"></Setter>
         <Setter Property="FontWeight" Value="Normal"></Setter>
-        <Setter Property="FontFamily" Value="黑体"></Setter>
+        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="Foreground" Value="{StaticResource ButtonForeground}"></Setter>
@@ -184,7 +192,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
-                        <Border BorderBrush="Transparent" BorderThickness="0" CornerRadius="4" Name="PART_Background">
+                        <Border BorderBrush="Transparent" BorderThickness="0" CornerRadius="5" Name="PART_Background">
                             <Border.Background>
                                 <SolidColorBrush Color="Transparent">
                                 </SolidColorBrush>
@@ -214,7 +222,7 @@
         <Setter Property="Cursor" Value="Hand"></Setter>
         <Setter Property="FontSize" Value="15"></Setter>
         <Setter Property="FontWeight" Value="Normal"></Setter>
-        <Setter Property="FontFamily" Value="黑体"></Setter>
+        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="Foreground" Value="{StaticResource ButtonForeground}"></Setter>
@@ -224,7 +232,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
-                        <Border BorderBrush="Transparent" BorderThickness="0" CornerRadius="4" Name="PART_Background">
+                        <Border BorderBrush="Transparent" BorderThickness="0" CornerRadius="5" Name="PART_Background">
                             <Border.Background>
                                 <SolidColorBrush Color="Transparent">
                                 </SolidColorBrush>
@@ -252,40 +260,35 @@
     </Style>
     <Style x:Key="btnBaseCancel" TargetType="{x:Type Button}">
         <Setter Property="Cursor" Value="Hand"></Setter>
-        <Setter Property="FontSize" Value="15"></Setter>
+        <Setter Property="FontSize" Value="12"></Setter>
         <Setter Property="FontWeight" Value="Normal"></Setter>
-        <Setter Property="FontFamily" Value="黑体"></Setter>
+        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
-        <Setter Property="Foreground"  Value="Black" ></Setter>
+        <Setter Property="Foreground"  Value="White" ></Setter>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
-                        <Border BorderBrush="#0478FF" BorderThickness="1" CornerRadius="4" Name="PART_Background">
-                            <Border.Background>
-                                <SolidColorBrush Color="#0478FF">
-                                </SolidColorBrush>
-                            </Border.Background>
-                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <Border Background="{StaticResource niceBlackEnable}" BorderThickness="0" CornerRadius="5" Name="PART_Background">
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
 
                         </Border>
-                        <Rectangle x:Name="DisabledVisualElement" Fill="#C0C0C0" IsHitTestVisible="false" Opacity="0" RadiusY="5" RadiusX="5"  />
                     </Grid>
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Gold"></Setter>
-
+                            <Setter Property="Foreground" Value="White"></Setter>
+                            <Setter Property="Background" TargetName="PART_Background" Value="{StaticResource niceBlack}"></Setter>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Foreground" Value="#3399CC"></Setter>
-                            <Setter Property="Background" Value="#F0F182"></Setter>
+                            <Setter Property="Foreground" Value="Gold"></Setter>
+                            <Setter Property="Background" Value="{StaticResource niceBlackEnable}"></Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" TargetName="PART_Background" Value="#999999"></Setter>
+                            <Setter Property="Background" TargetName="PART_Background" Value="#999"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -294,9 +297,10 @@
     </Style>
 
     <Style x:Key="btnBaseSelect" TargetType="{x:Type Button}">
-        <Setter Property="FontSize" Value="15"></Setter>
-        <Setter Property="FontWeight" Value="Bold"></Setter>
-        <Setter Property="FontFamily" Value="黑体"></Setter>
+        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="FontWeight" Value="Normal"></Setter>
+        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="Foreground" Value="{StaticResource ButtonBackground}"></Setter>
@@ -306,15 +310,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
-                        <Border BorderBrush="#0478FF" BorderThickness="0" CornerRadius="4" Name="PART_Background">
+                        <Border BorderBrush="{StaticResource niceBlack}" BorderThickness="0" CornerRadius="5" Name="PART_Background">
                             <Border.Background>
-                                <SolidColorBrush Color="#FFFFFF">
+                                <SolidColorBrush Color="{StaticResource niceBlack}">
                                 </SolidColorBrush>
                             </Border.Background>
-                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}"  VerticalAlignment="Center" />
 
                         </Border>
-                        <Rectangle x:Name="DisabledVisualElement" Fill="#0478FF" IsHitTestVisible="false" Opacity="0" RadiusY="5" RadiusX="5"  />
                     </Grid>
 
                     <ControlTemplate.Triggers>
@@ -326,7 +329,7 @@
                             <Setter Property="Background" Value="#0478FF"></Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" TargetName="PART_Background" Value="#999999"></Setter>
+                            <Setter Property="Background" TargetName="PART_Background" Value="{StaticResource niceBlackEnable}"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -346,12 +349,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid>
-                        <Border BorderBrush="#F03060" BorderThickness="0" CornerRadius="4" Name="PART_Background">
+                        <Border BorderBrush="#F03060" BorderThickness="0" CornerRadius="5" Name="PART_Background">
                             <Border.Background>
                                 <SolidColorBrush Color="#F03060">
                                 </SolidColorBrush>
                             </Border.Background>
-                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}"  VerticalAlignment="Center" />
 
                         </Border>
                         <Rectangle x:Name="DisabledVisualElement" Fill="#C0C0C0" IsHitTestVisible="false" Opacity="0" RadiusY="5" RadiusX="5"  />
@@ -392,7 +395,7 @@
                                 <SolidColorBrush Color="Transparent">
                                 </SolidColorBrush>
                             </Border.Background>
-                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}"  VerticalAlignment="Center" />
 
                         </Border>
                         <Rectangle x:Name="DisabledVisualElement" Fill="#C0C0C0" IsHitTestVisible="false" Opacity="0" RadiusY="5" RadiusX="5"  />
@@ -419,7 +422,7 @@
     <Style x:Key="btnBaseEnableFalse" TargetType="{x:Type Button}">
         <Setter Property="FontSize" Value="20"></Setter>
         <Setter Property="FontWeight" Value="Bold"></Setter>
-        <Setter Property="FontFamily" Value="黑体"></Setter>
+        <Setter Property="FontFamily" Value="微软雅黑"></Setter>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="Foreground" Value="{Binding Path=Foreground}"></Setter>
@@ -434,7 +437,7 @@
                                 <SolidColorBrush Color="#999999">
                                 </SolidColorBrush>
                             </Border.Background>
-                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <ContentPresenter Content="{TemplateBinding ContentControl.Content}"  VerticalAlignment="Center" />
 
                         </Border>
                         <Rectangle x:Name="DisabledVisualElement" Fill="#C0C0C0" IsHitTestVisible="false" Opacity="0" RadiusY="5" RadiusX="5"  />
@@ -520,7 +523,7 @@
         <!--  滚动条宽度  -->
         <Setter Property="Width" Value="8" />
         <Setter Property="MinWidth" Value="5" />
-        <Setter Property="Opacity" Value="0.5" />
+        <Setter Property="Opacity" Value="0.6" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ScrollBar}">
@@ -656,10 +659,10 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Border x:Name="Back" Background="#F7FDF7" BorderThickness="1" BorderBrush="Transparent">
-                        <Path Name="PathFill" Fill="#59CA4F" Width="8" Height="6" StrokeThickness="0" Data="M5,0 L10,10 L0,10 z" RenderTransformOrigin="0.5,0.5" Stretch="Fill">
+                        <Path Name="PathFill" Fill="{StaticResource niceTextColor}" Width="8" Height="6" StrokeThickness="0" Data="M5,0 L10,10 L0,10 z" RenderTransformOrigin="0.5,0.5" Stretch="Fill">
                             <Path.RenderTransform>
                                 <TransformGroup>
-                                    <ScaleTransform/>
+                                    <ScaleTransform  ScaleX="1.2" ScaleY="1.2"/>
                                     <SkewTransform/>
                                     <RotateTransform Angle="180"/>
                                     <TranslateTransform/>
@@ -669,9 +672,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PathFill" Property="Fill" Value="White"></Setter>
-                            <Setter TargetName="Back" Property="Background" Value="#59CA4F"></Setter>
-                            <Setter TargetName="Back" Property="BorderBrush" Value="#59CA4F"></Setter>
+                            <Setter TargetName="PathFill" Property="Fill" Value="#333"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -688,7 +689,7 @@
         <Setter  Property="Template">
             <Setter.Value>
                 <ControlTemplate  TargetType="{x:Type ToggleButton}">
-                    <Border  Background="White" CornerRadius="4">
+                    <Border  Background="White" CornerRadius="5">
                         <Image Source="/img/icon_xl.png" HorizontalAlignment="Right" Width="11" Height="6" Margin="0,0,5,0" />
                     </Border>
                 </ControlTemplate>
@@ -720,7 +721,6 @@
 
     </ControlTemplate>
 
-
     <Style x:Key="comboxBase" TargetType="{x:Type ComboBox}">
         <Setter Property="Cursor"  Value="Hand"></Setter>
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -731,7 +731,7 @@
                     <Setter Property="MinHeight" Value="22" />
                     <Setter Property="FocusVisualStyle" Value="{x:Null}" />
                     <Setter Property="MinWidth" Value="60" />
-                    <Setter Property="Foreground" Value="#A6A6A6" />
+                    <Setter Property="Foreground" Value="Black" />
                     <Setter Property="Cursor"  Value="Hand"></Setter>
                     <Setter Property="Template">
                         <Setter.Value>
@@ -740,12 +740,13 @@
                                     Name="Back"
                                     Padding="10"
                                     Background="Transparent"
-                                    BorderBrush="Transparent"
-                                    BorderThickness="0,0,0,0">
+                                    BorderBrush="#666"
+                                    BorderThickness="0">
                                     <ContentPresenter
                                         Margin="0,0,0,0"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
+                                       
                                         ContentSource="{Binding Source}" />
                                 </Border>
                                 <ControlTemplate.Triggers>
@@ -757,7 +758,7 @@
                                         <Setter TargetName="Back" Property="Background" Value="Transparent" />
                                     </Trigger>
                                     <Trigger Property="IsSelected" Value="True">
-                                        <Setter Property="Foreground" Value="#FF4C97" />
+                                        <Setter Property="Foreground" Value="#666"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
@@ -771,8 +772,9 @@
                 <ControlTemplate TargetType="ComboBox">
                     <Border
                         Background="Transparent"
-                        BorderBrush="Transparent"
-                        CornerRadius="1">
+                       BorderBrush="#1E9FFF"
+                        BorderThickness="1"
+                        CornerRadius="5">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -780,12 +782,14 @@
                             </Grid.ColumnDefinitions>
                             <TextBox
                                 Grid.Column="0"
-                                Margin="4,0,0,0"
-                                VerticalAlignment="Center"
-                                Background="Transparent"
+                                FontSize="13"
+                                Foreground="#666"
                                 BorderThickness="0"
-                                Foreground="#777"
-                                IsReadOnly="{TemplateBinding IsReadOnly}"
+                                VerticalAlignment="Center"
+                                TextAlignment="Center"
+                                IsReadOnly="True"
+                                Margin="4,0,0,0"
+                               x:Name="PART_EditableTextBox"
                                 Text="{TemplateBinding Text}" />
                             <ToggleButton
                                 Grid.Column="1"
@@ -805,10 +809,10 @@
                                     x:Name="DropDown"
                                     MinWidth="{TemplateBinding ActualWidth}"
                                     MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                                    BorderThickness="0"
+                                    BorderThickness="1"
                                     CornerRadius="1"
                                     SnapsToDevicePixels="True">
-                                    <ScrollViewer  Background="White"
+                                    <ScrollViewer  Background="#F4F4F4"
                                         MaxHeight="{TemplateBinding MaxDropDownHeight}"
                                         Margin="0"
                                         CanContentScroll="True"
@@ -818,7 +822,7 @@
                                         VerticalScrollBarVisibility="Auto">
                                         <!--  StackPanel 用于显示子级，方法是将 IsItemsHost 设置为 True  -->
                                         <StackPanel
-                                            Background="White"
+                                            Background="#F4F4F4"
                                             IsItemsHost="True"
                                             KeyboardNavigation.DirectionalNavigation="Contained" />
                                     </ScrollViewer>
@@ -830,6 +834,8 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+
     <!--复选框-->
     <Style x:Key="chkBullet" TargetType="CheckBox">
         <Setter Property="IsChecked" Value="False"/>
@@ -863,13 +869,13 @@
                 <ControlTemplate TargetType="CheckBox">
                     <Grid  x:Name="grid"  Margin="{TemplateBinding Padding}" VerticalAlignment="Center">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <Border  x:Name="border" BorderBrush="#ACABAB" BorderThickness="1"  Width="20" Height="20">
+                            <Border  x:Name="border" BorderBrush="{StaticResource niceHover}" BorderThickness="1"  Width="20" Height="20" CornerRadius="4">
                                 <Grid>
-                                    <Rectangle  VerticalAlignment="Center" HorizontalAlignment="Center"
+                                    <Rectangle  VerticalAlignment="Center" 
                                                 x:Name="backGround" Width="20" Height="20" Fill="Transparent" ></Rectangle>
-                                    <TextBlock  x:Name="text"  Text="✔" VerticalAlignment="Center" HorizontalAlignment="Center"
-                                        FontSize="14" FontWeight="Bold"
-                                        Foreground="White"/>
+                                    <TextBlock  x:Name="text"  Text="✔" VerticalAlignment="Center" Margin="1,0,0,0" 
+                                        FontSize="12" FontWeight="Normal"
+                                        Foreground="{StaticResource niceBlack}"/>
                                 </Grid>
                             </Border>
                             <ContentPresenter VerticalAlignment="Center" Content="{TemplateBinding Content }">
@@ -878,14 +884,14 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger  Property="IsChecked" Value="true">
-                            <Setter  TargetName="backGround" Property="Fill" Value="#0478FF"/>
+                            <Setter  TargetName="backGround" Property="Fill" Value="Transparent"/>
                             <Setter  TargetName="text" Property="Visibility" Value="Visible"/>
-                            <Setter  TargetName="border" Property="BorderBrush" Value="#0478FF"/>
+                            <Setter  TargetName="border" Property="BorderBrush" Value="#666"/>
                         </Trigger>
                         <Trigger  Property="IsChecked" Value="False">
                             <Setter  TargetName="backGround" Property="Fill" Value="Transparent"/>
                             <Setter  TargetName="text" Property="Visibility" Value="Hidden"/>
-                            <Setter  TargetName="border" Property="BorderBrush" Value="#ACABAB"/>
+                            <Setter  TargetName="border" Property="BorderBrush" Value="{StaticResource niceHover}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -902,7 +908,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid Height="14" Width="14">
-                        <Border BorderBrush="#0478FF" BorderThickness="0" CornerRadius="4" Name="PART_Background">
+                        <Border BorderBrush="#0478FF" BorderThickness="0" CornerRadius="5" Name="PART_Background">
                             <Border.Background>
                                 <SolidColorBrush Color="Transparent">
                                 </SolidColorBrush>
@@ -937,7 +943,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid Height="14" Width="14">
-                        <Border BorderBrush="#0478FF" BorderThickness="0" CornerRadius="4" Name="PART_Background">
+                        <Border BorderBrush="#0478FF" BorderThickness="0" CornerRadius="5" Name="PART_Background">
                             <Border.Background>
                                 <SolidColorBrush Color="Transparent">
                                 </SolidColorBrush>
@@ -972,12 +978,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid Height="14" Width="14">
-                        <Border BorderBrush="#0478FF" BorderThickness="0" CornerRadius="4" Name="PART_Background">
+                        <Border BorderBrush="#0478FF" BorderThickness="0" CornerRadius="5" Name="PART_Background">
                             <Border.Background>
                                 <SolidColorBrush Color="Transparent">
                                 </SolidColorBrush>
                             </Border.Background>
-                            <Image Height="14" Width="14" Source="/img/路径 4@2x.png"></Image>
+                            <Image Height="14" Width="14" Source="/img/ic_最小_白.png"></Image>
                         </Border>
                     </Grid>
 
@@ -1007,12 +1013,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid Height="14" Width="14">
-                        <Border BorderBrush="#0478FF" BorderThickness="0" CornerRadius="4" Name="PART_Background">
+                        <Border BorderBrush="#0478FF" BorderThickness="0" CornerRadius="5" Name="PART_Background">
                             <Border.Background>
                                 <SolidColorBrush Color="Transparent">
                                 </SolidColorBrush>
                             </Border.Background>
-                            <Image Height="14" Width="14" Source="/img/路径@2x.png"></Image>
+                            <Image Height="14" Width="14" Source="/img/ic_关闭_白.png"></Image>
                         </Border>
                     </Grid>
 
@@ -1092,7 +1098,7 @@
                           Style="{StaticResource ExpanderToggleButtonStyle}" />
                         <ContentPresenter x:Name="ExpandSite" Grid.Row="1" 
                                               ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" 
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Margin}" Visibility="Collapsed" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Margin}" Visibility="Collapsed" VerticalAlignment="Center"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsExpanded" Value="True">
@@ -1111,8 +1117,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
-                    <Border x:Name="BorderBackground" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
-                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    <Border x:Name="BorderBackground" BorderBrush="Transparent" BorderThickness="0" Background="Transparent" Padding="0" Margin="0" SnapsToDevicePixels="true">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
@@ -1231,7 +1237,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Border Background="White" Height="8" CornerRadius="2,0,0,2" />
+                    <Border Background="#E4E7EB" Height="8" CornerRadius="4,0,0,4" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -1250,7 +1256,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RepeatButton}">
-                    <Border Background="#82878B"  Height="8" CornerRadius="0,2,2,0"/>
+                    <Border Background="#62656A"  Height="8" CornerRadius="0,4,4,0"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -1265,14 +1271,24 @@
         <Setter Property="Height"
           Value="10" />
         <Setter Property="Width"
-          Value="2" />
+          Value="10" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Rectangle x:Name="Ellipse" 
-                 StrokeThickness="2" Fill="Red">
+                    <Ellipse x:Name="Ellipse" 
+                 StrokeThickness="2">
+                        <Ellipse.Stroke>
+                            <SolidColorBrush Color="White">
 
-                    </Rectangle>
+                            </SolidColorBrush>
+                        </Ellipse.Stroke>
+                        <Ellipse.Fill>
+                            <SolidColorBrush Color="#666">
+
+                            </SolidColorBrush>
+                        </Ellipse.Fill>
+
+                    </Ellipse>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -1323,6 +1339,7 @@
              Grid.Row="2"
              Fill="{TemplateBinding Foreground}"
              Placement="Bottom"
+             
              Height="8"
              Visibility="Collapsed" />
         </Grid>

@@ -14,26 +14,309 @@ namespace 素材合成
     {
         public VideoPreviewModel()
         {
+           
             _PlayList = new ObservableCollection<Model.PlayListNode>();
             _ScreecList = new ObservableCollection<Model.ScreenNode>();
             _CommandList = new ObservableCollection<Model.Instruction>();
             _VideoGroupNodeList = new ObservableCollection<VideoGroupNode>();
-            _offsetMax_1 = 0;
-            _offsetMax_2 = 0;
-            _offsetMax_3 = 0;
-            _offsetMax_4 = 0;
-            _CutPixel_1 = 0;
-            _CutPixel_2= 0;
-            _CutPixel_3 = 0;
-            _CutPixel_4 = 0;
-            _offsetMin_1 = 0;
-            _offsetMin_2 = 0;
-            _offsetMin_3= 0;
-            _offsetMin_4 = 0;
+            _ComBox集合 = new ObservableCollection<string>();
+            _ComBox集合.Add("0");
+            _ComBox集合.Add("1");
+            _ComBox集合.Add("2");
+            _ComBox集合.Add("3");
+            _ComBox集合.Add("4");
+            _ComBox集合123 = new ObservableCollection<string>();
+            _ComBox集合123.Add("0");
+            _ComBox集合123.Add("1");
+            _ComBox集合123.Add("2");
+            _ComBox集合123.Add("3");
+            _ComBox集合123.Add("4");
+            offsetMax_1 = 0;
+            offsetMax_2 = 0;
+            offsetMax_3 = 0;
+            offsetMax_4 = 0;
+            CutPixel_1 = 0;
+            CutPixel_2= 0;
+            CutPixel_3 = 0;
+            CutPixel_4 = 0;
+            offsetMin_1 = 0;
+            offsetMin_2 = 0;
+            offsetMin_3= 0;
+            offsetMin_4 = 0;
             MaxId = 0;
+            FontSize = "20";
+            FontStyle = "DejaVu Serif";
+            PadHeight = "100";
+            TextDeepth = "0";
+            TextHeight = "10";
+            TextWidth = "0";
+            FontColor = Colors.Black;
+            CutPixel_横版右 = 0;
+            CutPixel_横版左 = 0;
+            水印坐标X = "10";
+            水印坐标Y = "10";
+            PreViewVisibility = Visibility.Collapsed;
+        }
+
+        private ObservableCollection<string> _ComBox集合;
+        public ObservableCollection<string> ComBox集合
+        {
+            get { return _ComBox集合; }
+            set
+            {
+                _ComBox集合 = value;
+                OnPropertyChanged(nameof(ComBox集合));
+            }
+        }
+        private ObservableCollection<string> _ComBox集合123;
+        public ObservableCollection<string> ComBox集合123
+        {
+            get { return _ComBox集合123; }
+            set
+            {
+                _ComBox集合123 = value;
+                OnPropertyChanged(nameof(ComBox集合123));
+            }
+        }
+
+
+        private string _Arguments_0_合成视频;
+        public string Arguments_0_合成视频
+        {
+            get { return _Arguments_0_合成视频; }
+            set
+            {
+                _Arguments_0_合成视频 = value;
+                OnPropertyChanged(nameof(Arguments_0_合成视频));
+            }
+        }
+        private string _Arguments_1_剪切视频;
+        public string Arguments_1_剪切视频
+        {
+            get { return _Arguments_1_剪切视频; }
+            set
+            {
+                _Arguments_1_剪切视频 = value;
+                OnPropertyChanged(nameof(Arguments_1_剪切视频));
+            }
+        }
+        private string _Arguments_2_填充视频;
+        public string Arguments_2_填充视频
+        {
+            get { return _Arguments_2_填充视频; }
+            set
+            {
+                _Arguments_2_填充视频 = value;
+                OnPropertyChanged(nameof(Arguments_2_填充视频));
+            }
+        }
+        private string _Arguments_3_竖版转横版;
+        public string Arguments_3_竖版转横版
+        {
+            get { return _Arguments_3_竖版转横版; }
+            set
+            {
+                _Arguments_3_竖版转横版 = value;
+                OnPropertyChanged(nameof(Arguments_3_竖版转横版));
+            }
+        }
+        private string _Arguments_4_横版转竖版裁剪;
+        public string Arguments_4_横版转竖版裁剪
+        {
+            get { return _Arguments_4_横版转竖版裁剪; }
+            set
+            {
+                _Arguments_4_横版转竖版裁剪 = value;
+                OnPropertyChanged(nameof(Arguments_4_横版转竖版裁剪));
+            }
+        }
+        private string _Arguments_5_横版转竖版填充;
+        public string Arguments_5_横版转竖版填充
+        {
+            get { return _Arguments_5_横版转竖版填充; }
+            set
+            {
+                _Arguments_5_横版转竖版填充 = value;
+                OnPropertyChanged(nameof(Arguments_5_横版转竖版填充));
+            }
+        }
+        private string _Arguments_6_添加字幕;
+        public string Arguments_6_添加字幕
+        {
+            get { return _Arguments_6_添加字幕; }
+            set
+            {
+                _Arguments_6_添加字幕 = value;
+                OnPropertyChanged(nameof(Arguments_6_添加字幕));
+            }
+        }
+        private string _Arguments_7_添加水印;
+        public string Arguments_7_添加水印
+        {
+            get { return _Arguments_7_添加水印; }
+            set
+            {
+                _Arguments_7_添加水印 = value;
+                OnPropertyChanged(nameof(Arguments_7_添加水印));
+            }
+        }
+
+        private string _ExportPath;
+        public string ExportPath
+        {
+            get { return _ExportPath; }
+            set
+            {
+                _ExportPath = value;
+                OnPropertyChanged(nameof(ExportPath));
+            }
+        }
+
+        private int __CutPixel_横版左;
+        public int CutPixel_横版左
+        {
+            get { return __CutPixel_横版左; }
+            set
+            {
+                __CutPixel_横版左 = value;
+                OnPropertyChanged(nameof(CutPixel_横版左));
+            }
+        }
+        private int __CutPixel_横版右;
+        public int CutPixel_横版右
+        {
+            get { return __CutPixel_横版右; }
+            set
+            {
+                __CutPixel_横版右 = value;
+                OnPropertyChanged(nameof(CutPixel_横版右));
+            }
+        }
+        private int _offset_横版左;
+        public int offset_横版左
+        {
+            get { return _offset_横版左; }
+            set
+            {
+                _offset_横版左 = value;
+                OnPropertyChanged(nameof(offset_横版左));
+            }
+        }
+        private int _offset_横版右;
+        public int offset_横版右
+        {
+            get { return _offset_横版右; }
+            set
+            {
+                _offset_横版右 = value;
+                OnPropertyChanged(nameof(offset_横版右));
+            }
+        }
+
+        private double _RowHeight;
+        public double RowHeight
+        {
+            get { return _RowHeight; }
+            set
+            {
+                _RowHeight = value;
+                OnPropertyChanged(nameof(RowHeight));
+            }
+        }
+        private double _ColumnWidth;
+        public double ColumnWidth
+        {
+            get { return _ColumnWidth; }
+            set
+            {
+                _ColumnWidth = value;
+                OnPropertyChanged(nameof(ColumnWidth));
+            }
         }
         public int MaxId { get; set; }
         public long CutSize { get; set; }
+
+        private Visibility _PreViewVisibility;
+        public Visibility PreViewVisibility
+        {
+            get { return _PreViewVisibility; }
+            set
+            {
+                _PreViewVisibility = value;
+                OnPropertyChanged(nameof(PreViewVisibility));
+            }
+        }
+        private bool _IsCancel;
+        public bool IsCancel
+        {
+            get { return _IsCancel; }
+            set
+            {
+                _IsCancel = value;
+                OnPropertyChanged(nameof(IsCancel));
+            }
+        }
+        private bool _IsConfirm;
+        public bool IsConfirm
+        {
+            get { return _IsConfirm; }
+            set
+            {
+                _IsConfirm = value;
+                OnPropertyChanged(nameof(IsConfirm));
+            }
+        }
+        private bool _IsIgnore;
+        public bool IsIgnore
+        {
+            get { return _IsIgnore; }
+            set
+            {
+                _IsIgnore = value;
+                OnPropertyChanged(nameof(IsIgnore));
+            }
+        }
+
+        private string _水印坐标Y;
+        public string 水印坐标Y
+        {
+            get { return _水印坐标Y; }
+            set
+            {
+                _水印坐标Y = value;
+                OnPropertyChanged(nameof(水印坐标Y));
+            }
+        }
+        private string _水印坐标X;
+        public string 水印坐标X
+        {
+            get { return _水印坐标X; }
+            set
+            {
+                _水印坐标X = value;
+                OnPropertyChanged(nameof(水印坐标X));
+            }
+        }
+        private string _水印路径;
+        public string 水印路径
+        {
+            get { return _水印路径; }
+            set
+            {
+                _水印路径 = value;
+                OnPropertyChanged(nameof(水印路径));
+            }
+        }
+        private ImageSource _水印预览;
+        public ImageSource 水印预览
+        {
+            get { return _水印预览; }
+            set
+            {
+                _水印预览 = value;
+                OnPropertyChanged(nameof(水印预览));
+            }
+        }
 
         private string _LumaPower;
         public string LumaPower
@@ -43,6 +326,67 @@ namespace 素材合成
             {
                 _LumaPower = value;
                 OnPropertyChanged(nameof(LumaPower));
+            }
+        }
+
+        private string _FontSize;
+        public string FontSize
+        {
+            get { return _FontSize; }
+            set
+            {
+                _FontSize = value;
+                OnPropertyChanged(nameof(FontSize));
+            }
+        }
+        private Color _FontColor;
+        public Color FontColor
+        {
+            get { return _FontColor; }
+            set
+            {
+                _FontColor = value;
+                OnPropertyChanged(nameof(FontColor));
+            }
+        }
+        private string _FontStyle;
+        public string FontStyle
+        {
+            get { return _FontStyle; }
+            set
+            {
+                _FontStyle = value;
+                OnPropertyChanged(nameof(FontStyle));
+            }
+        }
+        private string _TextHeight;
+        public string TextHeight
+        {
+            get { return _TextHeight; }
+            set
+            {
+                _TextHeight = value;
+                OnPropertyChanged(nameof(TextHeight));
+            }
+        }
+        private string _TextWidth;
+        public string TextWidth
+        {
+            get { return _TextWidth; }
+            set
+            {
+                _TextWidth = value;
+                OnPropertyChanged(nameof(TextWidth));
+            }
+        }
+        private string _TextDeepth;
+        public string TextDeepth
+        {
+            get { return _TextDeepth; }
+            set
+            {
+                _TextDeepth = value;
+                OnPropertyChanged(nameof(TextDeepth));
             }
         }
 
@@ -276,6 +620,27 @@ namespace 素材合成
             {
                 _offsetMax_4 = value;
                 OnPropertyChanged(nameof(offsetMax_4));
+            }
+        }
+
+        private Color _FillColor横转竖;
+        public Color FillColor横转竖
+        {
+            get { return _FillColor横转竖; }
+            set
+            {
+                _FillColor横转竖 = value;
+                OnPropertyChanged(nameof(FillColor横转竖));
+            }
+        }
+        private bool _IsSame横转竖;
+        public bool IsSame横转竖
+        {
+            get { return _IsSame横转竖; }
+            set
+            {
+                _IsSame横转竖 = value;
+                OnPropertyChanged(nameof(IsSame横转竖));
             }
         }
 

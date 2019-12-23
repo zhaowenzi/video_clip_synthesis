@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-G:\Dahe\_0ToDo\视频合成\Program\obj\Debug\
+G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\obj\Debug\
 素材合成
 none
 false
 
-G:\Dahe\_0ToDo\视频合成\Program\App.xaml
-8-540747732
+G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\App.xaml
+9-1763149978
 1-1732707667
 341985106219
-321723342112
-BorderWindows.xaml;CommandGenerate.xaml;MainWindow.xaml;ScreenWindow.xaml;Styles\Base.xaml;Styles\CommonStyles.xaml;Styles\ResourceDictionary.xaml;UserControl1.xaml;
+321407391159
+BorderWindows.xaml;CommandGenerate.xaml;MainWindow.xaml;ScreenWindow.xaml;Styles\Base.xaml;Styles\CommonStyles.xaml;Styles\ResourceDictionary.xaml;Styles\zh-cn.xaml;UserControl1.xaml;
 
-False
+True
 
