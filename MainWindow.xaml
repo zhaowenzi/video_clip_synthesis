@@ -756,7 +756,7 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Border Grid.ColumnSpan="2" BorderThickness="0,1,0,1" BorderBrush="{StaticResource niceHover}"></Border>
-                            <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"  Style="{StaticResource myText13}" Margin="30,0">进度 <Run Text="{Binding CurrentIndex}" Foreground="{StaticResource niceBlack}"></Run>/<Run Foreground="#666" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
+                            <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"  Style="{StaticResource myText13}" Margin="30,0">进度</TextBlock>
                             <ProgressBar Margin="0,0,30,0" Style="{StaticResource  SimpleProgressBar}" Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="8" ></ProgressBar>
                         </Grid>
                     </Grid>
@@ -804,7 +804,7 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Border Grid.ColumnSpan="2" BorderThickness="0,1,0,1" BorderBrush="{StaticResource niceHover}"></Border>
-                            <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"  Style="{StaticResource myText13}" Margin="30,0">进度 <Run Text="{Binding CurrentIndex}" Foreground="{StaticResource niceBlack}"></Run>/<Run Foreground="#666" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
+                            <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"  Style="{StaticResource myText13}" Margin="30,0">进度 </TextBlock>
                             <ProgressBar Margin="0,0,30,0" Style="{StaticResource  SimpleProgressBar}" Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="8" ></ProgressBar>
                         </Grid>
                     </Grid>
@@ -1034,7 +1034,7 @@
                                 <ColumnDefinition Width="93"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"  Style="{StaticResource myText13}" Margin="30,0">进度 <Run Text="{Binding CurrentIndex}" Foreground="{StaticResource niceBlack}"></Run>/<Run Foreground="#666" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
+                            <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"  Style="{StaticResource myText13}" Margin="30,0">进度</TextBlock>
                             <ProgressBar Style="{StaticResource  SimpleProgressBar}" Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="8" ></ProgressBar>
                         </Grid>
                     </Grid>
@@ -1137,7 +1137,7 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Border Grid.ColumnSpan="2" BorderThickness="0,1,0,1" BorderBrush="{StaticResource niceHover}"></Border>
-                            <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"  Style="{StaticResource myText13}" Margin="30,0">进度 <Run Text="{Binding CurrentIndex}" Foreground="{StaticResource niceBlack}"></Run>/<Run Foreground="#666" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
+                            <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"  Style="{StaticResource myText13}" Margin="30,0">进度</TextBlock>
                             <ProgressBar Margin="0,0,30,0" Style="{StaticResource  SimpleProgressBar}" Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="8" ></ProgressBar>
                         </Grid>
                     </Grid>
