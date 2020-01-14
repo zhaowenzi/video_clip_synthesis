@@ -78,4 +78,3 @@ G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\obj\Debug\素材合成.
 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\obj\Debug\素材合成.exe
 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\obj\Debug\素材合成.pdb
 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\obj\Debug\Styles\zh-cn.baml
-G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\obj\Debug\素材合成.csprojAssemblyReference.cache

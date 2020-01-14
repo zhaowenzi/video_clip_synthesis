@@ -19,6 +19,7 @@ namespace 素材合成
             _ScreecList = new ObservableCollection<Model.ScreenNode>();
             _CommandList = new ObservableCollection<Model.Instruction>();
             _VideoGroupNodeList = new ObservableCollection<VideoGroupNode>();
+            _字体集合 = new ObservableCollection<string>();
             _ComBox集合 = new ObservableCollection<string>();
             _ComBox集合.Add("0");
             _ComBox集合.Add("1");
@@ -56,7 +57,22 @@ namespace 素材合成
             水印坐标X = "10";
             水印坐标Y = "10";
             PreViewVisibility = Visibility.Collapsed;
+            是否静音 = false;
         }
+
+        private ObservableCollection<string> _字体集合;
+        public ObservableCollection<string> 字体集合
+        {
+            get { return _字体集合; }
+            set
+            {
+                _字体集合 = value;
+                OnPropertyChanged(nameof(字体集合));
+            }
+        }
+
+ 
+      
 
         private ObservableCollection<string> _ComBox集合;
         public ObservableCollection<string> ComBox集合
@@ -678,7 +694,16 @@ namespace 素材合成
         }
         #endregion
 
-
+        private bool _是否静音;
+        public bool 是否静音
+        {
+            get { return _是否静音; }
+            set
+            {
+                _是否静音 = value;
+                OnPropertyChanged(nameof(是否静音));
+            }
+        }
         private Visibility _IsVisibility;
         public Visibility IsVisibility
         {

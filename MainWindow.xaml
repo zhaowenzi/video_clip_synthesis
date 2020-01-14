@@ -20,7 +20,8 @@
         AllowsTransparency="false"
         attached:Corner.Value="6"
                      Name="DahePlayer"
-        ResizeMode="NoResize"
+        ResizeMode="CanMinimize"
+                     Icon="cbstx-o6h9h-001.ico"
         Title="MainWindow"  Height="670" Width="1020">
     <Window.Resources>
 
@@ -250,13 +251,18 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Border  BorderThickness="0"  BorderBrush="#E6E7EA"  VerticalAlignment="Top">
-                            <Grid Height="30" Width="200">
+                            <Grid Height="100" Width="200">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="5"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="33"></RowDefinition>
+                                    <RowDefinition Height="33"></RowDefinition>
+                                    <RowDefinition Height="33"></RowDefinition>
+                                </Grid.RowDefinitions>
                                 <Grid Background="{StaticResource niceBlack}"></Grid>
                                 <Button  Click="上移_Click"  Cursor="Hand" Grid.Column="1">
                                     <Button.Template>
@@ -349,6 +355,16 @@
                                         </ControlTemplate>
                                     </Button.Template>
                                 </Button>
+                                <CheckBox  Style="{StaticResource chkPassWord}"  Checked="CheckBox_Checked_逆时针"
+                                           IsChecked="{Binding 逆时针旋转90, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                           HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Height="30"
+                                           Width="150" Foreground="#333" Margin="10,0" VerticalAlignment="Center"
+                                            FontSize="13"  >逆时针旋转90度</CheckBox>
+                                <CheckBox  Style="{StaticResource chkPassWord}"  Checked="CheckBox_Checked_顺时针"
+                                           IsChecked="{Binding 顺时针旋转90, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                           HorizontalAlignment="Left" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Height="30"
+                                           Width="150" Foreground="#333" Margin="10,0" VerticalAlignment="Center"
+                                            FontSize="13"  >顺时针旋转90度</CheckBox>
                             </Grid>
                         </Border>
 
@@ -368,28 +384,29 @@
 
             </DataTemplate>
 
-            <ControlTemplate x:Key="ChannelRadioButtonTemplate" TargetType="RadioButton">
+            <ControlTemplate x:Key="ChannelCheckBoxTemplate" TargetType="RadioButton">
                 <Grid  HorizontalAlignment="Left" Margin="0">
-                    <Grid Width="16" Height="16" x:Name="RadioButtonGrid"  HorizontalAlignment="Left">
-                        <Ellipse x:Name="RadioButtonCircular"  Stroke="#000" StrokeThickness="1" Fill="Transparent"
-                                 Width="{Binding ElementName=RadioButtonGrid,Path=Width}" 
-                                 Height="{Binding ElementName=RadioButtonGrid,Path=Height}"/>
-                        <Ellipse x:Name="RadioButtonPoint" 
+                    <Grid Width="16" Height="16" x:Name="CheckBoxGrid"  HorizontalAlignment="Left">
+                        <Ellipse x:Name="CheckBoxCircular"  Stroke="#000" StrokeThickness="1" Fill="Transparent"
+                                 Width="{Binding ElementName=CheckBoxGrid,Path=Width}" 
+                                 Height="{Binding ElementName=CheckBoxGrid,Path=Height}"/>
+                        <Ellipse x:Name="CheckBoxPoint" 
                                  HorizontalAlignment="Stretch"  Fill="White"
                                  VerticalAlignment="Stretch"  Margin="4"/>
                     </Grid>
-                    <TextBlock x:Name="RadioLabel" FontWeight="Regular" FontFamily="微软雅黑" Foreground="Black" FontSize="13"  Text="{TemplateBinding Content}" Margin="25,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="RadioLabel" FontWeight="Regular" FontFamily="微软雅黑" Foreground="Black" FontSize="13"
+                               Text="{TemplateBinding Content}" Margin="25,0,0,0" VerticalAlignment="Center"/>
                 </Grid>
                 <ControlTemplate.Triggers>
                     <Trigger  Property="IsChecked" Value="True">
                         <Setter TargetName="RadioLabel" Property="Foreground" Value="Black"></Setter>
-                        <Setter  TargetName="RadioButtonPoint" Property="Fill" Value="{StaticResource niceBlackEnable}"/>
-                        <Setter TargetName="RadioButtonCircular" Property="Stroke" Value="{StaticResource niceBlackEnable}"></Setter>
+                        <Setter  TargetName="CheckBoxPoint" Property="Fill" Value="{StaticResource niceBlackEnable}"/>
+                        <Setter TargetName="CheckBoxCircular" Property="Stroke" Value="{StaticResource niceBlackEnable}"></Setter>
                     </Trigger>
                     <Trigger  Property="IsChecked" Value="False">
-                        <Setter TargetName="RadioButtonPoint" Property="Fill" Value="Transparent"/>
+                        <Setter TargetName="CheckBoxPoint" Property="Fill" Value="Transparent"/>
                         <Setter TargetName="RadioLabel" Property="Foreground" Value="#666"></Setter>
-                        <Setter TargetName="RadioButtonCircular" Property="Stroke" Value="#BBB"></Setter>
+                        <Setter TargetName="CheckBoxCircular" Property="Stroke" Value="#BBB"></Setter>
                     </Trigger>
                 </ControlTemplate.Triggers>
             </ControlTemplate>
@@ -421,7 +438,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock FontSize="25" Foreground="Red"  FontWeight="Bold" ></TextBlock>
                         <TextBlock Grid.Column="1" Text=""  Foreground="White" FontSize="16" FontWeight="Bold"  VerticalAlignment="Center"  Margin="8,0,0,0"/>
-                        <Label Grid.Column="2"  x:Name="SoftWareBit"  Foreground="White" FontSize="13"  VerticalAlignment="Center"  Margin="0"/>
+                        <Image Grid.Column="3"  Source="img/logo.png"/>
                     </Grid>
 
                     <Grid HorizontalAlignment="Right"  Grid.Column="1"   Background="Transparent" 
@@ -441,17 +458,6 @@
                                        Grid.Column="2"
                                         x:Name="Min"
                                         Style="{StaticResource btnMin}" />
-                        <!--<Button
-                                                 Grid.Column="2"
-                             Click="ButtonMin_Click"
-                                        x:Name="Max"
-                                        Style="{StaticResource btnMax}" />
-                        <Button
-                                                 Grid.Column="2"
-                                        x:Name="Full"
-                                         Click="ButtonMin_Click"
-                                        Cursor="Hand" Visibility="Collapsed"
-                                        Style="{StaticResource btnFull}" />-->
                         <Button
                                Click="ButtonMin_Click"
                                                  Grid.Column="3"
@@ -473,7 +479,7 @@
             <Border BorderBrush="#CBCBCB" BorderThickness="1"  Background="Transparent" Grid.Row="1" >
                 <Grid>
 
-                    <Grid Background="#F6F6F8"  Visibility="Collapsed" Name="GridStepOne">
+                    <Grid Background="#F6F6F8"  Visibility="Visible" Name="GridStepOne">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
@@ -488,7 +494,7 @@
                         <TextBlock FontSize="18"  FontWeight="Bold"  Foreground="{StaticResource niceBlack}" FontFamily="微软雅黑" Margin="10,10,0,0">素材列表</TextBlock>
                         <Button Name="btnAdd"  Grid.Column="1" Style="{StaticResource btnBaseCancel}"
                                 Height="30" Width="150" Foreground="White" FontSize="13" Click="添加素材_Click" HorizontalAlignment="Left" Margin="15,10">导入素材</Button>
-
+                        <TextBlock Grid.Column="2" FontSize="13"  HorizontalAlignment="Right" FontWeight="Normal"  Foreground="{StaticResource niceBlack}" FontFamily="微软雅黑" Margin="0,10,10,0">1/6 导入素材</TextBlock>
                         <!--素材组 列表-->
                         <Grid Grid.Row="1" Grid.ColumnSpan="3"   Grid.Column="0" >
                             <ListBox  ItemContainerStyle="{StaticResource ListBoxItemEmptyTemplate}" SelectionChanged="ListBox_SelectionChanged" 
@@ -514,10 +520,12 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition Width="180"></ColumnDefinition>
-                                        <ColumnDefinition Width="30"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"></ColumnDefinition>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                    <ColumnDefinition Width="10"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
                                 <TextBlock FontSize="13"  VerticalAlignment="Center"  HorizontalAlignment="Right">最多生成 <Run Foreground="{StaticResource niceBlackEnable}" Text="{Binding TotalCount}"></Run> 种</TextBlock>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1" >
 
                                     <TextBlock FontSize="13" Margin="20,0,0,0"  VerticalAlignment="Center" >生成</TextBlock>
                                         <Border  Width="50" Height="20" CornerRadius="5" Background="{StaticResource niceGray}" Margin="15,0" >
@@ -527,9 +535,12 @@
                                         <TextBlock FontSize="13" VerticalAlignment="Center" Margin="5,0,0,0">种</TextBlock>
 
                                     </StackPanel>
-                                </Grid>
-
-                                <Button Name="btnOut" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource btnBaseCancel}" Height="30" Width="150" Foreground="White"
+                                
+                                <!--<CheckBox  Style="{StaticResource chkPassWord}"   IsChecked="{Binding 顺时针旋转90, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="2" Height="30" Width="150" Foreground="#333"
+                                                    FontSize="13"   Visibility="Collapsed" >顺时针旋转90度</CheckBox>-->
+                            </Grid>
+     
+                            <Button Name="btnOut" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource btnBaseCancel}" Height="30" Width="150" Foreground="White"
                                                     FontSize="13" Click="合成视频_Click" >下一步</Button>
                             </Grid>
 
@@ -725,8 +736,9 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock  Style="{StaticResource myText13}">设置填充颜色</TextBlock>
-                                    <colorPicker:ColorPicker ColorMode="ColorPalette" Width="40"    Height="20"
-                                            SelectedColor="{Binding FillColor,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left"></colorPicker:ColorPicker>
+                                    <colorPicker:ColorPicker ColorMode="ColorPalette" Width="40"    Height="20" Background="#f6f6f6"
+                                               SelectedColor="{Binding FillColor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                             HorizontalAlignment="Left"></colorPicker:ColorPicker>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Grid.Column="1">
                                     <TextBlock Style="{StaticResource myText13}">是否采用同一颜色</TextBlock>
@@ -759,6 +771,11 @@
                             <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"  Style="{StaticResource myText13}" Margin="30,0">进度</TextBlock>
                             <ProgressBar Margin="0,0,30,0" Style="{StaticResource  SimpleProgressBar}" Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="8" ></ProgressBar>
                         </Grid>
+                        <Button  Grid.Column="0"   VerticalAlignment="Top" Margin="30,10,0,0"
+                                    Style="{StaticResource btnBaseCancel}" Height="30" Width="180"  Tag="{Binding ElementName=GridStepOne}" Click="返回上一步_Click"
+                                                    Foreground="White" HorizontalContentAlignment="Center" FontSize="13" 
+                                        HorizontalAlignment="Left"  Content="返回上一步"></Button>
+                        <TextBlock Grid.Column="2" FontSize="13"  HorizontalAlignment="Right" FontWeight="Normal"  Foreground="{StaticResource niceBlack}" FontFamily="微软雅黑" Margin="0,10,30,0">2/6 剪切素材</TextBlock>
                     </Grid>
                     
                     <Grid Background="#f6f6f8"  Visibility="Collapsed" Name="GridStepThree">
@@ -770,7 +787,12 @@
                             <RowDefinition Height="100"></RowDefinition>
                         </Grid.RowDefinitions>
 
-
+                        <Button  Grid.Column="0"   VerticalAlignment="Top" Margin="30,10,0,0"
+                                    Style="{StaticResource btnBaseCancel}" Height="30" Width="180"  Tag="{Binding ElementName=GridStepTwo}" Click="返回上一步_Click"
+                                                    Foreground="White" HorizontalContentAlignment="Center" FontSize="13" 
+                                        HorizontalAlignment="Left"  Content="返回上一步"></Button>
+                        <TextBlock Grid.Column="2" FontSize="13"  HorizontalAlignment="Right" FontWeight="Normal"  Foreground="{StaticResource niceBlack}"
+                                   FontFamily="微软雅黑" Margin="0,10,30,0">3/6 竖版视频转横版视频</TextBlock>
                         <Grid  Grid.Row="4" Grid.ColumnSpan="3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30"></ColumnDefinition>
@@ -823,7 +845,12 @@
                             <ColumnDefinition  Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="{Binding ColumnWidth}"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-
+                        <Button  Grid.Column="0"   VerticalAlignment="Top" Margin="30,10,0,0"
+                                    Style="{StaticResource btnBaseCancel}" Height="30" Width="180"  Tag="{Binding ElementName=GridStepTwo}" Click="返回上一步_Click"
+                                                    Foreground="White" HorizontalContentAlignment="Center" FontSize="13" 
+                                        HorizontalAlignment="Left"  Content="返回上一步"></Button>
+                        <TextBlock Grid.Column="2" FontSize="13"  HorizontalAlignment="Right" FontWeight="Normal"  Foreground="{StaticResource niceBlack}"
+                                   FontFamily="微软雅黑" Margin="0,10,30,0">3/6 横版视频转竖版视频</TextBlock>
                         <Border Grid.Row="1"   Grid.Column="1"  BorderThickness="2"  CornerRadius="5" >
                             <Border.BorderBrush>
                                 <DrawingBrush Viewport="0,0,20,20" ViewportUnits="Absolute" TileMode="Tile">
@@ -952,13 +979,13 @@
                                 <RadioButton Grid.Row="1" Margin="0"  
                                                              VerticalAlignment="Center" HorizontalAlignment="Left"  Foreground="Black"
                                                              Content="颜色填充" PreviewMouseLeftButtonDown="SwitchChannel_MouseLeftButtonDown" 
-                                                             Cursor="Hand" FontWeight="Regular" FontFamily="微软雅黑" FontSize="13" Template="{DynamicResource ChannelRadioButtonTemplate}"
+                                                             Cursor="Hand" FontWeight="Regular" FontFamily="微软雅黑" FontSize="13" Template="{DynamicResource ChannelCheckBoxTemplate}"
                                                          GroupName="Padd"
                                                          />
                                 <RadioButton Grid.Row="0" Margin="0"   IsChecked="True"
                                                              VerticalAlignment="Center" HorizontalAlignment="Left"  Foreground="Black"
                                                              Content="图片填充" PreviewMouseLeftButtonDown="SwitchChannel_MouseLeftButtonDown" 
-                                                             Cursor="Hand" FontWeight="Regular" FontFamily="微软雅黑" FontSize="13" Template="{DynamicResource ChannelRadioButtonTemplate}"
+                                                             Cursor="Hand" FontWeight="Regular" FontFamily="微软雅黑" FontSize="13" Template="{DynamicResource ChannelCheckBoxTemplate}"
                                                          GroupName="Padd"
                                                          />
                             </Grid>
@@ -969,8 +996,9 @@
                                 </Grid.RowDefinitions>
                                 <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="20,0,0,0">
                                     <TextBlock  Style="{StaticResource myText13}">设置填充颜色</TextBlock>
-                                    <colorPicker:ColorPicker ColorMode="ColorPalette" Width="40"    Height="20" VerticalAlignment="Center" Margin="15,0,0,0"
-                                            SelectedColor="{Binding FillColor横转竖,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left"></colorPicker:ColorPicker>
+                                    <colorPicker:ColorPicker ColorMode="ColorPalette" Width="40" Background="#f6f6f6"   Height="20" VerticalAlignment="Center" Margin="15,0,0,0"
+                                              SelectedColor="{Binding FillColor横转竖, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            HorizontalAlignment="Left"></colorPicker:ColorPicker>
                                     <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="20,0,0,0">
                                         <TextBlock  Style="{StaticResource myText13}">是否采用同一颜色</TextBlock>
                                         <CheckBox Margin="20,0,0,0" Style="{StaticResource chkPassWord}" IsChecked="{Binding IsSame横转竖,Mode=TwoWay}"></CheckBox>
@@ -1047,10 +1075,12 @@
                             <RowDefinition Height="40"></RowDefinition>
                             <RowDefinition Height="100"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <StackPanel>
-
-                        </StackPanel>
-
+                        <Button  Grid.Column="0"   VerticalAlignment="Top" Margin="30,10,0,0"
+                                    Style="{StaticResource btnBaseCancel}" Height="30" Width="180"   Click="返回上一步横或者竖_Click"
+                                                    Foreground="White" HorizontalContentAlignment="Center" FontSize="13" 
+                                        HorizontalAlignment="Left"  Content="返回上一步"></Button>
+                        <TextBlock Grid.Column="2" FontSize="13"  HorizontalAlignment="Right" FontWeight="Normal"  Foreground="{StaticResource niceBlack}"
+                                   FontFamily="微软雅黑" Margin="0,10,30,0">4/6 添加字幕</TextBlock>
                         <Grid  Grid.Row="3" Grid.ColumnSpan="3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30"></ColumnDefinition>
@@ -1074,17 +1104,17 @@
                             </StackPanel>
                             <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
                                 <TextBlock Grid.Column="1"  Style="{StaticResource myText13}">字体颜色</TextBlock>
-                                <colorPicker:ColorPicker ColorMode="ColorPalette" Width="150"   Height="40" Margin="15,0"
+                                <colorPicker:ColorPicker ColorMode="ColorPalette" Width="150"   Height="40" Margin="15,0" Background="#f6f6f6"
                                             SelectedColor="{Binding FontColor,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left"></colorPicker:ColorPicker>
                             </StackPanel>
                             <StackPanel Grid.Row="0" Grid.Column="3" Orientation="Horizontal">
                                 <TextBlock Grid.Column="1"  Style="{StaticResource myText13}">字体样式</TextBlock>
-                                <Border Grid.Column="2"  BorderThickness="1" CornerRadius="4" BorderBrush="#666" Width="150" Height="30" Margin="15,0,0,0">
-                                    <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
-                         Text="{Binding FontStyle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                                               Foreground="{StaticResource niceBlack}" FontSize="13"
-                                                              VerticalContentAlignment="Center"  ></TextBox>
-                                </Border>
+                                <ComboBox  Margin="15,0"   Grid.Column="2"  
+                                              ItemsSource="{Binding 字体集合}"
+                                           SelectedItem="{Binding FontStyle ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                           Style="{StaticResource comboxBase}"  Width="150" Height="30" >
+                                    </ComboBox>
+
                             </StackPanel>
                             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                                 <TextBlock Grid.Column="1"  Style="{StaticResource myText13}">底部距离</TextBlock>
@@ -1149,10 +1179,12 @@
                             <RowDefinition Height="40"></RowDefinition>
                             <RowDefinition Height="50"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <StackPanel>
-
-                        </StackPanel>
-
+                        <Button  Grid.Column="0"   VerticalAlignment="Top" Margin="30,10,0,0"
+                                    Style="{StaticResource btnBaseCancel}" Height="30" Width="180"  Tag="{Binding ElementName=GridStepFive}" Click="返回上一步_Click"
+                                                    Foreground="White" HorizontalContentAlignment="Center" FontSize="13" 
+                                        HorizontalAlignment="Left"  Content="返回上一步"></Button>
+                        <TextBlock Grid.Column="2" FontSize="13"  HorizontalAlignment="Right" FontWeight="Normal"  Foreground="{StaticResource niceBlack}"
+                                   FontFamily="微软雅黑" Margin="0,10,30,0">5/6 添加水印 </TextBlock>
                         <Grid  Grid.Row="3" Grid.ColumnSpan="3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30"></ColumnDefinition>
@@ -1230,7 +1262,62 @@
                             <ProgressBar Margin="0,0,30,0" Style="{StaticResource  SimpleProgressBar}" Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="8" ></ProgressBar>
                         </Grid>
                     </Grid>
-                    <!--Visibility="{Binding PreViewVisibility ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+                    <Grid Background="#f6f6f8"  Visibility="Collapsed" Name="GridStepSeven">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Button  Grid.Column="0"   VerticalAlignment="Top" Margin="30,10,0,0"
+                                    Style="{StaticResource btnBaseCancel}" Height="30" Width="180"  Tag="{Binding ElementName=GridStepSix}" Click="返回上一步_Click"
+                                                    Foreground="White" HorizontalContentAlignment="Center" FontSize="13" 
+                                        HorizontalAlignment="Left"  Content="返回上一步"></Button>
+                        <TextBlock Grid.Column="2" FontSize="13"  HorizontalAlignment="Right" FontWeight="Normal"  Foreground="{StaticResource niceBlack}"
+                                   FontFamily="微软雅黑" Margin="0,10,30,0">6/6 静音处理</TextBlock>
+
+                        <Grid Grid.Row="2" Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+    
+                                <ColumnDefinition ></ColumnDefinition>
+
+                            </Grid.ColumnDefinitions>
+                            <CheckBox Style="{StaticResource chkPassWord}" Content="是否静音" Grid.Column="2"  Margin="700,0,0,0"
+                                              IsChecked="{Binding 是否静音, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                            <Button   Style="{StaticResource btnBaseCancel}" Height="30" Width="150"  
+                                                    Click="开始合成_Click"  Grid.Column="2"
+                                                Foreground="White" FontSize="13"  HorizontalAlignment="Right" Margin="20,0">开始合成</Button>
+                        </Grid>
+
+
+                        <Grid  Grid.Row="3" Grid.ColumnSpan="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"></ColumnDefinition>
+                                <ColumnDefinition Width="150" ></ColumnDefinition>
+                                <ColumnDefinition Width="10" ></ColumnDefinition>
+                                <ColumnDefinition  Width="150"></ColumnDefinition>
+                                <ColumnDefinition Width="10" ></ColumnDefinition>
+
+                                <ColumnDefinition ></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+ 
+                        <Grid Grid.Row="2" Grid.ColumnSpan="10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="93"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.ColumnSpan="2" BorderThickness="0,1,0,1" BorderBrush="{StaticResource niceHover}"></Border>
+                            <TextBlock  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5"  Style="{StaticResource myText13}" Margin="30,0">进度 <Run Text="{Binding CurrentIndex}" Foreground="{StaticResource niceBlack}"></Run>/<Run Foreground="#666" Text="{Binding ElementName=tbOutPutCount, Path=Text}"></Run></TextBlock>
+                            <ProgressBar Margin="0,0,30,0" Style="{StaticResource  SimpleProgressBar}" Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="8" ></ProgressBar>
+                        </Grid>
+                    </Grid>
+
+
+
+                                </Grid>
+
                     <Grid Name="grid预览页"  Visibility="{Binding PreViewVisibility ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="#F6F6F8">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"></RowDefinition>
@@ -1244,13 +1331,13 @@
                             <ColumnDefinition Width="30"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <!--播放器-->
+
                         <Grid Grid.Row="0" Grid.Column="1" Visibility="Visible" Background="#F6F6F8">
                             <WindowsFormsHost:WindowsFormsHost x:Name="winformhost" Background="Transparent"  Panel.ZIndex="0">
                                 <VlcWinform:VlcControl  x:Name="VlcPlayer"  Dock="Fill" VlcLibDirectoryNeeded="VlcPlayer_VlcLibDirectoryNeeded"   ></VlcWinform:VlcControl>
                             </WindowsFormsHost:WindowsFormsHost>
                         </Grid>
-                        <!--列表-->  
+
                         <ListBox Grid.RowSpan="6"   Grid.Column="1"   Visibility="Collapsed"
                              ItemContainerStyle="{StaticResource ListBoxItemEmptyTemplate}" SelectionChanged="ListBox_SelectionChanged"
                            ItemTemplate="{StaticResource PlayList}" ItemsSource="{Binding PlayList }"  >
@@ -1264,7 +1351,7 @@
                             </ListBox.Template>
                         </ListBox>
 
-                        <!--播放 暂停 时间-->
+
                         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Background="Transparent" Visibility="Visible">
                             <Border BorderBrush="#CBCBCB" BorderThickness="0" Background="#7B7B7B">
                                 <Grid>
@@ -1300,112 +1387,151 @@
                                         VerticalAlignment="Center" Value="{Binding Progress ,Mode=TwoWay}"
                                         Style="{StaticResource mySliderStyle }"
                                         PreviewMouseDown="PlaySilder_PreviewMouseDown"></Slider>
-                                        
-                                    
+
+
                                         <TextBlock Grid.Column="0" Grid.Row="2" Foreground="White" FontSize="16"   Text="{Binding CurrentPos  ,Mode=TwoWay}"
                                            HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
-                                        
-                                    <TextBlock Grid.Column="2" Grid.Row="2" Foreground="White" FontSize="16"   Text="{Binding MaxPos  ,Mode=TwoWay}"
+
+                                        <TextBlock Grid.Column="2" Grid.Row="2" Foreground="White" FontSize="16"   Text="{Binding MaxPos  ,Mode=TwoWay}"
                                            HorizontalAlignment="Right" VerticalAlignment="Center"  ></TextBlock>
-                                </Grid>
-                            <!--<StackPanel Grid.Column="5" Orientation="Horizontal" Margin="10,0,0,0">
+                                    </Grid>
+                                    <StackPanel Grid.Column="5" Orientation="Horizontal" Margin="10,0,0,0" Visibility="Collapsed">
                                         <Border  Background="#F6F6F8" CornerRadius="5" Height="30" Width=" 50">
                                             <TextBox Background="Transparent" BorderThickness="0" TextAlignment="Center" Height="30" VerticalContentAlignment="Center" Name="tbTime">12</TextBox>
                                         </Border>
-                                       
-                                        --><!--<Button Style="{StaticResource btnBaseCancel}" Height="30" Margin="20,0,0,0" FontSize="13" Width="150" Click="跳转指定秒_Click">转到指定秒</Button>--><!--
-                                    </StackPanel>-->
+
+                                        <Button Style="{StaticResource btnBaseCancel}" Height="30" Margin="20,0,0,0" FontSize="13" Width="150" Click="跳转指定秒_Click">转到指定秒</Button>
+                                    </StackPanel>
                                     <Border Grid.Column="6" Height="30" Width="30" CornerRadius="15" Background="#4A4A4A" BorderThickness="2" BorderBrush="#f6f6f8">
                                         <Image  Stretch="Fill" Name="imgPop"   Cursor="Hand"
                                        Source="/img/volume.png" Height="20" Width="20" PreviewMouseDown="Image_PreviewMouseDown"></Image>
                                     </Border>
-                            
-                                <Popup x:Name="VolPopup"  Width="50"   Height="120" Grid.Column="4"  MouseLeave="MenuPopup_MouseLeave"
+
+                                    <Popup x:Name="VolPopup"  Width="50"   Height="120" Grid.Column="4"  MouseLeave="MenuPopup_MouseLeave"
                            PopupAnimation="None"   MyPopup:PopopHelper.PopupPlacementTarget="{Binding ElementName=DahePlayer}" 
                            PlacementTarget="{Binding ElementName=imgPop}"  Placement="Center"  VerticalOffset="-70"  HorizontalOffset="0"
                            AllowsTransparency="True" StaysOpen="True" IsOpen="False">
-                                    <Border    Background="Black" Opacity="0.8"  CornerRadius="3" Margin="0">
-                                        <Slider  Cursor="Hand" Value="100"  Orientation="Vertical"  Margin="5" Maximum="100" Minimum="0" 
+                                        <Border    Background="Black" Opacity="0.8"  CornerRadius="3" Margin="0">
+                                            <Slider  Cursor="Hand" Value="100"  Orientation="Vertical"  Margin="5" Maximum="100" Minimum="0" 
                                               Style="{StaticResource mySliderStyle}" ValueChanged="Slider_ValueChanged"
                                                  >
-                                        </Slider>
-                                    </Border>
-                                </Popup>
-                             
-                        <Popup x:Name="VideoQualityPopup"  Width="180"  Height="600"  Grid.Column="5"  MouseLeave="VideoQualityPopup_MouseLeave"
+                                            </Slider>
+                                        </Border>
+                                    </Popup>
+
+                                    <Popup x:Name="VideoQualityPopup"  Width="180"  Height="600"  Grid.Column="5"  MouseLeave="VideoQualityPopup_MouseLeave"
                            PopupAnimation="None"   MouseEnter="VideoQualityPopup_MouseEnter"
                            PlacementTarget="{Binding ElementName=bPop}"  Placement="Top"  VerticalOffset="10"  HorizontalOffset="0"
                            AllowsTransparency="True" StaysOpen="True" IsOpen="False">
-                            <Border    Background="Black" Opacity="0.8"  CornerRadius="3" >
-                                <ListBox  Name="lbPlayList"
+                                        <Border    Background="Black" Opacity="0.8"  CornerRadius="3" >
+                                            <ListBox  Name="lbPlayList"
                            HorizontalContentAlignment="Center"  
                           ItemContainerStyle="{StaticResource ListBoxItemEmptyTemplate}" Margin="5,20"
                            ItemTemplate="{StaticResource FindListTemplate}" ItemsSource="{Binding PlayList }">
-                                    <ListBox.Template>
-                                        <ControlTemplate TargetType="{x:Type ListBox}">
-                                            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"  Style="{StaticResource AduScrollViewer}">
-                                                <WrapPanel Orientation="Vertical" IsItemsHost="True" ScrollViewer.CanContentScroll="True"/>
-                                            </ScrollViewer>
-                                        </ControlTemplate>
-                                    </ListBox.Template>
-                                </ListBox>
+                                                <ListBox.Template>
+                                                    <ControlTemplate TargetType="{x:Type ListBox}">
+                                                        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"  Style="{StaticResource AduScrollViewer}">
+                                                            <WrapPanel Orientation="Vertical" IsItemsHost="True" ScrollViewer.CanContentScroll="True"/>
+                                                        </ScrollViewer>
+                                                    </ControlTemplate>
+                                                </ListBox.Template>
+                                            </ListBox>
+                                        </Border>
+                                    </Popup>
+                                </Grid>
                             </Border>
-                        </Popup>
-                    </Grid>
-            </Border>
-        </Grid>
+                        </Grid>
 
-                                        <Grid Grid.Row="3"  Visibility="Collapsed">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="140"></ColumnDefinition>
-                                                <ColumnDefinition></ColumnDefinition>
-                                                <ColumnDefinition Width="190"></ColumnDefinition>
-                                                <ColumnDefinition Width="60"></ColumnDefinition>
-                                            </Grid.ColumnDefinitions>
-                                            <Grid  Grid.Column="1">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="15"></RowDefinition>
-                                                    <RowDefinition Height="10"></RowDefinition>
-                                                    <RowDefinition Height="*"></RowDefinition>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition MinWidth="120"></ColumnDefinition>
-                                                    <ColumnDefinition  Width="*"></ColumnDefinition>
-                                                    <ColumnDefinition MinWidth="120"></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-                                                <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Text="{Binding CurrentFrame,StringFormat={}当前帧:{0}}"></TextBlock>
-                                                <Slider Name="playSilderFPS" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Maximum="{Binding AllFrame}" Minimum="0"
+                        <Grid Grid.Row="3"  Visibility="Collapsed">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="140"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="190"></ColumnDefinition>
+                                <ColumnDefinition Width="60"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid  Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="15"></RowDefinition>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition MinWidth="120"></ColumnDefinition>
+                                    <ColumnDefinition  Width="*"></ColumnDefinition>
+                                    <ColumnDefinition MinWidth="120"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Text="{Binding CurrentFrame,StringFormat={}当前帧:{0}}"></TextBlock>
+                                <Slider Name="playSilderFPS" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Maximum="{Binding AllFrame}" Minimum="0"
                                         VerticalAlignment="Center" Value="{Binding CurrentFrame ,Mode=TwoWay}"
                                         Style="{StaticResource mySliderStyle }"
                                         PreviewMouseDown="PlaySilder帧_PreviewMouseDown"></Slider>
-                                                <TextBlock Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right"  Text="{Binding AllFrame,StringFormat={}视频总帧数:{0}}"></TextBlock>
-                                            </Grid>
+                                <TextBlock Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right"  Text="{Binding AllFrame,StringFormat={}视频总帧数:{0}}"></TextBlock>
+                            </Grid>
 
-                                            <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="10,0,0,0">
-                                                <TextBox Width="70" Height="30" VerticalContentAlignment="Center" Name="tbFrame">123</TextBox>
-                                                <Button Style="{StaticResource btnBaseCancel}" Height="35" Margin="10,0,0,0" Width="90" Click="跳转指定帧_Click">转到指定帧</Button>
-                                            </StackPanel>
-                                        </Grid>
+                            <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="10,0,0,0">
+                                <TextBox Width="70" Height="30" VerticalContentAlignment="Center" Name="tbFrame">123</TextBox>
+                                <Button Style="{StaticResource btnBaseCancel}" Height="35" Margin="10,0,0,0" Width="90" Click="跳转指定帧_Click">转到指定帧</Button>
+                            </StackPanel>
+                        </Grid>
 
-                                        <Grid Grid.Row="2" Grid.Column="1">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="60"></ColumnDefinition>
-                                                <ColumnDefinition></ColumnDefinition>
-                                            <ColumnDefinition Width="100"></ColumnDefinition>
-                                            <ColumnDefinition Width="150"></ColumnDefinition>
+                        <Grid Grid.Row="2" Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="150"></ColumnDefinition>
 
-                                        </Grid.ColumnDefinitions>
-                                            <Button Style="{StaticResource btnBaseCancel}" Height="30" Width="50" Click="返回_Click">返回</Button>
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{StaticResource btnBaseCancel}" Height="30" Width="50" Click="返回_Click">返回</Button>
                             <Button Grid.Column="3" Style="{StaticResource btnBaseCancel}" Height="30" Width="150" Click="开始处理_Click">下一步</Button>
-                                            <Button Grid.Column="2" Style="{StaticResource btnBaseCancel}" Height="30" Width="50" Click="跳过_Click"  Tag="预览">跳过</Button>
-                                        </Grid>
-                                    </Grid>
+                            <Button Grid.Column="2" Style="{StaticResource btnBaseCancel}" Height="30" Width="50" Click="跳过_Click"  Tag="预览">跳过</Button>
+                        </Grid>
+                    </Grid>
 
+                    <Grid  Grid.ColumnSpan="3" Grid.RowSpan="2" Name="grid提示" Visibility="Collapsed">
+                        <Border BorderThickness="1"  CornerRadius="5" Background="#F4F4F4" Opacity="0.6">
 
+                        </Border >
+                        <Border Height="300" Width="600" CornerRadius="5" Background="#F4F4F4"  BorderBrush="{StaticResource niceBlack}" BorderThickness="1" >
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="60"></RowDefinition>
+
+                                </Grid.RowDefinitions>
+                                <TextBlock  Margin="30,10,0,0" Name="tbTitle" FontSize="18">提示</TextBlock>
+                                <Grid Grid.Row="1" >
+                                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" Style="{StaticResource AduScrollViewer}"  Margin="20,10" >
+                                        <TextBlock Name="tbTip" VerticalAlignment="Center"  FontSize="18" TextAlignment="Center" TextWrapping="Wrap"  FontWeight="Normal">
+                                        </TextBlock>
+                                    </ScrollViewer>
 
                                 </Grid>
+                                <Grid Grid.Row="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Style="{StaticResource btnBaseCancel}" Height="40" Width="160" FontSize="18"  
+                                        Grid.Column="0" Content="打开所在文件夹" Tag="{Binding ElementName=grid提示}" Click="打开所在文件夹_Click"></Button>
+                                    <Button Style="{StaticResource btnBaseCancel}" Height="40" Width="160" FontSize="18"  
+                                        Grid.Column="1" Content="确认" Tag="{Binding ElementName=grid提示}" Click="返回主界面Click"></Button>
+                                </Grid>
+                            </Grid>
+                        </Border>
 
-                            </Border>
+                    </Grid>
+
+
+
+
+
+
+
+
+                </Grid>
+          </Border>
                             <!--+++++++++++++++++++++++++++++++++++++加载动画++++++++++++++++++++++++++++++++++++++++-->
             <Border Name="borCannotControl" Background="White"  Grid.Row="1" Opacity="0.2" Visibility="{Binding IsVisibility,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,0">
 

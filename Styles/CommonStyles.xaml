@@ -772,7 +772,7 @@
                 <ControlTemplate TargetType="ComboBox">
                     <Border
                         Background="Transparent"
-                       BorderBrush="#1E9FFF"
+                       BorderBrush="#666"
                         BorderThickness="1"
                         CornerRadius="5">
                         <Grid>
@@ -785,6 +785,7 @@
                                 FontSize="13"
                                 Foreground="#666"
                                 BorderThickness="0"
+                                Background="Transparent"
                                 VerticalAlignment="Center"
                                 TextAlignment="Center"
                                 IsReadOnly="True"
@@ -878,7 +879,7 @@
                                         Foreground="{StaticResource niceBlack}"/>
                                 </Grid>
                             </Border>
-                            <ContentPresenter VerticalAlignment="Center" Content="{TemplateBinding Content }">
+                            <ContentPresenter Margin="3,0,0,0" VerticalAlignment="Center" Content="{TemplateBinding Content }">
                             </ContentPresenter>
                         </StackPanel>
                     </Grid>
@@ -978,7 +979,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid Height="14" Width="14">
-                        <Border BorderBrush="#0478FF" BorderThickness="0" CornerRadius="5" Name="PART_Background">
+                        <Border BorderBrush="#0478FF" BorderThickness="0" CornerRadius="5" Name="PART_Background"  Opacity="0.7">
                             <Border.Background>
                                 <SolidColorBrush Color="Transparent">
                                 </SolidColorBrush>
@@ -989,12 +990,8 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Gold"></Setter>
+                            <Setter Property="Opacity" TargetName="PART_Background" Value="1"></Setter>
 
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Foreground" Value="#3399CC"></Setter>
-                            <Setter Property="Background" Value="#F0F182"></Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" TargetName="PART_Background" Value="#999999"></Setter>
@@ -1013,7 +1010,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Grid Height="14" Width="14">
-                        <Border BorderBrush="#0478FF" BorderThickness="0" CornerRadius="5" Name="PART_Background">
+                        <Border BorderBrush="#0478FF" BorderThickness="0" CornerRadius="5" Opacity="0.7" Name="PART_Background">
                             <Border.Background>
                                 <SolidColorBrush Color="Transparent">
                                 </SolidColorBrush>
@@ -1024,8 +1021,7 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Gold"></Setter>
-
+                            <Setter Property="Opacity" TargetName="PART_Background" Value="1"></Setter>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter Property="Foreground" Value="#3399CC"></Setter>

@@ -12,7 +12,22 @@ namespace 素材合成.Model
         public VideoGroupNode()
         {
             _VideoNode = new ObservableCollection<PlayListNode>();
+            _逆时针旋转90 = false;
+            _顺时针旋转90 = false;
+            _GUID = new Guid().ToString();
         }
+
+        private string _GUID;
+        public string GUID
+        {
+            get { return _GUID; }
+            set
+            {
+                _GUID = value;
+                OnPropertyChanged(nameof(GUID));
+            }
+        }
+
         private string _ID;
         public string ID
         {
@@ -63,6 +78,28 @@ namespace 素材合成.Model
             {
                 _VideoNode = value;
                 OnPropertyChanged(nameof(VideoNode));
+            }
+        }
+
+        private bool _逆时针旋转90;
+        public bool 逆时针旋转90
+        {
+            get { return _逆时针旋转90; }
+            set
+            {
+                _逆时针旋转90 = value;
+                OnPropertyChanged(nameof(逆时针旋转90));
+            }
+        }
+
+        private bool _顺时针旋转90;
+        public bool 顺时针旋转90
+        {
+            get { return _顺时针旋转90; }
+            set
+            {
+                _顺时针旋转90 = value;
+                OnPropertyChanged(nameof(顺时针旋转90));
             }
         }
     }

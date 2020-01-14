@@ -54,8 +54,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>cbstx-o6h9h-001.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -295,9 +294,14 @@
     <Resource Include="img\路径%402x.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="cbstx-o6h9h-001.ico" />
     <Content Include="ffmpeg.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="img\tubiao_128.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\logo.png" />
     <Resource Include="img\切片1.png" />
     <Resource Include="img\切片2.png" />
     <Resource Include="img\切片3.png" />
