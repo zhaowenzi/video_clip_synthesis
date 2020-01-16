@@ -1050,9 +1050,9 @@
                                     </Border>
                                    
                                 </StackPanel>
-
-                                <Button Grid.Row="0"  Grid.Column="2" HorizontalAlignment="Left" Grid.RowSpan="2" Style="{StaticResource btnBaseCancel}" Height="30" 
-                                                        Foreground="White" Width="120" Margin="0,0,0,0" Click="随机从图库选择图片_Click_1">随机图库图片</Button>
+                                <CheckBox Style="{StaticResource chkPassWord}"    Content="随机图库图片"
+                                          Grid.Row="0"  Grid.Column="2" HorizontalAlignment="Left" Grid.RowSpan="2" Height="30" 
+                                          Margin="5,0,0,0" IsChecked="{Binding 是否随机图片, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
                             </Grid>
                 
 
@@ -1548,6 +1548,9 @@
                                     </TransformGroup>
                                 </Loading:UserControl1.RenderTransform>
              </Loading:UserControl1>
+            <Button Style="{StaticResource btnBaseCancel}" Content="停止" VerticalAlignment="Center"  Click="Button_Click_停止"
+                    Height="30" Width="180"  Grid.Column="1" Grid.Row="1" Margin="0,150,0,0"  Visibility="{Binding IsVisibility,UpdateSourceTrigger=PropertyChanged}"
+                    HorizontalAlignment="Center"></Button>
                         </Grid>
             </Border>
 

@@ -58,8 +58,18 @@ namespace 素材合成
             水印坐标Y = "10";
             PreViewVisibility = Visibility.Collapsed;
             是否静音 = false;
+            是否随机图片 = true;
         }
-
+        private bool _是否随机图片;
+        public bool 是否随机图片
+        {
+            get { return _是否随机图片; }
+            set
+            {
+                _是否随机图片 = value;
+                OnPropertyChanged(nameof(是否随机图片));
+            }
+        }
         private ObservableCollection<string> _字体集合;
         public ObservableCollection<string> 字体集合
         {

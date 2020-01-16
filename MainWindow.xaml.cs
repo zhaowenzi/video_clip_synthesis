@@ -46,6 +46,7 @@ namespace 素材合成
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            是否停止 = false;
             this.DataContext = _viewModel;
             _viewModel.TotalCount = 0;
             _viewModel.IsVisibility = Visibility.Collapsed;
@@ -181,7 +182,7 @@ namespace 素材合成
            
                 while (imageSource == null)
                 {
-                    Thread.Sleep(300);
+                    Thread.Sleep(100);
                     imageSource = SetSource(imgFullFileName);
 
                     index++;
@@ -239,7 +240,7 @@ namespace 素材合成
                 int index = 0;
                 while (imageSource == null)
                 {
-                    Thread.Sleep(300);
+                    Thread.Sleep(100);
                     imageSource = SetSource(imgFullFileName);
 
                     index++;
@@ -664,6 +665,7 @@ namespace 素材合成
 
         private void 添加素材_Click(object sender, RoutedEventArgs e)
         {
+            是否停止 = false;
             var openFolder = new BetterFolderBrowser();
             openFolder.Title = "选择文件夹(可多选)";
             if (ConfigureHelper.Read("LastestImportPath") != "")
@@ -698,7 +700,10 @@ namespace 素材合成
            
             foreach (var item in (string[])selectedFolders)
             {
-
+                if(是否停止)
+                {
+                    break;
+                }
                 DirectoryInfo di = new DirectoryInfo(item);
                 //添加一级节点
                 var tempnode = new VideoGroupNode();
@@ -824,7 +829,7 @@ namespace 素材合成
         void 旋转(string VideoPath)
         {
             string RotateOutPutName = root_path + $"temp\\tempRotate_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_Video.mp4";
-            string RotateArguments = $" -i {VideoPath} -vf transpose=2 {RotateOutPutName}";
+            string RotateArguments = $" -i {VideoPath} -vf transpose=2 -y  {RotateOutPutName}";
             FileHelper.AppandLog("逆时针旋转90: ffmpeg " + RotateArguments);
             ExecuteCommandCut(RotateArguments, RotateOutPutName);
 
@@ -838,7 +843,7 @@ namespace 素材合成
         void 顺时针旋转(string VideoPath)
         {
             string RotateOutPutName = root_path + $"temp\\tempRotate_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_Video.mp4";
-            string RotateArguments = $" -i {VideoPath} -vf transpose=1 {RotateOutPutName}";
+            string RotateArguments = $" -i {VideoPath} -vf transpose=1 -y  {RotateOutPutName}";
             FileHelper.AppandLog("逆时针旋转90: ffmpeg " + RotateArguments);
             ExecuteCommandCut(RotateArguments, RotateOutPutName);
             File.Delete(VideoPath);
@@ -855,7 +860,7 @@ namespace 素材合成
 
         private void 合成视频_Click(object sender, RoutedEventArgs e)
         {
-
+            是否停止 = false;
             if (string.IsNullOrEmpty(tbOutPutCount.Text))
             {
                 MessageBox.Show("请输入需要导出的素材数量！");
@@ -954,16 +959,16 @@ namespace 素材合成
                     FileHelper.SaveFile_Create("fileList.txt", sb.ToString());
                     FileInfo fileInfo = new FileInfo("fileList.txt");
 
-                    string Arguments = $" -f concat -safe 0  -i  {fileInfo.FullName} -map 0:0 -map 0:1 -c copy {OutPutVideoName}";
+                    string Arguments = $" -f concat -safe 0  -i  {fileInfo.FullName} -map 0:0 -map 0:1 -c copy -y  {OutPutVideoName}";
                     FileHelper.AppandLog("合成命令: ffmpeg " + Arguments);
                     ExecuteCommandCut(Arguments, OutPutVideoName);
-                    Thread.Sleep(300);
+                    Thread.Sleep(100);
                     //mov转MP4
                     string OutPutVideoMp4Name = root_path + $"temp\\temp_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_Video.mp4";
-                    string ToMP4Arguments = $"-i {OutPutVideoName} -vcodec copy -acodec aac {OutPutVideoMp4Name}";
+                    string ToMP4Arguments = $"-i {OutPutVideoName} -vcodec copy -acodec aac -y  {OutPutVideoMp4Name}";
                     FileHelper.AppandLog("转MP4格式: ffmpeg " + ToMP4Arguments);
                     ExecuteCommandCut(ToMP4Arguments, OutPutVideoMp4Name);
-                    Thread.Sleep(300);
+                    Thread.Sleep(100);
                     OutPutVideoName = OutPutVideoMp4Name;
                     GetMovWidthAndHeight(OutPutVideoName, out videoWidth, out videoHeight, out time, out IsHorizontal);
                     if (IsHorizontal)
@@ -987,15 +992,15 @@ namespace 素材合成
                     {
                         if (IsHorizontal)
                         {
-                            ScaleArguments = $"-i {OutPutVideoName} -vf scale=1920:1080 {ScaleOutPutName}";
+                            ScaleArguments = $"-i {OutPutVideoName} -vf scale=1920:1080  -y {ScaleOutPutName}";
                         }
                         else
                         {
-                            ScaleArguments = $"-i {OutPutVideoName} -vf scale=1080:1920 {ScaleOutPutName}";
+                            ScaleArguments = $"-i {OutPutVideoName} -vf scale=1080:1920 -y  {ScaleOutPutName}";
                         }
                         FileHelper.AppandLog("尺寸规整命令: ffmpeg " + ScaleArguments);
                         ExecuteCommandCut(ScaleArguments, ScaleOutPutName);
-                        Thread.Sleep(300);
+                        Thread.Sleep(100);
                         OutPutVideoName = ScaleOutPutName;
                     }
                     _viewModel.BackgroundImage = GetPicFromVideo(OutPutVideoName);
@@ -1076,23 +1081,30 @@ namespace 素材合成
                 {
                     Directory.CreateDirectory("temp\\");
                 }
-
+                if(是否停止)
+                {
+                    return;
+                }
                 #region 合成
                 string ProgressVideoPath = "";
                 string OutPutVideoName_合成 = root_path + $"temp\\temp_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_Video.mov";
 
                 FileHelper.SaveFile_Create("fileList.txt", sb.ToString());
                 FileInfo fileInfo = new FileInfo("fileList.txt");
-                string Arguments = $" -f concat -safe 0  -i  {fileInfo.FullName} -map 0:0 -map 0:1 -c copy {OutPutVideoName_合成}";
+                string Arguments = $" -f concat -safe 0  -i  {fileInfo.FullName} -map 0:0 -map 0:1 -c copy -y  {OutPutVideoName_合成}";
                 FileHelper.AppandLog("合成命令: ffmpeg " + Arguments);
                 ExecuteCommandCut(Arguments, OutPutVideoName_合成);
-                Thread.Sleep(300);
+                Thread.Sleep(100);
+                if (是否停止)
+                {
+                    return;
+                }
                 //mov转MP4
                 string OutPutVideoMp4Name = root_path + $"temp\\temp_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_Video.mp4";
-                string ToMP4Arguments = $"-i {OutPutVideoName_合成} -vcodec copy -acodec aac {OutPutVideoMp4Name}";
+                string ToMP4Arguments = $"-i {OutPutVideoName_合成} -vcodec copy -acodec aac -y  {OutPutVideoMp4Name}";
                 FileHelper.AppandLog("转MP4格式: ffmpeg " + ToMP4Arguments);
                 ExecuteCommandCut(ToMP4Arguments, OutPutVideoMp4Name);
-                Thread.Sleep(300);
+                Thread.Sleep(100);
                 //转换为标准尺寸
                 if ((videoWidth == 1920 && videoHeight == 1080) || (videoWidth == 1080 && videoHeight == 1920))
                 {
@@ -1104,15 +1116,19 @@ namespace 素材合成
                     string ScaleArguments = "";
                     if (IsHorizontal)
                     {
-                        ScaleArguments = $"-i {OutPutVideoMp4Name} -vf scale=1920:1080 {ScaleOutPutName}";
+                        ScaleArguments = $"-i {OutPutVideoMp4Name} -vf scale=1920:1080 -y  {ScaleOutPutName}";
                     }
                     else
                     {
-                        ScaleArguments = $"-i {OutPutVideoMp4Name} -vf scale=1080:1920 {ScaleOutPutName}";
+                        ScaleArguments = $"-i {OutPutVideoMp4Name} -vf scale=1080:1920 -y  {ScaleOutPutName}";
                     }
 
                     ExecuteCommandCut(ScaleArguments, ScaleOutPutName);
-                    Thread.Sleep(300);
+                    if (是否停止)
+                    {
+                        return;
+                    }
+                    Thread.Sleep(100);
                     OutPutVideoMp4Name = ScaleOutPutName;
                     FileHelper.AppandLog("尺寸规整: ffmpeg " + ScaleArguments);
                 }
@@ -1177,7 +1193,11 @@ namespace 素材合成
                     FileHelper.AppandLog("剪切视频: ffmpeg " + OutPutVideoName_剪切);
                     // ExecuteAsAdmin(CutArguments);
                     ProgressVideoPath = OutPutVideoName_剪切;
-                    Thread.Sleep(300);
+                    Thread.Sleep(100);
+                    if (是否停止)
+                    {
+                        return;
+                    }
                     //  GetComposeProgress(OutPutVideoName);
                     _viewModel.CutSize = 2 * fileInfo.Length;
 
@@ -1200,7 +1220,12 @@ namespace 素材合成
                     FileHelper.AppandLog("填充视频: ffmpeg " + PaddArguments);
                     _viewModel.CutSize = 3 * fileInfo.Length;
                     ProgressVideoPath = OutPutPaddVideoName_填充;
-                    Thread.Sleep(300);
+                    if (是否停止)
+                    {
+                        return;
+                    }
+                    Thread.Sleep(100);
+
                 }
 
 
@@ -1224,7 +1249,11 @@ namespace 素材合成
                     _viewModel.CutSize = 4 * fileInfo.Length;
                     ProgressVideoPath = OutPutPaddVideoName_竖转横;
                     FileHelper.AppandLog("竖转横: ffmpeg " + PaddArguments_竖转横);
-                    Thread.Sleep(300);
+                    if (是否停止)
+                    {
+                        return;
+                    }
+                    Thread.Sleep(100);
                 }
                 #endregion
 
@@ -1260,7 +1289,11 @@ namespace 素材合成
                     ExecuteCommandCut(CutArguments_横转竖, OutPutVideoName_横转竖_裁剪);
                     FileHelper.AppandLog("横转竖: ffmpeg " + CutArguments_横转竖);
                     _viewModel.CutSize = 5 * fileInfo.Length;
-                    Thread.Sleep(300);
+                    if (是否停止)
+                    {
+                        return;
+                    }
+                    Thread.Sleep(100);
 
                     string PaddArguments_横转竖_填充;
                     OutPutPaddVideoName_横转竖 = root_path + $"temp\\TransformHorizontal_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_Video.mp4";
@@ -1273,6 +1306,47 @@ namespace 素材合成
                     }
                     else
                     {
+
+                        if (_viewModel.是否随机图片)
+                        {
+                            if (!Directory.Exists("图库"))
+                            {
+                                Directory.CreateDirectory("图库");
+                            }
+                            DirectoryInfo directoryInfo = new DirectoryInfo("图库");
+                            Random random = new Random();
+                            FileInfo[] fileInfos = directoryInfo.GetFiles();
+                            if (fileInfos.Length < 2)
+                            {
+                                MessageBox.Show("图库图片不足,请再图库中添加更多图片!");
+                                return;
+                            }
+                            int index = 0;
+                            int flag = 0;
+                            flag = random.Next(0, fileInfos.Length - 1);
+                            index = 0;
+                            foreach (var item123 in fileInfos)
+                            {
+                                if (index == flag)
+                                {
+                                    _viewModel.ImageBottomPath = item123.FullName;
+                                    _viewModel.FillImageBottom = SetSource(item123.FullName);
+                                }
+                                index++;
+                            }
+                            flag = random.Next(0, fileInfos.Length - 1);
+                            index = 0;
+                            foreach (var item123 in fileInfos)
+                            {
+                                if (index == flag)
+                                {
+                                    _viewModel.ImageTopPath = item123.FullName;
+                                    _viewModel.FillImageTop = SetSource(item123.FullName);
+                                }
+                                index++;
+                            }
+                        }
+
                         int image2Ypos = 1920 - int.Parse(_viewModel.PadHeight) - 608;
                         int yellow = 608 + int.Parse(_viewModel.PadHeight);
                         PaddArguments_横转竖_填充 = $" -i {OutPutVideoName_横转竖_裁剪} -i {_viewModel.ImageTopPath} -i {_viewModel.ImageBottomPath} -filter_complex \""
@@ -1281,7 +1355,7 @@ namespace 素材合成
                             $"[2:v]scale=1080:{image2Ypos},boxblur={_viewModel.LumaPowerBottom}:1:cr=0:ar=0[outdown];" +
                             $"[outvideo][outup]overlay=0:0[output1];" +
                             $"[output1][outdown]overlay=0:{yellow}" +
-                            $"\" {OutPutPaddVideoName_横转竖}"
+                            $"\" {OutPutPaddVideoName_横转竖} -y " 
                             ;
                     }
 
@@ -1289,7 +1363,11 @@ namespace 素材合成
                     FileHelper.AppandLog("横转竖填充: ffmpeg " + PaddArguments_横转竖_填充);
                     _viewModel.CutSize = 6 * fileInfo.Length;
                     ProgressVideoPath = OutPutPaddVideoName_横转竖;
-                    Thread.Sleep(300);
+                    if (是否停止)
+                    {
+                        return;
+                    }
+                    Thread.Sleep(100);
                 }
 
                 #endregion
@@ -1300,17 +1378,25 @@ namespace 素材合成
                 {
                     fileInfo = new FileInfo(ProgressVideoPath);
                     string voiceOutPutName = fileInfo.FullName.Replace(fileInfo.Extension, ".wav");
-                    string GetVoiceArguments = $"-i {fileInfo.FullName} -f wav {voiceOutPutName}";
+                    string GetVoiceArguments = $"-i {fileInfo.FullName} -f wav {voiceOutPutName} -y ";
                     ExecuteCommandCut(GetVoiceArguments, voiceOutPutName);
                     _viewModel.CutSize = 7 * fileInfo.Length;
                     //语音转字幕
-                    Thread.Sleep(300);
+                    Thread.Sleep(100);
+                    if (是否停止)
+                    {
+                        return;
+                    }
                     string textOutPutName = fileInfo.FullName.Replace(fileInfo.Extension, ".srt");
                     string appid = ConfigureHelper.Read("讯飞appid");
                     string secret_key = ConfigureHelper.Read("讯飞secret_key");
                     string GetTextArguments = $" {appid} {secret_key} {voiceOutPutName} {textOutPutName}";
                     ExecuteCommandPython(GetTextArguments, textOutPutName);
-                    Thread.Sleep(300);
+                    if (是否停止)
+                    {
+                        return;
+                    }
+                    Thread.Sleep(100);
                     //烧录字幕至视频文件
                     string VideoOutPutName_加字幕 = root_path + $"temp\\AddSubtitle_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_{flag}.mp4";
                     string SetSubtitleArguments = $"-i {fileInfo.FullName} -vf \"subtitles = '{textOutPutName.Replace("\\", "\\\\").Replace(":", "\\:")}':force_style = 'FontName={_viewModel.FontStyle.Replace(" ", "").Replace("System.Windows.Controls.ComboBoxItem:", "")}," +
@@ -1318,36 +1404,46 @@ namespace 素材合成
                         $"{CmdHelper.To10_16_Length_2(_viewModel.FontColor.B)}" +
                         $"{CmdHelper.To10_16_Length_2(_viewModel.FontColor.G)}{CmdHelper.To10_16_Length_2(_viewModel.FontColor.R)}&," +
                         $"MarginV={_viewModel.TextHeight},BorderStyle=1,Outline={_viewModel.TextWidth.Replace(" ", "").Replace("System.Windows.Controls.ComboBoxItem:", "")},shadow={_viewModel.TextDeepth.Replace(" ", "").Replace("System.Windows.Controls.ComboBoxItem:", "")}'\"" +
-                        $" {VideoOutPutName_加字幕}";
+                        $" {VideoOutPutName_加字幕} -y ";
                     FileHelper.AppandLog("加字幕: ffmpeg " + SetSubtitleArguments);
                     ExecuteCommandCut(SetSubtitleArguments, VideoOutPutName_加字幕);
                     _viewModel.CutSize = 8 * fileInfo.Length;
                     ProgressVideoPath = VideoOutPutName_加字幕;
-                    Thread.Sleep(300);
+                    if (是否停止)
+                    {
+                        return;
+                    }
+                    Thread.Sleep(100);
                 }
 
                 #endregion
 
                 #region 加水印
+             
+              
                 if (_viewModel.Arguments_7_添加水印 != "")
                 {
                     //烧录字幕至视频文件
                     string VideoOutPutName_加水印 = root_path + $"temp\\AddLogo" +
                         $"_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_{flag}.mp4";
                     string SetLogoArguments = $" -i {ProgressVideoPath} -i {_viewModel.水印路径} " +
-                        $"-filter_complex overlay={_viewModel.水印坐标X}:{_viewModel.水印坐标Y} {VideoOutPutName_加水印}";
+                        $"-filter_complex overlay={_viewModel.水印坐标X}:{_viewModel.水印坐标Y} {VideoOutPutName_加水印} -y ";
                     ExecuteCommandCut(SetLogoArguments, VideoOutPutName_加水印);
                     ProgressVideoPath = VideoOutPutName_加水印;
                     FileHelper.AppandLog("加水印: ffmpeg " + SetLogoArguments);
                     _viewModel.CutSize = 9 * fileInfo.Length;
-                    Thread.Sleep(300);
+                    if (是否停止)
+                    {
+                        return;
+                    }
+                    Thread.Sleep(100);
                 }
 
                 if (_viewModel.是否静音 == true)
                 {
                     string VideoOutPutName_消音 = root_path + $"temp\\RemoveVoice" +
      $"_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_{flag}.mp4";
-                    string SetLogoArguments = $" -i {ProgressVideoPath} -an {VideoOutPutName_消音}";
+                    string SetLogoArguments = $" -i {ProgressVideoPath} -an {VideoOutPutName_消音} -y ";
                     ExecuteCommandCut(SetLogoArguments, VideoOutPutName_消音);
                     FileHelper.AppandLog("消音: ffmpeg " + SetLogoArguments);
                     ProgressVideoPath = VideoOutPutName_消音;
@@ -1357,7 +1453,10 @@ namespace 素材合成
                 string dateTime = now.Year + "年" + now.Month + "月" + now.Hour + "时" + now.Minute + "分" + now.Second + "秒" + now.Millisecond + "毫秒";
                 string VideoOutPutName = $"{_viewModel.SavePath}\\{dateTime}_{ComposeName.ToString()}.mp4";
                 File.Copy(ProgressVideoPath, VideoOutPutName);
-
+                if (是否停止)
+                {
+                    return;
+                }
                 #endregion
 
                 #region 消音
@@ -1391,6 +1490,7 @@ namespace 素材合成
         #region 剪切视频
         private void 剪切视频_Click(object sender, RoutedEventArgs e)
         {
+            是否停止 = false;
             if (string.IsNullOrEmpty(tbOutPut.Text))
             {
                 MessageBox.Show("请选择导出素材的路径！");
@@ -1465,7 +1565,7 @@ namespace 素材合成
                 FileHelper.AppandLog("剪切: ffmpeg " + CutArguments);
                 ExecuteCommandCut(CutArguments, OutPutVideoName);
                 // ExecuteAsAdmin(CutArguments);
-                Thread.Sleep(300);
+                Thread.Sleep(100);
                 //  GetComposeProgress(OutPutVideoName);
                 _viewModel.CutSize = fileInfo.Length;
                 //填充后输出路径
@@ -1485,7 +1585,7 @@ namespace 素材合成
                 }
                 ExecuteCommandCut(PaddArguments, OutPutPaddVideoName);
                 FileHelper.AppandLog("填充: ffmpeg " + PaddArguments);
-                Thread.Sleep(300);
+                Thread.Sleep(100);
 
 
                 if (flag == 1)
@@ -1582,6 +1682,7 @@ namespace 素材合成
 
         private void 竖版转横版_Click(object sender, RoutedEventArgs e)
         {
+            是否停止 = false;
             btnVeritalToHorizontal.IsEnabled = false;
             _viewModel.IsVisibility = Visibility.Visible;
             new Thread(TransformVideo).Start(tbOutPut.Text);
@@ -1610,7 +1711,7 @@ namespace 素材合成
              $"\" {OutPutPaddVideoName} -y";
                 ExecuteCommandCut(PaddArguments, OutPutPaddVideoName);
                 FileHelper.AppandLog("竖转横: ffmpeg " + PaddArguments);
-                Thread.Sleep(300);
+                Thread.Sleep(100);
                 if (flag == 1)
                 {
                     进入预览(OutPutPaddVideoName);
@@ -1665,6 +1766,7 @@ namespace 素材合成
         #region  横版转竖版_
         private void 横版转竖版_Click(object sender, RoutedEventArgs e)
         {
+            是否停止 = false;
             btnHorizontalToVertical.IsEnabled = false;
             _viewModel.IsVisibility = Visibility.Visible;
             if (_viewModel.ImageTopPath == "" || _viewModel.ImageBottomPath == "")
@@ -1716,7 +1818,7 @@ namespace 素材合成
                 string CutArguments = $"  -i {item} -vf crop=in_w-{offsetLeft}-{offsetRight}:in_h-{0}-{0}:{offsetLeft}:{0} {OutPutVideoName} -y ";
                 FileHelper.AppandLog("横转竖: ffmpeg " + CutArguments);
                 ExecuteCommandCut(CutArguments, OutPutVideoName);
-                Thread.Sleep(300);
+                Thread.Sleep(100);
                 _viewModel.CutSize = fileInfo.Length;
                 string PaddArguments;
 
@@ -1730,7 +1832,45 @@ namespace 素材合成
                 }
                 else
                 {
-               
+                    if (_viewModel.是否随机图片)
+                    {
+                        if (!Directory.Exists("图库"))
+                        {
+                            Directory.CreateDirectory("图库");
+                        }
+                        DirectoryInfo directoryInfo = new DirectoryInfo("图库");
+                        Random random = new Random();
+                        FileInfo[] fileInfos = directoryInfo.GetFiles();
+                        if (fileInfos.Length < 2)
+                        {
+                            MessageBox.Show("图库图片不足,请再图库中添加更多图片!");
+                            return;
+                        }
+                        int index = 0;
+                        int flag = 0;
+                        flag = random.Next(0, fileInfos.Length - 1);
+                        index = 0;
+                        foreach (var item123 in fileInfos)
+                        {
+                            if (index == flag)
+                            {
+                                _viewModel.ImageBottomPath = item123.FullName;
+                                _viewModel.FillImageBottom = SetSource(item123.FullName);
+                            }
+                            index++;
+                        }
+                        flag = random.Next(0, fileInfos.Length - 1);
+                        index = 0;
+                        foreach (var item123 in fileInfos)
+                        {
+                            if (index == flag)
+                            {
+                                _viewModel.ImageTopPath = item123.FullName;
+                                _viewModel.FillImageTop = SetSource(item123.FullName);
+                            }
+                            index++;
+                        }
+                    }
                     int image2Ypos = 1920 - int.Parse(_viewModel.PadHeight) - 608;
                     int yellow = 608 + int.Parse(_viewModel.PadHeight);
                     PaddArguments = $" -i {OutPutVideoName} -i {_viewModel.ImageTopPath} -i {_viewModel.ImageBottomPath} -filter_complex \""
@@ -1739,12 +1879,12 @@ namespace 素材合成
                         $"[2:v]scale=1080:{image2Ypos},boxblur={_viewModel.LumaPowerBottom}:1:cr=0:ar=0[outdown];" +
                         $"[outvideo][outup]overlay=0:0[output1];" +
                         $"[output1][outdown]overlay=0:{yellow}" +
-                        $"\" {OutPutPaddVideoName}"
+                        $"\" -y  {OutPutPaddVideoName}"
                         ;
                 }
                 FileHelper.AppandLog("横转竖填充: ffmpeg " + PaddArguments);
                 ExecuteCommandCut(PaddArguments, OutPutPaddVideoName);
-                Thread.Sleep(300);
+                Thread.Sleep(100);
 
 
                 if (flag == 1)
@@ -1810,6 +1950,7 @@ namespace 素材合成
         #region 添加字幕
         private void 合成字幕_Click(object sender, RoutedEventArgs e)
         {
+            是否停止 = false;
             btn合成字幕.IsEnabled = false;
             _viewModel.IsVisibility = Visibility.Visible;
             new Thread(AddText).Start(tbOutPut.Text);
@@ -1831,17 +1972,17 @@ namespace 素材合成
                 FileInfo fileInfo = new FileInfo(item);
                 _viewModel.TotalSize = 3 * fileInfo.Length;
                 string voiceOutPutName = fileInfo.FullName.Replace(fileInfo.Extension, ".wav");
-                string GetVoiceArguments = $"-i {fileInfo.FullName} -f wav {voiceOutPutName}";
+                string GetVoiceArguments = $"-i {fileInfo.FullName} -f wav -y {voiceOutPutName}";
                 ExecuteCommandCut(GetVoiceArguments, voiceOutPutName);
                 _viewModel.CutSize = fileInfo.Length;
                 //语音转字幕
-                Thread.Sleep(300);
+                Thread.Sleep(100);
                 string textOutPutName = fileInfo.FullName.Replace(fileInfo.Extension, ".srt");
                 string appid = ConfigureHelper.Read("讯飞appid");
                 string secret_key = ConfigureHelper.Read("讯飞secret_key");
                 string GetTextArguments = $" {appid} {secret_key} {voiceOutPutName} {textOutPutName}";
                 ExecuteCommandPython(GetTextArguments, textOutPutName);
-                Thread.Sleep(300);
+                Thread.Sleep(100);
                 _viewModel.CutSize = fileInfo.Length;
                 //烧录字幕至视频文件
                 string VideoOutPutName = root_path + $"temp\\AddSubtitle_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_{flag}.mp4";
@@ -1850,9 +1991,9 @@ namespace 素材合成
                     $"{CmdHelper.To10_16_Length_2(_viewModel.FontColor.B)}" +
                     $"{CmdHelper.To10_16_Length_2(_viewModel.FontColor.G)}{CmdHelper.To10_16_Length_2(_viewModel.FontColor.R)}&," +
                     $"MarginV={_viewModel.TextHeight},BorderStyle=1,Outline={_viewModel.TextWidth},shadow={_viewModel.TextDeepth}'\"" +
-                    $" {VideoOutPutName}";
+                    $" -y {VideoOutPutName}";
                 ExecuteCommandCut(SetSubtitleArguments, VideoOutPutName);
-                Thread.Sleep(300);
+                Thread.Sleep(100);
                 if(flag==1)
                 {
                     进入预览(VideoOutPutName);
@@ -1902,6 +2043,7 @@ namespace 素材合成
         #region 添加水印
         private void 添加水印_Click(object sender, RoutedEventArgs e)
         {
+            是否停止 = false;
             btn添加水印.IsEnabled = false;
             _viewModel.IsVisibility = Visibility.Visible;
             new Thread(AddLogo).Start(tbOutPut.Text);
@@ -1922,12 +2064,12 @@ namespace 素材合成
                 //获取视频语音
                 FileInfo fileInfo = new FileInfo(item);
                 _viewModel.TotalSize =  fileInfo.Length;
-            
+       
                 //烧录字幕至视频文件
                 string VideoOutPutName = root_path + $"temp\\AddLogo_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_{flag}.mp4";
-                string SetLogoArguments = $" -i {fileInfo.FullName} -i {_viewModel.水印路径} -filter_complex overlay={_viewModel.水印坐标X}:{_viewModel.水印坐标Y} {VideoOutPutName}";
+                string SetLogoArguments = $" -i {fileInfo.FullName} -i {_viewModel.水印路径} -filter_complex overlay={_viewModel.水印坐标X}:{_viewModel.水印坐标Y} {VideoOutPutName} -y ";
                 ExecuteCommandCut(SetLogoArguments, VideoOutPutName);
-                Thread.Sleep(300);
+                Thread.Sleep(100);
                 if (flag == 1)
                 {
                     进入预览(VideoOutPutName);
@@ -1983,6 +2125,7 @@ namespace 素材合成
         private void 开始合成_Click(object sender, RoutedEventArgs e)
         {
             _viewModel.IsVisibility = Visibility.Visible;
+            是否停止 = false;
             new Thread(ComposeAllVideo).Start();
         }
 
@@ -1991,6 +2134,11 @@ namespace 素材合成
         {
             try
             {
+                if (是否停止)
+                {
+                   
+                    return;
+                }
                 //创建一个进程
                 Process pc = new Process();
                 pc.StartInfo.FileName = root_path + "ffmpeg.exe";
@@ -2012,6 +2160,12 @@ namespace 素材合成
                 pc.OutputDataReceived += (ss, ee) =>
                 {
                     GetCutProgress(fileFullPath);
+                    if (是否停止)
+                    {
+                        pc.Close();
+                        //关闭进程
+                        return;
+                    }
                 };
 
                 pc.ErrorDataReceived += (ss, ee) =>
@@ -2650,48 +2804,13 @@ namespace 素材合成
 
         private void 随机从图库选择图片_Click_1(object sender, RoutedEventArgs e)
         {
-            if(!Directory.Exists("图库"))
-            {
-                Directory.CreateDirectory("图库");
-            }
-            DirectoryInfo directoryInfo = new DirectoryInfo("图库");
-            Random random = new Random();
-            FileInfo[] fileInfos = directoryInfo.GetFiles();
-            if(fileInfos.Length<2)
-            {
-                MessageBox.Show("图库图片不足,请再图库中添加更多图片!");
-                return;
-            }
-            int index = 0;
-            int flag = 0;
-            flag = random.Next(0, fileInfos.Length - 1);
-            index = 0;
-            foreach (var item in fileInfos)
-            {
-                if(index == flag)
-                {
-                    _viewModel.ImageBottomPath = item.FullName;
-                    _viewModel.FillImageBottom = SetSource(item.FullName);
-                }
-                index++;
-            }
-            flag = random.Next(0, fileInfos.Length - 1);
-            index = 0;
-            foreach (var item in fileInfos)
-            {
-                if (index == flag)
-                {
-                    _viewModel.ImageTopPath = item.FullName;
-                    _viewModel.FillImageTop = SetSource(item.FullName);
-                }
-                index++;
-            }
+           
 
         }
         bool IsImage = true;
         private void SwitchChannel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is CheckBox radioButton)
+            if (sender is RadioButton radioButton)
             {
                 switch (radioButton.Content + "")
                 {
@@ -3031,6 +3150,13 @@ namespace 素材合成
             {
                 ((VideoGroupNode)box.DataContext).逆时针旋转90 = false;
             }
+        }
+
+        bool 是否停止 = false;
+        private void Button_Click_停止(object sender, RoutedEventArgs e)
+        {
+            是否停止 = true;
+            GoToWhichStep(1);
         }
     }
 }
