@@ -39,9 +39,7 @@ namespace 素材合成
             VlcPlayer.Playing += MediaPlayer_Playing;
 
             this.Loaded += MainWindow_Loaded;
-            _viewModel.LumaPower = 1 + "";
-            _viewModel.LumaPowerBottom = 1 + "";
-            _viewModel.LumaPowerTop = "1";
+
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -1138,7 +1136,13 @@ namespace 素材合成
                 fileInfo = new FileInfo(OutPutVideoMp4Name);
                 _viewModel.TotalSize = fileInfo.Length * 9;
                 _viewModel.Size = fileInfo.Length;
-
+                if (fileInfo.Length<10)
+                {
+                    this.Dispatcher.Invoke(()=> {
+                        MessageBox.Show("视频合成失败!");
+                    });
+                    return;
+                }
                 ProgressVideoPath = OutPutVideoMp4Name;
                 Random randomer = new Random();
                 #region  剪切+填充
@@ -1194,6 +1198,15 @@ namespace 素材合成
                     // ExecuteAsAdmin(CutArguments);
                     ProgressVideoPath = OutPutVideoName_剪切;
                     Thread.Sleep(100);
+                    fileInfo = new FileInfo(ProgressVideoPath);
+                    if (fileInfo.Length < 10)
+                    {
+                        this.Dispatcher.Invoke(() => {
+                            MessageBox.Show("视频裁剪失败!");
+                        });
+                        return;
+                    }
+
                     if (是否停止)
                     {
                         return;
@@ -1220,6 +1233,14 @@ namespace 素材合成
                     FileHelper.AppandLog("填充视频: ffmpeg " + PaddArguments);
                     _viewModel.CutSize = 3 * fileInfo.Length;
                     ProgressVideoPath = OutPutPaddVideoName_填充;
+                    fileInfo = new FileInfo(ProgressVideoPath);
+                    if (fileInfo.Length < 10)
+                    {
+                        this.Dispatcher.Invoke(() => {
+                            MessageBox.Show("视频填充失败!");
+                        });
+                        return;
+                    }
                     if (是否停止)
                     {
                         return;
@@ -1249,6 +1270,15 @@ namespace 素材合成
                     _viewModel.CutSize = 4 * fileInfo.Length;
                     ProgressVideoPath = OutPutPaddVideoName_竖转横;
                     FileHelper.AppandLog("竖转横: ffmpeg " + PaddArguments_竖转横);
+
+                    fileInfo = new FileInfo(ProgressVideoPath);
+                    if (fileInfo.Length < 10)
+                    {
+                        this.Dispatcher.Invoke(() => {
+                            MessageBox.Show("视频竖转横失败!");
+                        });
+                        return;
+                    }
                     if (是否停止)
                     {
                         return;
@@ -1346,10 +1376,12 @@ namespace 素材合成
                                 index++;
                             }
                         }
-
-                        int image2Ypos = 1920 - int.Parse(_viewModel.PadHeight) - 608;
-                        int yellow = 608 + int.Parse(_viewModel.PadHeight);
-                        PaddArguments_横转竖_填充 = $" -i {OutPutVideoName_横转竖_裁剪} -i {_viewModel.ImageTopPath} -i {_viewModel.ImageBottomPath} -filter_complex \""
+                        double rate = (1080+0.0001) / (1920 - offsetLeft_横转竖 - offsetRight_横转竖);
+                        int cutHeight = (int)(1080 * rate);
+                        int image2Ypos = 1920 - int.Parse(_viewModel.PadHeight) - cutHeight;
+                        int yellow = cutHeight + int.Parse(_viewModel.PadHeight);
+                        PaddArguments_横转竖_填充 = $" -i {OutPutVideoName_横转竖_裁剪} " +
+                            $"-i {_viewModel.ImageTopPath} -i {_viewModel.ImageBottomPath} -filter_complex \""
                             + $"[0:v]scale=1080:-2,pad=1080:1920:0:{_viewModel.PadHeight}:blue[outvideo];" +
                             $"[1:v]scale=1080:{_viewModel.PadHeight},boxblur={_viewModel.LumaPowerTop}:1:cr=0:ar=0[outup];" +
                             $"[2:v]scale=1080:{image2Ypos},boxblur={_viewModel.LumaPowerBottom}:1:cr=0:ar=0[outdown];" +
@@ -1365,6 +1397,14 @@ namespace 素材合成
                     ProgressVideoPath = OutPutPaddVideoName_横转竖;
                     if (是否停止)
                     {
+                        return;
+                    }
+                    fileInfo = new FileInfo(ProgressVideoPath);
+                    if (fileInfo.Length < 10)
+                    {
+                        this.Dispatcher.Invoke(() => {
+                            MessageBox.Show("视频横转竖失败!");
+                        });
                         return;
                     }
                     Thread.Sleep(100);
@@ -1408,7 +1448,16 @@ namespace 素材合成
                     FileHelper.AppandLog("加字幕: ffmpeg " + SetSubtitleArguments);
                     ExecuteCommandCut(SetSubtitleArguments, VideoOutPutName_加字幕);
                     _viewModel.CutSize = 8 * fileInfo.Length;
+           
                     ProgressVideoPath = VideoOutPutName_加字幕;
+                    fileInfo = new FileInfo(ProgressVideoPath);
+                    if (fileInfo.Length < 10)
+                    {
+                        this.Dispatcher.Invoke(() => {
+                            MessageBox.Show("视频追加字幕失败!");
+                        });
+                        return;
+                    }
                     if (是否停止)
                     {
                         return;
@@ -1450,9 +1499,16 @@ namespace 素材合成
                     _viewModel.CutSize = 9 * fileInfo.Length;
                 }
                 DateTime now = System.DateTime.Now;
-                string dateTime = now.Year + "年" + now.Month + "月" + now.Hour + "时" + now.Minute + "分" + now.Second + "秒" + now.Millisecond + "毫秒";
+                string dateTime = now.Year + "年" + now.Month + "月"+now.Day+"日" + now.Hour + "时" + now.Minute + "分" + now.Second + "秒" + now.Millisecond + "毫秒";
                 string VideoOutPutName = $"{_viewModel.SavePath}\\{dateTime}_{ComposeName.ToString()}.mp4";
                 File.Copy(ProgressVideoPath, VideoOutPutName);
+                if (fileInfo.Length < 10)
+                {
+                    this.Dispatcher.Invoke(() => {
+                        MessageBox.Show("视频追加水印失败!");
+                    });
+                    return;
+                }
                 if (是否停止)
                 {
                     return;
@@ -1871,8 +1927,10 @@ namespace 素材合成
                             index++;
                         }
                     }
-                    int image2Ypos = 1920 - int.Parse(_viewModel.PadHeight) - 608;
-                    int yellow = 608 + int.Parse(_viewModel.PadHeight);
+                    double rate = (1080+0.00001) / (1920 - offsetLeft -offsetRight);
+                    int cutHeight = (int)(1080 * rate);
+                    int image2Ypos = 1920 - int.Parse(_viewModel.PadHeight) - cutHeight;
+                    int yellow = cutHeight + int.Parse(_viewModel.PadHeight);
                     PaddArguments = $" -i {OutPutVideoName} -i {_viewModel.ImageTopPath} -i {_viewModel.ImageBottomPath} -filter_complex \""
                         + $"[0:v]scale=1080:-2,pad=1080:1920:0:{_viewModel.PadHeight}:blue[outvideo];" +
                         $"[1:v]scale=1080:{_viewModel.PadHeight},boxblur={_viewModel.LumaPowerTop}:1:cr=0:ar=0[outup];" +
@@ -2309,6 +2367,10 @@ namespace 素材合成
                     _viewModel.Arguments_7_添加水印 = "";
                     _viewModel.TotalSize = 0;
                     _viewModel.CurrentIndex = 0;
+                    _viewModel.LumaPower = 1 + "";
+                    _viewModel.LumaPowerBottom = 1 + "";
+                    _viewModel.LumaPowerTop = "1";
+                    tbOutPutCount.Text = "0";
                     _viewModel.Size = 0;
                     btnAdd.IsEnabled = true;
                     btnCut.IsEnabled = true;
@@ -2955,6 +3017,15 @@ namespace 素材合成
         {
             VlcPlayer.VlcMediaPlayer.Audio.IsMute = true;
             CurrentPlayStream?.Close();
+            FileInfo fileInfo = new FileInfo(FileName);
+            if (fileInfo.Length < 10)
+            {
+                this.Dispatcher.Invoke(() => {
+                    MessageBox.Show("视频处理失败,无法预览!");
+                });
+                GoToWhichStep(1);
+                return;
+            }
             CurrentPlayStream = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             IsComplete = true;
             Thread.Sleep(250);

@@ -47,7 +47,7 @@ namespace 素材合成
             MaxId = 0;
             FontSize = "20";
             FontStyle = "DejaVu Serif";
-            PadHeight = "100";
+            PadHeight = "600";
             TextDeepth = "0";
             TextHeight = "10";
             TextWidth = "0";

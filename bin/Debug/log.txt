@@ -254,3 +254,1091 @@ System.IO.IOException: 文件“tempScale_1_2020_1_1317_27_20_Video.jpg”正由
 ######Error-2020年1月13日 17:33:53######
 尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1317_33_52_Video.mp4 -vf scale=1920:1080 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1317_33_53_Video.mp4
 
+######Error-2020年1月16日 13:36:13######
+逆时针旋转90: ffmpeg  -i E:\BaiduNetdiskDownload\测试的视频\第一类视频\A\a_3.MP4 -vf transpose=2 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempRotate_1_2020_1_1613_36_13_Video.mp4
+
+######Error-2020年1月16日 13:36:20######
+逆时针旋转90: ffmpeg  -i E:\BaiduNetdiskDownload\测试的视频\第一类视频\A\a_4.MP4 -vf transpose=2 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempRotate_1_2020_1_1613_36_20_Video.mp4
+
+######Error-2020年1月16日 13:36:26######
+逆时针旋转90: ffmpeg  -i E:\BaiduNetdiskDownload\测试的视频\第一类视频\A\a_5.MP4 -vf transpose=2 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempRotate_1_2020_1_1613_36_26_Video.mp4
+
+######Error-2020年1月16日 13:36:37######
+逆时针旋转90: ffmpeg  -i E:\BaiduNetdiskDownload\测试的视频\第一类视频\A\a_6.MP4 -vf transpose=2 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempRotate_1_2020_1_1613_36_37_Video.mp4
+
+######Error-2020年1月16日 13:36:47######
+逆时针旋转90: ffmpeg  -i E:\BaiduNetdiskDownload\测试的视频\第一类视频\B\b_1.MP4 -vf transpose=2 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempRotate_1_2020_1_1613_36_47_Video.mp4
+
+######Error-2020年1月16日 13:36:52######
+逆时针旋转90: ffmpeg  -i E:\BaiduNetdiskDownload\测试的视频\第一类视频\B\b_2.MP4 -vf transpose=2 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempRotate_1_2020_1_1613_36_52_Video.mp4
+
+######Error-2020年1月16日 13:36:58######
+逆时针旋转90: ffmpeg  -i E:\BaiduNetdiskDownload\测试的视频\第一类视频\B\b_3.MP4 -vf transpose=2 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempRotate_1_2020_1_1613_36_58_Video.mp4
+
+######Error-2020年1月16日 13:37:05######
+逆时针旋转90: ffmpeg  -i E:\BaiduNetdiskDownload\测试的视频\第一类视频\B\b_4.MP4 -vf transpose=2 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempRotate_1_2020_1_1613_37_05_Video.mp4
+
+######Error-2020年1月16日 13:37:10######
+逆时针旋转90: ffmpeg  -i E:\BaiduNetdiskDownload\测试的视频\第一类视频\B\b_5.MP4 -vf transpose=2 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempRotate_1_2020_1_1613_37_10_Video.mp4
+
+######Error-2020年1月16日 13:37:15######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1613_37_15_Video.mov
+
+######Error-2020年1月16日 13:37:15######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1613_37_15_Video.mov -vcodec copy -acodec aac G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1613_37_15_Video.mp4
+
+######Error-2020年1月16日 13:46:05######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1613_46_05_Video.mov
+
+######Error-2020年1月16日 13:46:06######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1613_46_05_Video.mov -vcodec copy -acodec aac G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1613_46_06_Video.mp4
+
+######Error-2020年1月16日 13:59:13######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1613_59_13_Video.mov
+
+######Error-2020年1月16日 13:59:18######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1613_59_13_Video.mov -vcodec copy -acodec aac G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1613_59_18_Video.mp4
+
+######Error-2020年1月16日 14:08:30######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_08_30_Video.mov
+
+######Error-2020年1月16日 14:08:30######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_08_30_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_08_30_Video.mp4
+
+######Error-2020年1月16日 14:14:59######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_14_59_Video.mov
+
+######Error-2020年1月16日 14:15:00######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_14_59_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_15_00_Video.mp4
+
+######Error-2020年1月16日 14:15:41######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_15_41_Video.mov
+
+######Error-2020年1月16日 14:15:41######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_15_41_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_15_41_Video.mp4
+
+######Error-2020年1月16日 14:15:42######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_15_41_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_15_42_Video.mp4
+
+######Error-2020年1月16日 14:16:53######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_15_42_Video.mp4 -vf crop=in_w-0-0:in_h-0-0:0:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1614_16_53_Video.mp4 -y 
+
+######Error-2020年1月16日 14:16:59######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1614_16_53_Video.mp4 -i  -i  -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:1212,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:708" -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1614_16_59_Video.mp4
+
+######Error-2020年1月16日 14:18:23######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_18_23_Video.mov
+
+######Error-2020年1月16日 14:18:23######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_18_23_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_18_23_Video.mp4
+
+######Error-2020年1月16日 14:18:24######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_18_23_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_18_24_Video.mp4
+
+######Error-2020年1月16日 14:19:51######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_18_24_Video.mp4 -vf crop=in_w-0-0:in_h-0-0:0:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1614_19_48_Video.mp4 -y 
+
+######Error-2020年1月16日 14:24:24######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_24_24_Video.mov
+
+######Error-2020年1月16日 14:24:25######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_24_24_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_24_25_Video.mp4
+
+######Error-2020年1月16日 14:24:26######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_24_25_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_24_26_Video.mp4
+
+######Error-2020年1月16日 14:24:52######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_24_26_Video.mp4 -vf crop=in_w-0-0:in_h-0-0:0:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1614_24_52_Video.mp4 -y 
+
+######Error-2020年1月16日 14:24:59######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1614_24_52_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:1212,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:708" -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1614_24_59_Video.mp4
+
+######Error-2020年1月16日 14:25:15######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_24_26_Video.mp4 -vf crop=in_w-0-0:in_h-0-0:0:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1614_25_15_Video.mp4 -y 
+
+######Error-2020年1月16日 14:25:22######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1614_25_15_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:1212,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:708" -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1614_25_22_Video.mp4
+
+######Error-2020年1月16日 14:29:36######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_29_36_Video.mov
+
+######Error-2020年1月16日 14:29:37######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_29_36_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_29_37_Video.mp4
+
+######Error-2020年1月16日 14:29:46######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_29_37_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_29_38_Video.mp4
+
+######Error-2020年1月16日 14:29:46######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1614_29_46_Video.mov
+
+######Error-2020年1月16日 14:29:46######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1614_29_46_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1614_29_46_Video.mp4
+
+######Error-2020年1月16日 14:29:53######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1614_29_46_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1614_29_47_Video.mp4
+
+######Error-2020年1月16日 14:29:53######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_3_2020_1_1614_29_53_Video.mov
+
+######Error-2020年1月16日 14:29:54######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_3_2020_1_1614_29_53_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_3_2020_1_1614_29_54_Video.mp4
+
+######Error-2020年1月16日 14:30:08######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_3_2020_1_1614_29_54_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_3_2020_1_1614_29_55_Video.mp4
+
+######Error-2020年1月16日 14:30:08######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_4_2020_1_1614_30_08_Video.mov
+
+######Error-2020年1月16日 14:30:08######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_4_2020_1_1614_30_08_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_4_2020_1_1614_30_08_Video.mp4
+
+######Error-2020年1月16日 14:30:17######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_4_2020_1_1614_30_08_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_4_2020_1_1614_30_09_Video.mp4
+
+######Error-2020年1月16日 14:30:51######
+System.IO.IOException: 文件“tempScale_1_2020_1_1614_24_26_Video.jpg”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path, Boolean recursive)
+   在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3035
+
+######Error-2020年1月16日 14:31:08######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_31_08_Video.mov
+
+######Error-2020年1月16日 14:31:09######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_31_08_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_31_09_Video.mp4
+
+######Error-2020年1月16日 14:31:09######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_31_09_Video.mp4 -vf scale=1080:1920 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_31_09_Video.mp4
+
+######Error-2020年1月16日 14:31:42######
+剪切: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_31_09_Video.mp4 -vf crop=in_w-0-0:in_h-0-0:0:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1614_31_42_Video.mp4 -y 
+
+######Error-2020年1月16日 14:32:06######
+填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1614_31_42_Video.mp4 -vf pad=1080:1920:0:0:0x000000  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1614_31_54_Video.mp4 -y
+
+######Error-2020年1月16日 14:32:55######
+竖转横: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1614_31_54_Video.mp4 -lavfi "[0:v]scale=1080*2:1920*2,boxblur=luma_radius=min(h\,w)/20:luma_power=1:chroma_radius=min(cw\,ch)/20:chroma_power=1[bg];[0:v]scale=-1:1080[ov];[bg][ov]overlay=(W-w)/2:(H-h)/2,crop=w=1920:h=1080" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempTransformVertial_1_2020_1_1614_32_13_Video.mp4 -y
+
+######Error-2020年1月16日 14:34:30######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_34_30_Video.mov
+
+######Error-2020年1月16日 14:34:30######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_34_30_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_34_30_Video.mp4
+
+######Error-2020年1月16日 14:34:31######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_34_30_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_34_31_Video.mp4
+
+######Error-2020年1月16日 14:35:02######
+剪切: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_34_31_Video.mp4 -vf crop=in_w--31-73:in_h-103--5:-31:103 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1614_35_02_Video.mp4 -y 
+
+######Error-2020年1月16日 14:35:15######
+填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1614_35_02_Video.mp4 -vf pad=1920:1080:-31:103:0x00ff7f  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1614_35_09_Video.mp4 -y
+
+######Error-2020年1月16日 14:35:28######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1614_35_09_Video.mp4 -vf crop=in_w-60-60:in_h-0-0:60:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1614_35_28_Video.mp4 -y 
+
+######Error-2020年1月16日 14:35:34######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1614_35_28_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:1212,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:708" -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1614_35_34_Video.mp4
+
+######Error-2020年1月16日 14:35:53######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_35_53_Video.mov
+
+######Error-2020年1月16日 14:35:54######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_35_53_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_35_54_Video.mp4
+
+######Error-2020年1月16日 14:36:02######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_35_54_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_35_54_Video.mp4
+
+######Error-2020年1月16日 14:36:08######
+剪切视频: ffmpeg G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1614_36_02_Video.mp4
+
+######Error-2020年1月16日 14:36:14######
+填充视频: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1614_36_02_Video.mp4 -vf pad=1920:1080:-22:119:0x6d4313  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1614_36_08_Video.mp4 -y
+
+######Error-2020年1月16日 14:36:20######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1614_36_08_Video.mp4 -vf crop=in_w-60-60:in_h-0-0:60:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1614_36_14_Video.mp4 -y 
+
+######Error-2020年1月16日 14:36:25######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1614_36_14_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:1212,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:708" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1614_36_20_Video.mp4 -y 
+
+######Error-2020年1月16日 14:36:26######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1614_36_26_Video.mov
+
+######Error-2020年1月16日 14:36:26######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1614_36_26_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1614_36_26_Video.mp4
+
+######Error-2020年1月16日 14:36:32######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1614_36_26_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1614_36_27_Video.mp4
+
+######Error-2020年1月16日 14:36:36######
+剪切视频: ffmpeg G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_2_2020_1_1614_36_32_Video.mp4
+
+######Error-2020年1月16日 14:36:41######
+填充视频: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_2_2020_1_1614_36_32_Video.mp4 -vf pad=1920:1080:27:108:0x2c1339  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_2_2020_1_1614_36_36_Video.mp4 -y
+
+######Error-2020年1月16日 14:36:45######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_2_2020_1_1614_36_36_Video.mp4 -vf crop=in_w-60-60:in_h-0-0:60:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1614_36_41_Video.mp4 -y 
+
+######Error-2020年1月16日 14:36:50######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1614_36_41_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:1212,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:708" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_2_2020_1_1614_36_45_Video.mp4 -y 
+
+######Error-2020年1月16日 14:36:50######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_3_2020_1_1614_36_50_Video.mov
+
+######Error-2020年1月16日 14:36:51######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_3_2020_1_1614_36_50_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_3_2020_1_1614_36_51_Video.mp4
+
+######Error-2020年1月16日 14:37:02######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_3_2020_1_1614_36_51_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_3_2020_1_1614_36_52_Video.mp4
+
+######Error-2020年1月16日 14:37:09######
+剪切视频: ffmpeg G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_3_2020_1_1614_37_02_Video.mp4
+
+######Error-2020年1月16日 14:37:18######
+填充视频: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_3_2020_1_1614_37_02_Video.mp4 -vf pad=1920:1080:22:67:0x213d03  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_3_2020_1_1614_37_09_Video.mp4 -y
+
+######Error-2020年1月16日 14:37:25######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_3_2020_1_1614_37_09_Video.mp4 -vf crop=in_w-60-60:in_h-0-0:60:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_3_2020_1_1614_37_18_Video.mp4 -y 
+
+######Error-2020年1月16日 14:37:33######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_3_2020_1_1614_37_18_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:1212,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:708" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_3_2020_1_1614_37_26_Video.mp4 -y 
+
+######Error-2020年1月16日 14:37:35######
+System.IO.IOException: 文件“tempScale_1_2020_1_1614_34_31_Video.jpg”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path, Boolean recursive)
+   在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3035
+
+######Error-2020年1月16日 14:37:54######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_37_54_Video.mov
+
+######Error-2020年1月16日 14:37:55######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_37_54_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_37_55_Video.mp4
+
+######Error-2020年1月16日 14:37:55######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_37_55_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_37_55_Video.mp4
+
+######Error-2020年1月16日 14:38:24######
+剪切: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_37_55_Video.mp4 -vf crop=in_w-100-100:in_h-60-60:100:60 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1614_38_24_Video.mp4 -y 
+
+######Error-2020年1月16日 14:38:36######
+填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1614_38_24_Video.mp4 -vf pad=1920:1080:100:60:0xadff2f  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1614_38_30_Video.mp4 -y
+
+######Error-2020年1月16日 14:38:55######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1614_38_30_Video.mp4 -vf crop=in_w-0-0:in_h-0-0:0:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1614_38_55_Video.mp4 -y 
+
+######Error-2020年1月16日 14:39:01######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1614_38_55_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:1212,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:708" -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1614_39_01_Video.mp4
+
+######Error-2020年1月16日 14:39:20######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_39_20_Video.mov
+
+######Error-2020年1月16日 14:39:21######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_39_20_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_39_21_Video.mp4
+
+######Error-2020年1月16日 14:39:29######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_39_21_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_39_21_Video.mp4
+
+######Error-2020年1月16日 14:39:35######
+剪切视频: ffmpeg G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1614_39_29_Video.mp4
+
+######Error-2020年1月16日 14:39:41######
+填充视频: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1614_39_29_Video.mp4 -vf pad=1920:1080:100:60:0xab1819  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1614_39_35_Video.mp4 -y
+
+######Error-2020年1月16日 14:39:47######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1614_39_35_Video.mp4 -vf crop=in_w-0-0:in_h-0-0:0:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1614_39_42_Video.mp4 -y 
+
+######Error-2020年1月16日 14:39:55######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1614_39_42_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:1212,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:708" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1614_39_48_Video.mp4 -y 
+
+######Error-2020年1月16日 14:39:55######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1614_39_55_Video.mov
+
+######Error-2020年1月16日 14:39:56######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1614_39_55_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1614_39_56_Video.mp4
+
+######Error-2020年1月16日 14:40:03######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1614_39_56_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1614_39_57_Video.mp4
+
+######Error-2020年1月16日 14:40:07######
+剪切视频: ffmpeg G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_2_2020_1_1614_40_03_Video.mp4
+
+######Error-2020年1月16日 14:40:12######
+填充视频: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_2_2020_1_1614_40_03_Video.mp4 -vf pad=1920:1080:100:60:0x1f8533  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_2_2020_1_1614_40_08_Video.mp4 -y
+
+######Error-2020年1月16日 14:40:17######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_2_2020_1_1614_40_08_Video.mp4 -vf crop=in_w-0-0:in_h-0-0:0:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1614_40_12_Video.mp4 -y 
+
+######Error-2020年1月16日 14:40:23######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1614_40_12_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:1212,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:708" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_2_2020_1_1614_40_17_Video.mp4 -y 
+
+######Error-2020年1月16日 14:40:23######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_3_2020_1_1614_40_23_Video.mov
+
+######Error-2020年1月16日 14:40:24######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_3_2020_1_1614_40_23_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_3_2020_1_1614_40_24_Video.mp4
+
+######Error-2020年1月16日 14:40:38######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_3_2020_1_1614_40_24_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_3_2020_1_1614_40_25_Video.mp4
+
+######Error-2020年1月16日 14:40:45######
+剪切视频: ffmpeg G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_3_2020_1_1614_40_38_Video.mp4
+
+######Error-2020年1月16日 14:40:52######
+填充视频: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_3_2020_1_1614_40_38_Video.mp4 -vf pad=1920:1080:100:60:0x484e0d  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_3_2020_1_1614_40_45_Video.mp4 -y
+
+######Error-2020年1月16日 14:41:00######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_3_2020_1_1614_40_45_Video.mp4 -vf crop=in_w-0-0:in_h-0-0:0:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_3_2020_1_1614_40_53_Video.mp4 -y 
+
+######Error-2020年1月16日 14:41:07######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_3_2020_1_1614_40_53_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:1212,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:708" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_3_2020_1_1614_41_00_Video.mp4 -y 
+
+######Error-2020年1月16日 14:41:23######
+System.IO.IOException: 文件“tempScale_1_2020_1_1614_34_31_Video.jpg”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path, Boolean recursive)
+   在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3035
+
+######Error-2020年1月16日 14:53:36######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_53_36_Video.mov
+
+######Error-2020年1月16日 14:53:37######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_53_36_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_53_37_Video.mp4
+
+######Error-2020年1月16日 14:53:38######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_53_37_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_53_38_Video.mp4
+
+######Error-2020年1月16日 14:54:26######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_54_26_Video.mov
+
+######Error-2020年1月16日 14:54:27######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_54_26_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_54_27_Video.mp4
+
+######Error-2020年1月16日 14:54:28######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_54_27_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_54_28_Video.mp4
+
+######Error-2020年1月16日 14:54:31######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_54_31_Video.mov
+
+######Error-2020年1月16日 14:54:31######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_54_31_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_54_31_Video.mp4
+
+######Error-2020年1月16日 14:54:32######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_54_31_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_54_32_Video.mp4
+
+######Error-2020年1月16日 14:55:05######
+剪切: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_54_32_Video.mp4 -vf crop=in_w-90-80:in_h-50-50:90:50 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1614_55_05_Video.mp4 -y 
+
+######Error-2020年1月16日 14:55:16######
+填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1614_55_05_Video.mp4 -vf pad=1920:1080:90:50:0x98fb98  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1614_55_11_Video.mp4 -y
+
+######Error-2020年1月16日 14:55:38######
+剪切: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_54_28_Video.mp4 -vf crop=in_w-90-80:in_h-50-50:90:50 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_2_2020_1_1614_55_38_Video.mp4 -y 
+
+######Error-2020年1月16日 14:55:44######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_55_44_Video.mov
+
+######Error-2020年1月16日 14:55:44######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_55_44_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_55_44_Video.mp4
+
+######Error-2020年1月16日 14:55:55######
+填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_2_2020_1_1614_55_38_Video.mp4 -vf pad=1920:1080:90:50:0x204c07  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1614_55_44_Video.mp4 -y
+
+######Error-2020年1月16日 14:55:57######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_55_44_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_55_45_Video.mp4
+
+######Error-2020年1月16日 14:56:41######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_56_41_Video.mov
+
+######Error-2020年1月16日 14:56:41######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_56_41_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_56_41_Video.mp4
+
+######Error-2020年1月16日 14:56:49######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_56_41_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_56_42_Video.mp4
+
+######Error-2020年1月16日 14:57:16######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_57_16_Video.mov
+
+######Error-2020年1月16日 14:57:16######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_57_16_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_57_16_Video.mp4
+
+######Error-2020年1月16日 14:57:17######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1614_57_16_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1614_57_17_Video.mp4
+
+######Error-2020年1月16日 15:09:43######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1615_09_43_Video.mov
+
+######Error-2020年1月16日 15:09:44######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1615_09_43_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1615_09_44_Video.mp4
+
+######Error-2020年1月16日 15:09:44######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1615_09_44_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1615_09_44_Video.mp4
+
+######Error-2020年1月16日 15:10:10######
+剪切: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1615_09_44_Video.mp4 -vf crop=in_w-0-70:in_h-60-0:0:60 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1615_10_10_Video.mp4 -y 
+
+######Error-2020年1月16日 15:10:23######
+填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1615_10_10_Video.mp4 -vf pad=1920:1080:0:60:0xffff00  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1615_10_17_Video.mp4 -y
+
+######Error-2020年1月16日 15:10:29######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1615_10_29_Video.mov
+
+######Error-2020年1月16日 15:10:29######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1615_10_29_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1615_10_29_Video.mp4
+
+######Error-2020年1月16日 15:10:37######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1615_10_29_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1615_10_30_Video.mp4
+
+######Error-2020年1月16日 15:10:43######
+剪切视频: ffmpeg G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1615_10_37_Video.mp4
+
+######Error-2020年1月17日 14:03:41######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_03_41_Video.mov
+
+######Error-2020年1月17日 14:03:42######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_03_41_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_03_42_Video.mp4
+
+######Error-2020年1月17日 14:03:42######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_03_42_Video.mp4 -vf scale=1080:1920 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_03_42_Video.mp4
+
+######Error-2020年1月17日 14:04:33######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_04_33_Video.mov
+
+######Error-2020年1月17日 14:04:34######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_04_33_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_04_34_Video.mp4
+
+######Error-2020年1月17日 14:04:35######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_04_34_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_04_35_Video.mp4
+
+######Error-2020年1月17日 14:05:11######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_03_42_Video.mp4 -vf crop=in_w-200-120:in_h-0-0:200:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_05_11_Video.mp4 -y 
+
+######Error-2020年1月17日 14:05:20######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_05_11_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:1820,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:100" -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1714_05_20_Video.mp4
+
+######Error-2020年1月17日 14:05:42######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_04_35_Video.mp4 -vf crop=in_w-200-120:in_h-0-0:200:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_05_42_Video.mp4 -y 
+
+######Error-2020年1月17日 14:05:49######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_05_42_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:1820,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:100" -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1714_05_49_Video.mp4
+
+######Error-2020年1月17日 14:06:23######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_03_42_Video.mp4 -vf crop=in_w-100-120:in_h-0-0:100:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_06_23_Video.mp4 -y 
+
+######Error-2020年1月17日 14:07:31######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_07_31_Video.mov
+
+######Error-2020年1月17日 14:07:31######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_07_31_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_07_31_Video.mp4
+
+######Error-2020年1月17日 14:07:32######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_07_31_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_07_32_Video.mp4
+
+######Error-2020年1月17日 14:08:01######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_07_32_Video.mp4 -vf crop=in_w-200-100:in_h-0-0:200:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_08_01_Video.mp4 -y 
+
+######Error-2020年1月17日 14:08:12######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_08_01_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=2:1:cr=0:ar=0[outup];[2:v]scale=1080:1180,boxblur=2:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:740" -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1714_08_08_Video.mp4
+
+######Error-2020年1月17日 14:08:48######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_08_48_Video.mov
+
+######Error-2020年1月17日 14:08:48######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_08_48_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_08_48_Video.mp4
+
+######Error-2020年1月17日 14:08:56######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_08_48_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_08_49_Video.mp4
+
+######Error-2020年1月17日 14:09:02######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_08_49_Video.mp4 -vf crop=in_w-200-100:in_h-0-0:200:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_08_56_Video.mp4 -y 
+
+######Error-2020年1月17日 14:09:07######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_08_56_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=2:1:cr=0:ar=0[outup];[2:v]scale=1080:1820,boxblur=2:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:100" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1714_09_02_Video.mp4 -y 
+
+######Error-2020年1月17日 14:09:07######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_09_07_Video.mov
+
+######Error-2020年1月17日 14:09:08######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_09_07_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_09_08_Video.mp4
+
+######Error-2020年1月17日 14:09:14######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_09_08_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1714_09_08_Video.mp4
+
+######Error-2020年1月17日 14:09:18######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1714_09_08_Video.mp4 -vf crop=in_w-200-100:in_h-0-0:200:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1714_09_14_Video.mp4 -y 
+
+######Error-2020年1月17日 14:09:23######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1714_09_14_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=2:1:cr=0:ar=0[outup];[2:v]scale=1080:1820,boxblur=2:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:100" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_2_2020_1_1714_09_18_Video.mp4 -y 
+
+######Error-2020年1月17日 14:09:54######
+System.IO.IOException: 文件“tempScale_1_2020_1_1714_07_32_Video.jpg”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path, Boolean recursive)
+   在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3112
+
+######Error-2020年1月17日 14:10:09######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_10_09_Video.mov
+
+######Error-2020年1月17日 14:10:09######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_10_09_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_10_09_Video.mp4
+
+######Error-2020年1月17日 14:10:10######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_10_09_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_10_10_Video.mp4
+
+######Error-2020年1月17日 14:10:36######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_10_10_Video.mp4 -vf crop=in_w-0-0:in_h-0-0:0:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_10_36_Video.mp4 -y 
+
+######Error-2020年1月17日 14:10:47######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_10_36_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:100:blue[outvideo];[1:v]scale=1080:100,boxblur=2:1:cr=0:ar=0[outup];[2:v]scale=1080:1213,boxblur=2:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:707" -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1714_10_42_Video.mp4
+
+######Error-2020年1月17日 14:11:04######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_11_04_Video.mov
+
+######Error-2020年1月17日 14:11:04######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_11_04_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_11_04_Video.mp4
+
+######Error-2020年1月17日 14:11:12######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_11_04_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_11_05_Video.mp4
+
+######Error-2020年1月17日 14:11:12######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_11_12_Video.mov
+
+######Error-2020年1月17日 14:11:13######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_11_12_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_11_13_Video.mp4
+
+######Error-2020年1月17日 14:11:19######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_11_13_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1714_11_13_Video.mp4
+
+######Error-2020年1月17日 14:12:04######
+System.IO.IOException: 文件“tempScale_1_2020_1_1714_10_10_Video.jpg”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path, Boolean recursive)
+   在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3112
+
+######Error-2020年1月17日 14:14:57######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_14_57_Video.mov
+
+######Error-2020年1月17日 14:14:57######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_14_57_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_14_57_Video.mp4
+
+######Error-2020年1月17日 14:14:58######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_14_57_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_14_58_Video.mp4
+
+######Error-2020年1月17日 14:15:31######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_14_58_Video.mp4 -vf crop=in_w-200-180:in_h-0-0:200:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_15_31_Video.mp4 -y 
+
+######Error-2020年1月17日 14:15:37######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_15_31_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:600:blue[outvideo];[1:v]scale=1080:600,boxblur=2:1:cr=0:ar=0[outup];[2:v]scale=1080:707,boxblur=2:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1213" -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1714_15_37_Video.mp4
+
+######Error-2020年1月17日 14:18:02######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_18_02_Video.mov
+
+######Error-2020年1月17日 14:18:02######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_18_02_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_18_02_Video.mp4
+
+######Error-2020年1月17日 14:18:11######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_18_02_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_18_03_Video.mp4
+
+######Error-2020年1月17日 14:18:17######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_18_03_Video.mp4 -vf crop=in_w-200-180:in_h-0-0:200:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_18_11_Video.mp4 -y 
+
+######Error-2020年1月17日 14:18:24######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_18_11_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:600:blue[outvideo];[1:v]scale=1080:600,boxblur=2:1:cr=0:ar=0[outup];[2:v]scale=1080:707,boxblur=2:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1213" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1714_18_17_Video.mp4 -y 
+
+######Error-2020年1月17日 14:18:24######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_18_24_Video.mov
+
+######Error-2020年1月17日 14:18:24######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_18_24_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_18_24_Video.mp4
+
+######Error-2020年1月17日 14:18:31######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_18_24_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1714_18_25_Video.mp4
+
+######Error-2020年1月17日 14:18:35######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1714_18_25_Video.mp4 -vf crop=in_w-200-180:in_h-0-0:200:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1714_18_31_Video.mp4 -y 
+
+######Error-2020年1月17日 14:18:41######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1714_18_31_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:600:blue[outvideo];[1:v]scale=1080:600,boxblur=2:1:cr=0:ar=0[outup];[2:v]scale=1080:707,boxblur=2:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1213" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_2_2020_1_1714_18_35_Video.mp4 -y 
+
+######Error-2020年1月17日 14:18:46######
+System.IO.IOException: 文件“tempScale_1_2020_1_1714_14_58_Video.jpg”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path, Boolean recursive)
+   在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3112
+
+######Error-2020年1月17日 14:19:52######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_19_52_Video.mov
+
+######Error-2020年1月17日 14:19:53######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_19_52_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_19_53_Video.mp4
+
+######Error-2020年1月17日 14:19:53######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_19_53_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_19_53_Video.mp4
+
+######Error-2020年1月17日 14:20:31######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_20_31_Video.mov
+
+######Error-2020年1月17日 14:20:32######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_20_31_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_20_32_Video.mp4
+
+######Error-2020年1月17日 14:20:40######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_20_32_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_20_32_Video.mp4
+
+######Error-2020年1月17日 14:20:40######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_20_40_Video.mov
+
+######Error-2020年1月17日 14:20:41######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_20_40_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_20_41_Video.mp4
+
+######Error-2020年1月17日 14:20:48######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_20_41_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1714_20_41_Video.mp4
+
+######Error-2020年1月17日 14:21:10######
+System.IO.IOException: 文件“tempScale_1_2020_1_1714_14_58_Video.jpg”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path, Boolean recursive)
+   在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3112
+
+######Error-2020年1月17日 14:47:17######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_47_17_Video.mov
+
+######Error-2020年1月17日 14:47:17######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_47_17_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_47_17_Video.mp4
+
+######Error-2020年1月17日 14:47:18######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_47_17_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_47_18_Video.mp4
+
+######Error-2020年1月17日 14:47:42######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_47_18_Video.mp4 -vf crop=in_w-200-200:in_h-0-0:200:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_47_42_Video.mp4 -y 
+
+######Error-2020年1月17日 14:47:47######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_47_42_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:400:blue[outvideo];[1:v]scale=1080:400,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:913,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1007" -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1714_47_47_Video.mp4
+
+######Error-2020年1月17日 14:48:15######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_48_15_Video.mov
+
+######Error-2020年1月17日 14:48:16######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_48_15_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_48_16_Video.mp4
+
+######Error-2020年1月17日 14:48:22######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_48_16_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_48_16_Video.mp4
+
+######Error-2020年1月17日 14:48:27######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_48_16_Video.mp4 -vf crop=in_w-200-200:in_h-0-0:200:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_48_22_Video.mp4 -y 
+
+######Error-2020年1月17日 14:48:33######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_48_22_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:400:blue[outvideo];[1:v]scale=1080:400,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:913,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1007" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1714_48_27_Video.mp4 -y 
+
+######Error-2020年1月17日 14:48:33######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_48_33_Video.mov
+
+######Error-2020年1月17日 14:48:34######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_48_33_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_48_34_Video.mp4
+
+######Error-2020年1月17日 14:48:40######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_48_34_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1714_48_35_Video.mp4
+
+######Error-2020年1月17日 14:48:43######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1714_48_35_Video.mp4 -vf crop=in_w-200-200:in_h-0-0:200:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1714_48_40_Video.mp4 -y 
+
+######Error-2020年1月17日 14:48:48######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1714_48_40_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:400:blue[outvideo];[1:v]scale=1080:400,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:913,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1007" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_2_2020_1_1714_48_43_Video.mp4 -y 
+
+######Error-2020年1月17日 14:48:55######
+System.IO.IOException: 文件“tempScale_1_2020_1_1714_47_18_Video.jpg”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path, Boolean recursive)
+   在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3114
+
+######Error-2020年1月17日 14:49:10######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_49_10_Video.mov
+
+######Error-2020年1月17日 14:49:11######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_49_10_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_49_11_Video.mp4
+
+######Error-2020年1月17日 14:49:11######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_49_11_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_49_11_Video.mp4
+
+######Error-2020年1月17日 14:49:42######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_49_11_Video.mp4 -vf crop=in_w-20-20:in_h-0-0:20:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_49_42_Video.mp4 -y 
+
+######Error-2020年1月17日 14:49:48######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_49_42_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:600:blue[outvideo];[1:v]scale=1080:600,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:713,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1207" -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1714_49_48_Video.mp4
+
+######Error-2020年1月17日 14:50:09######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_50_09_Video.mov
+
+######Error-2020年1月17日 14:50:09######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_50_09_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_50_09_Video.mp4
+
+######Error-2020年1月17日 14:50:16######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_50_09_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_50_10_Video.mp4
+
+######Error-2020年1月17日 14:50:21######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_50_10_Video.mp4 -vf crop=in_w-20-20:in_h-0-0:20:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_50_16_Video.mp4 -y 
+
+######Error-2020年1月17日 14:50:25######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_50_16_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:600:blue[outvideo];[1:v]scale=1080:600,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:713,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1207" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1714_50_21_Video.mp4 -y 
+
+######Error-2020年1月17日 14:50:25######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_50_25_Video.mov
+
+######Error-2020年1月17日 14:50:26######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_50_25_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_50_26_Video.mp4
+
+######Error-2020年1月17日 14:50:31######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_50_26_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1714_50_26_Video.mp4
+
+######Error-2020年1月17日 14:50:35######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1714_50_26_Video.mp4 -vf crop=in_w-20-20:in_h-0-0:20:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1714_50_31_Video.mp4 -y 
+
+######Error-2020年1月17日 14:50:39######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1714_50_31_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:600:blue[outvideo];[1:v]scale=1080:600,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:713,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1207" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_2_2020_1_1714_50_35_Video.mp4 -y 
+
+######Error-2020年1月17日 14:50:44######
+System.IO.IOException: 文件“tempScale_1_2020_1_1714_49_11_Video.jpg”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path, Boolean recursive)
+   在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3114
+
+######Error-2020年1月17日 14:51:08######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_51_08_Video.mov
+
+######Error-2020年1月17日 14:51:09######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_51_08_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_51_09_Video.mp4
+
+######Error-2020年1月17日 14:51:09######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_51_09_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_51_09_Video.mp4
+
+######Error-2020年1月17日 14:51:40######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_51_09_Video.mp4 -vf crop=in_w-500-500:in_h-0-0:500:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_51_40_Video.mp4 -y 
+
+######Error-2020年1月17日 14:51:43######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_51_40_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:600:blue[outvideo];[1:v]scale=1080:600,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:713,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1207" -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1714_51_43_Video.mp4
+
+######Error-2020年1月17日 14:52:14######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_52_14_Video.mov
+
+######Error-2020年1月17日 14:52:15######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_52_14_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_52_15_Video.mp4
+
+######Error-2020年1月17日 14:52:21######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1714_52_15_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_52_15_Video.mp4
+
+######Error-2020年1月17日 14:52:25######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1714_52_15_Video.mp4 -vf crop=in_w-500-500:in_h-0-0:500:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_52_21_Video.mp4 -y 
+
+######Error-2020年1月17日 14:52:30######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1714_52_21_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:600:blue[outvideo];[1:v]scale=1080:600,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:713,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1207" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1714_52_25_Video.mp4 -y 
+
+######Error-2020年1月17日 14:52:30######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_52_30_Video.mov
+
+######Error-2020年1月17日 14:52:30######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_52_30_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_52_30_Video.mp4
+
+######Error-2020年1月17日 14:52:36######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1714_52_30_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1714_52_31_Video.mp4
+
+######Error-2020年1月17日 14:52:38######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1714_52_31_Video.mp4 -vf crop=in_w-500-500:in_h-0-0:500:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1714_52_36_Video.mp4 -y 
+
+######Error-2020年1月17日 14:52:43######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1714_52_36_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:600:blue[outvideo];[1:v]scale=1080:600,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:713,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1207" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_2_2020_1_1714_52_38_Video.mp4 -y 
+
+######Error-2020年1月17日 14:52:45######
+System.IO.IOException: 文件“tempScale_1_2020_1_1714_49_11_Video.jpg”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path, Boolean recursive)
+   在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3114
+
+######Error-2020年1月17日 15:07:48######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_07_48_Video.mov
+
+######Error-2020年1月17日 15:07:48######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_07_48_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_07_48_Video.mp4
+
+######Error-2020年1月17日 15:07:49######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_07_48_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1715_07_49_Video.mp4
+
+######Error-2020年1月17日 15:08:07######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1715_07_49_Video.mp4 -vf crop=in_w-500-500:in_h-0-0:500:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1715_08_07_Video.mp4 -y 
+
+######Error-2020年1月17日 15:08:11######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1715_08_07_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:600:blue[outvideo];[1:v]scale=1080:600,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:53,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1867" -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1715_08_11_Video.mp4
+
+######Error-2020年1月17日 15:08:51######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_08_51_Video.mov
+
+######Error-2020年1月17日 15:08:52######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_08_51_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_08_52_Video.mp4
+
+######Error-2020年1月17日 15:08:59######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_08_52_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1715_08_52_Video.mp4
+
+######Error-2020年1月17日 15:09:03######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1715_08_52_Video.mp4 -vf crop=in_w-500-500:in_h-0-0:500:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1715_08_59_Video.mp4 -y 
+
+######Error-2020年1月17日 15:09:10######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1715_08_59_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:600:blue[outvideo];[1:v]scale=1080:600,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:53,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1867" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1715_09_03_Video.mp4 -y 
+
+######Error-2020年1月17日 15:09:10######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1715_09_10_Video.mov
+
+######Error-2020年1月17日 15:09:10######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1715_09_10_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1715_09_10_Video.mp4
+
+######Error-2020年1月17日 15:09:16######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1715_09_10_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1715_09_11_Video.mp4
+
+######Error-2020年1月17日 15:09:19######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1715_09_11_Video.mp4 -vf crop=in_w-500-500:in_h-0-0:500:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1715_09_16_Video.mp4 -y 
+
+######Error-2020年1月17日 15:09:24######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1715_09_16_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:600:blue[outvideo];[1:v]scale=1080:600,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:53,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1867" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_2_2020_1_1715_09_19_Video.mp4 -y 
+
+######Error-2020年1月17日 15:09:46######
+System.IO.IOException: 文件“tempScale_1_2020_1_1715_07_49_Video.jpg”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path, Boolean recursive)
+   在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3114
+
+######Error-2020年1月17日 15:18:56######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_18_56_Video.mov
+
+######Error-2020年1月17日 15:18:57######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_18_56_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_18_57_Video.mp4
+
+######Error-2020年1月17日 15:18:58######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_18_57_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1715_18_58_Video.mp4
+
+######Error-2020年1月17日 15:19:40######
+剪切: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1715_18_58_Video.mp4 -vf crop=in_w-40-50:in_h-20-30:40:20 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1715_19_40_Video.mp4 -y 
+
+######Error-2020年1月17日 15:20:19######
+填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1715_19_40_Video.mp4 -vf pad=1920:1080:40:20:0xff0000  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1715_20_00_Video.mp4 -y
+
+######Error-2020年1月17日 15:20:38######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1715_20_00_Video.mp4 -vf crop=in_w-60-200:in_h-0-0:60:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1715_20_38_Video.mp4 -y 
+
+######Error-2020年1月17日 15:20:54######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1715_20_38_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:200:blue[outvideo];[1:v]scale=1080:200,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:1018,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:902" -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1715_20_54_Video.mp4
+
+######Error-2020年1月17日 15:21:50######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_21_50_Video.mov
+
+######Error-2020年1月17日 15:21:51######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_21_50_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_21_51_Video.mp4
+
+######Error-2020年1月17日 15:22:16######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_21_51_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1715_21_51_Video.mp4
+
+######Error-2020年1月17日 15:22:36######
+剪切视频: ffmpeg G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1715_22_16_Video.mp4
+
+######Error-2020年1月17日 15:22:55######
+填充视频: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1715_22_16_Video.mp4 -vf pad=1920:1080:40:20:0x110f14  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1715_22_36_Video.mp4 -y
+
+######Error-2020年1月17日 15:23:11######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1715_22_36_Video.mp4 -vf crop=in_w-60-200:in_h-0-0:60:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1715_22_55_Video.mp4 -y 
+
+######Error-2020年1月17日 15:23:24######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1715_22_55_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:200:blue[outvideo];[1:v]scale=1080:200,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:1018,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:902" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1715_23_11_Video.mp4 -y 
+
+######Error-2020年1月17日 15:23:26######
+加字幕: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1715_23_11_Video.mp4 -vf "subtitles = 'G\:\\Dahe\\_0ToDo\\视频合成\\Program\\video_clip_synthesis\\bin\\Debug\\temp\\TransformHorizontal_1_2020_1_1715_23_11_Video.srt':force_style = 'FontName=BahnschriftSemiLightCondensed,FontSize=20,PrimaryColour=&H00ffff&,MarginV=10,BorderStyle=1,Outline=0,shadow=0'" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\AddSubtitle_1_2020_1_1715_23_26_1.mp4 -y 
+
+######Error-2020年1月17日 15:23:27######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1715_23_27_Video.mov
+
+######Error-2020年1月17日 15:23:27######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1715_23_27_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1715_23_27_Video.mp4
+
+######Error-2020年1月17日 15:23:57######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1715_23_27_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1715_23_28_Video.mp4
+
+######Error-2020年1月17日 15:24:21######
+剪切视频: ffmpeg G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_2_2020_1_1715_23_57_Video.mp4
+
+######Error-2020年1月17日 15:24:45######
+填充视频: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_2_2020_1_1715_23_57_Video.mp4 -vf pad=1920:1080:40:20:0x547726  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_2_2020_1_1715_24_21_Video.mp4 -y
+
+######Error-2020年1月17日 15:25:05######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_2_2020_1_1715_24_21_Video.mp4 -vf crop=in_w-60-200:in_h-0-0:60:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1715_24_46_Video.mp4 -y 
+
+######Error-2020年1月17日 15:25:22######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1715_24_46_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:200:blue[outvideo];[1:v]scale=1080:200,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:1018,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:902" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_2_2020_1_1715_25_05_Video.mp4 -y 
+
+######Error-2020年1月17日 15:25:25######
+加字幕: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_2_2020_1_1715_25_05_Video.mp4 -vf "subtitles = 'G\:\\Dahe\\_0ToDo\\视频合成\\Program\\video_clip_synthesis\\bin\\Debug\\temp\\TransformHorizontal_2_2020_1_1715_25_05_Video.srt':force_style = 'FontName=BahnschriftSemiLightCondensed,FontSize=20,PrimaryColour=&H00ffff&,MarginV=10,BorderStyle=1,Outline=0,shadow=0'" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\AddSubtitle_2_2020_1_1715_25_25_2.mp4 -y 
+
+######Error-2020年1月17日 15:25:53######
+System.IO.IOException: 文件“AddSubtitle_1_2020_1_1715_21_27_1.mp4”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path, Boolean recursive)
+   在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3114
+
+######Error-2020年1月17日 15:26:11######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_26_11_Video.mov
+
+######Error-2020年1月17日 15:26:11######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_26_11_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_26_11_Video.mp4
+
+######Error-2020年1月17日 15:26:12######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_26_11_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1715_26_12_Video.mp4
+
+######Error-2020年1月17日 15:28:08######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_28_08_Video.mov
+
+######Error-2020年1月17日 15:28:08######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_28_08_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_28_08_Video.mp4
+
+######Error-2020年1月17日 15:28:09######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_28_08_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1715_28_09_Video.mp4
+
+######Error-2020年1月17日 15:48:52######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_48_52_Video.mov
+
+######Error-2020年1月17日 15:48:52######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_48_52_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_48_52_Video.mp4
+
+######Error-2020年1月17日 15:48:53######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_48_52_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1715_48_53_Video.mp4
+
+######Error-2020年1月17日 15:50:08######
+剪切: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1715_48_53_Video.mp4 -vf crop=in_w-34-48:in_h-33-24:34:33 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1715_50_08_Video.mp4 -y 
+
+######Error-2020年1月17日 15:50:51######
+填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1715_50_08_Video.mp4 -vf pad=1920:1080:34:33:0xee82ee  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1715_50_30_Video.mp4 -y
+
+######Error-2020年1月17日 15:51:09######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1715_50_30_Video.mp4 -vf crop=in_w-150-350:in_h-0-0:150:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1715_51_09_Video.mp4 -y 
+
+######Error-2020年1月17日 15:51:25######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1715_51_09_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:300:blue[outvideo];[1:v]scale=1080:300,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:799,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1121" -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1715_51_25_Video.mp4
+
+######Error-2020年1月17日 15:53:11######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_53_11_Video.mov
+
+######Error-2020年1月17日 15:53:12######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_53_11_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_53_12_Video.mp4
+
+######Error-2020年1月17日 15:53:38######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1715_53_12_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1715_53_12_Video.mp4
+
+######Error-2020年1月17日 15:53:58######
+剪切视频: ffmpeg G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1715_53_38_Video.mp4
+
+######Error-2020年1月17日 15:54:18######
+填充视频: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1715_53_38_Video.mp4 -vf pad=1920:1080:56:53:0x67cbf2  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1715_53_58_Video.mp4 -y
+
+######Error-2020年1月17日 15:54:33######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1715_53_58_Video.mp4 -vf crop=in_w-150-350:in_h-0-0:150:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1715_54_18_Video.mp4 -y 
+
+######Error-2020年1月17日 15:54:46######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_1_1715_54_18_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:300:blue[outvideo];[1:v]scale=1080:300,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:799,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1121" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1715_54_33_Video.mp4 -y 
+
+######Error-2020年1月17日 15:55:15######
+加字幕: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_1_2020_1_1715_54_33_Video.mp4 -vf "subtitles = 'G\:\\Dahe\\_0ToDo\\视频合成\\Program\\video_clip_synthesis\\bin\\Debug\\temp\\TransformHorizontal_1_2020_1_1715_54_33_Video.srt':force_style = 'FontName=ComicSansMS,FontSize=20,PrimaryColour=&H00ffff&,MarginV=10,BorderStyle=1,Outline=0,shadow=0'" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\AddSubtitle_1_2020_1_1715_55_15_1.mp4 -y 
+
+######Error-2020年1月17日 15:55:26######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1715_55_26_Video.mov
+
+######Error-2020年1月17日 15:55:27######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1715_55_26_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1715_55_27_Video.mp4
+
+######Error-2020年1月17日 15:55:57######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1715_55_27_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1715_55_28_Video.mp4
+
+######Error-2020年1月17日 15:56:19######
+剪切视频: ffmpeg G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_2_2020_1_1715_55_57_Video.mp4
+
+######Error-2020年1月17日 15:56:41######
+填充视频: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_2_2020_1_1715_55_57_Video.mp4 -vf pad=1920:1080:29:67:0x584924  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_2_2020_1_1715_56_19_Video.mp4 -y
+
+######Error-2020年1月17日 15:56:58######
+横转竖: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_2_2020_1_1715_56_19_Video.mp4 -vf crop=in_w-150-350:in_h-0-0:150:0 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1715_56_42_Video.mp4 -y 
+
+######Error-2020年1月17日 15:57:13######
+横转竖填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_2_2020_1_1715_56_42_Video.mp4 -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\70344cea15ce36d3a4ef994b30f33a87e850b167.gif -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\图库\2ea97b8e2bc5e50de51c838e9dcd08b.png -filter_complex "[0:v]scale=1080:-2,pad=1080:1920:0:300:blue[outvideo];[1:v]scale=1080:300,boxblur=1:1:cr=0:ar=0[outup];[2:v]scale=1080:799,boxblur=1:1:cr=0:ar=0[outdown];[outvideo][outup]overlay=0:0[output1];[output1][outdown]overlay=0:1121" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_2_2020_1_1715_56_58_Video.mp4 -y 
+
+######Error-2020年1月17日 15:57:45######
+加字幕: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\TransformHorizontal_2_2020_1_1715_56_58_Video.mp4 -vf "subtitles = 'G\:\\Dahe\\_0ToDo\\视频合成\\Program\\video_clip_synthesis\\bin\\Debug\\temp\\TransformHorizontal_2_2020_1_1715_56_58_Video.srt':force_style = 'FontName=ComicSansMS,FontSize=20,PrimaryColour=&H00ffff&,MarginV=10,BorderStyle=1,Outline=0,shadow=0'" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\AddSubtitle_2_2020_1_1715_57_45_2.mp4 -y 
+
+######Error-2020年1月17日 15:59:02######
+System.IO.IOException: 文件“AddSubtitle_1_2020_1_1715_52_32_1.mp4”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path, Boolean recursive)
+   在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3179
+
+######Error-2020年1月17日 16:01:15######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1716_01_15_Video.mov
+
+######Error-2020年1月17日 16:01:15######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1716_01_15_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1716_01_15_Video.mp4
+
+######Error-2020年1月17日 16:01:16######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1716_01_15_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1716_01_16_Video.mp4
+
+######Error-2020年1月17日 16:01:58######
+剪切: ffmpeg   -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1716_01_16_Video.mp4 -vf crop=in_w-36-37:in_h-40-69:36:40 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1716_01_58_Video.mp4 -y 
+
+######Error-2020年1月17日 16:02:24######
+填充: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1716_01_58_Video.mp4 -vf pad=1920:1080:36:40:0x00ff00  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1716_02_11_Video.mp4 -y
+
+######Error-2020年1月17日 16:03:23######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1716_03_23_Video.mov
+
+######Error-2020年1月17日 16:03:24######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1716_03_23_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1716_03_24_Video.mp4
+
+######Error-2020年1月17日 16:03:40######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_1_1716_03_24_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_1_1716_03_24_Video.mp4
+
+######Error-2020年1月17日 16:03:53######
+剪切视频: ffmpeg G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1716_03_40_Video.mp4
+
+######Error-2020年1月17日 16:04:05######
+填充视频: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_1_1716_03_40_Video.mp4 -vf pad=1920:1080:38:20:0x471a64  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1716_03_53_Video.mp4 -y
+
+######Error-2020年1月17日 16:04:31######
+加字幕: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_1_2020_1_1716_03_53_Video.mp4 -vf "subtitles = 'G\:\\Dahe\\_0ToDo\\视频合成\\Program\\video_clip_synthesis\\bin\\Debug\\temp\\PaddVideo_1_2020_1_1716_03_53_Video.srt':force_style = 'FontName=CenturySchoolbook,FontSize=20,PrimaryColour=&H800080&,MarginV=10,BorderStyle=1,Outline=0,shadow=0'" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\AddSubtitle_1_2020_1_1716_04_31_1.mp4 -y 
+
+######Error-2020年1月17日 16:05:32######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1716_05_32_Video.mov
+
+######Error-2020年1月17日 16:05:33######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1716_05_32_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1716_05_33_Video.mp4
+
+######Error-2020年1月17日 16:05:51######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_1_1716_05_33_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_1_1716_05_33_Video.mp4
+
+######Error-2020年1月17日 16:06:06######
+剪切视频: ffmpeg G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_2_2020_1_1716_05_51_Video.mp4
+
+######Error-2020年1月17日 16:06:20######
+填充视频: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempCut_2_2020_1_1716_05_51_Video.mp4 -vf pad=1920:1080:45:57:0x59467c  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_2_2020_1_1716_06_06_Video.mp4 -y
+
+######Error-2020年1月17日 16:06:52######
+加字幕: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\PaddVideo_2_2020_1_1716_06_06_Video.mp4 -vf "subtitles = 'G\:\\Dahe\\_0ToDo\\视频合成\\Program\\video_clip_synthesis\\bin\\Debug\\temp\\PaddVideo_2_2020_1_1716_06_06_Video.srt':force_style = 'FontName=CenturySchoolbook,FontSize=20,PrimaryColour=&H800080&,MarginV=10,BorderStyle=1,Outline=0,shadow=0'" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\AddSubtitle_2_2020_1_1716_06_52_2.mp4 -y 
+
+######Error-2020年1月17日 16:07:10######
+System.IO.IOException: 文件“AddSubtitle_1_2020_1_1716_03_05_1.mp4”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path, Boolean recursive)
+   在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3179
+

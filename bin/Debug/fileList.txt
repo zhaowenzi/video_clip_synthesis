@@ -1,3 +1,2 @@
-file 'E:\BaiduNetdiskDownload\测试的视频\第二类视频\A\a_3.mp4'
-file 'E:\BaiduNetdiskDownload\测试的视频\第二类视频\B\b_1.mp4'
-file 'E:\BaiduNetdiskDownload\测试的视频\第二类视频\C\c_1.mp4'
+file 'C:\Users\admin\Desktop\横\A\横A_3.mp4'
+file 'C:\Users\admin\Desktop\横\B\横B_2.mp4'
