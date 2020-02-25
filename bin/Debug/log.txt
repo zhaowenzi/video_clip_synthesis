@@ -1342,3 +1342,66 @@ System.IO.IOException: 文件“AddSubtitle_1_2020_1_1716_03_05_1.mp4”正由�
    在 System.IO.Directory.Delete(String path, Boolean recursive)
    在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3179
 
+######Error-2020年2月6日 14:20:00######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_614_20_00_Video.mov
+
+######Error-2020年2月6日 14:20:02######
+转MP4格式: ffmpeg -i G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_614_20_00_Video.mov -vcodec copy -acodec aac -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_614_20_02_Video.mp4
+
+######Error-2020年2月6日 14:20:15######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_614_20_15_Video.mov
+
+######Error-2020年2月6日 14:20:16######
+转MP4格式: ffmpeg -i G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_614_20_15_Video.mov -vcodec copy -acodec aac -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_614_20_16_Video.mp4
+
+######Error-2020年2月6日 14:20:50######
+剪切: ffmpeg   -i G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_614_20_02_Video.mp4 -vf crop=in_w-0-60:in_h-70-50:0:70 G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_2_614_20_50_Video.mp4 -y 
+
+######Error-2020年2月6日 14:21:13######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_614_21_13_Video.mov
+
+######Error-2020年2月6日 14:21:14######
+转MP4格式: ffmpeg -i G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_614_21_13_Video.mov -vcodec copy -acodec aac -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_614_21_14_Video.mp4
+
+######Error-2020年2月6日 14:21:30######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_614_21_30_Video.mov
+
+######Error-2020年2月6日 14:21:31######
+转MP4格式: ffmpeg -i G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_614_21_30_Video.mov -vcodec copy -acodec aac -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_614_21_31_Video.mp4
+
+######Error-2020年2月6日 14:21:50######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_614_21_50_Video.mov
+
+######Error-2020年2月6日 14:21:52######
+转MP4格式: ffmpeg -i G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_614_21_50_Video.mov -vcodec copy -acodec aac -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_614_21_52_Video.mp4
+
+######Error-2020年2月6日 16:18:07######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_616_18_07_Video.mov
+
+######Error-2020年2月6日 16:18:08######
+转MP4格式: ffmpeg -i G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_616_18_07_Video.mov -vcodec copy -acodec aac -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_616_18_08_Video.mp4
+
+######Error-2020年2月6日 16:18:24######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_616_18_24_Video.mov
+
+######Error-2020年2月6日 16:18:26######
+转MP4格式: ffmpeg -i G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_616_18_24_Video.mov -vcodec copy -acodec aac -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_616_18_26_Video.mp4
+
+######Error-2020年2月6日 16:18:54######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_616_18_54_Video.mov
+
+######Error-2020年2月6日 16:18:55######
+转MP4格式: ffmpeg -i G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_616_18_54_Video.mov -vcodec copy -acodec aac -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_616_18_55_Video.mp4
+
+######Error-2020年2月6日 16:19:15######
+剪切: ffmpeg   -i G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_616_18_55_Video.mp4 -vf crop=in_w-0-0:in_h-10-10:0:10 G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\tempCut_1_2020_2_616_19_15_Video.mp4 -y 
+
+######Error-2020年2月6日 16:19:37######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_616_19_37_Video.mov
+
+######Error-2020年2月6日 16:19:38######
+转MP4格式: ffmpeg -i G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_616_19_37_Video.mov -vcodec copy -acodec aac -y  G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_616_19_38_Video.mp4
+
+######Error-2020年2月6日 16:19:52######
+横转竖: ffmpeg   -i G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\temp_1_2020_2_616_19_38_Video.mp4 -vf crop=in_w-0-0:in_h-0-0:0:0 G:\003GitCommit\0_正在进行\video_clip_synthesis\bin\Debug\temp\tempCutHorizontal_1_2020_2_616_19_52_Video.mp4 -y 
+
