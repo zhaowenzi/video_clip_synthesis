@@ -983,7 +983,7 @@
                                                          GroupName="Padd"
                                                          />
                                 <RadioButton Grid.Row="0" Margin="0"   IsChecked="True"
-                                                             VerticalAlignment="Center" HorizontalAlignment="Left"  Foreground="Black"
+                                                             VerticalAlignment="Center" HorizontalAlignment="Left"  Foreground="Black" Name="rbImageFill"
                                                              Content="图片填充" PreviewMouseLeftButtonDown="SwitchChannel_MouseLeftButtonDown" 
                                                              Cursor="Hand" FontWeight="Regular" FontFamily="微软雅黑" FontSize="13" Template="{DynamicResource ChannelCheckBoxTemplate}"
                                                          GroupName="Padd"
@@ -1143,6 +1143,18 @@
                                            Style="{StaticResource comboxBase}" Width="150" Height="30"  >
                                 </ComboBox>
                             </StackPanel>
+                            <Grid Grid.Column="5" Margin="20,0">
+                                <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal">
+                                    <TextBlock Grid.Column="1"  Style="{StaticResource myText13}">每行最多</TextBlock>
+                                    <Border Grid.Column="2"  BorderThickness="1" CornerRadius="4" BorderBrush="#666" Width="50" Height="30" Margin="10,0,0,0">
+                                        <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                    Text="{Binding MaxTextCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center"  ></TextBox>
+                                    </Border>
+                                    <TextBlock Grid.Column="1"  Style="{StaticResource myText13}" Margin="10,0,0,0">字</TextBlock>
+                                </StackPanel>
+                            </Grid>
                             <Grid Grid.Row="1" Grid.Column="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="70"></ColumnDefinition>
@@ -1262,7 +1274,8 @@
                             <ProgressBar Margin="0,0,30,0" Style="{StaticResource  SimpleProgressBar}" Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" Minimum="0" Maximum="{Binding TotalSize}" Value="{Binding Size}"  Height="8" ></ProgressBar>
                         </Grid>
                     </Grid>
-                    <Grid Background="#f6f6f8"  Visibility="Collapsed" Name="GridStepSeven">
+                    
+                    <Grid Background="#f6f6f8"  Visibility="Visible" Name="GridStepSeven">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="80"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
@@ -1278,14 +1291,33 @@
 
                         <Grid Grid.Row="2" Grid.Column="1">
                             <Grid.ColumnDefinitions>
-    
+
                                 <ColumnDefinition ></ColumnDefinition>
+                                <ColumnDefinition ></ColumnDefinition>
+                                <ColumnDefinition Width="300" ></ColumnDefinition>
+                                <ColumnDefinition  ></ColumnDefinition>
+                                <ColumnDefinition  Width="200"></ColumnDefinition>
 
                             </Grid.ColumnDefinitions>
-                            <CheckBox Style="{StaticResource chkPassWord}" Content="是否静音" Grid.Column="2"  Margin="700,0,0,0"
+                            <CheckBox Style="{StaticResource chkPassWord}" Content="是否静音" Grid.Column="0"   HorizontalAlignment="Center"
                                               IsChecked="{Binding 是否静音, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                            <CheckBox Style="{StaticResource chkPassWord}" Content="是否随机增加背景音乐" Grid.Column="1"   HorizontalAlignment="Center"
+                                              IsChecked="{Binding 是否随机添加背景音乐, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></CheckBox>
+                            <Grid Grid.Column="2" Margin="20,0">
+                                <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal">
+                                    <TextBlock Grid.Column="1"  Style="{StaticResource myText13}">背景音乐音量调整</TextBlock>
+                                    <Border Grid.Column="2"  BorderThickness="1" CornerRadius="4" BorderBrush="#666" Width="50" Height="30" Margin="10,0,0,0">
+                                        <TextBox  Background="Transparent" BorderThickness="0" VerticalAlignment="Center"  
+                                    Text="{Binding 背景音乐音量, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                               Foreground="{StaticResource niceBlack}" FontSize="13"
+                                                              VerticalContentAlignment="Center"  ></TextBox>
+                                    </Border>
+                                    <TextBlock Grid.Column="1"  Style="{StaticResource myText13}" Margin="10,0,0,0">dB</TextBlock>
+                                </StackPanel>
+                            </Grid>
+
                             <Button   Style="{StaticResource btnBaseCancel}" Height="30" Width="150"  
-                                                    Click="开始合成_Click"  Grid.Column="2"
+                                                    Click="开始合成_Click"  Grid.Column="4"
                                                 Foreground="White" FontSize="13"  HorizontalAlignment="Right" Margin="20,0">开始合成</Button>
                         </Grid>
 
@@ -1317,8 +1349,8 @@
 
 
                                 </Grid>
-
-                    <Grid Name="grid预览页"  Visibility="{Binding PreViewVisibility ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="#F6F6F8">
+                    <!--Visibility="{Binding PreViewVisibility ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+                    <Grid Name="grid预览页" Visibility="{Binding PreViewVisibility ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Background="#F6F6F8">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"></RowDefinition>
                             <RowDefinition Height="60"></RowDefinition>

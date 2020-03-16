@@ -34,6 +34,74 @@ namespace 素材合成
         static string root_path = (System.AppDomain.CurrentDomain.BaseDirectory);
         public MainWindow()
         {
+            if (root_path.Contains(" "))
+            {
+                MessageBox.Show("软件安装文件夹中含有[空格],属于非法字符,请重新选择文件夹安装!");
+                Environment.Exit(0);
+                return;
+            }
+            if (!Directory.Exists("背景音乐"))
+            {
+                Directory.CreateDirectory("背景音乐");
+            }
+            DirectoryInfo directoryInfo = new DirectoryInfo("背景音乐");
+
+            FileInfo[] fileInfos = directoryInfo.GetFiles();
+            if (fileInfos.Length >= 1)
+            {
+                foreach (var item1 in fileInfos)
+                {
+                    if (item1.Name.Contains(" "))
+                    {
+                        item1.CopyTo(item1.FullName.Replace(" ", ""));
+                        item1.Delete();
+                    }
+                }
+            }
+      
+            //DirectoryInfo directoryInfo = new DirectoryInfo("背景音乐");
+
+            //FileInfo[] fileInfos = directoryInfo.GetFiles();
+            //if (fileInfos.Length < 1)
+            //{
+            //    MessageBox.Show("背景音乐文件夹中音乐文件不存在,请在背景音乐文件夹添加音乐!");
+            //    //_viewModel.IsVisibility = Visibility.Collapsed;
+            //    return;
+            //}
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    int index = 0;
+            //    int randomFlag = 0;
+            //    _viewModel.背景音乐路径 = "";
+            //    randomFlag = random.Next(0, fileInfos.Length - 1);
+            //    index = 0;
+            //    foreach (var item123 in fileInfos)
+            //    {
+            //        if (index == randomFlag && (item123.FullName.ToLower().Contains(".wav") || item123.FullName.ToLower().Contains(".mp3")))
+            //        {
+            //            _viewModel.背景音乐路径 = item123.FullName;
+            //            break;
+            //        }
+            //        index++;
+            //    }
+            //    index = 0;
+            //    while (_viewModel.背景音乐路径 == "")
+            //    {
+            //        randomFlag = random.Next(0, fileInfos.Length - 1);
+
+            //        foreach (var item123 in fileInfos)
+            //        {
+            //            if (index == randomFlag && (item123.FullName.ToLower().Contains(".wav") || item123.FullName.ToLower().Contains(".mp3")))
+            //            {
+            //                _viewModel.背景音乐路径 = item123.FullName;
+            //                break;
+            //            }
+            //            index++;
+            //        }
+            //    }
+            //    Console.WriteLine(_viewModel.背景音乐路径);
+            //}
+
             int count = 0;
             Process[] ps = Process.GetProcesses();
             foreach (Process p in ps)
@@ -63,6 +131,18 @@ namespace 素材合成
             this.DataContext = _viewModel;
             _viewModel.TotalCount = 0;
             _viewModel.IsVisibility = Visibility.Collapsed;
+            if(Directory.Exists(root_path + "temp"))
+            {
+                Directory.Delete(root_path + "temp", true);
+            }
+            if (!Directory.Exists("背景音乐"))
+            {
+                Directory.CreateDirectory("背景音乐");
+            }
+            if (!Directory.Exists("图库"))
+            {
+                Directory.CreateDirectory("图库");
+            }
             GoToWhichStep(1);
             GetFontNames();
         }
@@ -105,6 +185,8 @@ namespace 素材合成
             }
             catch
             {
+               
+       
                 return null;
             }
 
@@ -203,7 +285,6 @@ namespace 素材合成
                     {
                         this.Dispatcher.Invoke(() => {
                             MessageBox.Show($"这个视频有问题:{VideoName}");
-
                         });
                         return null;
                     }
@@ -877,6 +958,7 @@ namespace 素材合成
         #region 合成素材
 
         Queue<string> 预览_待处理队列 = new Queue<string>();
+        Queue<string> 预览_已处理队列 = new Queue<string>();
 
         private void 合成视频_Click(object sender, RoutedEventArgs e)
         {
@@ -907,6 +989,13 @@ namespace 素材合成
             {
                 arr[i] = _viewModel.VideoGroupNodeList[i].VideoNode.Count;
             }
+            备份字典.Clear();
+            备份字典.Add(GridStepTwo.Name, "");
+            备份字典.Add(GridStepThree.Name, "");
+            备份字典.Add(GridStepFour.Name, "");
+            备份字典.Add(GridStepFive.Name, "");
+            备份字典.Add(GridStepSix.Name, "");
+            备份字典.Add(GridStepSeven.Name, "");
             List<List<int>> result = returnResult(arr, num);
             new Thread(Comose).Start(result);
             btnOut.IsEnabled = false;
@@ -925,6 +1014,7 @@ namespace 素材合成
         {
             var temp = arr as List<List<int>>;
             flag = 1;
+            是否返回上一步 = false;
             for (int i = 0; i < _viewModel.VideoGroupNodeList.Count; i++)
             {
                 if (_viewModel.VideoGroupNodeList[i].逆时针旋转90 == true)
@@ -1036,7 +1126,9 @@ namespace 素材合成
                         OutPutVideoName = ScaleOutPutName;
                     }
                     _viewModel.BackgroundImage = GetPicFromVideo(OutPutVideoName);
+                    预览_待处理队列.Clear();
                     预览_待处理队列.Enqueue(OutPutVideoName);
+                    rootPath = OutPutVideoName;
                     _viewModel.CurrentIndex = flag;
 
                 }
@@ -1053,6 +1145,864 @@ namespace 素材合成
             });
         }
         #endregion
+        Random random = new Random();
+
+        Dictionary<string, string> 备份字典 = new Dictionary<string, string>();
+        string rootPath = "";
+
+        #region 剪切视频
+        private void 剪切视频_Click(object sender, RoutedEventArgs e)
+        {
+            是否停止 = false;
+            if (string.IsNullOrEmpty(tbOutPut.Text))
+            {
+                MessageBox.Show("请选择导出素材的路径！");
+                return;
+            }
+            if (tbOutPut.Text.Contains(" "))
+            {
+                MessageBox.Show("路径含有非法字符,请重新选择！");
+                return;
+            }
+            btnCut.IsEnabled = false;
+            _viewModel.IsVisibility = Visibility.Visible;
+            new Thread(CutVideo).Start(tbOutPut.Text);
+        }
+
+        void CutVideo(object selectPath)
+        {
+            flag = 1;
+            _viewModel.CurrentIndex = 0;
+           
+            Random randomer = new Random();
+            int Total = 1;
+            for (int i = 0; i < Total; i++)
+            {
+                string item = 预览_待处理队列.Dequeue();
+                int offsetLeft = 0;
+                int offsetRight = 0;
+                int offsetTop = 0;
+                int offsetBottom = 0;
+                _viewModel.CutSize = 0;
+                _viewModel.Size = 0;
+                if (_viewModel.offsetMin_4 != 0)
+                {
+                    offsetLeft = randomer.Next(_viewModel.CutPixel_4 - _viewModel.offsetMin_4, _viewModel.CutPixel_4 + _viewModel.offsetMin_4);
+                }
+                else
+                {
+                    offsetLeft = _viewModel.CutPixel_4;
+                }
+                if (_viewModel.offsetMin_2 != 0)
+                {
+                    offsetRight = randomer.Next(_viewModel.CutPixel_2 - _viewModel.offsetMin_2, _viewModel.CutPixel_2 + _viewModel.offsetMin_2);
+                }
+                else
+                {
+                    offsetRight = _viewModel.CutPixel_2;
+                }
+                if (_viewModel.offsetMin_1 != 0)
+                {
+                    offsetTop = randomer.Next(_viewModel.CutPixel_1 - _viewModel.offsetMin_1, _viewModel.CutPixel_1 + _viewModel.offsetMin_1);
+                }
+                else
+                {
+                    offsetTop = _viewModel.CutPixel_1;
+                }
+                if (_viewModel.offsetMin_3 != 0)
+                {
+                    offsetBottom = randomer.Next(_viewModel.CutPixel_3 - _viewModel.offsetMin_1, _viewModel.CutPixel_3 + _viewModel.offsetMin_1);
+                }
+                else
+                {
+                    offsetBottom = _viewModel.CutPixel_3;
+                }
+
+
+                //裁剪输出路径
+                string OutPutVideoName = root_path + $"temp\\tempCut_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_Video.mp4";
+                FileInfo fileInfo = new FileInfo(item);
+                _viewModel.TotalSize = fileInfo.Length * 2;
+                //裁剪
+                string CutArguments = $"  -i {fileInfo.FullName} -vf crop=in_w-{offsetLeft}-{offsetRight}:in_h-{offsetTop}-{offsetBottom}:{offsetLeft}:{offsetTop} {OutPutVideoName} -y ";
+                FileHelper.AppandLog("剪切: ffmpeg " + CutArguments);
+                ExecuteCommandCut(CutArguments, OutPutVideoName);
+                if (是否停止)
+                {
+                    return;
+                }
+                Thread.Sleep(100);
+                //  GetComposeProgress(OutPutVideoName);
+                _viewModel.CutSize = fileInfo.Length;
+                //填充后输出路径
+                string OutPutPaddVideoName = root_path + $"temp\\PaddVideo_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_Video.mp4";
+
+                //填充
+                string PaddArguments;
+                if (IsHorizontal == true)
+                {
+                    //横版参数
+                    PaddArguments = $" -i {OutPutVideoName} -vf pad={1920}:{1080}:{offsetLeft}:{offsetTop}:0x{CmdHelper.To10_16_Length_2(_viewModel.FillColor.R)}{CmdHelper.To10_16_Length_2(_viewModel.FillColor.G)}{CmdHelper.To10_16_Length_2(_viewModel.FillColor.B)}  {OutPutPaddVideoName} -y";
+                }
+                else
+                {
+                    //  竖版参数
+                    PaddArguments = $" -i {OutPutVideoName} -vf pad={1080}:{1920}:{offsetLeft}:{offsetTop}:0x{CmdHelper.To10_16_Length_2(_viewModel.FillColor.R)}{CmdHelper.To10_16_Length_2(_viewModel.FillColor.G)}{CmdHelper.To10_16_Length_2(_viewModel.FillColor.B)}  {OutPutPaddVideoName} -y";
+                }
+                ExecuteCommandCut(PaddArguments, OutPutPaddVideoName);
+                if (是否停止)
+                {
+                    return;
+                }
+                FileHelper.AppandLog("填充: ffmpeg " + PaddArguments);
+                Thread.Sleep(100);
+
+
+                if (flag == 1)
+                {
+                    进入预览(OutPutPaddVideoName);
+                }
+                //返回重新调整参数
+                if (_viewModel.IsCancel == true)
+                {
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(item);
+                    是否返回上一步 = false;
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        btnCut.IsEnabled = true;
+                        GoToWhichStep(2);
+                    });
+     
+                    return;
+                }
+                //开始处理 或者保存参数 进入下一步
+                if (_viewModel.IsConfirm == true)
+                {
+                    _viewModel.Arguments_1_剪切视频 = "剪切";
+                    _viewModel.Arguments_2_填充视频 = "填充";
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(OutPutPaddVideoName);
+                   
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        备份字典[GridStepTwo.Name] = item;
+                    });
+                    是否返回上一步 = false;
+                    _viewModel.CurrentIndex = flag;
+                    flag++;
+                    if (_viewModel.IsSame == false)
+                    {
+                        _viewModel.FillColor = ColorUtil.GetRandomColor();
+                    }
+                    if (_viewModel.IsSame横转竖 == false)
+                    {
+                        _viewModel.FillColor横转竖 = ColorUtil.GetRandomColor();
+                    }
+                    _viewModel.IsVisibility = Visibility.Collapsed;
+
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        btnCut.IsEnabled = true;
+                        if (IsHorizontal == false)
+                        {
+                            GoToWhichStep(3);
+                            _viewModel.LumaPower = "1";
+                            _viewModel.TotalSize = _viewModel.CutSize;
+                            InitVlaue();
+                        }
+                        else
+                        {
+                            GoToWhichStep(4);
+                            _viewModel.LumaPower = "1";
+                            _viewModel.TotalSize = _viewModel.CutSize;
+                            InitVlaue();
+                        }
+
+                    });
+                    return;
+                }
+                //跳过
+                if (_viewModel.IsIgnore == true)
+                {
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(item);
+                    _viewModel.Arguments_1_剪切视频 = "";
+                    _viewModel.Arguments_2_填充视频 = "";
+                    是否返回上一步 = false;
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        备份字典[GridStepTwo.Name] = "";
+                        btnCut.IsEnabled = true;
+                        if (IsHorizontal == false)
+                        {
+                            GoToWhichStep(3);
+                            _viewModel.LumaPower = "1";
+                            _viewModel.TotalSize = _viewModel.CutSize;
+                            InitVlaue();
+                        }
+                        else
+                        {
+                            GoToWhichStep(4);
+                            _viewModel.LumaPower = "1";
+                            _viewModel.TotalSize = _viewModel.CutSize;
+                            InitVlaue();
+                        }
+                    });
+                    
+                    return;
+                }
+            }
+        
+
+        }
+
+
+
+        #endregion
+
+        #region 竖版转横版
+
+
+        private void 竖版转横版_Click(object sender, RoutedEventArgs e)
+        {
+            是否停止 = false;
+            btnVeritalToHorizontal.IsEnabled = false;
+            _viewModel.IsVisibility = Visibility.Visible;
+            new Thread(TransformVideo).Start(tbOutPut.Text);
+        }
+        void TransformVideo(object selectPath)
+        {
+            flag = 1;
+            _viewModel.CurrentIndex = 0;
+            int Total = 1;
+            if (是否返回上一步)
+            {
+                GetCurrentPath(0);
+                if (CurrentPath == "")
+                {
+                   
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(CurrentPath);
+                }
+                else
+                {
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(CurrentPath);
+                }
+            }
+            for (int i = 0; i < Total; i++)
+            {
+                string item = 预览_待处理队列.Dequeue();
+
+                _viewModel.Size = 0;
+                _viewModel.CutSize = 0;
+
+                string PaddArguments;
+
+                string OutPutPaddVideoName = root_path + $"temp\\tempTransformVertial_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_Video.mp4";
+                //横版参数
+                _viewModel.TotalSize = new FileInfo(item).Length ;
+                PaddArguments = $" -i {item} -lavfi \"" +
+             $"[0:v]scale=1080*2:1920*2,boxblur=luma_radius=min(h\\,w)/20:luma_power={_viewModel.LumaPower}:chroma_radius=min(cw\\,ch)/20:chroma_power=1[bg];" +
+             $"[0:v]scale=-1:1080[ov];[bg][ov]overlay=(W-w)/2:(H-h)/2,crop=w=1920:h=1080" +
+             $"\" {OutPutPaddVideoName} -y";
+                ExecuteCommandCut(PaddArguments, OutPutPaddVideoName);
+                if (是否停止)
+                {
+                    return;
+                }
+                FileHelper.AppandLog("竖转横: ffmpeg " + PaddArguments);
+                Thread.Sleep(100);
+                if (flag == 1)
+                {
+                    进入预览(OutPutPaddVideoName);
+                }
+                //返回重新调整参数
+                if (_viewModel.IsCancel == true)
+                {
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(item);
+                    是否返回上一步 = false;
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        btnVeritalToHorizontal.IsEnabled = true;
+                        GoToWhichStep(3);
+                    });
+  
+                    return;
+                }
+                //开始处理 或者保存参数 进入下一步
+                if (_viewModel.IsConfirm == true)
+                {
+                    _viewModel.CurrentIndex = flag;
+                    flag++;
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(OutPutPaddVideoName);
+                  
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        备份字典[GridStepThree.Name] = item;
+                    });
+                    是否返回上一步 = false;
+                    _viewModel.Arguments_3_竖版转横版 = "竖转横";
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        btnVeritalToHorizontal.IsEnabled = true;
+                        GoToWhichStep(5);
+                    });
+                    return;
+                }
+                //跳过
+                if (_viewModel.IsIgnore == true)
+                {
+                    预览_待处理队列.Clear();
+                    _viewModel.Arguments_3_竖版转横版 = "";
+                    预览_待处理队列.Enqueue(item);
+                    是否返回上一步 = false;
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        备份字典[GridStepThree.Name] = "";
+                        btnVeritalToHorizontal.IsEnabled = true;
+                        GoToWhichStep(5);
+                    });
+         
+                    return;
+                }
+  
+            }
+         
+
+        }
+
+
+
+        #endregion
+
+        #region  横版转竖版_
+        private void 横版转竖版_Click(object sender, RoutedEventArgs e)
+        {
+            if (rbImageFill.IsChecked == true)
+            {
+                if(_viewModel.是否随机图片==false)
+                {
+                    if ( (_viewModel.FillImageTop == null || _viewModel.FillImageTop == null))
+                    {
+                        this.Dispatcher.Invoke(() => {
+                            MessageBox.Show("请选择填充的图片!");
+                        });
+                        return;
+                    }
+                }
+                else
+                {
+                    if (!Directory.Exists("图库"))
+                    {
+                        Directory.CreateDirectory("图库");
+                    }
+                    DirectoryInfo directoryInfo = new DirectoryInfo("图库");
+                    FileInfo[] fileInfos = directoryInfo.GetFiles();
+                    if (fileInfos.Length < 2)
+                    {
+                        MessageBox.Show("图库图片不足,请再图库中添加更多图片!");
+                        return;
+                    }
+                }
+
+
+            }
+            是否停止 = false;
+            btnHorizontalToVertical.IsEnabled = false;
+            _viewModel.IsVisibility = Visibility.Visible;
+
+            new Thread(TransformVideoHorizontal).Start(tbOutPut.Text);
+        }
+
+        void TransformVideoHorizontal(object selectPath)
+        {
+            flag = 1;
+            _viewModel.CurrentIndex = 0;
+
+            Random randomer = new Random();
+            int Total = 1;
+            if (是否返回上一步)
+            {
+                GetCurrentPath(1);
+                if (CurrentPath == "")
+                {
+                   
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(CurrentPath);
+                }
+                else
+                {
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(CurrentPath);
+                }
+            }
+            for (int i = 0; i < Total; i++)
+            {
+                string item = 预览_待处理队列.Dequeue();
+                this.Dispatcher.Invoke(() =>
+                {
+                    备份字典[GridStepFour.Name] = item;
+                });
+                int offsetLeft = 0;
+                int offsetRight = 0;
+                _viewModel.Size = 0;
+                _viewModel.CutSize = 0;
+                if (_viewModel.offsetMin_4 != 0)
+                {
+                    offsetLeft = randomer.Next(_viewModel.CutPixel_横版左 - _viewModel.offset_横版左, _viewModel.CutPixel_横版左 + _viewModel.offset_横版左);
+                }
+                else
+                {
+                    offsetLeft = _viewModel.CutPixel_横版左;
+                }
+                if (_viewModel.offsetMin_2 != 0)
+                {
+                    offsetRight = randomer.Next(_viewModel.CutPixel_横版右 - _viewModel.offset_横版右, _viewModel.CutPixel_横版右 + _viewModel.offset_横版右);
+                }
+                else
+                {
+                    offsetRight = _viewModel.CutPixel_横版右;
+                }
+
+                //横版左右裁剪输出路径
+                string OutPutVideoName = root_path + $"temp\\tempCutHorizontal_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_Video.mp4";
+                FileInfo fileInfo = new FileInfo(item);
+                _viewModel.TotalSize = fileInfo.Length * 2;
+                //裁剪
+                string CutArguments = $"  -i {item} -vf crop=in_w-{offsetLeft}-{offsetRight}:in_h-{0}-{0}:{offsetLeft}:{0} {OutPutVideoName} -y ";
+                FileHelper.AppandLog("横转竖: ffmpeg " + CutArguments);
+                ExecuteCommandCut(CutArguments, OutPutVideoName);
+                if (是否停止)
+                {
+                    return;
+                }
+                Thread.Sleep(100);
+                _viewModel.CutSize = fileInfo.Length;
+                string PaddArguments;
+
+                string OutPutPaddVideoName = root_path + $"temp\\TransformHorizontal_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_Video.mp4";
+                //填充
+                if (IsImage == false)
+                {
+                    PaddArguments = $" -i {OutPutVideoName} -vf \"" +
+     $"scale=1080:-2,pad=1080:1920:0:{_viewModel.PadHeight}:0x{CmdHelper.To10_16_Length_2(_viewModel.FillColor横转竖.R)}{CmdHelper.To10_16_Length_2(_viewModel.FillColor横转竖.G)}{CmdHelper.To10_16_Length_2(_viewModel.FillColor横转竖.B)}" +
+     $"\" {OutPutPaddVideoName} -y";
+                }
+                else
+                {
+                    if (_viewModel.是否随机图片)
+                    {
+                        if (!Directory.Exists("图库"))
+                        {
+                            Directory.CreateDirectory("图库");
+                        }
+                        DirectoryInfo directoryInfo = new DirectoryInfo("图库");
+                        Random random = new Random();
+                        FileInfo[] fileInfos = directoryInfo.GetFiles();
+                        if (fileInfos.Length < 2)
+                        {
+                            MessageBox.Show("图库图片不足,请再图库中添加更多图片!");
+                            return;
+                        }
+                        int index = 0;
+                        int flag = 0;
+                        flag = random.Next(0, fileInfos.Length );
+                        index = 0;
+                        foreach (var item123 in fileInfos)
+                        {
+                            if (index == flag)
+                            {
+                                _viewModel.ImageBottomPath = item123.FullName;
+                                _viewModel.FillImageBottom = SetSource(item123.FullName);
+                            }
+                            index++;
+                        }
+                        flag = random.Next(0, fileInfos.Length );
+                        index = 0;
+                        foreach (var item123 in fileInfos)
+                        {
+                            if (index == flag)
+                            {
+                                _viewModel.ImageTopPath = item123.FullName;
+                                _viewModel.FillImageTop = SetSource(item123.FullName);
+                            }
+                            index++;
+                        }
+                    }
+                    double rate = (1080+0.00001) / (1920 - offsetLeft -offsetRight);
+                    int cutHeight = (int)(1080 * rate);
+                    int image2Ypos = 1920 - int.Parse(_viewModel.PadHeight) - cutHeight;
+                    int yellow = cutHeight + int.Parse(_viewModel.PadHeight);
+                    PaddArguments = $" -i {OutPutVideoName} -i {_viewModel.ImageTopPath} -i {_viewModel.ImageBottomPath} -filter_complex \""
+                        + $"[0:v]scale=1080:-2,pad=1080:1920:0:{_viewModel.PadHeight}:blue[outvideo];" +
+                        $"[1:v]scale=1080:{_viewModel.PadHeight},boxblur={_viewModel.LumaPowerTop}:1:cr=0:ar=0[outup];" +
+                        $"[2:v]scale=1080:{image2Ypos},boxblur={_viewModel.LumaPowerBottom}:1:cr=0:ar=0[outdown];" +
+                        $"[outvideo][outup]overlay=0:0[output1];" +
+                        $"[output1][outdown]overlay=0:{yellow}" +
+                        $"\" -y  {OutPutPaddVideoName}"
+                        ;
+                }
+                FileHelper.AppandLog("横转竖填充: ffmpeg " + PaddArguments);
+                ExecuteCommandCut(PaddArguments, OutPutPaddVideoName);
+                if (是否停止)
+                {
+                    return;
+                }
+                Thread.Sleep(100);
+
+
+                if (flag == 1)
+                {
+                    进入预览(OutPutPaddVideoName);
+                }
+                //返回重新调整参数
+                if (_viewModel.IsCancel == true)
+                {
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(item);
+                    是否返回上一步 = false;
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        btnHorizontalToVertical.IsEnabled = true;
+                        GoToWhichStep(4);
+                    });
+          
+                    return;
+                }
+                //开始处理 或者保存参数 进入下一步
+                if (_viewModel.IsConfirm == true)
+                {
+                    _viewModel.Arguments_4_横版转竖版裁剪 = "横转竖";
+                    _viewModel.Arguments_5_横版转竖版填充 = "横转竖填充";
+                    是否返回上一步 = false;
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(OutPutPaddVideoName);
+                  
+
+                   
+                    _viewModel.CurrentIndex = flag;
+                    flag++;
+                    if (_viewModel.IsSame == false)
+                    {
+                        _viewModel.FillColor = ColorUtil.GetRandomColor();
+                    }
+                    if (_viewModel.IsSame横转竖 == false)
+                    {
+                        _viewModel.FillColor横转竖 = ColorUtil.GetRandomColor();
+                    }
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        btnHorizontalToVertical.IsEnabled = true;
+                        GoToWhichStep(5);
+                    });
+                }
+                //跳过
+                if (_viewModel.IsIgnore == true)
+                {
+                    _viewModel.Arguments_4_横版转竖版裁剪 = "";
+                    _viewModel.Arguments_5_横版转竖版填充 = "";
+                    预览_待处理队列.Clear();
+                    是否返回上一步 = false;
+                    预览_待处理队列.Enqueue(item);
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        备份字典[GridStepFour.Name] = "";
+                        btnHorizontalToVertical.IsEnabled = true;
+                        GoToWhichStep(5);
+                    });
+  
+                    return;
+                }
+            }
+
+        }
+
+
+
+        #endregion
+
+        #region 添加字幕
+        private void 合成字幕_Click(object sender, RoutedEventArgs e)
+        {
+            是否停止 = false;
+            btn合成字幕.IsEnabled = false;
+            _viewModel.IsVisibility = Visibility.Visible;
+            new Thread(AddText).Start(tbOutPut.Text);
+
+        }
+        void AddText(object selectPath)
+        {
+            flag = 1;
+
+            string time = "";
+            _viewModel.CurrentIndex = 0;
+            int Total = 1;
+            if (是否返回上一步)
+            {
+                GetCurrentPath(2);
+                if (CurrentPath == "")
+                {
+                   
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(CurrentPath);
+                }
+                else
+                {
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(CurrentPath);
+                }
+            }
+            for (int i = 0; i < Total; i++)
+            {
+                string item = 预览_待处理队列.Dequeue();
+                this.Dispatcher.Invoke(() =>
+                {
+                    备份字典[GridStepFive.Name] = item;
+                });
+                _viewModel.Size = 0;
+                _viewModel.CutSize = 0;
+                //获取视频语音
+                FileInfo fileInfo = new FileInfo(item);
+                _viewModel.TotalSize = 3 * fileInfo.Length;
+                string voiceOutPutName = fileInfo.FullName.Replace(fileInfo.Extension, ".wav");
+                string GetVoiceArguments = $"-i {fileInfo.FullName} -f wav -y {voiceOutPutName}";
+                ExecuteCommandCut(GetVoiceArguments, voiceOutPutName);
+                _viewModel.CutSize = fileInfo.Length;
+                //语音转字幕
+                Thread.Sleep(100);
+                string textOutPutName = fileInfo.FullName.Replace(fileInfo.Extension, ".srt");
+                string appid = ConfigureHelper.Read("讯飞appid");
+                string secret_key = ConfigureHelper.Read("讯飞secret_key");
+                string GetTextArguments = $" {appid} {secret_key} {voiceOutPutName} {textOutPutName} {_viewModel.MaxTextCount}";
+                ExecuteCommandPython(GetTextArguments, textOutPutName);
+                if (是否停止)
+                {
+                    return;
+                }
+                Thread.Sleep(100);
+                _viewModel.CutSize = fileInfo.Length;
+                //烧录字幕至视频文件
+                string VideoOutPutName = root_path + $"temp\\AddSubtitle_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_{flag}.mp4";
+                string SetSubtitleArguments = $"-i {fileInfo.FullName} -vf \"subtitles = '{textOutPutName.Replace("\\", "\\\\").Replace(":", "\\:")}':force_style = 'FontName={_viewModel.FontStyle.Replace(" ", "").Replace("System.Windows.Controls.ComboBoxItem:", "")}," +
+                    $"FontSize={_viewModel.FontSize},PrimaryColour=&H" +
+                    $"{CmdHelper.To10_16_Length_2(_viewModel.FontColor.B)}" +
+                    $"{CmdHelper.To10_16_Length_2(_viewModel.FontColor.G)}{CmdHelper.To10_16_Length_2(_viewModel.FontColor.R)}&," +
+                    $"MarginV={_viewModel.TextHeight},BorderStyle=1,Outline={_viewModel.TextWidth},shadow={_viewModel.TextDeepth}'\"" +
+                    $" -y {VideoOutPutName}";
+                ExecuteCommandCut(SetSubtitleArguments, VideoOutPutName);
+                if (是否停止)
+                {
+                    return;
+                }
+                Thread.Sleep(100);
+                if(flag==1)
+                {
+                    进入预览(VideoOutPutName);
+                }
+                //返回重新调整参数
+                if(_viewModel.IsCancel==true)
+                {
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(item);
+                    是否返回上一步 = false;
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        btn合成字幕.IsEnabled = true;
+                        GoToWhichStep(5);
+                    });
+                    return;
+                }
+                //开始处理 或者保存参数 进入下一步
+                if(_viewModel.IsConfirm==true)
+                {
+                    _viewModel.Arguments_6_添加字幕 = "加字幕";
+                    _viewModel.CurrentIndex = flag;
+                    flag++;
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(VideoOutPutName);
+
+                    是否返回上一步 = false;
+                }
+                //跳过
+                if(_viewModel.IsIgnore==true)
+                {
+                    _viewModel.Arguments_6_添加字幕 = "";
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(item);
+                  
+                    是否返回上一步 = false;
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        备份字典[GridStepFive.Name] = "";
+                        btn合成字幕.IsEnabled = true;
+                        GoToWhichStep(6);
+                    });
+
+                    return;
+                }
+            }
+            this.Dispatcher.Invoke(() =>
+            {
+                btn合成字幕.IsEnabled = true;
+                GoToWhichStep(6);
+            });
+        }
+        #endregion
+          
+        #region 添加水印
+        private void 添加水印_Click(object sender, RoutedEventArgs e)
+        {
+            if (_viewModel.水印预览 == null)
+            {
+                MessageBox.Show("请先选择水印图片");
+                return;
+            }
+            是否停止 = false;
+            btn添加水印.IsEnabled = false;
+            _viewModel.IsVisibility = Visibility.Visible;
+       
+            new Thread(AddLogo).Start(tbOutPut.Text);
+        }
+         void  GetCurrentPath( int index)
+        {
+            while(CurrentPath=="")
+            {
+                CurrentPath= 备份字典.ElementAt(index--).Value;
+                if(index<0)
+                {
+                    CurrentPath = rootPath;
+                    break;
+                }
+            }
+        }
+
+        void AddLogo(object selectPath)
+        {
+            flag = 1;
+
+            string time = "";
+            _viewModel.CurrentIndex = 0;
+            int Total = 1;
+            if (是否返回上一步)
+            {
+                GetCurrentPath(3);
+                if (CurrentPath=="")
+                {
+                 
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(CurrentPath);
+                }
+                else
+                {
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(CurrentPath);
+                }
+            }
+            for (int i = 0; i < Total; i++)
+            {
+                string item = 预览_待处理队列.Dequeue();
+                this.Dispatcher.Invoke(() =>
+                {
+                    备份字典[GridStepSix.Name] = item;
+                });
+
+                _viewModel.Size = 0;
+                _viewModel.CutSize = 0;
+                //获取视频语音
+                FileInfo fileInfo = new FileInfo(item);
+                _viewModel.TotalSize =  fileInfo.Length;
+       
+                //烧录字幕至视频文件
+                string VideoOutPutName = root_path + $"temp\\AddLogo_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_{flag}.mp4";
+                string SetLogoArguments = $" -i {fileInfo.FullName} -i {_viewModel.水印路径} -filter_complex overlay={_viewModel.水印坐标X}:{_viewModel.水印坐标Y} {VideoOutPutName} -y ";
+                ExecuteCommandCut(SetLogoArguments, VideoOutPutName);
+                if (是否停止)
+                {
+                    return;
+                }
+                Thread.Sleep(100);
+                if (flag == 1)
+                {
+                    进入预览(VideoOutPutName);
+                }
+                //返回重新调整参数
+                if (_viewModel.IsCancel == true)
+                {
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(item);
+                    是否返回上一步 = false;
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        btn添加水印.IsEnabled = true;
+                        GoToWhichStep(6);
+                    });
+                   
+                    return;
+                }
+                //开始处理 或者保存参数 进入下一步
+                if (_viewModel.IsConfirm == true)
+                {
+                    _viewModel.Arguments_7_添加水印 = "加水印";
+                    _viewModel.CurrentIndex = flag;
+                    flag++;
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(VideoOutPutName);
+    
+                    是否返回上一步 = false;
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        btn添加水印.IsEnabled = true;
+                        GoToWhichStep(7);
+                    });
+                   
+                }
+                //跳过
+                if (_viewModel.IsIgnore == true)
+                {
+                    _viewModel.Arguments_7_添加水印 = "";
+                    预览_待处理队列.Clear();
+                    预览_待处理队列.Enqueue(item);
+                    是否返回上一步 = false;
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        备份字典[GridStepSix.Name] = "";
+                        btn添加水印.IsEnabled = true;
+                        GoToWhichStep(7);
+                    });
+                 
+                    return;
+                }
+            }
+           
+        }
+        #endregion
+
+
+        private void 开始合成_Click(object sender, RoutedEventArgs e)
+        {
+            if(_viewModel.是否随机添加背景音乐==true)
+            {
+                if (!Directory.Exists("背景音乐"))
+                {
+                    Directory.CreateDirectory("背景音乐");
+                }
+                DirectoryInfo directoryInfo = new DirectoryInfo("背景音乐");
+                FileInfo[] fileInfos = directoryInfo.GetFiles();
+                if (fileInfos.Length < 1)
+                {
+                    MessageBox.Show("背景音乐文件夹中音乐文件不存在,请在背景音乐文件夹添加音乐!");
+                    //_viewModel.IsVisibility = Visibility.Collapsed;
+                    return;
+                }
+            }
+            _viewModel.IsVisibility = Visibility.Visible;
+            是否停止 = false;
+            new Thread(ComposeAllVideo).Start();
+        }
 
         #region 最终合成
 
@@ -1113,7 +2063,7 @@ namespace 素材合成
                 {
                     Directory.CreateDirectory("temp\\");
                 }
-                if(是否停止)
+                if (是否停止)
                 {
                     return;
                 }
@@ -1174,9 +2124,9 @@ namespace 素材合成
                 fileInfo = new FileInfo(OutPutVideoMp4Name);
                 _viewModel.TotalSize = fileInfo.Length * 9;
                 _viewModel.Size = fileInfo.Length;
-                if (fileInfo.Length<10)
+                if (fileInfo.Length < 10)
                 {
-                    this.Dispatcher.Invoke(()=> {
+                    this.Dispatcher.Invoke(() => {
                         MessageBox.Show("视频合成失败!");
                     });
                     return;
@@ -1398,7 +2348,6 @@ namespace 素材合成
                                 Directory.CreateDirectory("图库");
                             }
                             DirectoryInfo directoryInfo = new DirectoryInfo("图库");
-                            Random random = new Random();
                             FileInfo[] fileInfos = directoryInfo.GetFiles();
                             if (fileInfos.Length < 2)
                             {
@@ -1407,7 +2356,7 @@ namespace 素材合成
                             }
                             int index = 0;
                             int flag = 0;
-                            flag = random.Next(0, fileInfos.Length - 1);
+                            flag = random.Next(0, fileInfos.Length );
                             index = 0;
                             foreach (var item123 in fileInfos)
                             {
@@ -1418,7 +2367,7 @@ namespace 素材合成
                                 }
                                 index++;
                             }
-                            flag = random.Next(0, fileInfos.Length - 1);
+                            flag = random.Next(0, fileInfos.Length);
                             index = 0;
                             foreach (var item123 in fileInfos)
                             {
@@ -1430,7 +2379,7 @@ namespace 素材合成
                                 index++;
                             }
                         }
-                        double rate = (1080+0.0001) / (1920 - offsetLeft_横转竖 - offsetRight_横转竖);
+                        double rate = (1080 + 0.0001) / (1920 - offsetLeft_横转竖 - offsetRight_横转竖);
                         int cutHeight = (int)(1080 * rate);
                         int image2Ypos = 1920 - int.Parse(_viewModel.PadHeight) - cutHeight;
                         int yellow = cutHeight + int.Parse(_viewModel.PadHeight);
@@ -1441,7 +2390,7 @@ namespace 素材合成
                             $"[2:v]scale=1080:{image2Ypos},boxblur={_viewModel.LumaPowerBottom}:1:cr=0:ar=0[outdown];" +
                             $"[outvideo][outup]overlay=0:0[output1];" +
                             $"[output1][outdown]overlay=0:{yellow}" +
-                            $"\" {OutPutPaddVideoName_横转竖} -y " 
+                            $"\" {OutPutPaddVideoName_横转竖} -y "
                             ;
                     }
 
@@ -1492,7 +2441,7 @@ namespace 素材合成
                     string textOutPutName = fileInfo.FullName.Replace(fileInfo.Extension, ".srt");
                     string appid = ConfigureHelper.Read("讯飞appid");
                     string secret_key = ConfigureHelper.Read("讯飞secret_key");
-                    string GetTextArguments = $" {appid} {secret_key} {voiceOutPutName} {textOutPutName}";
+                    string GetTextArguments = $" {appid} {secret_key} {voiceOutPutName} {textOutPutName} {_viewModel.MaxTextCount}";
                     ExecuteCommandPython(GetTextArguments, textOutPutName);
                     if (是否停止)
                     {
@@ -1514,7 +2463,7 @@ namespace 素材合成
                         return;
                     }
                     _viewModel.CutSize = 8 * fileInfo.Length;
-           
+
                     ProgressVideoPath = VideoOutPutName_加字幕;
                     fileInfo = new FileInfo(ProgressVideoPath);
                     if (fileInfo.Length < 10)
@@ -1522,7 +2471,7 @@ namespace 素材合成
                         this.Dispatcher.Invoke(() => {
                             MessageBox.Show("视频追加字幕失败!");
                         });
-                        return;
+                        continue;
                     }
                     if (是否停止)
                     {
@@ -1533,9 +2482,6 @@ namespace 素材合成
 
                 #endregion
 
-                #region 加水印
-             
-              
                 if (_viewModel.Arguments_7_添加水印 != "")
                 {
                     //烧录字幕至视频文件
@@ -1572,27 +2518,115 @@ namespace 素材合成
                     ProgressVideoPath = VideoOutPutName_消音;
                     _viewModel.CutSize = 9 * fileInfo.Length;
                 }
+
+                if (_viewModel.是否随机添加背景音乐 == true)
+                {
+                    #region 获取随机音乐
+                    if (!Directory.Exists("背景音乐"))
+                    {
+                        Directory.CreateDirectory("背景音乐");
+                    }
+                    DirectoryInfo directoryInfo = new DirectoryInfo("背景音乐");
+
+                    FileInfo[] fileInfos = directoryInfo.GetFiles();
+                    if (fileInfos.Length < 1)
+                    {
+                        MessageBox.Show("背景音乐文件夹中音乐文件不存在,请在背景音乐文件夹添加音乐!");
+                        //_viewModel.IsVisibility = Visibility.Collapsed;
+                        return;
+                    }
+                    int index = 0;
+                    int randomFlag = 0;
+                    _viewModel.背景音乐路径 = "";
+                    randomFlag = random.Next(0, fileInfos.Length);
+                    index = 0;
+                    foreach (var item123 in fileInfos)
+                    {
+                        if (index == randomFlag && (item123.FullName.ToLower().Contains(".wav") || item123.FullName.ToLower().Contains(".mp3")))
+                        {
+                            _viewModel.背景音乐路径 = item123.FullName;
+                            break;
+                        }
+                        index++;
+                    }
+                    index = 0;
+                    while (_viewModel.背景音乐路径 == "")
+                    {
+                        randomFlag = random.Next(0, fileInfos.Length);
+                        
+                        foreach (var item123 in fileInfos)
+                        {
+                            if (index == randomFlag && (item123.FullName.ToLower().Contains(".wav") || item123.FullName.ToLower().Contains(".mp3")))
+                            {
+                                _viewModel.背景音乐路径 = item123.FullName;
+                                break;
+                            }
+                            index++;
+                        }
+                    }
+                    Console.WriteLine("随机种子:" + randomFlag);
+                    #endregion
+                    int voice = 0;
+                    FileInfo fi = new FileInfo(_viewModel.背景音乐路径);
+      
+                    string VideoOutPutName_背景音乐 = root_path + "temp\\BGM_Process" + fi.Extension;
+                    if (int.TryParse(_viewModel.背景音乐音量, out voice))
+                    {
+                        if (voice != 0)
+                        {
+                            string SetLogoArguments = $" -i {_viewModel.背景音乐路径}   -af volume={voice}dB  {VideoOutPutName_背景音乐} -y ";
+                            ExecuteCommandCut(SetLogoArguments, VideoOutPutName_背景音乐);
+                            if (是否停止)
+                            {
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            VideoOutPutName_背景音乐 = fi.FullName;
+                        }
+                    }
+                    else
+                    {
+                        VideoOutPutName_背景音乐 = fi.FullName;
+                    }
+                    string OutPutVideo = root_path + $"temp\\AddBGM" +
+    $"_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_{flag}.mp4";
+                    string AddBGMCMD = $"-stream_loop 1000 -i {VideoOutPutName_背景音乐} -i {ProgressVideoPath} " +
+                        $"-shortest -filter_complex  amix=inputs=2:duration=first:dropout_transition=2 {OutPutVideo} -y"; 
+
+//                    string OutPutVideo = root_path + $"temp\\AddBGM" +
+//$"_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_{flag}.mp4";
+//                    string AddBGMCMD = $"-i {ProgressVideoPath} -stream_loop 1000 -i  {VideoOutPutName_背景音乐} -c copy -shortest -map 0:v:0 -map 1:a:0 {OutPutVideo} -y"; ;
+                    ExecuteCommandCut(AddBGMCMD, OutPutVideo);
+                   
+                    if (是否停止)
+                    {
+                        return;
+                    }
+                    ProgressVideoPath = OutPutVideo;
+                }
+
+                //
                 DateTime now = System.DateTime.Now;
-                string dateTime = now.Year + "年" + now.Month + "月"+now.Day+"日" + now.Hour + "时" + now.Minute + "分" + now.Second + "秒" + now.Millisecond + "毫秒";
+                string dateTime = now.Year + "年" + now.Month + "月" + now.Day + "日" + now.Hour + "时" + now.Minute + "分" + now.Second + "秒" + now.Millisecond + "毫秒";
                 string VideoOutPutName = $"{_viewModel.SavePath}\\{dateTime}_{ComposeName.ToString()}.mp4";
+
                 File.Copy(ProgressVideoPath, VideoOutPutName);
                 if (fileInfo.Length < 10)
                 {
                     this.Dispatcher.Invoke(() => {
                         MessageBox.Show("视频追加水印失败!");
+
                     });
-                    return;
+                    continue;
                 }
                 if (是否停止)
                 {
                     return;
                 }
-                #endregion
-
-                #region 消音
 
 
-                #endregion
 
                 if (_viewModel.IsSame == false)
                 {
@@ -1605,7 +2639,7 @@ namespace 素材合成
                 _viewModel.CurrentIndex = flag;
                 flag++;
             }
-         
+
 
             this.Dispatcher.Invoke(() => {
                 _viewModel.IsVisibility = Visibility.Collapsed;
@@ -1614,683 +2648,8 @@ namespace 素材合成
             });
 
         }
-    
-        #endregion
-
-        #region 剪切视频
-        private void 剪切视频_Click(object sender, RoutedEventArgs e)
-        {
-            是否停止 = false;
-            if (string.IsNullOrEmpty(tbOutPut.Text))
-            {
-                MessageBox.Show("请选择导出素材的路径！");
-                return;
-            }
-            if (tbOutPut.Text.Contains(" "))
-            {
-                MessageBox.Show("路径含有非法字符,请重新选择！");
-                return;
-            }
-            btnCut.IsEnabled = false;
-            _viewModel.IsVisibility = Visibility.Visible;
-            new Thread(CutVideo).Start(tbOutPut.Text);
-        }
-
-        void CutVideo(object selectPath)
-        {
-            flag = 1;
-            _viewModel.CurrentIndex = 0;
-           
-            Random randomer = new Random();
-            int Total = 预览_待处理队列.Count;
-            for (int i = 0; i < Total; i++)
-            {
-                string item = 预览_待处理队列.Dequeue();
-                int offsetLeft = 0;
-                int offsetRight = 0;
-                int offsetTop = 0;
-                int offsetBottom = 0;
-                _viewModel.CutSize = 0;
-                _viewModel.Size = 0;
-                if (_viewModel.offsetMin_4 != 0)
-                {
-                    offsetLeft = randomer.Next(_viewModel.CutPixel_4 - _viewModel.offsetMin_4, _viewModel.CutPixel_4 + _viewModel.offsetMin_4);
-                }
-                else
-                {
-                    offsetLeft = _viewModel.CutPixel_4;
-                }
-                if (_viewModel.offsetMin_2 != 0)
-                {
-                    offsetRight = randomer.Next(_viewModel.CutPixel_2 - _viewModel.offsetMin_2, _viewModel.CutPixel_2 + _viewModel.offsetMin_2);
-                }
-                else
-                {
-                    offsetRight = _viewModel.CutPixel_2;
-                }
-                if (_viewModel.offsetMin_1 != 0)
-                {
-                    offsetTop = randomer.Next(_viewModel.CutPixel_1 - _viewModel.offsetMin_1, _viewModel.CutPixel_1 + _viewModel.offsetMin_1);
-                }
-                else
-                {
-                    offsetTop = _viewModel.CutPixel_1;
-                }
-                if (_viewModel.offsetMin_3 != 0)
-                {
-                    offsetBottom = randomer.Next(_viewModel.CutPixel_3 - _viewModel.offsetMin_1, _viewModel.CutPixel_3 + _viewModel.offsetMin_1);
-                }
-                else
-                {
-                    offsetBottom = _viewModel.CutPixel_3;
-                }
-
-
-                //裁剪输出路径
-                string OutPutVideoName = root_path + $"temp\\tempCut_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_Video.mp4";
-                FileInfo fileInfo = new FileInfo(item);
-                _viewModel.TotalSize = fileInfo.Length * 2;
-                //裁剪
-                string CutArguments = $"  -i {fileInfo.FullName} -vf crop=in_w-{offsetLeft}-{offsetRight}:in_h-{offsetTop}-{offsetBottom}:{offsetLeft}:{offsetTop} {OutPutVideoName} -y ";
-                FileHelper.AppandLog("剪切: ffmpeg " + CutArguments);
-                ExecuteCommandCut(CutArguments, OutPutVideoName);
-                if (是否停止)
-                {
-                    return;
-                }
-                Thread.Sleep(100);
-                //  GetComposeProgress(OutPutVideoName);
-                _viewModel.CutSize = fileInfo.Length;
-                //填充后输出路径
-                string OutPutPaddVideoName = root_path + $"temp\\PaddVideo_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_Video.mp4";
-
-                //填充
-                string PaddArguments;
-                if (IsHorizontal == true)
-                {
-                    //横版参数
-                    PaddArguments = $" -i {OutPutVideoName} -vf pad={1920}:{1080}:{offsetLeft}:{offsetTop}:0x{CmdHelper.To10_16_Length_2(_viewModel.FillColor.R)}{CmdHelper.To10_16_Length_2(_viewModel.FillColor.G)}{CmdHelper.To10_16_Length_2(_viewModel.FillColor.B)}  {OutPutPaddVideoName} -y";
-                }
-                else
-                {
-                    //  竖版参数
-                    PaddArguments = $" -i {OutPutVideoName} -vf pad={1080}:{1920}:{offsetLeft}:{offsetTop}:0x{CmdHelper.To10_16_Length_2(_viewModel.FillColor.R)}{CmdHelper.To10_16_Length_2(_viewModel.FillColor.G)}{CmdHelper.To10_16_Length_2(_viewModel.FillColor.B)}  {OutPutPaddVideoName} -y";
-                }
-                ExecuteCommandCut(PaddArguments, OutPutPaddVideoName);
-                if (是否停止)
-                {
-                    return;
-                }
-                FileHelper.AppandLog("填充: ffmpeg " + PaddArguments);
-                Thread.Sleep(100);
-
-
-                if (flag == 1)
-                {
-                    进入预览(OutPutPaddVideoName);
-                }
-                //返回重新调整参数
-                if (_viewModel.IsCancel == true)
-                {
-                    预览_待处理队列.Enqueue(item);
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        btnCut.IsEnabled = true;
-                        GoToWhichStep(2);
-                    });
-     
-                    return;
-                }
-                //开始处理 或者保存参数 进入下一步
-                if (_viewModel.IsConfirm == true)
-                {
-                    _viewModel.Arguments_1_剪切视频 = "剪切";
-                    _viewModel.Arguments_2_填充视频 = "填充";
-                    预览_待处理队列.Enqueue(OutPutPaddVideoName);
-                    _viewModel.CurrentIndex = flag;
-                    flag++;
-                    if (_viewModel.IsSame == false)
-                    {
-                        _viewModel.FillColor = ColorUtil.GetRandomColor();
-                    }
-                    if (_viewModel.IsSame横转竖 == false)
-                    {
-                        _viewModel.FillColor横转竖 = ColorUtil.GetRandomColor();
-                    }
-                }
-                //跳过
-                if (_viewModel.IsIgnore == true)
-                {
-                    预览_待处理队列.Enqueue(item);
-                    _viewModel.Arguments_1_剪切视频 = "";
-                    _viewModel.Arguments_2_填充视频 = "";
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        btnCut.IsEnabled = true;
-                        if (IsHorizontal == false)
-                        {
-                            GoToWhichStep(3);
-                            _viewModel.LumaPower = "1";
-                            _viewModel.TotalSize = _viewModel.CutSize;
-                            InitVlaue();
-                        }
-                        else
-                        {
-                            GoToWhichStep(4);
-                            _viewModel.LumaPower = "1";
-                            _viewModel.TotalSize = _viewModel.CutSize;
-                            InitVlaue();
-                        }
-                    });
-                    
-                    return;
-                }
-            }
-            _viewModel.IsVisibility = Visibility.Collapsed;
-         
-            this.Dispatcher.Invoke(() =>
-            {
-                btnCut.IsEnabled = true;
-                if (IsHorizontal == false)
-                {
-                    GoToWhichStep(3);
-                    _viewModel.LumaPower = "1";
-                    _viewModel.TotalSize = _viewModel.CutSize;
-                    InitVlaue();
-                }
-                else
-                {
-                    GoToWhichStep(4);
-                    _viewModel.LumaPower = "1";
-                    _viewModel.TotalSize = _viewModel.CutSize;
-                    InitVlaue();
-                }
-
-            });
-
-        }
-
-
 
         #endregion
-
-        #region 竖版转横版
-
-
-        private void 竖版转横版_Click(object sender, RoutedEventArgs e)
-        {
-            是否停止 = false;
-            btnVeritalToHorizontal.IsEnabled = false;
-            _viewModel.IsVisibility = Visibility.Visible;
-            new Thread(TransformVideo).Start(tbOutPut.Text);
-        }
-        void TransformVideo(object selectPath)
-        {
-            flag = 1;
-            _viewModel.CurrentIndex = 0;
-            Random randomer = new Random();
-            int Total = 预览_待处理队列.Count;
-            for (int i = 0; i < Total; i++)
-            {
-                string item = 预览_待处理队列.Dequeue();
-
-                _viewModel.Size = 0;
-                _viewModel.CutSize = 0;
-
-                string PaddArguments;
-
-                string OutPutPaddVideoName = root_path + $"temp\\tempTransformVertial_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_Video.mp4";
-                //横版参数
-                _viewModel.TotalSize = new FileInfo(item).Length ;
-                PaddArguments = $" -i {item} -lavfi \"" +
-             $"[0:v]scale=1080*2:1920*2,boxblur=luma_radius=min(h\\,w)/20:luma_power={_viewModel.LumaPower}:chroma_radius=min(cw\\,ch)/20:chroma_power=1[bg];" +
-             $"[0:v]scale=-1:1080[ov];[bg][ov]overlay=(W-w)/2:(H-h)/2,crop=w=1920:h=1080" +
-             $"\" {OutPutPaddVideoName} -y";
-                ExecuteCommandCut(PaddArguments, OutPutPaddVideoName);
-                if (是否停止)
-                {
-                    return;
-                }
-                FileHelper.AppandLog("竖转横: ffmpeg " + PaddArguments);
-                Thread.Sleep(100);
-                if (flag == 1)
-                {
-                    进入预览(OutPutPaddVideoName);
-                }
-                //返回重新调整参数
-                if (_viewModel.IsCancel == true)
-                {
-                    预览_待处理队列.Enqueue(item);
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        btnVeritalToHorizontal.IsEnabled = true;
-                        GoToWhichStep(3);
-                    });
-  
-                    return;
-                }
-                //开始处理 或者保存参数 进入下一步
-                if (_viewModel.IsConfirm == true)
-                {
-                    _viewModel.CurrentIndex = flag;
-                    flag++;
-                    预览_待处理队列.Enqueue(OutPutPaddVideoName);
-                    _viewModel.Arguments_3_竖版转横版 = "竖转横";
-                }
-                //跳过
-                if (_viewModel.IsIgnore == true)
-                {
-                    _viewModel.Arguments_3_竖版转横版 = "";
-                    预览_待处理队列.Enqueue(item);
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        btnVeritalToHorizontal.IsEnabled = true;
-                        GoToWhichStep(5);
-                    });
-         
-                    return;
-                }
-  
-            }
-            this.Dispatcher.Invoke(() =>
-            {
-                btnVeritalToHorizontal.IsEnabled = true;
-                GoToWhichStep(5);
-            });
-
-        }
-
-
-
-        #endregion
-
-        #region  横版转竖版_
-        private void 横版转竖版_Click(object sender, RoutedEventArgs e)
-        {
-            是否停止 = false;
-            btnHorizontalToVertical.IsEnabled = false;
-            _viewModel.IsVisibility = Visibility.Visible;
-            if (_viewModel.ImageTopPath == "" || _viewModel.ImageBottomPath == "")
-            {
-                this.Dispatcher.Invoke(() => {
-                    MessageBox.Show("请选择填充的图片!");
-                        });
-                return;
-            }
-            new Thread(TransformVideoHorizontal).Start(tbOutPut.Text);
-        }
-
-        void TransformVideoHorizontal(object selectPath)
-        {
-            flag = 1;
-            _viewModel.CurrentIndex = 0;
-
-            Random randomer = new Random();
-            int Total = 预览_待处理队列.Count;
-            for (int i = 0; i < Total; i++)
-            {
-                string item = 预览_待处理队列.Dequeue();
-                int offsetLeft = 0;
-                int offsetRight = 0;
-                _viewModel.Size = 0;
-                _viewModel.CutSize = 0;
-                if (_viewModel.offsetMin_4 != 0)
-                {
-                    offsetLeft = randomer.Next(_viewModel.CutPixel_横版左 - _viewModel.offset_横版左, _viewModel.CutPixel_横版左 + _viewModel.offset_横版左);
-                }
-                else
-                {
-                    offsetLeft = _viewModel.CutPixel_横版左;
-                }
-                if (_viewModel.offsetMin_2 != 0)
-                {
-                    offsetRight = randomer.Next(_viewModel.CutPixel_横版右 - _viewModel.offset_横版右, _viewModel.CutPixel_横版右 + _viewModel.offset_横版右);
-                }
-                else
-                {
-                    offsetRight = _viewModel.CutPixel_横版右;
-                }
-
-                //横版左右裁剪输出路径
-                string OutPutVideoName = root_path + $"temp\\tempCutHorizontal_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_Video.mp4";
-                FileInfo fileInfo = new FileInfo(item);
-                _viewModel.TotalSize = fileInfo.Length * 2;
-                //裁剪
-                string CutArguments = $"  -i {item} -vf crop=in_w-{offsetLeft}-{offsetRight}:in_h-{0}-{0}:{offsetLeft}:{0} {OutPutVideoName} -y ";
-                FileHelper.AppandLog("横转竖: ffmpeg " + CutArguments);
-                ExecuteCommandCut(CutArguments, OutPutVideoName);
-                if (是否停止)
-                {
-                    return;
-                }
-                Thread.Sleep(100);
-                _viewModel.CutSize = fileInfo.Length;
-                string PaddArguments;
-
-                string OutPutPaddVideoName = root_path + $"temp\\TransformHorizontal_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_Video.mp4";
-                //填充
-                if (IsImage == false)
-                {
-                    PaddArguments = $" -i {OutPutVideoName} -vf \"" +
-     $"scale=1080:-2,pad=1080:1920:0:{_viewModel.PadHeight}:0x{CmdHelper.To10_16_Length_2(_viewModel.FillColor横转竖.R)}{CmdHelper.To10_16_Length_2(_viewModel.FillColor横转竖.G)}{CmdHelper.To10_16_Length_2(_viewModel.FillColor横转竖.B)}" +
-     $"\" {OutPutPaddVideoName} -y";
-                }
-                else
-                {
-                    if (_viewModel.是否随机图片)
-                    {
-                        if (!Directory.Exists("图库"))
-                        {
-                            Directory.CreateDirectory("图库");
-                        }
-                        DirectoryInfo directoryInfo = new DirectoryInfo("图库");
-                        Random random = new Random();
-                        FileInfo[] fileInfos = directoryInfo.GetFiles();
-                        if (fileInfos.Length < 2)
-                        {
-                            MessageBox.Show("图库图片不足,请再图库中添加更多图片!");
-                            return;
-                        }
-                        int index = 0;
-                        int flag = 0;
-                        flag = random.Next(0, fileInfos.Length - 1);
-                        index = 0;
-                        foreach (var item123 in fileInfos)
-                        {
-                            if (index == flag)
-                            {
-                                _viewModel.ImageBottomPath = item123.FullName;
-                                _viewModel.FillImageBottom = SetSource(item123.FullName);
-                            }
-                            index++;
-                        }
-                        flag = random.Next(0, fileInfos.Length - 1);
-                        index = 0;
-                        foreach (var item123 in fileInfos)
-                        {
-                            if (index == flag)
-                            {
-                                _viewModel.ImageTopPath = item123.FullName;
-                                _viewModel.FillImageTop = SetSource(item123.FullName);
-                            }
-                            index++;
-                        }
-                    }
-                    double rate = (1080+0.00001) / (1920 - offsetLeft -offsetRight);
-                    int cutHeight = (int)(1080 * rate);
-                    int image2Ypos = 1920 - int.Parse(_viewModel.PadHeight) - cutHeight;
-                    int yellow = cutHeight + int.Parse(_viewModel.PadHeight);
-                    PaddArguments = $" -i {OutPutVideoName} -i {_viewModel.ImageTopPath} -i {_viewModel.ImageBottomPath} -filter_complex \""
-                        + $"[0:v]scale=1080:-2,pad=1080:1920:0:{_viewModel.PadHeight}:blue[outvideo];" +
-                        $"[1:v]scale=1080:{_viewModel.PadHeight},boxblur={_viewModel.LumaPowerTop}:1:cr=0:ar=0[outup];" +
-                        $"[2:v]scale=1080:{image2Ypos},boxblur={_viewModel.LumaPowerBottom}:1:cr=0:ar=0[outdown];" +
-                        $"[outvideo][outup]overlay=0:0[output1];" +
-                        $"[output1][outdown]overlay=0:{yellow}" +
-                        $"\" -y  {OutPutPaddVideoName}"
-                        ;
-                }
-                FileHelper.AppandLog("横转竖填充: ffmpeg " + PaddArguments);
-                ExecuteCommandCut(PaddArguments, OutPutPaddVideoName);
-                if (是否停止)
-                {
-                    return;
-                }
-                Thread.Sleep(100);
-
-
-                if (flag == 1)
-                {
-                    进入预览(OutPutPaddVideoName);
-                }
-                //返回重新调整参数
-                if (_viewModel.IsCancel == true)
-                {
-                    预览_待处理队列.Enqueue(item);
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        btnHorizontalToVertical.IsEnabled = true;
-                        GoToWhichStep(4);
-                    });
-          
-                    return;
-                }
-                //开始处理 或者保存参数 进入下一步
-                if (_viewModel.IsConfirm == true)
-                {
-                    _viewModel.Arguments_4_横版转竖版裁剪 = "横转竖";
-                    _viewModel.Arguments_5_横版转竖版填充 = "横转竖填充";
-                    预览_待处理队列.Enqueue(OutPutPaddVideoName);
-                    _viewModel.CurrentIndex = flag;
-                    flag++;
-                    if (_viewModel.IsSame == false)
-                    {
-                        _viewModel.FillColor = ColorUtil.GetRandomColor();
-                    }
-                    if (_viewModel.IsSame横转竖 == false)
-                    {
-                        _viewModel.FillColor横转竖 = ColorUtil.GetRandomColor();
-                    }
-
-                }
-                //跳过
-                if (_viewModel.IsIgnore == true)
-                {
-                    _viewModel.Arguments_4_横版转竖版裁剪 = "";
-                    _viewModel.Arguments_5_横版转竖版填充 = "";
-                    预览_待处理队列.Enqueue(item);
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        btnHorizontalToVertical.IsEnabled = true;
-                        GoToWhichStep(5);
-                    });
-  
-                    return;
-                }
-            }
-            this.Dispatcher.Invoke(() =>
-            {
-                btnHorizontalToVertical.IsEnabled = true;
-                GoToWhichStep(5);
-            });
-        }
-
-
-
-        #endregion
-
-        #region 添加字幕
-        private void 合成字幕_Click(object sender, RoutedEventArgs e)
-        {
-            是否停止 = false;
-            btn合成字幕.IsEnabled = false;
-            _viewModel.IsVisibility = Visibility.Visible;
-            new Thread(AddText).Start(tbOutPut.Text);
-
-        }
-        void AddText(object selectPath)
-        {
-            flag = 1;
-
-            string time = "";
-            _viewModel.CurrentIndex = 0;
-            int Total = 预览_待处理队列.Count;
-            for (int i = 0; i < Total; i++)
-            {
-                string item = 预览_待处理队列.Dequeue();
-                _viewModel.Size = 0;
-                _viewModel.CutSize = 0;
-                //获取视频语音
-                FileInfo fileInfo = new FileInfo(item);
-                _viewModel.TotalSize = 3 * fileInfo.Length;
-                string voiceOutPutName = fileInfo.FullName.Replace(fileInfo.Extension, ".wav");
-                string GetVoiceArguments = $"-i {fileInfo.FullName} -f wav -y {voiceOutPutName}";
-                ExecuteCommandCut(GetVoiceArguments, voiceOutPutName);
-                _viewModel.CutSize = fileInfo.Length;
-                //语音转字幕
-                Thread.Sleep(100);
-                string textOutPutName = fileInfo.FullName.Replace(fileInfo.Extension, ".srt");
-                string appid = ConfigureHelper.Read("讯飞appid");
-                string secret_key = ConfigureHelper.Read("讯飞secret_key");
-                string GetTextArguments = $" {appid} {secret_key} {voiceOutPutName} {textOutPutName}";
-                ExecuteCommandPython(GetTextArguments, textOutPutName);
-                if (是否停止)
-                {
-                    return;
-                }
-                Thread.Sleep(100);
-                _viewModel.CutSize = fileInfo.Length;
-                //烧录字幕至视频文件
-                string VideoOutPutName = root_path + $"temp\\AddSubtitle_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_{flag}.mp4";
-                string SetSubtitleArguments = $"-i {fileInfo.FullName} -vf \"subtitles = '{textOutPutName.Replace("\\", "\\\\").Replace(":", "\\:")}':force_style = 'FontName={_viewModel.FontStyle.Replace(" ", "").Replace("System.Windows.Controls.ComboBoxItem:", "")}," +
-                    $"FontSize={_viewModel.FontSize},PrimaryColour=&H" +
-                    $"{CmdHelper.To10_16_Length_2(_viewModel.FontColor.B)}" +
-                    $"{CmdHelper.To10_16_Length_2(_viewModel.FontColor.G)}{CmdHelper.To10_16_Length_2(_viewModel.FontColor.R)}&," +
-                    $"MarginV={_viewModel.TextHeight},BorderStyle=1,Outline={_viewModel.TextWidth},shadow={_viewModel.TextDeepth}'\"" +
-                    $" -y {VideoOutPutName}";
-                ExecuteCommandCut(SetSubtitleArguments, VideoOutPutName);
-                if (是否停止)
-                {
-                    return;
-                }
-                Thread.Sleep(100);
-                if(flag==1)
-                {
-                    进入预览(VideoOutPutName);
-                }
-                //返回重新调整参数
-                if(_viewModel.IsCancel==true)
-                {
-                    预览_待处理队列.Enqueue(item);
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        btn合成字幕.IsEnabled = true;
-                        GoToWhichStep(5);
-                    });
-
-                    return;
-                }
-                //开始处理 或者保存参数 进入下一步
-                if(_viewModel.IsConfirm==true)
-                {
-                    _viewModel.Arguments_6_添加字幕 = "加字幕";
-                    _viewModel.CurrentIndex = flag;
-                    flag++;
-                    预览_待处理队列.Enqueue(VideoOutPutName);
-                }
-                //跳过
-                if(_viewModel.IsIgnore==true)
-                {
-                    _viewModel.Arguments_6_添加字幕 = "";
-                    预览_待处理队列.Enqueue(item);
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        btn合成字幕.IsEnabled = true;
-                        GoToWhichStep(6);
-                    });
-          
-                    return;
-                }
-            }
-            this.Dispatcher.Invoke(() =>
-            {
-                btn合成字幕.IsEnabled = true;
-                GoToWhichStep(6);
-            });
-        }
-        #endregion
-
-        #region 添加水印
-        private void 添加水印_Click(object sender, RoutedEventArgs e)
-        {
-            是否停止 = false;
-            btn添加水印.IsEnabled = false;
-            _viewModel.IsVisibility = Visibility.Visible;
-            new Thread(AddLogo).Start(tbOutPut.Text);
-        }
-
-        void AddLogo(object selectPath)
-        {
-            flag = 1;
-
-            string time = "";
-            _viewModel.CurrentIndex = 0;
-            int Total = 预览_待处理队列.Count;
-            for (int i = 0; i < Total; i++)
-            {
-                string item = 预览_待处理队列.Dequeue();
-                _viewModel.Size = 0;
-                _viewModel.CutSize = 0;
-                //获取视频语音
-                FileInfo fileInfo = new FileInfo(item);
-                _viewModel.TotalSize =  fileInfo.Length;
-       
-                //烧录字幕至视频文件
-                string VideoOutPutName = root_path + $"temp\\AddLogo_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_{flag}.mp4";
-                string SetLogoArguments = $" -i {fileInfo.FullName} -i {_viewModel.水印路径} -filter_complex overlay={_viewModel.水印坐标X}:{_viewModel.水印坐标Y} {VideoOutPutName} -y ";
-                ExecuteCommandCut(SetLogoArguments, VideoOutPutName);
-                if (是否停止)
-                {
-                    return;
-                }
-                Thread.Sleep(100);
-                if (flag == 1)
-                {
-                    进入预览(VideoOutPutName);
-                }
-                //返回重新调整参数
-                if (_viewModel.IsCancel == true)
-                {
-                    预览_待处理队列.Enqueue(item);
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        btn添加水印.IsEnabled = true;
-                        GoToWhichStep(6);
-                    });
-                   
-                    return;
-                }
-                //开始处理 或者保存参数 进入下一步
-                if (_viewModel.IsConfirm == true)
-                {
-                    _viewModel.Arguments_7_添加水印 = "加水印";
-                    _viewModel.CurrentIndex = flag;
-                    flag++;
-                    预览_待处理队列.Enqueue(VideoOutPutName);
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        btn添加水印.IsEnabled = true;
-                        GoToWhichStep(7);
-                    });
-                   
-                }
-                //跳过
-                if (_viewModel.IsIgnore == true)
-                {
-                    _viewModel.Arguments_7_添加水印 = "";
-                    预览_待处理队列.Enqueue(item);
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        btn添加水印.IsEnabled = true;
-                        GoToWhichStep(7);
-                    });
-                 
-                    return;
-                }
-            }
-            this.Dispatcher.Invoke(() =>
-            {
-                btn添加水印.IsEnabled = true;
-                GoToWhichStep(7);
-            });
-        }
-        #endregion
-
-        private void 开始合成_Click(object sender, RoutedEventArgs e)
-        {
-            _viewModel.IsVisibility = Visibility.Visible;
-            是否停止 = false;
-            new Thread(ComposeAllVideo).Start();
-        }
 
 
         public void ExecuteCommandCut(string command, string fileFullPath)
@@ -2498,13 +2857,8 @@ namespace 素材合成
                         btn合成字幕.IsEnabled = true;
                         btn添加水印.IsEnabled = true;
 
-                        if (预览_待处理队列.Count > 0)
-                        {
-                            for (int i = 0; i <= 预览_待处理队列.Count; i++)
-                            {
-                                预览_待处理队列.Dequeue();
-                            }
-                        }
+                        预览_待处理队列.Clear();
+                        是否返回上一步 = false;
                         // _viewModel = new VideoPreviewModel();
                         break;
                     case "2":
@@ -2981,6 +3335,12 @@ namespace 素材合成
             {
                 _viewModel.水印路径 = path;
                 _viewModel.水印预览 = SetSource(path);
+                if(_viewModel.水印预览==null)
+                {
+                    this.Dispatcher.Invoke(() => {
+                        MessageBox.Show("图片格式不正确!");
+                    });
+                }
             }
         }
 
@@ -3052,8 +3412,10 @@ namespace 素材合成
                             return;
                         }
                         _viewModel.Arguments_1_剪切视频 = "";
-                       if(IsHorizontal)
+                        备份字典[GridStepTwo.Name] = "";
+                        if (IsHorizontal)
                         {
+                           
                             GoToWhichStep(4);
                         }
                        else
@@ -3072,6 +3434,7 @@ namespace 素材合成
                             MessageBox.Show("路径含有非法字符,请重新选择！");
                             return;
                         }
+                        备份字典[GridStepFour.Name] = "";
                         _viewModel.Arguments_4_横版转竖版裁剪 = "";
                         _viewModel.Arguments_5_横版转竖版填充 = "";
                         GoToWhichStep(5);
@@ -3087,15 +3450,18 @@ namespace 素材合成
                             MessageBox.Show("路径含有非法字符,请重新选择！");
                             return;
                         }
+                        备份字典[GridStepThree.Name] = "";
                         _viewModel.Arguments_3_竖版转横版 = "";
                         GoToWhichStep(5);
                         break;
                     case "字幕":
                         _viewModel.Arguments_6_添加字幕 = "";
+                        备份字典[GridStepFive.Name] = "";
                         GoToWhichStep(6);
                         break;
                     case "水印":
                         _viewModel.Arguments_7_添加水印 = "";
+                        备份字典[GridStepSix.Name] = "";
                         GoToWhichStep(7);
                        
                         break;
@@ -3137,6 +3503,14 @@ namespace 素材合成
         {
             VlcPlayer.VlcMediaPlayer.Audio.IsMute = true;
             CurrentPlayStream?.Close();
+            if(!File.Exists(FileName))
+            {
+                this.Dispatcher.Invoke(() => {
+                    MessageBox.Show("视频处理失败,无法预览!");
+                });
+                GoToWhichStep(1);
+                return;
+            }
             FileInfo fileInfo = new FileInfo(FileName);
             if (fileInfo.Length < 10)
             {
@@ -3242,13 +3616,20 @@ namespace 素材合成
 
 
         #endregion
-
+        string CurrentPath = "";
+        bool 是否返回上一步 = false;
         private void 返回上一步_Click(object sender, RoutedEventArgs e)
         {
             if(sender is Button button)
             {
                 if(button.Tag is Grid grid)
                 {
+                    if(grid.Name!=GridStepOne.Name)
+                    {
+                        CurrentPath = 备份字典[grid.Name];
+                        是否返回上一步 = true;
+                    }
+                   
                     _viewModel.IsVisibility = Visibility.Collapsed;
                     GridStepOne.Visibility = Visibility.Collapsed;
                     GridStepFive.Visibility = Visibility.Collapsed;
@@ -3256,6 +3637,7 @@ namespace 素材合成
                     GridStepFour.Visibility = Visibility.Collapsed;
                     GridStepTwo.Visibility = Visibility.Collapsed;
                     GridStepSix.Visibility = Visibility.Collapsed;
+                    GridStepSeven.Visibility = Visibility.Collapsed;
                     grid.Visibility = Visibility.Visible;
                 }
             }
@@ -3265,10 +3647,14 @@ namespace 素材合成
         {
             if(IsHorizontal)
             {
+                CurrentPath = 备份字典[GridStepFour.Name];
+                是否返回上一步 = true;
                 GoToWhichStep(4);
             }
             else
             {
+                CurrentPath = 备份字典[GridStepThree.Name];
+                是否返回上一步 = true;
                 GoToWhichStep(3);
             }
         }

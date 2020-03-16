@@ -56,10 +56,46 @@ namespace 素材合成
             CutPixel_横版左 = 0;
             水印坐标X = "10";
             水印坐标Y = "10";
+            MaxTextCount = "12";
             PreViewVisibility = Visibility.Collapsed;
             是否静音 = false;
+            是否随机添加背景音乐 = false;
+            背景音乐音量 = "0";
             是否随机图片 = true;
         }
+        private string _背景音乐路径;
+        public string 背景音乐路径
+        {
+            get { return _背景音乐路径; }
+            set
+            {
+                _背景音乐路径 = value;
+                OnPropertyChanged(nameof(背景音乐路径));
+            }
+        }
+
+        private bool _是否随机添加背景音乐;
+        public bool 是否随机添加背景音乐
+        {
+            get { return _是否随机添加背景音乐; }
+            set
+            {
+                _是否随机添加背景音乐 = value;
+                OnPropertyChanged(nameof(是否随机添加背景音乐));
+            }
+        }
+        private string _背景音乐音量;
+        public string 背景音乐音量
+        {
+            get { return _背景音乐音量; }
+            set
+            {
+                _背景音乐音量 = value;
+                OnPropertyChanged(nameof(背景音乐音量));
+            }
+        }
+
+
         private bool _是否随机图片;
         public bool 是否随机图片
         {
@@ -415,7 +451,16 @@ namespace 素材合成
                 OnPropertyChanged(nameof(TextDeepth));
             }
         }
-
+        private string _MaxTextCount;
+        public string MaxTextCount
+        {
+            get { return _MaxTextCount; }
+            set
+            {
+                _MaxTextCount = value;
+                OnPropertyChanged(nameof(MaxTextCount));
+            }
+        }
 
         private string _PadHeight;
         public string PadHeight
