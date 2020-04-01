@@ -61,6 +61,7 @@ namespace 素材合成
             是否静音 = false;
             是否随机添加背景音乐 = false;
             背景音乐音量 = "0";
+            视频音量 = "0";
             是否随机图片 = true;
         }
         private string _背景音乐路径;
@@ -90,8 +91,45 @@ namespace 素材合成
             get { return _背景音乐音量; }
             set
             {
+                if(value!="")
+                {
+                    try
+                    {
+                        int.Parse(value);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        value = "0";
+                    }
+                }
+          
                 _背景音乐音量 = value;
+
                 OnPropertyChanged(nameof(背景音乐音量));
+            }
+        }
+
+        private string _视频音量;
+        public string 视频音量
+        {
+            get { return _视频音量; }
+            set
+            {
+                if (value != "")
+                {
+                    try
+                    {
+                        int.Parse(value);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        value = "0";
+                    }
+                }
+                _视频音量 = value;
+                OnPropertyChanged(nameof(视频音量));
             }
         }
 

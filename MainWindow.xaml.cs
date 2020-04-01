@@ -1999,6 +1999,14 @@ namespace 素材合成
                     return;
                 }
             }
+            if(_viewModel.视频音量=="")
+            {
+                _viewModel.视频音量 = "0";
+            }
+            if (_viewModel.背景音乐音量 == "")
+            {
+                _viewModel.背景音乐音量 = "0";
+            }
             _viewModel.IsVisibility = Visibility.Visible;
             是否停止 = false;
             new Thread(ComposeAllVideo).Start();
@@ -2518,6 +2526,24 @@ namespace 素材合成
                     ProgressVideoPath = VideoOutPutName_消音;
                     _viewModel.CutSize = 9 * fileInfo.Length;
                 }
+                else
+                {
+                    //调整视频音量
+                    if(_viewModel.视频音量!="0")
+                    {
+                        string VideoOutPutName_消音 = root_path + $"temp\\AdjustVoice" +
+    $"_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_{flag}.mp4";
+                        string SetLogoArguments = $" -i {ProgressVideoPath} -vcodec copy -af \" volume={_viewModel.视频音量}dB\" {VideoOutPutName_消音} -y ";
+                        ExecuteCommandCut(SetLogoArguments, VideoOutPutName_消音);
+                        if (是否停止)
+                        {
+                            return;
+                        }
+                        FileHelper.AppandLog("调整原视频音: ffmpeg " + SetLogoArguments);
+                        ProgressVideoPath = VideoOutPutName_消音;
+                        _viewModel.CutSize = 9 * fileInfo.Length;
+                    }
+                }
 
                 if (_viewModel.是否随机添加背景音乐 == true)
                 {
@@ -2595,9 +2621,6 @@ namespace 素材合成
                     string AddBGMCMD = $"-stream_loop 1000 -i {VideoOutPutName_背景音乐} -i {ProgressVideoPath} " +
                         $"-shortest -filter_complex  amix=inputs=2:duration=first:dropout_transition=2 {OutPutVideo} -y"; 
 
-//                    string OutPutVideo = root_path + $"temp\\AddBGM" +
-//$"_{flag}_{System.DateTime.Now.ToString().Replace(" ", "").Replace("/", "_").Replace(":", "_")}_{flag}.mp4";
-//                    string AddBGMCMD = $"-i {ProgressVideoPath} -stream_loop 1000 -i  {VideoOutPutName_背景音乐} -c copy -shortest -map 0:v:0 -map 1:a:0 {OutPutVideo} -y"; ;
                     ExecuteCommandCut(AddBGMCMD, OutPutVideo);
                    
                     if (是否停止)

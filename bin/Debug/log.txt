@@ -2664,3 +2664,291 @@ System.IO.IOException: 文件“tempScale_1_2020_3_140_06_05_Video.jpg”正由�
    在 System.IO.Directory.Delete(String path, Boolean recursive)
    在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3685
 
+######Error-2020年4月1日 16:24:16######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_24_16_Video.mov
+
+######Error-2020年4月1日 16:24:17######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_24_16_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_24_17_Video.mp4
+
+######Error-2020年4月1日 16:24:17######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_24_17_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_4_116_24_17_Video.mp4
+
+######Error-2020年4月1日 16:25:31######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_25_31_Video.mov
+
+######Error-2020年4月1日 16:25:31######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_25_31_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_25_31_Video.mp4
+
+######Error-2020年4月1日 16:25:48######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_25_31_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_4_116_25_32_Video.mp4
+
+######Error-2020年4月1日 16:26:02######
+调整原视频音: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_4_116_25_32_Video.mp4 -vcodec copy -af " volume=-50dB" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\AdjustVoice_1_2020_4_116_25_48_1.mp4 -y 
+
+######Error-2020年4月1日 16:26:02######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_4_116_26_02_Video.mov
+
+######Error-2020年4月1日 16:26:02######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_4_116_26_02_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_4_116_26_02_Video.mp4
+
+######Error-2020年4月1日 16:26:21######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_4_116_26_02_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_4_116_26_03_Video.mp4
+
+######Error-2020年4月1日 16:26:39######
+调整原视频音: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_4_116_26_03_Video.mp4 -vcodec copy -af " volume=-50dB" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\AdjustVoice_2_2020_4_116_26_21_2.mp4 -y 
+
+######Error-2020年4月1日 16:26:59######
+System.IO.IOException: 文件“tempScale_1_2020_4_116_24_17_Video.jpg”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path, Boolean recursive)
+   在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3700
+
+######Error-2020年4月1日 16:27:13######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_27_13_Video.mov
+
+######Error-2020年4月1日 16:27:14######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_27_13_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_27_14_Video.mp4
+
+######Error-2020年4月1日 16:27:14######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_27_14_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_4_116_27_14_Video.mp4
+
+######Error-2020年4月1日 16:27:44######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_27_44_Video.mov
+
+######Error-2020年4月1日 16:27:44######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_27_44_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_27_44_Video.mp4
+
+######Error-2020年4月1日 16:28:00######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_27_44_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_4_116_27_44_Video.mp4
+
+######Error-2020年4月1日 16:28:01######
+调整原视频音: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_4_116_27_44_Video.mp4 -vcodec copy -af " volume=50dB" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\AdjustVoice_1_2020_4_116_28_00_1.mp4 -y 
+
+######Error-2020年4月1日 16:28:01######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_4_116_28_01_Video.mov
+
+######Error-2020年4月1日 16:28:01######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_4_116_28_01_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_4_116_28_01_Video.mp4
+
+######Error-2020年4月1日 16:28:20######
+尺寸规整: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_2_2020_4_116_28_01_Video.mp4 -vf scale=1920:1080 -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_4_116_28_02_Video.mp4
+
+######Error-2020年4月1日 16:28:21######
+调整原视频音: ffmpeg  -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_2_2020_4_116_28_02_Video.mp4 -vcodec copy -af " volume=50dB" G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\AdjustVoice_2_2020_4_116_28_20_2.mp4 -y 
+
+######Error-2020年4月1日 16:28:39######
+System.IO.IOException: 文件“tempScale_1_2020_4_116_24_17_Video.jpg”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound, WIN32_FIND_DATA& data)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path, Boolean recursive)
+   在 素材合成.MainWindow.返回主界面Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 3700
+
+######Error-2020年4月1日 16:30:34######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_30_34_Video.mov
+
+######Error-2020年4月1日 16:30:35######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_30_34_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_30_35_Video.mp4
+
+######Error-2020年4月1日 16:30:35######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_30_35_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_4_116_30_35_Video.mp4
+
+######Error-2020年4月1日 16:34:44######
+捕获未处理异常:System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 素材合成.MainWindow.合成视频_Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 971
+   在 System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   在 System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   在 System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   在 System.Windows.UIElement.RaiseEvent(RoutedEventArgs e)
+   在 System.Windows.Controls.Primitives.ButtonBase.OnClick()
+   在 System.Windows.Controls.Button.OnClick()
+   在 System.Windows.Controls.Primitives.ButtonBase.OnMouseLeftButtonUp(MouseButtonEventArgs e)
+   在 System.Windows.UIElement.OnMouseLeftButtonUpThunk(Object sender, MouseButtonEventArgs e)
+   在 System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   在 System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   在 System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   在 System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   在 System.Windows.UIElement.ReRaiseEventAs(DependencyObject sender, RoutedEventArgs args, RoutedEvent newEvent)
+   在 System.Windows.UIElement.OnMouseUpThunk(Object sender, MouseButtonEventArgs e)
+   在 System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   在 System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   在 System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   在 System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   在 System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   在 System.Windows.UIElement.RaiseTrustedEvent(RoutedEventArgs args)
+   在 System.Windows.UIElement.RaiseEvent(RoutedEventArgs args, Boolean trusted)
+   在 System.Windows.Input.InputManager.ProcessStagingArea()
+   在 System.Windows.Input.InputManager.ProcessInput(InputEventArgs input)
+   在 System.Windows.Input.InputProviderSite.ReportInput(InputReport inputReport)
+   在 System.Windows.Interop.HwndMouseInputProvider.ReportInput(IntPtr hwnd, InputMode mode, Int32 timestamp, RawMouseActions actions, Int32 x, Int32 y, Int32 wheel)
+   在 System.Windows.Interop.HwndMouseInputProvider.FilterMessage(IntPtr hwnd, WindowMessage msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   在 System.Windows.Interop.HwndSource.InputFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   在 MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   在 MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)
+   在 System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   在 System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+
+######Error-2020年4月1日 16:34:57######
+捕获未处理异常:System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 素材合成.MainWindow.合成视频_Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 971
+   在 System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   在 System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   在 System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   在 System.Windows.UIElement.RaiseEvent(RoutedEventArgs e)
+   在 System.Windows.Controls.Primitives.ButtonBase.OnClick()
+   在 System.Windows.Controls.Button.OnClick()
+   在 System.Windows.Controls.Primitives.ButtonBase.OnMouseLeftButtonUp(MouseButtonEventArgs e)
+   在 System.Windows.UIElement.OnMouseLeftButtonUpThunk(Object sender, MouseButtonEventArgs e)
+   在 System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   在 System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   在 System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   在 System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   在 System.Windows.UIElement.ReRaiseEventAs(DependencyObject sender, RoutedEventArgs args, RoutedEvent newEvent)
+   在 System.Windows.UIElement.OnMouseUpThunk(Object sender, MouseButtonEventArgs e)
+   在 System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   在 System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   在 System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   在 System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   在 System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   在 System.Windows.UIElement.RaiseTrustedEvent(RoutedEventArgs args)
+   在 System.Windows.UIElement.RaiseEvent(RoutedEventArgs args, Boolean trusted)
+   在 System.Windows.Input.InputManager.ProcessStagingArea()
+   在 System.Windows.Input.InputManager.ProcessInput(InputEventArgs input)
+   在 System.Windows.Input.InputProviderSite.ReportInput(InputReport inputReport)
+   在 System.Windows.Interop.HwndMouseInputProvider.ReportInput(IntPtr hwnd, InputMode mode, Int32 timestamp, RawMouseActions actions, Int32 x, Int32 y, Int32 wheel)
+   在 System.Windows.Interop.HwndMouseInputProvider.FilterMessage(IntPtr hwnd, WindowMessage msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   在 System.Windows.Interop.HwndSource.InputFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   在 MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   在 MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)
+   在 System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   在 System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+
+######Error-2020年4月1日 16:35:33######
+捕获未处理异常:System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 素材合成.MainWindow.合成视频_Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 971
+   在 System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   在 System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   在 System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   在 System.Windows.UIElement.RaiseEvent(RoutedEventArgs e)
+   在 System.Windows.Controls.Primitives.ButtonBase.OnClick()
+   在 System.Windows.Controls.Button.OnClick()
+   在 System.Windows.Controls.Primitives.ButtonBase.OnMouseLeftButtonUp(MouseButtonEventArgs e)
+   在 System.Windows.UIElement.OnMouseLeftButtonUpThunk(Object sender, MouseButtonEventArgs e)
+   在 System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   在 System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   在 System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   在 System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   在 System.Windows.UIElement.ReRaiseEventAs(DependencyObject sender, RoutedEventArgs args, RoutedEvent newEvent)
+   在 System.Windows.UIElement.OnMouseUpThunk(Object sender, MouseButtonEventArgs e)
+   在 System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   在 System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   在 System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   在 System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   在 System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   在 System.Windows.UIElement.RaiseTrustedEvent(RoutedEventArgs args)
+   在 System.Windows.UIElement.RaiseEvent(RoutedEventArgs args, Boolean trusted)
+   在 System.Windows.Input.InputManager.ProcessStagingArea()
+   在 System.Windows.Input.InputManager.ProcessInput(InputEventArgs input)
+   在 System.Windows.Input.InputProviderSite.ReportInput(InputReport inputReport)
+   在 System.Windows.Interop.HwndMouseInputProvider.ReportInput(IntPtr hwnd, InputMode mode, Int32 timestamp, RawMouseActions actions, Int32 x, Int32 y, Int32 wheel)
+   在 System.Windows.Interop.HwndMouseInputProvider.FilterMessage(IntPtr hwnd, WindowMessage msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   在 System.Windows.Interop.HwndSource.InputFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   在 MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   在 MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)
+   在 System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   在 System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+
+######Error-2020年4月1日 16:35:35######
+捕获未处理异常:System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 素材合成.MainWindow.合成视频_Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 971
+   在 System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   在 System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   在 System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   在 System.Windows.UIElement.RaiseEvent(RoutedEventArgs e)
+   在 System.Windows.Controls.Primitives.ButtonBase.OnClick()
+   在 System.Windows.Controls.Button.OnClick()
+   在 System.Windows.Controls.Primitives.ButtonBase.OnMouseLeftButtonUp(MouseButtonEventArgs e)
+   在 System.Windows.UIElement.OnMouseLeftButtonUpThunk(Object sender, MouseButtonEventArgs e)
+   在 System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   在 System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   在 System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   在 System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   在 System.Windows.UIElement.ReRaiseEventAs(DependencyObject sender, RoutedEventArgs args, RoutedEvent newEvent)
+   在 System.Windows.UIElement.OnMouseUpThunk(Object sender, MouseButtonEventArgs e)
+   在 System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   在 System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   在 System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   在 System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   在 System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   在 System.Windows.UIElement.RaiseTrustedEvent(RoutedEventArgs args)
+   在 System.Windows.UIElement.RaiseEvent(RoutedEventArgs args, Boolean trusted)
+   在 System.Windows.Input.InputManager.ProcessStagingArea()
+   在 System.Windows.Input.InputManager.ProcessInput(InputEventArgs input)
+   在 System.Windows.Input.InputProviderSite.ReportInput(InputReport inputReport)
+   在 System.Windows.Interop.HwndMouseInputProvider.ReportInput(IntPtr hwnd, InputMode mode, Int32 timestamp, RawMouseActions actions, Int32 x, Int32 y, Int32 wheel)
+   在 System.Windows.Interop.HwndMouseInputProvider.FilterMessage(IntPtr hwnd, WindowMessage msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   在 System.Windows.Interop.HwndSource.InputFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   在 MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   在 MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)
+   在 System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   在 System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+
+######Error-2020年4月1日 16:35:41######
+捕获未处理异常:System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 素材合成.MainWindow.合成视频_Click(Object sender, RoutedEventArgs e) 位置 G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\MainWindow.xaml.cs:行号 971
+   在 System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   在 System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   在 System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   在 System.Windows.UIElement.RaiseEvent(RoutedEventArgs e)
+   在 System.Windows.Controls.Primitives.ButtonBase.OnClick()
+   在 System.Windows.Controls.Button.OnClick()
+   在 System.Windows.Controls.Primitives.ButtonBase.OnMouseLeftButtonUp(MouseButtonEventArgs e)
+   在 System.Windows.UIElement.OnMouseLeftButtonUpThunk(Object sender, MouseButtonEventArgs e)
+   在 System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   在 System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   在 System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   在 System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   在 System.Windows.UIElement.ReRaiseEventAs(DependencyObject sender, RoutedEventArgs args, RoutedEvent newEvent)
+   在 System.Windows.UIElement.OnMouseUpThunk(Object sender, MouseButtonEventArgs e)
+   在 System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)
+   在 System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)
+   在 System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)
+   在 System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)
+   在 System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)
+   在 System.Windows.UIElement.RaiseTrustedEvent(RoutedEventArgs args)
+   在 System.Windows.UIElement.RaiseEvent(RoutedEventArgs args, Boolean trusted)
+   在 System.Windows.Input.InputManager.ProcessStagingArea()
+   在 System.Windows.Input.InputManager.ProcessInput(InputEventArgs input)
+   在 System.Windows.Input.InputProviderSite.ReportInput(InputReport inputReport)
+   在 System.Windows.Interop.HwndMouseInputProvider.ReportInput(IntPtr hwnd, InputMode mode, Int32 timestamp, RawMouseActions actions, Int32 x, Int32 y, Int32 wheel)
+   在 System.Windows.Interop.HwndMouseInputProvider.FilterMessage(IntPtr hwnd, WindowMessage msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   在 System.Windows.Interop.HwndSource.InputFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   在 MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   在 MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)
+   在 System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   在 System.Windows.Threading.ExceptionWrapper.TryCatchWhen(Object source, Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)
+
+######Error-2020年4月1日 16:35:46######
+合成命令: ffmpeg  -f concat -safe 0  -i  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\fileList.txt -map 0:0 -map 0:1 -c copy -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_35_46_Video.mov
+
+######Error-2020年4月1日 16:35:46######
+转MP4格式: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_35_46_Video.mov -vcodec copy -acodec aac -y  G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_35_46_Video.mp4
+
+######Error-2020年4月1日 16:35:47######
+尺寸规整命令: ffmpeg -i G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\temp_1_2020_4_116_35_46_Video.mp4 -vf scale=1920:1080  -y G:\Dahe\_0ToDo\视频合成\Program\video_clip_synthesis\bin\Debug\temp\tempScale_1_2020_4_116_35_47_Video.mp4
+
