@@ -12,19 +12,19 @@
 
 1. 打开文件夹，双击打开 `素材合成.exe`
 
-   ![](https://zzw-blog.oss-cn-shenzhen.aliyuncs.com/20200213104058.png)
+   ![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/1.png)
 
 2. 授予权限
 
-   ![](https://zzw-blog.oss-cn-shenzhen.aliyuncs.com/20200213104233.png)
+   ![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/2.png)
 
 3. 显示主界面
 
-   ![](https://zzw-blog.oss-cn-shenzhen.aliyuncs.com/20200213110155.png)
+   ![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/3.png)
 
 ### 2、导入素材
 
-![标注_画板 1](/Users/zhaoziwen/Downloads/标注/标注_画板 1.png)
+![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/4.png)
 
 1. 导入素材
 
@@ -70,7 +70,7 @@
 
 ### 3、剪切素材
 
-![标注-02](/Users/zhaoziwen/Downloads/标注/标注-02.png)
+![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/5.png)
 
 1. 返回上一步
 
@@ -114,7 +114,7 @@
 
 ### 4、竖版视频转横版视频
 
-![标注-04](/Users/zhaoziwen/Downloads/标注/标注-04.png)
+![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/6.png)
 
 1. 返回上一步
 
@@ -132,7 +132,7 @@
 
    下图为默认值为1时的效果
 
-   ![](https://zzw-blog.oss-cn-shenzhen.aliyuncs.com/20200213165053.png)
+   ![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/7.png)
 
 4. 跳过
 
@@ -144,9 +144,9 @@
 
 ### 5、横版视频转竖版视频
 
-![标注-08](/Users/zhaoziwen/Downloads/标注-08.png)
+![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/8.png)
 
-![标注-09](/Users/zhaoziwen/Downloads/标注-09.png)
+![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/9.png)
 
 1. 返回上一步
 
@@ -158,7 +158,7 @@
 
 3. 图片填充
 
-   选择`图片填充`将会出现如第一个图的选项，表示由1920\*1080的横版视频转为1080\*1920的竖版视频时，视频的上下部分用图片来进行填充
+   选择`图片填充`将会出现如第一个图的选项，表示由1920\*1080的横版视频转为1080*1920的竖版视频时，视频的上下部分用图片来进行填充
 
 4. 颜色填充
 
@@ -168,7 +168,7 @@
 
    如下图中第一个色块的高度
 
-   <img src="/Users/zhaoziwen/Library/Application Support/typora-user-images/image-20200213172325544.png" alt="image-20200213172325544" style="zoom: 50%;" />
+   ![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/10.png)
 
 6. 跳过
 
@@ -202,7 +202,7 @@
 
     图库位置：
 
-    ![image-20200213173251563](/Users/zhaoziwen/Library/Application Support/typora-user-images/image-20200213173251563.png)
+    ![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/11.png)
 
 13. 选择填充颜色
 
@@ -218,7 +218,7 @@
 
 添加字幕如遇提示有误，**检查网络情况**和科大讯飞语音转写包的**套餐余量**，如果套餐余量不足，按照后面的提示进行购买或者修改秘钥
 
-![标注-10](/Users/zhaoziwen/Downloads/标注-10.png)
+![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/12.png)
 
 1. 返回上一步
 
@@ -238,7 +238,7 @@
 
    如图所示
 
-   <img src="/Users/zhaoziwen/Library/Application Support/typora-user-images/image-20200213175245765.png" alt="image-20200213175245765" style="zoom:50%;" />
+   ![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/13.png)
 
 5. 字体颜色
 
@@ -270,7 +270,7 @@
 
 ### 7、添加水印
 
-![标注-03](/Users/zhaoziwen/Downloads/标注/标注-03.png)
+![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/14.png)
 
 1. 返回上一步
 
@@ -302,7 +302,7 @@
 
 ### 8、静音处理
 
-![标注-11(1)](/Users/zhaoziwen/Downloads/标注-11(1).png)
+![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/15.png)
 
 1. 返回上一步
 
@@ -336,7 +336,7 @@
 
 ### 9、合成视频完成
 
-![](/Users/zhaoziwen/Downloads/标注-07.png)
+![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/16.png)
 
 1. 打开所在文件夹
 
@@ -360,5 +360,5 @@
 
    打开软件文件夹中的`素材合成.exe.Config`文件（使用记事本或者VS Code、Sublime等打开），用上述记录的APPID和SecretKey替换`讯飞appid`和`讯飞secret_key`的值，然后保存即可
 
-   ![image-20200213183401199](/Users/zhaoziwen/Library/Application Support/typora-user-images/image-20200213183401199.png)
+   ![](https://github.com/zhaowenzi/video_clip_synthesis/blob/master/image/17.png)
 
